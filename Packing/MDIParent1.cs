@@ -137,8 +137,8 @@ namespace Packing
         private void MDIContenedorPrincipal_Load(object sender, EventArgs e)
         {
             this.Text = this.Text + " " + Usuario.Usuario;
-            //N_Impresora.Nombre = "Microsoft Print to PDF";
-            N_Impresora.Nombre = "OKI DATA CORP ML320/1TURBO";
+            N_Impresora.Nombre = "Microsoft Print to PDF";
+            //N_Impresora.Nombre = "OKI DATA CORP ML320/1TURBO";
         }
 
         private void exportacionToolStripMenuItem_Click(object sender, EventArgs e)
