@@ -163,6 +163,8 @@ namespace Packing
             recepcion1.Encabezado.ID_Destino = cmbDestino.SelectedValue.ToString();
             recepcion1.Encabezado.Destino = cmbDestino.Text.ToString();
             recepcion1.Encabezado.Responsable = sesion.Nombre + " " + sesion.Apellido;
+            recepcion1.Encabezado.ID_Tipo = cmbTipo.SelectedValue.ToString();
+            recepcion1.Encabezado.Tipo = cmbTipo.Text.ToString();
 
             recepcion1.Encabezado.Fecha = fecha;
             recepcion1.Encabezado.Hora = hora;

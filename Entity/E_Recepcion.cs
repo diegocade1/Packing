@@ -69,6 +69,9 @@ namespace Entity
         public string Lote { get; set; }
         public string Responsable { get; set; }
         public string Cantidad_Pallets { get; set; }
+        public string ID_Tipo { get; set; }
+        public string Tipo { get; set; }
+
 
         //public string ID_Cliente { get; set; }
         //public string Cliente { get; set; }
