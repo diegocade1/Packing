@@ -439,7 +439,7 @@ namespace Packing
                                        System.Globalization.CultureInfo.InvariantCulture);
 
             N_Imprimir imprimir = new N_Imprimir();
-            N_Recepcion_Encabezado  encabezado = new N_Recepcion_Encabezado()
+            N_Recepcion_Encabezado encabezado = new N_Recepcion_Encabezado()
             {
                 Chofer = encabezado_recepcion.Chofer,
                 Codigo_productor = encabezado_recepcion.Codigo_Productor,
@@ -452,7 +452,8 @@ namespace Packing
                 Hora = encabezado_recepcion.Hora,
                 Productor = encabezado_recepcion.Productor,
                 Especie = encabezado_recepcion.Especie,
-                Responsable = encabezado_recepcion.Responsable               
+                Responsable = encabezado_recepcion.Responsable,
+                Tipo = encabezado_recepcion.Tipo
             };
             N_Recepcion_Detalle  detalle = new N_Recepcion_Detalle()
             {

@@ -82,6 +82,8 @@ namespace Clases.Impresion
             set { _exportador = value; }
         }
 
+        public string Tipo { get; set; }
+
     }
 
     public class N_Recepcion_Detalle

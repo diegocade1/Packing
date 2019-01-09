@@ -126,6 +126,7 @@ namespace Clases.Impresion
             float leftMargin = ppeArgs.MarginBounds.Left;
             float topMargin = ppeArgs.MarginBounds.Top;
             double linea = 3.5 + Convert.ToDouble(coordenadas_impresion.PosicionY);
+           
             //
             /*
             xPos = 21 * fuente.GetHeight(g);
@@ -156,11 +157,15 @@ namespace Clases.Impresion
             xPos = (float)(38 + Convert.ToDouble(coordenadas_impresion.PosicionX)) * fuente.GetHeight(g);
             yPos = (float)linea * fuente.GetHeight(g);
             g.DrawString(encabezado_recepcion.Hora, fuente, Brushes.Black, xPos, yPos, new StringFormat()); // Hora
+                                 
             //Move to next line
             linea += 1.4;
             xPos = (float)(12 + Convert.ToDouble(coordenadas_impresion.PosicionX)) * fuente.GetHeight(g);
             yPos = (float)linea * fuente.GetHeight(g);
             g.DrawString(encabezado_recepcion.Guia_despacho, fuente, Brushes.Black, xPos, yPos, new StringFormat()); // Guia de despacho
+            xPos = (float)(38 + Convert.ToDouble(coordenadas_impresion.PosicionX)) * fuente.GetHeight(g);
+            yPos = (float)linea * fuente.GetHeight(g);
+            g.DrawString(encabezado_recepcion.Tipo, fuente, Brushes.Black, xPos, yPos, new StringFormat()); // Tipo convencional o 
             //Move to next line
             linea += 5.2;
             xPos = (float)(12 + Convert.ToDouble(coordenadas_impresion.PosicionX)) * fuente.GetHeight(g);

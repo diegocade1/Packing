@@ -265,8 +265,8 @@ namespace Datos
             MySqlCommand cmd;
             List<E_Descarga> lista1 = new List<E_Descarga>();
 
-            query = "insert into tbl_recepcion(ID_Cliente,ID_Productor,chofer,guia,ID_Especie,ID_Descarga,temperatura,ID_Destino,fecha,lote,cantidad_pallets) values " +
-                    "(@ID_Cliente,@ID_Productor,@chofer,@guia,@ID_Especie,@ID_Descarga,@temperatura,@ID_Destino,@fecha,@lote,@cantidad_pallets)";
+            query = "insert into tbl_recepcion(ID_Cliente,ID_Productor,chofer,guia,ID_Especie,ID_Descarga,temperatura,ID_Destino,fecha,lote,cantidad_pallets,id_tipo) values " +
+                    "(@ID_Cliente,@ID_Productor,@chofer,@guia,@ID_Especie,@ID_Descarga,@temperatura,@ID_Destino,@fecha,@lote,@cantidad_pallets,@id_tipo)";
             try
             {
                 if (Conectar() == true)
@@ -283,6 +283,7 @@ namespace Datos
                     cmd.Parameters.AddWithValue("@fecha", encabezado1.Fecha);
                     cmd.Parameters.AddWithValue("@lote", encabezado1.Lote);
                     cmd.Parameters.AddWithValue("@cantidad_pallets", encabezado1.Cantidad_Pallets);
+                    cmd.Parameters.AddWithValue("@id_tipo", encabezado1.ID_Tipo);
 
                     cmd.ExecuteNonQuery();
                     
