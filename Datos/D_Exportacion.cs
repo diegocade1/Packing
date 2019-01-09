@@ -105,6 +105,48 @@ namespace Datos
             return estado;
         }
 
+        public bool Validacion_Exportacion(E_Exportacion exportacion)
+        {
+            string query;
+            bool estado = false;
+            MySqlCommand cmd;
+
+            query = "select * from tbl_exportacion where folio = @folio and ID_productor = @productor and ID_variedad = @variedad";
+            try
+            {
+                if (Conectar() == true)
+                {
+                    cmd = new MySqlCommand(query, MySQLConexion);
+                    cmd.Parameters.AddWithValue("@folio", exportacion.Folio);
+                    cmd.Parameters.AddWithValue("@productor", exportacion.ID_Productor);
+                    cmd.Parameters.AddWithValue("@variedad", exportacion.ID_Variedad);
+                    MySqlDataReader reader = cmd.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        Desconectar();
+                        Mensaje = "El folio ya fue utilizado en un proceso de exportacion con el mismo productor y variedad";
+                        estado = true;
+                    }
+                    else
+                    {
+                        Desconectar();
+                        estado = false;
+                    }
+                }
+                else
+                {
+                    estado = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                Mensaje = ex.Message;
+                Desconectar();
+                return false;
+            }
+            return estado;
+        }
+
         #region Validacion Pallet
 
         public bool Existe_Pallet(E_Pallet_Exportacion pallet)

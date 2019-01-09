@@ -52,6 +52,30 @@ namespace Negocio
             return estado;
         }
 
+        public bool Validacion_Exportacion()
+        {
+            bool estado;
+            if (exportacion1.Conectar() == true)
+            {
+                estado = exportacion1.Validacion_Exportacion(Exportacion);
+                if (estado != false)
+                {
+                    Mensaje = exportacion1.Mensaje;
+                }
+                else
+                {
+                    Mensaje = "";
+                }
+            }
+            else
+            {
+                // UltimoID = 0;
+                Mensaje = "Error en Conexion";
+                estado = false;
+            }
+            return estado;
+        }
+
         #region validacion Pallet
 
         public bool Existe_Pallet(E_Pallet_Exportacion pallet)

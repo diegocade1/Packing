@@ -31,7 +31,9 @@ namespace Packing
         N_TipoMercado tipoMercado1 = new N_TipoMercado();
         N_Etiqueta etiqueta1 = new N_Etiqueta();
         N_Exportacion exportacion1 = new N_Exportacion();
-
+        //------
+        N_Recepcion recepcion1 = new N_Recepcion();
+        N_Comercial comercial1 = new N_Comercial();
 
         private void Exportacion_Load(object sender, EventArgs e)
         {
@@ -129,14 +131,61 @@ namespace Packing
                 txtCantidadBandejas.Focus();
                 return;
             }
-          
-            AgregarGrilla2();
-            dtpFecha.Text = "";
-            cmbProductor.SelectedIndex = -1;
-            cmbVariedad.SelectedIndex = -1;
-            txtCantidadBandejas.Text = "";
-            txtDocumento.Text = "";
-            dtpFecha.Focus();
+
+            recepcion1.Detalle = new E_Recepcion_Detalle();
+            recepcion1.Detalle.Folio = exportacion1.Exportacion.Folio;
+
+            comercial1.Detalle = new E_Comercial();
+            comercial1.Detalle.Folio = exportacion1.Exportacion.Folio;
+
+            if(Existe_Pallet_Lista(dgvLista, cmbVariedad.SelectedValue.ToString(), cmbProductor.SelectedValue.ToString()) != true)
+            {
+                if (!recepcion1.Validacion_Folio())
+                {
+
+                    if (!comercial1.Validacion_Folio())
+                    {
+                        exportacion1.Exportacion = new E_Exportacion();
+                        exportacion1.Exportacion.ID_Variedad = cmbVariedad.SelectedValue.ToString();
+                        exportacion1.Exportacion.ID_Productor = cmbProductor.SelectedValue.ToString();
+                        if (!exportacion1.Validacion_Exportacion())
+                        {
+                            AgregarGrilla2();
+                            dtpFecha.Text = "";
+                            cmbProductor.SelectedIndex = -1;
+                            cmbVariedad.SelectedIndex = -1;
+                            txtCantidadBandejas.Text = "";
+                            txtDocumento.Text = "";
+                            dtpFecha.Focus();
+                        }
+                        else
+                        {
+                            MessageBox.Show(exportacion1.Mensaje);
+                            txtFolio.Text = string.Empty;
+                            txtFolio.Focus();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show(comercial1.Mensaje);
+                        txtFolio.Text = string.Empty;
+                        txtFolio.Focus();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show(recepcion1.Mensaje);
+                    txtFolio.Text = string.Empty;
+                    txtFolio.Focus();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Un registro con los mismos datos ya ha sido ingresado");
+                cmbVariedad.SelectedIndex = -1;
+                cmbProductor.SelectedIndex = -1;
+            }
+
         }
 
      
@@ -285,6 +334,24 @@ namespace Packing
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private bool Existe_Pallet_Lista(DataGridView lista, string variedad, string productor)
+        {
+            foreach (DataGridViewRow Row in lista.Rows)
+            {
+                // int strFila = Row.Index.ToString();
+
+                string variedad_l = Convert.ToString(Row.Cells["ID Variedad"].Value);
+                string productor_l = Convert.ToString(Row.Cells["ID Productor"].Value);
+
+                if (variedad_l.ToUpper() == variedad.ToUpper() && productor_l.ToUpper() == productor.ToUpper())
+                {
+                    //   dgvListaRecepcion.Rows[strFila].DefaultCellStyle.BackColor = Color.Red;
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }
