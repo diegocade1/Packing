@@ -11,7 +11,7 @@ namespace Negocio
     public class N_Recepcion
     {
         D_Recepcion recepcion1 = new D_Recepcion();
-        
+        public string Mensaje { get; set; }
         public E_Recepcion_Encabezado Encabezado { get; set; }
         public E_Recepcion_Detalle Detalle { get; set; }
         public int UltimoID { get; set; }
@@ -65,6 +65,29 @@ namespace Negocio
             return recepcion1.Agregar_Detalle(Detalle);
         }
 
+        public bool Validacion_Folio()
+        {
+            bool estado;
+            if (recepcion1.Conectar() == true)
+            {
+                estado = recepcion1.Validacion_Folio(Detalle);
+                if (estado != false)
+                {
+                    Mensaje = recepcion1.Mensaje;
+                }
+                else
+                {
+                    Mensaje = "";
+                }
+            }
+            else
+            {
+                // UltimoID = 0;
+                Mensaje = "Error en Conexion";
+                estado = false;
+            }
+            return estado;
+        }
 
         #region Metodos Destino
         public List<E_Destino> Lista_Destino()

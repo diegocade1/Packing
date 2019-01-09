@@ -11,7 +11,7 @@ namespace Datos
     public class D_Recepcion: D_MySQL 
     {
 
-        string Mensaje { get; set; }
+        public string Mensaje { get; set; }
         public string posicion { set; get; }
 
         #region Metodos Destino
@@ -384,6 +384,47 @@ namespace Datos
             }
 
             return Convert.ToInt32(aux);
+        }
+
+        public bool Validacion_Folio(E_Recepcion_Detalle recepcion)
+        {
+            string query;
+            bool estado = false;
+            MySqlCommand cmd;
+
+            query = "select * from tbl_recepcion where folio = " +
+                    "@folio";
+            try
+            {
+                if (Conectar() == true)
+                {
+                    cmd = new MySqlCommand(query, MySQLConexion);
+                    cmd.Parameters.AddWithValue("@folio", recepcion.Folio);
+                    MySqlDataReader reader = cmd.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        Desconectar();
+                        Mensaje = "El folio ya fue utilizado";
+                        estado = true;
+                    }
+                    else
+                    {
+                        Desconectar();
+                        estado = false;
+                    }
+                }
+                else
+                {
+                    estado = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                Mensaje = ex.Message;
+                Desconectar();
+                return false;
+            }
+            return estado;
         }
 
         #region Correlativo Lote

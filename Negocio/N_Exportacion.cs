@@ -11,6 +11,7 @@ namespace Negocio
     public class N_Exportacion
     {
         D_Exportacion exportacion1 = new D_Exportacion();
+        public string Mensaje { get; set; }
         public E_Exportacion Exportacion { get; set; }
 
         public bool Agregar()
@@ -25,6 +26,29 @@ namespace Negocio
                 estado = false;
             }
 
+            return estado;
+        }
+        public bool Validacion_Folio()
+        {
+            bool estado;
+            if (exportacion1.Conectar() == true)
+            {
+                estado = exportacion1.Validacion_Folio(Exportacion);
+                if (estado != false)
+                {
+                    Mensaje = exportacion1.Mensaje;
+                }
+                else
+                {
+                    Mensaje = "";
+                }
+            }
+            else
+            {
+                // UltimoID = 0;
+                Mensaje = "Error en Conexion";
+                estado = false;
+            }
             return estado;
         }
 

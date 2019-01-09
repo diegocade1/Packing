@@ -10,7 +10,7 @@ namespace Datos
 {
     public class D_Exportacion:D_MySQL
     {
-        string Mensaje { get; set; }
+        public string Mensaje { get; set; }
 
         public bool Agregar(E_Exportacion exportacion1)
         {
@@ -62,6 +62,47 @@ namespace Datos
 
             Desconectar();
             return true;
+        }
+
+        public bool Validacion_Folio(E_Exportacion exportacion)
+        {
+            string query;
+            bool estado = false;
+            MySqlCommand cmd;
+
+            query = "select * from tbl_exportacion where folio = " +
+                    "@folio";
+            try
+            {
+                if (Conectar() == true)
+                {
+                    cmd = new MySqlCommand(query, MySQLConexion);
+                    cmd.Parameters.AddWithValue("@folio", exportacion.Folio);
+                    MySqlDataReader reader = cmd.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        Desconectar();
+                        Mensaje = "El folio ya fue utilizado";
+                        estado = true;
+                    }
+                    else
+                    {
+                        Desconectar();
+                        estado = false;
+                    }
+                }
+                else
+                {
+                    estado = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                Mensaje = ex.Message;
+                Desconectar();
+                return false;
+            }
+            return estado;
         }
 
         #region Validacion Pallet
