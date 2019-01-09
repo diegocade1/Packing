@@ -392,7 +392,7 @@ namespace Datos
             bool estado = false;
             MySqlCommand cmd;
 
-            query = "select * from tbl_recepcion where folio = " +
+            query = "select * from tbl_recepcion_detalle where folio = " +
                     "@folio";
             try
             {
@@ -404,7 +404,7 @@ namespace Datos
                     if (reader.Read())
                     {
                         Desconectar();
-                        Mensaje = "El folio ya fue utilizado";
+                        Mensaje = "El folio ya fue utilizado en un proceso de recepcion";
                         estado = true;
                     }
                     else

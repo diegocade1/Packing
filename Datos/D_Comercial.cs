@@ -72,7 +72,7 @@ namespace Datos
                     if (reader.Read())
                     {
                         Desconectar();
-                        Mensaje = "El folio ya fue utilizado";
+                        Mensaje = "El folio ya fue utilizado en un proceso de comercial";
                         estado = true;
                     }
                     else

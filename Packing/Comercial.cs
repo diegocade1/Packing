@@ -35,6 +35,8 @@ namespace Packing
         N_Pallet pallet1 = new N_Pallet();
         N_Comercial comercial1 = new N_Comercial();
         N_TipoComercial tipoComercial1 = new N_TipoComercial();
+        N_Recepcion recepcion1 = new N_Recepcion();
+        N_Exportacion exportacion1 = new N_Exportacion();
        
         private void Comercial_Load(object sender, EventArgs e)
         {
@@ -214,28 +216,52 @@ namespace Packing
             comercial1.Detalle.Folio = txtFolio.Text;
             comercial1.Detalle.Tara = tara;
             comercial1.Detalle.Kilos_Netos = pesoNeto;
+            /*------------------------------------------*/
+            recepcion1.Detalle = new E_Recepcion_Detalle();
+            recepcion1.Detalle.Folio = comercial1.Detalle.Folio;
+            exportacion1.Exportacion = new E_Exportacion();
+            exportacion1.Exportacion.Folio = comercial1.Detalle.Folio;
 
-            if (!comercial1.Validacion_Folio())
+            if (!recepcion1.Validacion_Folio())
             {
-                bool estado = comercial1.Agregar();
-                if (estado == true)
+                if (!exportacion1.Validacion_Folio())
                 {
-                    Imprimir_Comercial(comercial1.Detalle, hora, pesoPallet.ToString(), peso_promedio.ToString(), pesoBandeja.ToString());
-                    Limpiar();
+                    if (!comercial1.Validacion_Folio())
+                    {
+                        bool estado = comercial1.Agregar();
+                        if (estado == true)
+                        {
+                            Imprimir_Comercial(comercial1.Detalle, hora, pesoPallet.ToString(), peso_promedio.ToString(), pesoBandeja.ToString());
+                            Limpiar();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Error al Guardar Datos " + comercial1.Mensaje);
+                            Limpiar();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show(comercial1.Mensaje);
+                        txtFolio.Text = string.Empty;
+                        txtFolio.Focus();
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Error al Guardar Datos " + comercial1.Mensaje);
-                    Limpiar();
+                    MessageBox.Show(exportacion1.Mensaje);
+                    txtFolio.Text = string.Empty;
+                    txtFolio.Focus();
                 }
             }
             else
             {
-                MessageBox.Show(comercial1.Mensaje);
+                MessageBox.Show(recepcion1.Mensaje);
                 txtFolio.Text = string.Empty;
                 txtFolio.Focus();
             }
 
+            /*........................................--*/
         }
 
         private void Imprimir_Comercial(E_Comercial detalle_comercial,string hora,string pesopallet,string pesopromedio,string pesobandeja)
