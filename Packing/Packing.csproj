@@ -1,0 +1,361 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5F231C02-5696-45EE-9345-42AFE8916B61}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Packing</RootNamespace>
+    <AssemblyName>Packing</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>Packing.Program</StartupObject>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Messaging" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Comercial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Comercial.Designer.cs">
+      <DependentUpon>Comercial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Exportacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Exportacion.Designer.cs">
+      <DependentUpon>Exportacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMantenedorAMB.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMantenedorAMB.Designer.cs">
+      <DependentUpon>frmMantenedorAMB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMantenedorBandeja.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMantenedorBandeja.Designer.cs">
+      <DependentUpon>frmMantenedorBandeja.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMantenedorEmbalaje.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMantenedorEmbalaje.Designer.cs">
+      <DependentUpon>frmMantenedorEmbalaje.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMantenedorCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMantenedorCliente.Designer.cs">
+      <DependentUpon>frmMantenedorCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMantenedorDescarga.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMantenedorDescarga.Designer.cs">
+      <DependentUpon>frmMantenedorDescarga.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMantenedorDestino.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMantenedorDestino.Designer.cs">
+      <DependentUpon>frmMantenedorDestino.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMantenedorEtiqueta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMantenedorEtiqueta.Designer.cs">
+      <DependentUpon>frmMantenedorEtiqueta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMantenedorPallet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMantenedorPallet.Designer.cs">
+      <DependentUpon>frmMantenedorPallet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMantenedorProductor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMantenedorProductor.Designer.cs">
+      <DependentUpon>frmMantenedorProductor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMantenedorTipoArmado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMantenedorTipoArmado.Designer.cs">
+      <DependentUpon>frmMantenedorTipoArmado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMantenedorTipoComercial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMantenedorTipoComercial.Designer.cs">
+      <DependentUpon>frmMantenedorTipoComercial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMantenedorTipoMercado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMantenedorTipoMercado.Designer.cs">
+      <DependentUpon>frmMantenedorTipoMercado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMantenedorTipoRecepcion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMantenedorTipoRecepcion.Designer.cs">
+      <DependentUpon>frmMantenedorTipoRecepcion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMantenedorUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMantenedorUsuario.Designer.cs">
+      <DependentUpon>frmMantenedorUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSubLote.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSubLote.Designer.cs">
+      <DependentUpon>frmSubLote.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ListaPalletRecepcion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListaPalletRecepcion.Designer.cs">
+      <DependentUpon>ListaPalletRecepcion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MantenedorEspecie.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MantenedorEspecie.Designer.cs">
+      <DependentUpon>MantenedorEspecie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Maquila.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Maquila.Designer.cs">
+      <DependentUpon>Maquila.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MDIParent1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MDIParent1.Designer.cs">
+      <DependentUpon>MDIParent1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Principal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Principal.Designer.cs">
+      <DependentUpon>Principal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Principal2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Principal2.Designer.cs">
+      <DependentUpon>Principal2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Recepcion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Recepcion.Designer.cs">
+      <DependentUpon>Recepcion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Recepcion2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Recepcion2.Designer.cs">
+      <DependentUpon>Recepcion2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Recepcion3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Recepcion3.Designer.cs">
+      <DependentUpon>Recepcion3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Recepcion4.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Recepcion4.Designer.cs">
+      <DependentUpon>Recepcion4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Recepcion5.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Recepcion5.designer.cs">
+      <DependentUpon>Recepcion5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes.Designer.cs">
+      <DependentUpon>Reportes.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Comercial.resx">
+      <DependentUpon>Comercial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Exportacion.resx">
+      <DependentUpon>Exportacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMantenedorAMB.resx">
+      <DependentUpon>frmMantenedorAMB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMantenedorBandeja.resx">
+      <DependentUpon>frmMantenedorBandeja.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMantenedorEmbalaje.resx">
+      <DependentUpon>frmMantenedorEmbalaje.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMantenedorCliente.resx">
+      <DependentUpon>frmMantenedorCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMantenedorDescarga.resx">
+      <DependentUpon>frmMantenedorDescarga.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMantenedorDestino.resx">
+      <DependentUpon>frmMantenedorDestino.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMantenedorEtiqueta.resx">
+      <DependentUpon>frmMantenedorEtiqueta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMantenedorPallet.resx">
+      <DependentUpon>frmMantenedorPallet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMantenedorProductor.resx">
+      <DependentUpon>frmMantenedorProductor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMantenedorTipoArmado.resx">
+      <DependentUpon>frmMantenedorTipoArmado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMantenedorTipoComercial.resx">
+      <DependentUpon>frmMantenedorTipoComercial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMantenedorTipoMercado.resx">
+      <DependentUpon>frmMantenedorTipoMercado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMantenedorTipoRecepcion.resx">
+      <DependentUpon>frmMantenedorTipoRecepcion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMantenedorUsuario.resx">
+      <DependentUpon>frmMantenedorUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSubLote.resx">
+      <DependentUpon>frmSubLote.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListaPalletRecepcion.resx">
+      <DependentUpon>ListaPalletRecepcion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MantenedorEspecie.resx">
+      <DependentUpon>MantenedorEspecie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Maquila.resx">
+      <DependentUpon>Maquila.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MDIParent1.resx">
+      <DependentUpon>MDIParent1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Principal.resx">
+      <DependentUpon>Principal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Principal2.resx">
+      <DependentUpon>Principal2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Recepcion.resx">
+      <DependentUpon>Recepcion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Recepcion2.resx">
+      <DependentUpon>Recepcion2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Recepcion3.resx">
+      <DependentUpon>Recepcion3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Recepcion4.resx">
+      <DependentUpon>Recepcion4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Recepcion5.resx">
+      <DependentUpon>Recepcion5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes.resx">
+      <DependentUpon>Reportes.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Clases.Impresion\Clases.Impresion.csproj">
+      <Project>{c348cff6-1c96-4976-8411-287762547e0a}</Project>
+      <Name>Clases.Impresion</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Entity\Entity.csproj">
+      <Project>{1620f766-1d10-49ea-b7e1-a423c8b2ec0c}</Project>
+      <Name>Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Negocio\Negocio.csproj">
+      <Project>{8682c6c6-2878-4d0c-ac11-01cbebc56666}</Project>
+      <Name>Negocio</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
