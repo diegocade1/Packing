@@ -35,6 +35,7 @@ namespace Packing
         N_Pallet pallet1 = new N_Pallet();
         N_Comercial comercial1 = new N_Comercial();
         N_TipoComercial tipoComercial1 = new N_TipoComercial();
+        //----
         N_Recepcion recepcion1 = new N_Recepcion();
         N_Exportacion exportacion1 = new N_Exportacion();
        

@@ -34,7 +34,9 @@ namespace Packing
         N_Bandeja bandeja1 = new N_Bandeja();
         N_Pallet pallet1 = new N_Pallet();
         N_Tipo_Recepcion tipo1 = new N_Tipo_Recepcion();
-       
+        //----
+        N_Comercial comercial1 = new N_Comercial();
+        N_Exportacion exportacion1 = new N_Exportacion();
 
         private void Recepcion4_Load(object sender, EventArgs e)
         {
@@ -173,8 +175,7 @@ namespace Packing
             recepcion1.Encabezado.Cantidad_Pallets = txtTotalPallets.Text;
 
             bool estado =  recepcion1.Agregar_Encabezado();
-
-                   
+                  
             if (estado == true)//guardado correcto
             {
                 
@@ -206,6 +207,10 @@ namespace Packing
                         cmbBandeja.SelectedIndex = -1;
                         cmbTipoPallet.SelectedIndex = -1;
                         txtFolio.Text = "";
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error al registrar el detalle de la recepcion");
                     }
                 }
                 else
@@ -372,8 +377,50 @@ namespace Packing
                 recepcion1.Detalle.Peso_Promedio = peso_promedio.ToString();
                 recepcion1.Detalle.Posicion = numero_actual.ToString();
                 //recepcion1.detalle.posion = contador posicion numero actual
-                recepcion1.Agregar_Detalle();
-                Imprimir_Recepcion(recepcion1.Encabezado, recepcion1.Detalle);
+
+                exportacion1.Exportacion = new E_Exportacion();
+                exportacion1.Exportacion.Folio = recepcion1.Detalle.Folio;
+
+                comercial1.Detalle = new E_Comercial();
+                comercial1.Detalle.Folio = recepcion1.Detalle.Folio;
+
+                if (!recepcion1.Validacion_Folio())
+                {
+                    if (!exportacion1.Validacion_Folio())
+                    {
+                        if (!comercial1.Validacion_Folio())
+                        {
+                            bool estado = recepcion1.Agregar_Detalle();
+                            if (estado == true)
+                            {
+                                Imprimir_Recepcion(recepcion1.Encabezado, recepcion1.Detalle);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Error al Guardar Datos " + recepcion1.Mensaje);
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show(comercial1.Mensaje);
+                            txtFolio.Text = string.Empty;
+                            txtFolio.Focus();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show(exportacion1.Mensaje);
+                        txtFolio.Text = string.Empty;
+                        txtFolio.Focus();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show(recepcion1.Mensaje);
+                    txtFolio.Text = string.Empty;
+                    txtFolio.Focus();
+                }
+
             }
             catch (Exception ex)
             {
