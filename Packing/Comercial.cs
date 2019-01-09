@@ -179,7 +179,7 @@ namespace Packing
             //    T Format Specifier      en-US Culture                               5:04:32 PM
             //    T Format Specifier      es-ES Culture                                 17:04:32
             //    T Format Specifier      fr-FR Culture                                 17:04:32
-            string hora = DateTime.Now.ToString("T");
+            string hora = DateTime.Now.ToString("HH:mm:ss");
 
             double pesoBandeja = 0;
             double pesoPallet = 0;
