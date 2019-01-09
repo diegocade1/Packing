@@ -500,22 +500,23 @@ namespace Clases.Impresion
             g.DrawString(Total_kilos_merma, fuente, Brushes.Black, xPos, yPos, new StringFormat()); // total kilos merma
             //Move to next line Lista de Cajas
             linea += 7.5;
+            tempLinea = linea;
             foreach (N_Maquila_Cajas caja in lista_Cajas_Maquilas)
             {
                 xPos = (float)(10.5 + Convert.ToDouble(coordenadas_impresion.PosicionX)) * fuente.GetHeight(g);
-                yPos = (float)linea * fuente.GetHeight(g);
+                yPos = (float)tempLinea * fuente.GetHeight(g);
                 g.DrawString(caja.Numero_pallet, fuente, Brushes.Black, xPos, yPos, new StringFormat()); // numero pallet caja
                 xPos = (float)(17.5 + Convert.ToDouble(coordenadas_impresion.PosicionX)) * fuente.GetHeight(g);
-                yPos = (float)linea * fuente.GetHeight(g);
+                yPos = (float)tempLinea * fuente.GetHeight(g);
                 g.DrawString(caja.Formato, fuente, Brushes.Black, xPos, yPos, new StringFormat()); // formato caja
                 xPos = (float)(22.5 + Convert.ToDouble(coordenadas_impresion.PosicionX)) * fuente.GetHeight(g);
-                yPos = (float)linea * fuente.GetHeight(g);
+                yPos = (float)tempLinea * fuente.GetHeight(g);
                 g.DrawString(caja.Peso_teorico, fuente, Brushes.Black, xPos, yPos, new StringFormat()); // peso teorico caja
                 xPos = (float)(27.5 + Convert.ToDouble(coordenadas_impresion.PosicionX)) * fuente.GetHeight(g);
-                yPos = (float)linea * fuente.GetHeight(g);
+                yPos = (float)tempLinea * fuente.GetHeight(g);
                 g.DrawString(caja.Cajas, fuente, Brushes.Black, xPos, yPos, new StringFormat()); // cantidad cajas
                 xPos = (float)(33.5 + Convert.ToDouble(coordenadas_impresion.PosicionX)) * fuente.GetHeight(g);
-                yPos = (float)linea * fuente.GetHeight(g);
+                yPos = (float)tempLinea * fuente.GetHeight(g);
                 g.DrawString(caja.Total_peso_teorico, fuente, Brushes.Black, xPos, yPos, new StringFormat()); // total peso teorico caja
                 //total_peso_teorico = total_peso_teorico + Convert.ToDouble(caja.Total_peso_teorico);
                 //total_cajas = total_cajas + Convert.ToDouble(caja.Cajas);

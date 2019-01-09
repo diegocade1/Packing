@@ -465,11 +465,6 @@ namespace Packing
 
         }
 
-        private void mantenedorToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void groupBox1_Enter(object sender, EventArgs e)
         {
 
@@ -534,11 +529,6 @@ namespace Packing
                 //el resto de teclas pulsadas se desactivan
                 e.Handled = true;
             }
-        }
-
-        private void txtKilos_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void txtTemperatura_KeyPress(object sender, KeyPressEventArgs e)

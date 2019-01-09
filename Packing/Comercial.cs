@@ -84,9 +84,95 @@ namespace Packing
             cmbProductor.ValueMember = "codigo";
             cmbProductor.SelectedIndex = -1;
         }
+        private bool ValidarCampos()
+        {
+            if (cmbCliente.SelectedIndex == -1)
+            {
+                MessageBox.Show("Seleccione Exportador", "");
+                cmbCliente.Focus();
+                return false;
+            }
+
+            if (cmbProductor.SelectedIndex == -1)
+            {
+                MessageBox.Show("Seleccione Productor", "");
+                cmbProductor.Focus();
+                return false;
+            }
+
+            if (cmbEspecie.SelectedIndex == -1)
+            {
+                MessageBox.Show("Seleccione Especie", "");
+                cmbEspecie.Focus();
+                return false;
+            }
+
+            if (cmbTipo.SelectedIndex == -1)
+            {
+                MessageBox.Show("Seleccione Tipo", "");
+                cmbTipo.Focus();
+                return false;
+            }
+
+            if (txtTotalPallet.Text.Trim() == "")
+            {
+                MessageBox.Show("Ingrese Total Pallet", "");
+                txtTotalPallet.Focus();
+                return false;
+            }
+
+            if (cmbBandeja.SelectedIndex == -1)
+            {
+                MessageBox.Show("Seleccione Bandejas", "");
+                cmbBandeja.Focus();
+                return false;
+            }
+
+            if (cmbTipoPallet.Text.Trim() == "")
+            {
+                MessageBox.Show("Seleccione Tipo Pallet", "");
+                cmbTipoPallet.Focus();
+                return false;
+            }
+
+            if (txtKilos.Text.Trim() == "")
+            {
+                MessageBox.Show("Ingrese Kilos", "");
+                txtKilos.Focus();
+                return false;
+            }
+
+            if (txtCantidadBandejas.Text.Trim() == "")
+            {
+                MessageBox.Show("Ingrese Cantidad Bandejas", "");
+                txtCantidadBandejas.Focus();
+                return false;
+            }
+
+            if (txtFolio.Text.Trim() == "")
+            {
+                MessageBox.Show("Ingrese Folio", "");
+                txtFolio.Focus();
+                return false;
+
+            }
+
+            return true;
+
+        }
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
+            if (ValidarCampos() == false)
+                return;
+
+            if (ValidaDecimal(txtKilos.Text) == false)
+            {
+                MessageBox.Show("Kilos ingresados no son Validos");
+                txtKilos.SelectAll();
+                txtKilos.Focus();
+                return;
+            }
             string fecha = DateTime.Now.ToString("s");
 
             //    T Format Specifier      de-DE Culture                                 17:04:32
@@ -226,5 +312,76 @@ namespace Packing
             cmbBandeja.Focus();
         }
 
+        private void txtCantidadBandejas_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //Para obligar a que sólo se introduzcan números
+            if (Char.IsDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+              if (Char.IsControl(e.KeyChar)) //permitir teclas de control como retroceso
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                //el resto de teclas pulsadas se desactivan
+                e.Handled = true;
+            }
+        }
+
+        private void txtTotalPallet_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //Para obligar a que sólo se introduzcan números
+            if (Char.IsDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+              if (Char.IsControl(e.KeyChar)) //permitir teclas de control como retroceso
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                //el resto de teclas pulsadas se desactivan
+                e.Handled = true;
+            }
+        }
+
+        private void txtKilos_KeyPress(object sender, KeyPressEventArgs e)
+        {
+                        //Para obligar a que sólo se introduzcan números
+            if (Char.IsDigit(e.KeyChar) || e.KeyChar == '.')
+            {
+                if(e.KeyChar == '.' && txtKilos.Text.Contains("."))
+                {
+                    e.Handled = true;
+                }
+                else
+                {
+                    e.Handled = false;
+                }                
+            }
+            else
+              if (Char.IsControl(e.KeyChar)) //permitir teclas de control como retroceso
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                //el resto de teclas pulsadas se desactivan
+                e.Handled = true;
+            }
+        }
+        bool ValidaDecimal(string valor)
+        {
+            decimal value;
+            if (Decimal.TryParse(valor, out value))
+                return true;
+            else
+                return false;
+        }
     }
 }
