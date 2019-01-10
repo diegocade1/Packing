@@ -554,7 +554,14 @@ namespace Packing
             //Para obligar a que sólo se introduzcan números
             if (Char.IsDigit(e.KeyChar) || e.KeyChar == '.')
             {
-                e.Handled = false;
+                if (e.KeyChar == '.' && txtKilos.Text.Contains("."))
+                {
+                    e.Handled = true;
+                }
+                else
+                {
+                    e.Handled = false;
+                }
             }
             else
               if (Char.IsControl(e.KeyChar)) //permitir teclas de control como retroceso

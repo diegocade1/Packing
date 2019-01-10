@@ -405,7 +405,7 @@ namespace Datos
                     if (reader.Read())
                     {
                         Desconectar();
-                        Mensaje = "El folio ya fue utilizado en un proceso de recepcion";
+                        Mensaje = "El folio ya fue utilizado en un proceso de Recepcion";
                         estado = true;
                     }
                     else

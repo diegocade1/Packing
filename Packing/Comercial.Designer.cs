@@ -69,9 +69,9 @@
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.cmbBandeja);
             this.groupBox1.Location = new System.Drawing.Point(16, 265);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(1035, 201);
             this.groupBox1.TabIndex = 78;
             this.groupBox1.TabStop = false;
@@ -80,7 +80,7 @@
             // 
             this.txtFolio.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFolio.Location = new System.Drawing.Point(487, 116);
-            this.txtFolio.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtFolio.Margin = new System.Windows.Forms.Padding(4);
             this.txtFolio.Name = "txtFolio";
             this.txtFolio.Size = new System.Drawing.Size(212, 30);
             this.txtFolio.TabIndex = 12;
@@ -113,7 +113,7 @@
             this.cmbTipoPallet.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbTipoPallet.FormattingEnabled = true;
             this.cmbTipoPallet.Location = new System.Drawing.Point(631, 30);
-            this.cmbTipoPallet.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbTipoPallet.Margin = new System.Windows.Forms.Padding(4);
             this.cmbTipoPallet.Name = "cmbTipoPallet";
             this.cmbTipoPallet.Size = new System.Drawing.Size(376, 33);
             this.cmbTipoPallet.TabIndex = 9;
@@ -122,7 +122,7 @@
             // 
             this.txtCantidadBandejas.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCantidadBandejas.Location = new System.Drawing.Point(232, 116);
-            this.txtCantidadBandejas.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCantidadBandejas.Margin = new System.Windows.Forms.Padding(4);
             this.txtCantidadBandejas.MaxLength = 4;
             this.txtCantidadBandejas.Name = "txtCantidadBandejas";
             this.txtCantidadBandejas.Size = new System.Drawing.Size(185, 30);
@@ -144,7 +144,7 @@
             // 
             this.txtKilos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtKilos.Location = new System.Drawing.Point(31, 116);
-            this.txtKilos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtKilos.Margin = new System.Windows.Forms.Padding(4);
             this.txtKilos.MaxLength = 10;
             this.txtKilos.Name = "txtKilos";
             this.txtKilos.Size = new System.Drawing.Size(175, 30);
@@ -179,7 +179,7 @@
             this.cmbBandeja.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbBandeja.FormattingEnabled = true;
             this.cmbBandeja.Location = new System.Drawing.Point(107, 30);
-            this.cmbBandeja.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbBandeja.Margin = new System.Windows.Forms.Padding(4);
             this.cmbBandeja.Name = "cmbBandeja";
             this.cmbBandeja.Size = new System.Drawing.Size(376, 33);
             this.cmbBandeja.TabIndex = 8;
@@ -199,7 +199,7 @@
             // 
             this.btnAceptar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnAceptar.Location = new System.Drawing.Point(201, 532);
-            this.btnAceptar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAceptar.Margin = new System.Windows.Forms.Padding(4);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(187, 41);
             this.btnAceptar.TabIndex = 82;
@@ -211,7 +211,7 @@
             // 
             this.btnCancelar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnCancelar.Location = new System.Drawing.Point(603, 532);
-            this.btnCancelar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(173, 41);
             this.btnCancelar.TabIndex = 83;
@@ -236,7 +236,7 @@
             this.cmbTipo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbTipo.FormattingEnabled = true;
             this.cmbTipo.Location = new System.Drawing.Point(669, 110);
-            this.cmbTipo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbTipo.Margin = new System.Windows.Forms.Padding(4);
             this.cmbTipo.Name = "cmbTipo";
             this.cmbTipo.Size = new System.Drawing.Size(376, 33);
             this.cmbTipo.TabIndex = 75;
@@ -258,7 +258,7 @@
             this.cmbEspecie.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbEspecie.FormattingEnabled = true;
             this.cmbEspecie.Location = new System.Drawing.Point(160, 113);
-            this.cmbEspecie.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbEspecie.Margin = new System.Windows.Forms.Padding(4);
             this.cmbEspecie.Name = "cmbEspecie";
             this.cmbEspecie.Size = new System.Drawing.Size(376, 33);
             this.cmbEspecie.TabIndex = 72;
@@ -291,7 +291,7 @@
             this.cmbProductor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbProductor.FormattingEnabled = true;
             this.cmbProductor.Location = new System.Drawing.Point(669, 63);
-            this.cmbProductor.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbProductor.Margin = new System.Windows.Forms.Padding(4);
             this.cmbProductor.Name = "cmbProductor";
             this.cmbProductor.Size = new System.Drawing.Size(363, 33);
             this.cmbProductor.TabIndex = 71;
@@ -303,7 +303,7 @@
             this.cmbCliente.FormattingEnabled = true;
             this.cmbCliente.ItemHeight = 25;
             this.cmbCliente.Location = new System.Drawing.Point(160, 66);
-            this.cmbCliente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbCliente.Margin = new System.Windows.Forms.Padding(4);
             this.cmbCliente.Name = "cmbCliente";
             this.cmbCliente.Size = new System.Drawing.Size(376, 33);
             this.cmbCliente.TabIndex = 70;
@@ -313,7 +313,7 @@
             // 
             this.txtTotalPallet.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTotalPallet.Location = new System.Drawing.Point(160, 182);
-            this.txtTotalPallet.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtTotalPallet.Margin = new System.Windows.Forms.Padding(4);
             this.txtTotalPallet.MaxLength = 4;
             this.txtTotalPallet.Name = "txtTotalPallet";
             this.txtTotalPallet.Size = new System.Drawing.Size(243, 30);
@@ -360,7 +360,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cmbProductor);
             this.Controls.Add(this.cmbCliente);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Comercial";
             this.Text = "Comercial";
             this.Load += new System.EventHandler(this.Comercial_Load);

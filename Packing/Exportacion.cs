@@ -131,74 +131,22 @@ namespace Packing
                 txtCantidadBandejas.Focus();
                 return;
             }
-            if (txtFolio.Text.Trim() == "")
-            {
-                MessageBox.Show("Ingrese Folio", "");
-                txtFolio.Focus();
-                return;
-            }
-
-            recepcion1.Detalle = new E_Recepcion_Detalle();
-            recepcion1.Detalle.Folio = txtFolio.Text;
-
-            comercial1.Detalle = new E_Comercial();
-            comercial1.Detalle.Folio = txtFolio.Text;
 
             if(Existe_Pallet_Lista(dgvLista, cmbVariedad.SelectedValue.ToString(), cmbProductor.SelectedValue.ToString()) != true)
             {
-                if (!recepcion1.Validacion_Folio())
-                {
-
-                    if (!comercial1.Validacion_Folio())
-                    {
-                        exportacion1.Exportacion = new E_Exportacion();
-                        exportacion1.Exportacion.Folio = txtFolio.Text;
-                        exportacion1.Exportacion.ID_Variedad = cmbVariedad.SelectedValue.ToString();
-                        exportacion1.Exportacion.ID_Productor = cmbProductor.SelectedValue.ToString();
-                        if (!exportacion1.Validacion_Exportacion())
-                        {
-                            AgregarGrilla2();
-                            dtpFecha.Text = "";
-                            cmbProductor.SelectedIndex = -1;
-                            cmbVariedad.SelectedIndex = -1;
-                            txtCantidadBandejas.Text = "";
-                            txtDocumento.Text = "";
-                            dtpFecha.Focus();
-                        }
-                        else
-                        {
-                            MessageBox.Show(exportacion1.Mensaje);
-                            //txtFolio.Text = string.Empty;
-                            txtFolio.SelectionStart = 0;
-                            txtFolio.SelectionLength = txtFolio.Text.Length;
-                            txtFolio.Focus();
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show(comercial1.Mensaje);
-                        //txtFolio.Text = string.Empty;
-                        txtFolio.SelectionStart = 0;
-                        txtFolio.SelectionLength = txtFolio.Text.Length;
-                        txtFolio.Focus();
-                    }
-                }
-                else
-                {
-                    MessageBox.Show(recepcion1.Mensaje);
-                    //txtFolio.Text = string.Empty;
-                    txtFolio.SelectionStart = 0;
-                    txtFolio.SelectionLength = txtFolio.Text.Length;
-                    txtFolio.Focus();
-                }
+                AgregarGrilla2();
+                dtpFecha.Text = "";
+                cmbProductor.SelectedIndex = -1;
+                cmbVariedad.SelectedIndex = -1;
+                txtCantidadBandejas.Text = "";
+                txtDocumento.Text = "";
+                dtpFecha.Focus();
             }
             else
             {
                 MessageBox.Show("Un registro con los mismos datos ya ha sido ingresado");
                 cmbVariedad.SelectedIndex = -1;
                 cmbProductor.SelectedIndex = -1;
-                txtCantidadBandejas.Text = string.Empty;
-                txtDocumento.Text = string.Empty;
                 cmbProductor.Focus();
             }
 
@@ -246,49 +194,91 @@ namespace Packing
             string hora = DateTime.Now.ToString("T");
             bool estado=false;
             List<E_Exportacion> lista_Exportacion = new List<E_Exportacion>();
-                                  
 
-            for (int i = dgvLista.Rows.Count - 1; i >= 0; i--)
+            recepcion1.Detalle = new E_Recepcion_Detalle();
+            recepcion1.Detalle.Folio = txtFolio.Text;
+
+            comercial1.Detalle = new E_Comercial();
+            comercial1.Detalle.Folio = txtFolio.Text;
+
+            if (!recepcion1.Validacion_Folio())
             {
 
-                DataGridViewRow row = dgvLista.Rows[i];
-
-                exportacion1.Exportacion = new E_Exportacion
+                if (!comercial1.Validacion_Folio())
                 {
-                    ID_Cliente = cmbCliente.SelectedValue.ToString(),
-                    Cliente = cmbCliente.Text.ToString(),
-                    ID_Especie = cmbEspecie.SelectedValue.ToString(),
-                    Especie = cmbEspecie.Text.ToString(),
-                    ID_Embalaje = cmbEmbalaje.SelectedValue.ToString(),
-                    Embalaje = cmbEmbalaje.Text.ToString(),
-                    ID_Etiqueta = cmbEtiqueta.SelectedValue.ToString(),
-                    Etiqueta = cmbEtiqueta.Text.ToString(),
-                    ID_TipoArmado = cmbTipoArmado.SelectedValue.ToString(),
-                    TipoArmado = cmbTipoArmado.Text.ToString(),
-                    ID_TipoMercado = cmbTipoMercado.SelectedValue.ToString(),
-                    TipoMercado = cmbTipoMercado.Text.ToString(),
-                    Folio = txtFolio.Text,
-                    ID_Productor = row.Cells["ID_productor"].Value.ToString(), //cmbProductor.SelectedValue.ToString(),
-                    Productor = row.Cells["productor"].Value.ToString(),
-                    ID_Variedad = row.Cells["ID_variedad"].Value.ToString(),
-                    Variedad = row.Cells["variedad"].Value.ToString(),
-                    Fecha = row.Cells["fecha"].Value.ToString(),
-                    Cantidad_Cajas = row.Cells["cantidad_bandejas"].Value.ToString(),
-                    Documento = row.Cells["documento"].Value.ToString()
-                   
-                };
-                //dgvLista.Columns.Add("item", "Item");
-                //dgvLista.Columns.Add("fecha", "Fecha");
-                //dgvLista.Columns.Add("productor", "Productor");
-                //dgvLista.Columns.Add("variedad", "Variedad");
-                //dgvLista.Columns.Add("cantidad_bandejas", "cantidad_bandejas");
-                //dgvLista.Columns.Add("documento", "Documento");
-                estado = exportacion1.Agregar();
-                lista_Exportacion.Add(exportacion1.Exportacion);
-            }     
-            if (estado == true)
-            {                         
-                    Imprimir_Exportacion(lista_Exportacion);               
+                    exportacion1.Exportacion = new E_Exportacion();
+                    exportacion1.Exportacion.Folio = txtFolio.Text;
+
+                    if (!exportacion1.Validacion_Folio())
+                    {
+                        for (int i = dgvLista.Rows.Count - 1; i >= 0; i--)
+                        {
+
+                            DataGridViewRow row = dgvLista.Rows[i];
+
+                            exportacion1.Exportacion = new E_Exportacion
+                            {
+                                ID_Cliente = cmbCliente.SelectedValue.ToString(),
+                                Cliente = cmbCliente.Text.ToString(),
+                                ID_Especie = cmbEspecie.SelectedValue.ToString(),
+                                Especie = cmbEspecie.Text.ToString(),
+                                ID_Embalaje = cmbEmbalaje.SelectedValue.ToString(),
+                                Embalaje = cmbEmbalaje.Text.ToString(),
+                                ID_Etiqueta = cmbEtiqueta.SelectedValue.ToString(),
+                                Etiqueta = cmbEtiqueta.Text.ToString(),
+                                ID_TipoArmado = cmbTipoArmado.SelectedValue.ToString(),
+                                TipoArmado = cmbTipoArmado.Text.ToString(),
+                                ID_TipoMercado = cmbTipoMercado.SelectedValue.ToString(),
+                                TipoMercado = cmbTipoMercado.Text.ToString(),
+                                Folio = txtFolio.Text,
+                                ID_Productor = row.Cells["ID_productor"].Value.ToString(), //cmbProductor.SelectedValue.ToString(),
+                                Productor = row.Cells["productor"].Value.ToString(),
+                                ID_Variedad = row.Cells["ID_variedad"].Value.ToString(),
+                                Variedad = row.Cells["variedad"].Value.ToString(),
+                                Fecha = row.Cells["fecha"].Value.ToString(),
+                                Cantidad_Cajas = row.Cells["cantidad_bandejas"].Value.ToString(),
+                                Documento = row.Cells["documento"].Value.ToString()
+
+                            };
+                            //dgvLista.Columns.Add("item", "Item");
+                            //dgvLista.Columns.Add("fecha", "Fecha");
+                            //dgvLista.Columns.Add("productor", "Productor");
+                            //dgvLista.Columns.Add("variedad", "Variedad");
+                            //dgvLista.Columns.Add("cantidad_bandejas", "cantidad_bandejas");
+                            //dgvLista.Columns.Add("documento", "Documento");
+                            estado = exportacion1.Agregar();
+                            lista_Exportacion.Add(exportacion1.Exportacion);
+                        }
+                        if (estado == true)
+                        {
+                            Imprimir_Exportacion(lista_Exportacion);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show(exportacion1.Mensaje);
+                        //txtFolio.Text = string.Empty;
+                        txtFolio.SelectionStart = 0;
+                        txtFolio.SelectionLength = txtFolio.Text.Length;
+                        txtFolio.Focus();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show(comercial1.Mensaje);
+                    //txtFolio.Text = string.Empty;
+                    txtFolio.SelectionStart = 0;
+                    txtFolio.SelectionLength = txtFolio.Text.Length;
+                    txtFolio.Focus();
+                }
+            }
+            else
+            {
+                MessageBox.Show(recepcion1.Mensaje);
+                //txtFolio.Text = string.Empty;
+                txtFolio.SelectionStart = 0;
+                txtFolio.SelectionLength = txtFolio.Text.Length;
+                txtFolio.Focus();
             }
         }
 
@@ -368,6 +358,74 @@ namespace Packing
                 }
             }
             return false;
+        }
+
+        public void Prueba()
+        {
+            recepcion1.Detalle = new E_Recepcion_Detalle();
+            recepcion1.Detalle.Folio = txtFolio.Text;
+
+            comercial1.Detalle = new E_Comercial();
+            comercial1.Detalle.Folio = txtFolio.Text;
+
+            if (!recepcion1.Validacion_Folio())
+            {
+
+                if (!comercial1.Validacion_Folio())
+                {
+                    exportacion1.Exportacion = new E_Exportacion();
+                    exportacion1.Exportacion.Folio = txtFolio.Text;
+                    exportacion1.Exportacion.ID_Variedad = cmbVariedad.SelectedValue.ToString();
+                    exportacion1.Exportacion.ID_Productor = cmbProductor.SelectedValue.ToString();
+                    if (!exportacion1.Validacion_Exportacion())
+                    {
+
+                    }
+                    else
+                    {
+                        MessageBox.Show(exportacion1.Mensaje);
+                        //txtFolio.Text = string.Empty;
+                        txtFolio.SelectionStart = 0;
+                        txtFolio.SelectionLength = txtFolio.Text.Length;
+                        txtFolio.Focus();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show(comercial1.Mensaje);
+                    //txtFolio.Text = string.Empty;
+                    txtFolio.SelectionStart = 0;
+                    txtFolio.SelectionLength = txtFolio.Text.Length;
+                    txtFolio.Focus();
+                }
+            }
+            else
+            {
+                MessageBox.Show(recepcion1.Mensaje);
+                //txtFolio.Text = string.Empty;
+                txtFolio.SelectionStart = 0;
+                txtFolio.SelectionLength = txtFolio.Text.Length;
+                txtFolio.Focus();
+            }
+        }
+
+        private void txtCantidadBandejas_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //Para obligar a que sólo se introduzcan números
+            if (Char.IsDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+              if (Char.IsControl(e.KeyChar)) //permitir teclas de control como retroceso
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                //el resto de teclas pulsadas se desactivan
+                e.Handled = true;
+            }
         }
     }
 }
