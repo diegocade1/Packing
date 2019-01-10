@@ -111,7 +111,7 @@ namespace Datos
             bool estado = false;
             MySqlCommand cmd;
 
-            query = "select * from tbl_exportacion where folio = @folio and ID_productor = @productor and ID_variedad = @variedad";
+            query = "select * from tbl_exportacion where folio = @folio and ID_productor = @productor and ID_variedad = @variedad;";
             try
             {
                 if (Conectar() == true)

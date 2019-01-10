@@ -131,12 +131,18 @@ namespace Packing
                 txtCantidadBandejas.Focus();
                 return;
             }
+            if (txtFolio.Text.Trim() == "")
+            {
+                MessageBox.Show("Ingrese Folio", "");
+                txtFolio.Focus();
+                return;
+            }
 
             recepcion1.Detalle = new E_Recepcion_Detalle();
-            recepcion1.Detalle.Folio = exportacion1.Exportacion.Folio;
+            recepcion1.Detalle.Folio = txtFolio.Text;
 
             comercial1.Detalle = new E_Comercial();
-            comercial1.Detalle.Folio = exportacion1.Exportacion.Folio;
+            comercial1.Detalle.Folio = txtFolio.Text;
 
             if(Existe_Pallet_Lista(dgvLista, cmbVariedad.SelectedValue.ToString(), cmbProductor.SelectedValue.ToString()) != true)
             {
@@ -146,6 +152,7 @@ namespace Packing
                     if (!comercial1.Validacion_Folio())
                     {
                         exportacion1.Exportacion = new E_Exportacion();
+                        exportacion1.Exportacion.Folio = txtFolio.Text;
                         exportacion1.Exportacion.ID_Variedad = cmbVariedad.SelectedValue.ToString();
                         exportacion1.Exportacion.ID_Productor = cmbProductor.SelectedValue.ToString();
                         if (!exportacion1.Validacion_Exportacion())
@@ -161,21 +168,27 @@ namespace Packing
                         else
                         {
                             MessageBox.Show(exportacion1.Mensaje);
-                            txtFolio.Text = string.Empty;
+                            //txtFolio.Text = string.Empty;
+                            txtFolio.SelectionStart = 0;
+                            txtFolio.SelectionLength = txtFolio.Text.Length;
                             txtFolio.Focus();
                         }
                     }
                     else
                     {
                         MessageBox.Show(comercial1.Mensaje);
-                        txtFolio.Text = string.Empty;
+                        //txtFolio.Text = string.Empty;
+                        txtFolio.SelectionStart = 0;
+                        txtFolio.SelectionLength = txtFolio.Text.Length;
                         txtFolio.Focus();
                     }
                 }
                 else
                 {
                     MessageBox.Show(recepcion1.Mensaje);
-                    txtFolio.Text = string.Empty;
+                    //txtFolio.Text = string.Empty;
+                    txtFolio.SelectionStart = 0;
+                    txtFolio.SelectionLength = txtFolio.Text.Length;
                     txtFolio.Focus();
                 }
             }
@@ -184,6 +197,9 @@ namespace Packing
                 MessageBox.Show("Un registro con los mismos datos ya ha sido ingresado");
                 cmbVariedad.SelectedIndex = -1;
                 cmbProductor.SelectedIndex = -1;
+                txtCantidadBandejas.Text = string.Empty;
+                txtDocumento.Text = string.Empty;
+                cmbProductor.Focus();
             }
 
         }
@@ -342,8 +358,8 @@ namespace Packing
             {
                 // int strFila = Row.Index.ToString();
 
-                string variedad_l = Convert.ToString(Row.Cells["ID Variedad"].Value);
-                string productor_l = Convert.ToString(Row.Cells["ID Productor"].Value);
+                string variedad_l = Convert.ToString(Row.Cells["ID_Variedad"].Value);
+                string productor_l = Convert.ToString(Row.Cells["ID_Productor"].Value);
 
                 if (variedad_l.ToUpper() == variedad.ToUpper() && productor_l.ToUpper() == productor.ToUpper())
                 {
