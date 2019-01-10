@@ -15,7 +15,7 @@ namespace Negocio
 
         public E_Maquila Maquila_Recepcion { get; set; }
         public E_Maquila Maquila_Exportacion { get; set; }
-
+        public string Mensaje { get; set; }
         public bool Agregar()
         {
             bool estado;
@@ -26,6 +26,23 @@ namespace Negocio
             }
             else
             {
+                Mensaje = maquila1.Mensaje;
+                estado = false;
+            }
+
+            return estado;
+        }
+        public bool ValidarGuia()
+        {
+            bool estado;
+            if (maquila1.Conectar() == true)
+            {
+                estado = maquila1.ValidarGuia(Maquila);
+                Mensaje = maquila1.Mensaje;
+            }
+            else
+            {
+                Mensaje = maquila1.Mensaje;
                 estado = false;
             }
 

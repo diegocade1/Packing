@@ -127,72 +127,83 @@ namespace Packing
             maquila1.Maquila.Kilos_Merma = total_kilos_Merma;
             maquila1.Maquila.Kilos_Recepcion = total_kilos_Recepcion;
 
-            estado = maquila1.Agregar();
-            if (estado == true)
-            { 
-
-                List<E_Pallet> lista_pallet1 = new List<E_Pallet>();
-                for (int i = dgvListaRecepcion.Rows.Count - 1; i >= 0; i--)
+            if(!maquila1.ValidarGuia())
+            {
+                estado = maquila1.Agregar();
+                if (estado == true)
                 {
-                
-                    DataGridViewRow row = dgvListaRecepcion.Rows[i];
-                    recepcion1 = new E_Recepcion_Detalle();
-                   // maquila1.Maquila_Recepcion = new E_Maquila();
 
-                    recepcion1.Folio = row.Cells["Folio"].Value.ToString();
-                    recepcion1.Kilos_Netos = row.Cells["Kilos_Netos"].Value.ToString();
-                    lista_Recepcion.Add(recepcion1);
+                    List<E_Pallet> lista_pallet1 = new List<E_Pallet>();
+                    for (int i = dgvListaRecepcion.Rows.Count - 1; i >= 0; i--)
+                    {
 
-                    maquila1.Modificar_Estado(recepcion1.Folio, maquila1.Maquila.ID.ToString());
+                        DataGridViewRow row = dgvListaRecepcion.Rows[i];
+                        recepcion1 = new E_Recepcion_Detalle();
+                        // maquila1.Maquila_Recepcion = new E_Maquila();
 
+                        recepcion1.Folio = row.Cells["Folio"].Value.ToString();
+                        recepcion1.Kilos_Netos = row.Cells["Kilos_Netos"].Value.ToString();
+                        lista_Recepcion.Add(recepcion1);
+
+                        maquila1.Modificar_Estado(recepcion1.Folio, maquila1.Maquila.ID.ToString());
+
+                    }
+
+                    E_Pallet_Exportacion exportacion1;
+                    List<E_Pallet_Exportacion> lista_Exportacion = new List<E_Pallet_Exportacion>();
+                    int totalCajas = 0;
+                    int totalPotes = 0;
+                    for (int i = dgvListaExportacion.Rows.Count - 1; i >= 0; i--)
+                    {
+                        DataGridViewRow row = dgvListaExportacion.Rows[i];
+                        exportacion1 = new E_Pallet_Exportacion();
+                        //  maquila1.Maquila_Recepcion = new E_Maquila();
+
+                        exportacion1.Codigo = row.Cells["folio"].Value.ToString();
+                        exportacion1.Peso = Convert.ToDouble(row.Cells["Peso_Teorico"].Value);
+                        exportacion1.Cajas = Convert.ToInt32(row.Cells["cantidad_cajas"].Value);
+                        exportacion1.Total_Peso = Convert.ToDouble(row.Cells["total_peso"].Value);
+                        exportacion1.Potes = Convert.ToInt32(row.Cells["cantidad_potes"].Value);
+                        exportacion1.ID_Cliente = cmbExportador.SelectedValue.ToString();
+                        exportacion1.ID_Productor = cmbProductor.SelectedValue.ToString();
+
+                        lista_Exportacion.Add(exportacion1);
+                        totalCajas = totalCajas + exportacion1.Cajas;
+                        totalPotes = totalPotes + exportacion1.Potes;
+                        maquila1.Modificar_Estado_Exportacion(exportacion1, maquila1.Maquila.ID.ToString());
+
+                    }
+
+                    E_Pallet_Comercial pallet1;
+                    List<E_Pallet_Comercial> lista_comercial = new List<E_Pallet_Comercial>();
+                    for (int i = dgvListaComercial.RowCount - 1; i >= 0; i--)
+                    {
+                        DataGridViewRow row = dgvListaComercial.Rows[i];
+                        pallet1 = new E_Pallet_Comercial();
+                        pallet1.Codigo = row.Cells["folio"].Value.ToString();
+                        pallet1.Tipo = row.Cells["tipo"].Value.ToString();
+                        pallet1.Kilos_Netos = Convert.ToDouble(row.Cells["kilos_netos"].Value);
+                        lista_comercial.Add(pallet1);
+                        maquila1.Modificar_Estado_Comercial(pallet1.Codigo, maquila1.Maquila.ID.ToString());
+                    }
+
+                    decimal kilos_exportacion = maquila1.Maquila.Kilos_Recepcion - (maquila1.Maquila.Kilos_Comerciales + maquila1.Maquila.Kilos_Merma);
+                    decimal total_sobrepeso = kilos_exportacion - maquila1.Maquila.Kilos_PesoTeorico;
+                    decimal total_sobrepesoCajas = total_sobrepeso / totalCajas;
+                    decimal total_sobrepesoPotes = total_sobrepeso / totalPotes;
+                    decimal porcentaje_rendimiento = kilos_exportacion / maquila1.Maquila.Kilos_Recepcion;
+                    Imprimir_Maquila(maquila1.Maquila, lista_Recepcion, lista_Exportacion, lista_comercial, maquila1.Maquila.Kilos_Recepcion.ToString(), maquila1.Maquila.Kilos_Comerciales.ToString(), maquila1.Maquila.Kilos_Merma.ToString(), kilos_exportacion.ToString(), total_sobrepeso.ToString("N2"), total_sobrepesoCajas.ToString("N2"), total_sobrepesoPotes.ToString("N2"), maquila1.Maquila.Kilos_PesoTeorico.ToString("N2"), porcentaje_rendimiento.ToString("N2"));
+                    Limpiar();
                 }
-
-                E_Pallet_Exportacion exportacion1;
-                List<E_Pallet_Exportacion> lista_Exportacion = new List<E_Pallet_Exportacion>();
-                int totalCajas = 0;
-                int totalPotes = 0;
-                for (int i = dgvListaExportacion.Rows.Count -1; i >= 0; i--)
+                else
                 {
-                    DataGridViewRow row = dgvListaExportacion.Rows[i];
-                    exportacion1 = new E_Pallet_Exportacion();
-                  //  maquila1.Maquila_Recepcion = new E_Maquila();
-
-                    exportacion1.Codigo  = row.Cells["folio"].Value.ToString();
-                    exportacion1.Peso = Convert.ToDouble(row.Cells["Peso_Teorico"].Value);
-                    exportacion1.Cajas = Convert.ToInt32(row.Cells["cantidad_cajas"].Value);
-                    exportacion1.Total_Peso = Convert.ToDouble(row.Cells["total_peso"].Value);
-                    exportacion1.Potes = Convert.ToInt32(row.Cells["cantidad_potes"].Value);
-                    exportacion1.ID_Cliente = cmbExportador.SelectedValue.ToString();
-                    exportacion1.ID_Productor = cmbProductor.SelectedValue.ToString();
-
-                    lista_Exportacion.Add(exportacion1);
-                    totalCajas = totalCajas + exportacion1.Cajas;
-                    totalPotes = totalPotes + exportacion1.Potes;
-                    maquila1.Modificar_Estado_Exportacion(exportacion1, maquila1.Maquila.ID.ToString());
-
+                    MessageBox.Show("No se pudo registrar el proceso. Detalle: " + maquila1.Mensaje);
                 }
-
-                E_Pallet_Comercial pallet1;
-                List<E_Pallet_Comercial> lista_comercial = new List<E_Pallet_Comercial>();
-                for(int i = dgvListaComercial.RowCount -1;i>=0;i--)
-                {
-                    DataGridViewRow row = dgvListaComercial.Rows[i];
-                    pallet1 = new E_Pallet_Comercial();
-                    pallet1.Codigo = row.Cells["folio"].Value.ToString();
-                    pallet1.Tipo = row.Cells["tipo"].Value.ToString();
-                    pallet1.Kilos_Netos = Convert.ToDouble(row.Cells["kilos_netos"].Value);
-                    lista_comercial.Add(pallet1);
-                    maquila1.Modificar_Estado_Comercial(pallet1.Codigo, maquila1.Maquila.ID.ToString());
-                }
-
-                decimal kilos_exportacion = maquila1.Maquila.Kilos_Recepcion - (maquila1.Maquila.Kilos_Comerciales + maquila1.Maquila.Kilos_Merma);
-                decimal total_sobrepeso = kilos_exportacion - maquila1.Maquila.Kilos_PesoTeorico;
-                decimal total_sobrepesoCajas = total_sobrepeso / totalCajas;
-                decimal total_sobrepesoPotes = total_sobrepeso / totalPotes;
-                decimal porcentaje_rendimiento = kilos_exportacion / maquila1.Maquila.Kilos_Recepcion;
-                Imprimir_Maquila(maquila1.Maquila, lista_Recepcion, lista_Exportacion, lista_comercial,maquila1.Maquila.Kilos_Recepcion.ToString(), maquila1.Maquila.Kilos_Comerciales.ToString(), maquila1.Maquila.Kilos_Merma.ToString(), kilos_exportacion.ToString(),total_sobrepeso.ToString("N2"), total_sobrepesoCajas.ToString("N2"),total_sobrepesoPotes.ToString("N2"), maquila1.Maquila.Kilos_PesoTeorico.ToString("N2"), porcentaje_rendimiento.ToString("N2"));
             }
-
+            else
+            {
+                MessageBox.Show(maquila1.Mensaje);
+            }        
         }
 
         bool ValidaCampos()
@@ -306,8 +317,8 @@ namespace Packing
             encabezado.Orden_embalaje = maquila.OrdenEmbalaje;
             encabezado.Fecha_Proceso = maquila.Fecha_Proceso.ToShortDateString();
             encabezado.Linea = maquila.Linea;
-            encabezado.Hora_Inicio = maquila.Hora_Inicio.ToShortTimeString();
-            encabezado.Hora_Termino = maquila.Hora_Termino.ToShortTimeString();
+            encabezado.Hora_Inicio = maquila.Hora_Inicio.ToString("HH: mm:ss");
+            encabezado.Hora_Termino = maquila.Hora_Termino.ToString("HH:mm:ss");
             encabezado.Rendimiento = maquila.Rendimiento;
             encabezado.Numero_lote = maquila.Lote;
 
@@ -861,6 +872,34 @@ namespace Packing
         private void txtPalletRecepcion_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void Limpiar()
+        {
+            cmbExportador.SelectedIndex = -1;
+            cmbProductor.SelectedIndex = -1;
+            cmbLinea.SelectedIndex = -1;
+            dtpFechaProceso.Format = DateTimePickerFormat.Custom;
+            dtpFechaProceso.CustomFormat = " ";
+            dtpFechaRecepcion.Format = DateTimePickerFormat.Custom;
+            dtpFechaRecepcion.CustomFormat = " ";
+            dtpHoraInicio.Format = DateTimePickerFormat.Custom;
+            dtpHoraInicio.CustomFormat = " ";
+            dtpHoraFin.Format = DateTimePickerFormat.Custom;
+            dtpHoraFin.CustomFormat = " ";
+            txtGuia.Text = string.Empty;
+            txtOrdenEmbalaje.Text = string.Empty;
+            txtRedimiento.Text = string.Empty;
+            lblKilosRecepcion.Text = "0";
+            lblKilosSalidaComercial.Text = "0";
+            lblKilosSalidaMerma.Text = "0";
+            lblPesoTeorico.Text = "0";
+            dgvListaRecepcion.DataSource = null;
+            dgvListaRecepcion.Rows.Clear();
+            dgvListaExportacion.DataSource = null;
+            dgvListaExportacion.Rows.Clear();
+            dgvListaComercial.DataSource = null;
+            dgvListaComercial.Rows.Clear();
         }
     }
 }

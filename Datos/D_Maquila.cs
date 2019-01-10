@@ -11,7 +11,7 @@ namespace Datos
 {
     public class D_Maquila:D_MySQL
     {
-        string Mensaje { get; set; }
+        public string Mensaje { get; set; }
 
         public bool Agregar(E_Maquila maquila1)
         {
@@ -60,7 +60,47 @@ namespace Datos
            // Desconectar();
             return true;
         }
+        public bool ValidarGuia(E_Maquila maquila1)
+        {
+            string query;
+            MySqlCommand cmd;
 
+
+            query = "SELECT * FROM tbl_maquila where documento = @guia";
+
+            try
+            {
+                if (Conectar() == true)
+                {
+                    cmd = new MySqlCommand(query, MySQLConexion);
+                    cmd.Parameters.AddWithValue("@guia", maquila1.Documento);
+                    MySqlDataReader reader = cmd.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        Mensaje = "La guia ya fue utilizada en un proceso de Maquila. Intente con otra guia.";
+                        return true;
+                    }
+                    else
+                    {
+                        Mensaje = "";
+                        return false;
+                    }
+
+                }
+                else
+                {
+                    Mensaje = "Error de conexion, no se puede conectar a la base de datos";
+                    Desconectar();
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                Mensaje = ex.Message;
+                Desconectar();
+                return false;
+            }
+        }
         public int Ultimo_ID()
         {
             string aux = "0";
