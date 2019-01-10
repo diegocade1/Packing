@@ -15,6 +15,12 @@ namespace Negocio
             D_Etiqueta objeto1 = new D_Etiqueta();
             return objeto1.Lista();
         }
+
+        public List<E_Etiqueta> ListaCliente(string cliente)
+        {
+            D_Etiqueta objeto1 = new D_Etiqueta();
+            return objeto1.ListaCliente(cliente);
+        }
         public bool Agregar(E_Etiqueta etiqueta1,string especie,string cliente)
         {
             D_Etiqueta etiqueta = new D_Etiqueta();

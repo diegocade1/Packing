@@ -12,5 +12,6 @@ namespace Entity
         public string Descripcion { get; set; }
         public double Peso { get; set; }
         public int Potes { get; set; }
+        public int ID_Cliente { set; get; }
     }
 }

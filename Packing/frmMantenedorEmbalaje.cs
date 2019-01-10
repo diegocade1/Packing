@@ -60,6 +60,13 @@ namespace Packing
         {
             N_Embalaje caja1 = new N_Embalaje();
             dgvLista.DataSource = caja1.Lista();
+
+            N_Cliente cliente1 = new N_Cliente();
+
+            cbCliente.DataSource = cliente1.Lista();
+            cbCliente.ValueMember = "id";
+            cbCliente.DisplayMember = "cliente";
+            cbCliente.SelectedIndex = -1;
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -112,6 +119,8 @@ namespace Packing
             caja2.Descripcion = txtDescripcionCaja.Text;
             caja2.Peso = Convert.ToDouble(txtPeso.Text.Replace(".", ","));
             caja2.Potes = Convert.ToInt32(txtCantidad_Potes.Text);
+            caja2.ID_Cliente = Convert.ToInt32(cbCliente.SelectedValue);
+
             if (caja1.Agregar(caja2) == true)
             {
                 dgvLista.DataSource = caja1.Lista();
@@ -138,6 +147,7 @@ namespace Packing
                 txtDescripcionCaja.Text = dgvLista.Rows[pos].Cells["descripcion"].Value.ToString();
                 txtPeso.Text = dgvLista.Rows[pos].Cells["peso"].Value.ToString();
                 txtCantidad_Potes.Text = dgvLista.Rows[pos].Cells["potes"].Value.ToString();
+                cbCliente.SelectedValue = dgvLista.Rows[pos].Cells["id_cliente"].Value.ToString();
                 lblIDCaja.Text = dgvLista.Rows[pos].Cells["ID"].Value.ToString();
 
             }
@@ -153,6 +163,8 @@ namespace Packing
             caja2.Descripcion = txtDescripcionCaja.Text;
             caja2.Peso = Convert.ToDouble(txtPeso.Text.Replace(".", ","));
             caja2.Potes = Convert.ToInt32(txtCantidad_Potes.Text);
+            caja2.ID_Cliente = Convert.ToInt32(cbCliente.SelectedValue);
+
             if (caja1.Modificar(caja2) == true)
             {
                 dgvLista.DataSource = caja1.Lista();
@@ -228,6 +240,7 @@ namespace Packing
             txtDescripcionCaja.Text = string.Empty;
             txtCantidad_Potes.Text = string.Empty;
             txtPeso.Text = string.Empty;
+            cbCliente.SelectedIndex = -1;
         }
     }
 }

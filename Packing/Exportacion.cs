@@ -63,17 +63,17 @@ namespace Packing
             lblUsuario.Text = "Usuario Activo: " + sesion.Usuario;
 
             dtpFecha.Format = DateTimePickerFormat.Custom;
-            dtpFecha.CustomFormat = "";
+            dtpFecha.CustomFormat = " ";
             
         }
 
         void LlenarCombosGenericos()
         {
                         
-            cmbEmbalaje.DataSource = embalaje1.Lista();
-            cmbEmbalaje.DisplayMember = "descripcion";
-            cmbEmbalaje.ValueMember = "ID";
-            cmbEmbalaje.SelectedIndex = -1;
+            //cmbEmbalaje.DataSource = embalaje1.Lista();
+            //cmbEmbalaje.DisplayMember = "descripcion";
+            //cmbEmbalaje.ValueMember = "ID";
+            //cmbEmbalaje.SelectedIndex = -1;
 
             cmbTipoArmado.DataSource = armado1.Lista();
             cmbTipoArmado.DisplayMember = "descripcion";
@@ -85,10 +85,10 @@ namespace Packing
             cmbTipoMercado.ValueMember = "codigo";
             cmbTipoMercado.SelectedIndex = -1;
 
-            cmbEtiqueta.DataSource = etiqueta1.Lista();
-            cmbEtiqueta.DisplayMember = "descripcion";
-            cmbEtiqueta.ValueMember = "codigo";
-            cmbEtiqueta.SelectedIndex = -1;
+            //cmbEtiqueta.DataSource = etiqueta1.Lista();
+            //cmbEtiqueta.DisplayMember = "descripcion";
+            //cmbEtiqueta.ValueMember = "codigo";
+            //cmbEtiqueta.SelectedIndex = -1;
             
             cmbVariedad.DataSource = variedad1.Lista();
             cmbVariedad.DisplayMember = "descripcion";
@@ -135,11 +135,15 @@ namespace Packing
             if(Existe_Pallet_Lista(dgvLista, cmbVariedad.SelectedValue.ToString(), cmbProductor.SelectedValue.ToString()) != true)
             {
                 AgregarGrilla2();
-                dtpFecha.Text = "";
+
+                dtpFecha.Format = DateTimePickerFormat.Custom;
+                dtpFecha.CustomFormat = " ";
+
                 cmbProductor.SelectedIndex = -1;
                 cmbVariedad.SelectedIndex = -1;
                 txtCantidadBandejas.Text = "";
                 txtDocumento.Text = "";
+
                 dtpFecha.Focus();
             }
             else
@@ -181,6 +185,16 @@ namespace Packing
             cmbProductor.DisplayMember = "descripcion";
             cmbProductor.ValueMember = "codigo";
             cmbProductor.SelectedIndex = -1;
+
+            cmbEtiqueta.DataSource = etiqueta1.ListaCliente(cmbCliente.SelectedValue.ToString());
+            cmbEtiqueta.DisplayMember = "descripcion";
+            cmbEtiqueta.ValueMember = "codigo";
+            cmbEtiqueta.SelectedIndex = -1;
+
+            cmbEmbalaje.DataSource = embalaje1.ListaCliente(cmbCliente.SelectedValue.ToString());
+            cmbEmbalaje.DisplayMember = "descripcion";
+            cmbEmbalaje.ValueMember = "ID";
+            cmbEmbalaje.SelectedIndex = -1;
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
@@ -215,7 +229,7 @@ namespace Packing
                         {
 
                             DataGridViewRow row = dgvLista.Rows[i];
-
+                            DateTime date = Convert.ToDateTime(row.Cells["fecha"].Value.ToString());
                             exportacion1.Exportacion = new E_Exportacion
                             {
                                 ID_Cliente = cmbCliente.SelectedValue.ToString(),
@@ -235,10 +249,10 @@ namespace Packing
                                 Productor = row.Cells["productor"].Value.ToString(),
                                 ID_Variedad = row.Cells["ID_variedad"].Value.ToString(),
                                 Variedad = row.Cells["variedad"].Value.ToString(),
-                                Fecha = row.Cells["fecha"].Value.ToString(),
+                                Fecha = date.ToString("dd-MM-yyyy"),
                                 Cantidad_Cajas = row.Cells["cantidad_bandejas"].Value.ToString(),
-                                Documento = row.Cells["documento"].Value.ToString()
-
+                                Documento = row.Cells["documento"].Value.ToString(),
+                                Responsable = sesion.Nombre + " " + sesion.Apellido
                             };
                             //dgvLista.Columns.Add("item", "Item");
                             //dgvLista.Columns.Add("fecha", "Fecha");
@@ -292,6 +306,7 @@ namespace Packing
             encabezado.Etiqueta = exportacion[0].Etiqueta;
             encabezado.Tipo_transporte  = exportacion[0].TipoArmado;
             encabezado.N_folio_repo = exportacion[0].Folio;
+            encabezado.Nombre_encargado = exportacion[0].Responsable;
 
             N_Exportacion_Detalle detalle;
             List<N_Exportacion_Detalle> lista_detalle = new List<N_Exportacion_Detalle>();
@@ -425,6 +440,21 @@ namespace Packing
             {
                 //el resto de teclas pulsadas se desactivan
                 e.Handled = true;
+            }
+        }
+
+        private void dtpFecha_MouseDown(object sender, MouseEventArgs e)
+        {
+            switch (e.Button)
+            {
+                case MouseButtons.Left:
+                    dtpFecha.Format = DateTimePickerFormat.Short;
+                    dtpFecha.Value = DateTime.Now;
+                    break;
+                case MouseButtons.Right:
+                    dtpFecha.Format = DateTimePickerFormat.Custom;
+                    dtpFecha.CustomFormat = " ";
+                    break;
             }
         }
     }

@@ -364,6 +364,7 @@
             this.dtpFecha.Name = "dtpFecha";
             this.dtpFecha.Size = new System.Drawing.Size(145, 30);
             this.dtpFecha.TabIndex = 82;
+            this.dtpFecha.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dtpFecha_MouseDown);
             // 
             // cmbVariedad
             // 

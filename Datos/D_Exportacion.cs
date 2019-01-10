@@ -28,7 +28,7 @@ namespace Datos
                   "ID_TipoMercado,Folio,ID_Productor,ID_Variedad,fecha," +
                   "cantidad_cajas,documento) values " +
                   "(" + exportacion1.ID_Cliente + "," + exportacion1.ID_Especie + "," + exportacion1.ID_Embalaje + "," + exportacion1.ID_Etiqueta + "," + exportacion1.ID_TipoArmado + "," +
-                  exportacion1.ID_TipoMercado + ",'" + exportacion1.Folio + "'," + exportacion1.ID_Productor + "," + exportacion1.ID_Variedad + "," + exportacion1.Fecha + "," +
+                  exportacion1.ID_TipoMercado + ",'" + exportacion1.Folio + "'," + exportacion1.ID_Productor + "," + exportacion1.ID_Variedad + ",'" + exportacion1.Fecha + "'," +
                   exportacion1.Cantidad_Cajas + ",'" + exportacion1.Documento  + "')";
 
             try
