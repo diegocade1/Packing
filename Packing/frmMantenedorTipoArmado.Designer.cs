@@ -144,12 +144,12 @@
             this.Name = "frmMantenedorTipoArmado";
             this.Text = "frmMantenedorTipoArmado";
             this.Load += new System.EventHandler(this.frmMantenedorTipoArmado_Load);
-            this.Controls.SetChildIndex(this.panelCampos, 0);
             this.Controls.SetChildIndex(this.btnModificar, 0);
             this.Controls.SetChildIndex(this.btnSalir, 0);
             this.Controls.SetChildIndex(this.btnEliminar, 0);
             this.Controls.SetChildIndex(this.btnAgregar, 0);
             this.Controls.SetChildIndex(this.btnImportar, 0);
+            this.Controls.SetChildIndex(this.panelCampos, 0);
             this.panelCampos.ResumeLayout(false);
             this.panelCampos.PerformLayout();
             this.ResumeLayout(false);

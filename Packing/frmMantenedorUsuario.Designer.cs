@@ -63,7 +63,7 @@
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(914, 5);
+            this.btnSalir.Location = new System.Drawing.Point(912, 4);
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // btnModificar
@@ -87,10 +87,10 @@
             this.panelCampos.Controls.Add(this.txtUsuario);
             this.panelCampos.Controls.Add(this.label2);
             this.panelCampos.Controls.Add(this.label1);
-            this.panelCampos.Location = new System.Drawing.Point(770, 93);
+            this.panelCampos.Location = new System.Drawing.Point(705, 93);
             this.panelCampos.Margin = new System.Windows.Forms.Padding(4);
             this.panelCampos.Name = "panelCampos";
-            this.panelCampos.Size = new System.Drawing.Size(917, 104);
+            this.panelCampos.Size = new System.Drawing.Size(884, 104);
             this.panelCampos.TabIndex = 30;
             this.panelCampos.Visible = false;
             // 
@@ -173,7 +173,7 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(790, 46);
+            this.btnCancelar.Location = new System.Drawing.Point(757, 44);
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(112, 33);
@@ -184,7 +184,7 @@
             // 
             // btnAceptar
             // 
-            this.btnAceptar.Location = new System.Drawing.Point(790, 7);
+            this.btnAceptar.Location = new System.Drawing.Point(757, 5);
             this.btnAceptar.Margin = new System.Windows.Forms.Padding(4);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(112, 31);
@@ -236,12 +236,12 @@
             this.Controls.Add(this.panelCampos);
             this.Name = "frmMantenedorUsuario";
             this.Load += new System.EventHandler(this.frmMantenedorUsuario_Load);
-            this.Controls.SetChildIndex(this.panelCampos, 0);
             this.Controls.SetChildIndex(this.btnModificar, 0);
             this.Controls.SetChildIndex(this.btnSalir, 0);
             this.Controls.SetChildIndex(this.btnEliminar, 0);
             this.Controls.SetChildIndex(this.btnAgregar, 0);
             this.Controls.SetChildIndex(this.btnImportar, 0);
+            this.Controls.SetChildIndex(this.panelCampos, 0);
             this.panelCampos.ResumeLayout(false);
             this.panelCampos.PerformLayout();
             this.ResumeLayout(false);

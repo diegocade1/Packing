@@ -72,7 +72,7 @@
             this.panelCampos.Controls.Add(this.txtCodigoCliente);
             this.panelCampos.Controls.Add(this.label2);
             this.panelCampos.Controls.Add(this.label1);
-            this.panelCampos.Location = new System.Drawing.Point(697, 3);
+            this.panelCampos.Location = new System.Drawing.Point(699, 13);
             this.panelCampos.Margin = new System.Windows.Forms.Padding(4);
             this.panelCampos.Name = "panelCampos";
             this.panelCampos.Size = new System.Drawing.Size(564, 91);

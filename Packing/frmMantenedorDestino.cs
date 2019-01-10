@@ -204,6 +204,12 @@ namespace Packing
 
         }
 
+        public override void CellClick()
+        {
+            txtDescripcionDestino.Text = string.Empty;
+            panelCampos.Visible = false;
+        }
+
         #endregion
     }
 }

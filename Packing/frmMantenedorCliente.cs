@@ -163,6 +163,12 @@ namespace Packing
            
         }
 
+        public override void CellClick()
+        {
+            Limpiar();
+            panelCampos.Visible = false;
+        }
+
         #endregion
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -213,6 +219,12 @@ namespace Packing
         private void btnSalir_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void Limpiar()
+        {
+            txtCodigoCliente.Text = string.Empty;
+            txtDescripcionCliente.Text = string.Empty;
         }
     }
 }

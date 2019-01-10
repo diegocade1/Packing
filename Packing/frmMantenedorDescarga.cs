@@ -202,7 +202,11 @@ namespace Packing
             MessageBox.Show("Archivo Cargado");
 
         }
-
+        public override void CellClick()
+        {
+            txtDescripcionDescarga.Text = string.Empty;
+            panelCampos.Visible = false;
+        }
         #endregion
     }
 }

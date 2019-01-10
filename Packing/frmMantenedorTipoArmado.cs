@@ -174,7 +174,16 @@ namespace Packing
             }
 
         }
+        public override void CellClick()
+        {
+            Limpiar();
+            panelCampos.Visible = false;
+        }
 
         #endregion
+        private void Limpiar()
+        {
+            txtDescripcion.Text = string.Empty;
+        }
     }
 }

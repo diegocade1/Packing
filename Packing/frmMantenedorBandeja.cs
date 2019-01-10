@@ -87,6 +87,7 @@ namespace Packing
         }
 
         #region Metodos virtuales
+
         public override void Agregar()
         {
             panelCampos.Top = 0;
@@ -207,6 +208,18 @@ namespace Packing
 
         }
 
+        public override void CellClick()
+        {
+            Limpiar();
+            panelCampos.Visible = false;
+        }
+
         #endregion
+
+        private void Limpiar()
+        {
+            txtDescripcionBandeja.Text = string.Empty;
+            txtPeso.Text = string.Empty;
+        }
     }
 }

@@ -80,6 +80,11 @@ namespace Packing
 
         }
 
+        private void Limpiar()
+        {
+            txtDescripcion.Text = string.Empty;
+        }
+
         #region Metodos virtuales
         public override void Agregar()
         {
@@ -179,7 +184,11 @@ namespace Packing
             }
 
         }
-
+        public override void CellClick()
+        {
+            Limpiar();
+            panelCampos.Visible = false;
+        }
         #endregion
     }
 }

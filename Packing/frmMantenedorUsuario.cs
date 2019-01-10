@@ -89,10 +89,10 @@ namespace Packing
             }
             Limpiar();
             panelCampos.Visible = false;
-            btnAgregar.Visible = true;
-            btnModificar.Visible = true;
-            btnEliminar.Visible = true;
-            btnImportar.Visible = true;
+            //btnAgregar.Visible = true;
+            //btnModificar.Visible = true;
+            //btnEliminar.Visible = true;
+            //btnImportar.Visible = true;
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -135,10 +135,10 @@ namespace Packing
             panelCampos.Top = 0;
             panelCampos.Left = 0;
             panelCampos.Visible = true;
-            btnAgregar.Visible = false;
-            btnModificar.Visible = false;
-            btnEliminar.Visible = false;
-            btnImportar.Visible = false;
+            //btnAgregar.Visible = false;
+            //btnModificar.Visible = false;
+            //btnEliminar.Visible = false;
+            //btnImportar.Visible = false;
             lblTipoAccion.Text = "Agregar";
             btnAceptar.Text = lblTipoAccion.Text;
 
@@ -191,10 +191,10 @@ namespace Packing
                 cbTipoUsuario.SelectedValue = Convert.ToInt32(dgvLista.Rows[pos].Cells["tipo_usuario"].Value.ToString());
                 lblIDUsuario.Text = dgvLista.Rows[pos].Cells["usuario"].Value.ToString();
                 txtUsuario.ReadOnly = true;
-                btnAgregar.Visible = false;
-                btnModificar.Visible = false;
-                btnEliminar.Visible = false;
-                btnImportar.Visible = false;
+                //btnAgregar.Visible = false;
+                //btnModificar.Visible = false;
+                //btnEliminar.Visible = false;
+                //btnImportar.Visible = false;
             }
 
 
@@ -285,7 +285,11 @@ namespace Packing
             MessageBox.Show("Archivo Cargado");
 
         }
-
+        public override void CellClick()
+        {
+            Limpiar();
+            panelCampos.Visible = false;
+        }
         #endregion
     }
 }

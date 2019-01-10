@@ -50,6 +50,11 @@ namespace Packing
 
         }
 
+        private void Limpiar()
+        {
+            txtDescripcion.Text = string.Empty;
+        }
+
         #region Metodos virtuales
         public override void Agregar()
         {
@@ -175,7 +180,11 @@ namespace Packing
         //    MessageBox.Show("Archivo Cargado");
 
         //}
-
+        public override void CellClick()
+        {
+            Limpiar();
+            panelCampos.Visible = false;
+        }
         #endregion
 
         private void btnAceptar_Click(object sender, EventArgs e)

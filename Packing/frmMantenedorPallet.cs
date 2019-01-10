@@ -206,7 +206,16 @@ namespace Packing
             MessageBox.Show("Archivo Cargado");
 
         }
-
+        public override void CellClick()
+        {
+            Limpiar();
+            panelCampos.Visible = false;
+        }
         #endregion
+        private void Limpiar()
+        {
+            txtDescripcionPallet.Text = string.Empty;
+            txtPeso.Text = string.Empty;
+        }
     }
 }

@@ -25,7 +25,7 @@ namespace Packing
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
@@ -61,6 +61,11 @@ namespace Packing
 
         }
 
+        public virtual void CellClick()
+        {
+
+        }
+
         #endregion
 
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -76,6 +81,11 @@ namespace Packing
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             Borrar();
+        }
+
+        private void dgvLista_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            CellClick();
         }
     }
 }

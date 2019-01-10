@@ -66,7 +66,7 @@
             this.panelCampos.Controls.Add(this.btnAceptar);
             this.panelCampos.Controls.Add(this.txtDescripcion);
             this.panelCampos.Controls.Add(this.label2);
-            this.panelCampos.Location = new System.Drawing.Point(684, 15);
+            this.panelCampos.Location = new System.Drawing.Point(684, 13);
             this.panelCampos.Margin = new System.Windows.Forms.Padding(4);
             this.panelCampos.Name = "panelCampos";
             this.panelCampos.Size = new System.Drawing.Size(564, 91);

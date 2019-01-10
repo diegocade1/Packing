@@ -216,6 +216,18 @@ namespace Packing
 
         }
 
+        public override void CellClick()
+        {
+            Limpiar();
+            panelCampos.Visible = false;
+        }
         #endregion
+
+        private void Limpiar()
+        {
+            txtDescripcionCaja.Text = string.Empty;
+            txtCantidad_Potes.Text = string.Empty;
+            txtPeso.Text = string.Empty;
+        }
     }
 }
