@@ -30,27 +30,49 @@ namespace Packing
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            N_Usuario usuario1 = new N_Usuario();
-            Usuario = usuario1.ObtenerUsuario(txtUsuario.Text);
-
-            if (Usuario!=null)
+            if(txtUsuario.Text != string.Empty)
             {
-                if(Usuario.Contrasenia != txtPassword.Text)
+                if(txtPassword.Text != string.Empty)
                 {
-                    MessageBox.Show("Contraseña invalida", "Usuario");
-                    Login = false;
+                    N_Usuario usuario1 = new N_Usuario();
+                    Usuario = usuario1.ObtenerUsuario(txtUsuario.Text);
+
+                    if (Usuario != null)
+                    {
+                        if (Usuario.Contrasenia != txtPassword.Text)
+                        {
+                            MessageBox.Show("Contraseña invalida", "Usuario");
+                            txtPassword.SelectionStart = 0;
+                            txtPassword.SelectionLength = txtPassword.Text.Length;
+                            txtPassword.Focus();
+                            Login = false;
+                        }
+                        else
+                        {
+                            Login = true;
+                            this.Close();
+                            // MessageBox.Show("LOGIN");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Usuario invalido", "Usuario");
+                        txtUsuario.SelectionStart = 0;
+                        txtUsuario.SelectionLength = txtUsuario.Text.Length;
+                        txtUsuario.Focus();
+                        Login = false;
+                    }
                 }
                 else
                 {
-                    Login = true;
-                    this.Close();
-                    // MessageBox.Show("LOGIN");
+                    MessageBox.Show("Ingrese contraseña");
+                    txtPassword.Focus();
                 }
             }
             else
             {
-                MessageBox.Show("Usuario invalido", "Usuario");
-                Login = false;
+                MessageBox.Show("Ingrese Usuario");
+                txtUsuario.Focus();
             }
         }
 
