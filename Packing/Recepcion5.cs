@@ -130,6 +130,14 @@ namespace Packing
                 return;
             }
 
+            if(ValidaPesoBruto() == false)
+            {
+                MessageBox.Show("Peso Bruto debe ser Mayor a Tara");
+                txtKilos.SelectAll();
+                txtKilos.Focus();
+                return;
+            }
+
             //    G Format Specifier      de-DE Culture                      01.10.2008 17:04:32
             //    G Format Specifier      en-US Culture                     10/1/2008 5:04:32 PM
             //    G Format Specifier      es-ES Culture                      01/10/2008 17:04:32
@@ -334,6 +342,24 @@ namespace Packing
 
             return true ;
 
+        }
+
+        bool ValidaPesoBruto()
+        {
+            double kilos_brutos;
+            double tara,pesoBandeja,pesoPallet;
+            kilos_brutos = Convert.ToDouble(txtKilos.Text);
+
+            pesoBandeja = bandeja1.Peso(cmbBandeja.SelectedValue.ToString());
+            pesoBandeja = pesoBandeja * Convert.ToInt32(txtCantidadBandejas.Text);
+            pesoPallet = pallet1.Peso(cmbTipoPallet.SelectedValue.ToString());
+            tara = pesoBandeja + pesoPallet;
+              
+            if (kilos_brutos <= tara)
+            {
+                return false;
+            }
+            return true;
         }
 
         private bool AgregarDetalle(int ID_recepcion)

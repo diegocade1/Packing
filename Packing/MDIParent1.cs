@@ -289,5 +289,10 @@ namespace Packing
             frmMantenedorEmbalaje frmObj = new frmMantenedorEmbalaje(Usuario);
 
         }
+
+        private void windowsMenu_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
