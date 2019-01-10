@@ -428,6 +428,47 @@ namespace Datos
             return estado;
         }
 
+        public bool Validacion_Guia(E_Recepcion_Encabezado encabezado)
+        {
+            string query;
+            bool estado = false;
+            MySqlCommand cmd;
+
+            query = "select * from tbl_recepcion where guia = " +
+                    "@guia";
+            try
+            {
+                if (Conectar() == true)
+                {
+                    cmd = new MySqlCommand(query, MySQLConexion);
+                    cmd.Parameters.AddWithValue("@guia", encabezado.Guia);
+                    MySqlDataReader reader = cmd.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        Desconectar();
+                        Mensaje = "La guia ya fue utilizada en un proceso de Recepcion. Intente con otra guia.";
+                        estado = true;
+                    }
+                    else
+                    {
+                        Desconectar();
+                        estado = false;
+                    }
+                }
+                else
+                {
+                    estado = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                Mensaje = ex.Message;
+                Desconectar();
+                return false;
+            }
+            return estado;
+        }
+
         #region Correlativo Lote
         public int Correlativo(string proceso, string subproceso)
         {
@@ -618,17 +659,18 @@ namespace Datos
                     posicion = rst["posicion"].ToString();
 
                 }
+                else
+                {
+                    posicion = "0";
+                }
                 rst.Close();
                 cmd.Dispose();
-
-
             }
             catch (Exception ex)
             {
                 Mensaje = ex.Message;
                 encabezado1.ID_Registro = "0";
                 encabezado1.Lote = "0";
-
             }
 
             return existe;
@@ -713,7 +755,6 @@ namespace Datos
             {
                 Mensaje = ex.Message;
                 estado = false;
-
             }
 
             return estado;

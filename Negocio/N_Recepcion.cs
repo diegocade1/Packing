@@ -33,11 +33,20 @@ namespace Negocio
                 }
                 else //encabezado registrado no es el primer registro
                 {
-                    estado = true;
-                    nuevo = true;
-                    Encabezado.Lote = recepcion1.Correlativo("Recepcion", "Recepcion").ToString();
-                    estado = recepcion1.Agregar_Encabezado(Encabezado);
-                    UltimoID = recepcion1.Ultimo_ID();
+                    if(recepcion1.Validacion_Guia(Encabezado))
+                    {
+                        estado = false;
+                        UltimoID = 0;
+                        Mensaje = recepcion1.Mensaje;
+                    }
+                    else
+                    {
+                        estado = true;
+                        nuevo = true;
+                        Encabezado.Lote = recepcion1.Correlativo("Recepcion", "Recepcion").ToString();
+                        estado = recepcion1.Agregar_Encabezado(Encabezado);
+                        UltimoID = recepcion1.Ultimo_ID();
+                    }
                 }
 
 
@@ -71,6 +80,30 @@ namespace Negocio
             if (recepcion1.Conectar() == true)
             {
                 estado = recepcion1.Validacion_Folio(Detalle);
+                if (estado != false)
+                {
+                    Mensaje = recepcion1.Mensaje;
+                }
+                else
+                {
+                    Mensaje = "";
+                }
+            }
+            else
+            {
+                // UltimoID = 0;
+                Mensaje = "Error en Conexion";
+                estado = false;
+            }
+            return estado;
+        }
+
+        public bool Validacion_Guia()
+        {
+            bool estado;
+            if (recepcion1.Conectar() == true)
+            {
+                estado = recepcion1.Validacion_Guia(Encabezado);
                 if (estado != false)
                 {
                     Mensaje = recepcion1.Mensaje;

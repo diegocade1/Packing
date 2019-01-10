@@ -19,7 +19,7 @@ namespace Packing
     {
         private E_Usuario sesion { get; set; }
         private int numero_actual;
-        string Mensaje { get; set; }
+
 
         public Recepcion5(E_Usuario usuario)
         {
@@ -153,7 +153,7 @@ namespace Packing
             //    T Format Specifier      en-US Culture                               5:04:32 PM
             //    T Format Specifier      es-ES Culture                                 17:04:32
             //    T Format Specifier      fr-FR Culture                                 17:04:32
-            string hora = DateTime.Now.ToString("T");
+            string hora = DateTime.Now.ToString("HH: mm:ss");
 
             //Random rnd = new Random();
             //int lote = rnd.Next(1, 99999);
@@ -182,52 +182,67 @@ namespace Packing
            // recepcion1.Encabezado.Lote = lote.ToString();
             recepcion1.Encabezado.Cantidad_Pallets = txtTotalPallets.Text;
 
-            bool estado =  recepcion1.Agregar_Encabezado();
-                  
-            if (estado == true)//guardado correcto
-            {
-                
-                int ID = recepcion1.UltimoID;
-
-                if(recepcion1.nuevo)
+            //if (!recepcion1.Validacion_Guia())
+            //{
+                bool estado = recepcion1.Agregar_Encabezado();
+                if (estado == true)
                 {
-                    //si es nuevo
-                    //numero actual parte en uno
-                    numero_actual = 0;
-                }
-                else
-                {
-                    //si es antigua 
-                    //numero actual = funcion obtener numero actual(ID)
-                    //funcion rescatar ultima posicion
-                    txtTotalPallets.Text = recepcion1.Encabezado.Cantidad_Pallets;
-                    numero_actual = recepcion1.Posicion;
-                }
-
-                if(numero_actual < Convert.ToInt32(recepcion1.Encabezado.Cantidad_Pallets))
-                {
-                    if (AgregarDetalle(ID) == true)
+                    int ID = recepcion1.UltimoID;
+                    if (recepcion1.nuevo)
                     {
-                        especie1.Actualizar_Fecha_uso(recepcion1.Encabezado.ID_Especie);
-                        txtKilos.Text = "";
-                        txtCantidadBandejas.Text = "";
-                        cmbBandeja.Focus();
-                        cmbBandeja.SelectedIndex = -1;
-                        cmbTipoPallet.SelectedIndex = -1;
-                        txtFolio.Text = "";
+                        numero_actual = 0;
                     }
                     else
                     {
-                        MessageBox.Show("Error al registrar el detalle de la recepcion");
+                        txtTotalPallets.Text = recepcion1.Encabezado.Cantidad_Pallets;
+                        numero_actual = recepcion1.Posicion;
+                    }
+
+                    if (numero_actual < Convert.ToInt32(recepcion1.Encabezado.Cantidad_Pallets))
+                    {
+                        if (AgregarDetalle(ID) == true)
+                        {
+                            especie1.Actualizar_Fecha_uso(recepcion1.Encabezado.ID_Especie);
+                            //txtKilos.Text = string.Empty;
+                            //txtFolio.Text = string.Empty;
+                            //txtCantidadBandejas.Text = string.Empty;
+                            //cmbBandeja.Focus();
+                            //cmbBandeja.SelectedIndex = -1;
+                            //cmbTipoPallet.SelectedIndex = -1;
+                        }
+                        else
+                        {
+                            //MessageBox.Show("Error al registrar el detalle de la recepcion");
+                            //txtKilos.SelectAll();
+                            //txtCantidadBandejas.SelectAll();
+                            txtFolio.SelectAll();
+                            //cmbBandeja.SelectedIndex = -1;
+                            //cmbTipoPallet.SelectedIndex = -1;
+                            //cmbBandeja.Focus();
+                            txtFolio.Focus();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ya se alcanzo la cantidad de pallets registrada");
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Ya se alcanzo la cantidad de pallets especificada");
-                }
-
-            }
-            
+                    MessageBox.Show(recepcion1.Mensaje);
+                    //txtFolio.Text = string.Empty;
+                    //txtFolio.Focus();
+                    //cmbCliente.Focus();
+                    txtGuia.SelectAll();
+                    txtGuia.Focus();
+                }             
+            //}
+            //else
+            //{
+                //MessageBox.Show(recepcion1.Mensaje);
+                //txtGuia.SelectAll();
+                //txtGuia.Focus();
+            //}
         }
 
         private bool ValidarCampos()
@@ -419,42 +434,52 @@ namespace Packing
                             bool estado = recepcion1.Agregar_Detalle();
                             if (estado == true)
                             {
+                                txtKilos.Text = string.Empty;
+                                txtFolio.Text = string.Empty;
+                                txtCantidadBandejas.Text = string.Empty;
+                                cmbBandeja.Focus();
+                                cmbBandeja.SelectedIndex = -1;
+                                cmbTipoPallet.SelectedIndex = -1;
                                 Imprimir_Recepcion(recepcion1.Encabezado, recepcion1.Detalle);
+                                return true;
                             }
                             else
                             {
                                 MessageBox.Show("Error al Guardar Datos " + recepcion1.Mensaje);
+                                return false;
                             }
                         }
                         else
                         {
                             MessageBox.Show(comercial1.Mensaje);
-                            txtFolio.Text = string.Empty;
-                            txtFolio.Focus();
+                            //txtFolio.Text = string.Empty;
+                            //txtFolio.Focus();
+                            return false;
                         }
                     }
                     else
                     {
                         MessageBox.Show(exportacion1.Mensaje);
-                        txtFolio.Text = string.Empty;
-                        txtFolio.Focus();
+                        //txtFolio.Text = string.Empty;
+                        //txtFolio.Focus();
+                        return false;
                     }
                 }
                 else
                 {
                     MessageBox.Show(recepcion1.Mensaje);
-                    txtFolio.Text = string.Empty;
-                    txtFolio.Focus();
+                    //txtFolio.Text = string.Empty;
+                    //txtFolio.Focus();
+                    return false;
                 }
 
             }
             catch (Exception ex)
             {
-                Mensaje = ex.Message;
-                return false;
-            }
-            return true;
 
+                MessageBox.Show(ex.Message);
+                return false;
+            }           
         }
 
         private void Imprimir_Recepcion(E_Recepcion_Encabezado encabezado_recepcion,E_Recepcion_Detalle detalle_recepcion)
@@ -617,7 +642,21 @@ namespace Packing
             //Para obligar a que sólo se introduzcan números
             if (Char.IsDigit(e.KeyChar) || e.KeyChar == '.' || e.KeyChar == '-')
             {
-                e.Handled = false;
+                if (e.KeyChar == '.' && txtTemperatura.Text.Contains("."))
+                {
+                    e.Handled = true;
+                }
+                else
+                {
+                    if(e.KeyChar == '-' && txtTemperatura.Text.Contains("-"))
+                    {
+                        e.Handled = true;
+                    }
+                    else
+                    {
+                        e.Handled = false;
+                    }
+                }
             }
             else
               if (Char.IsControl(e.KeyChar)) //permitir teclas de control como retroceso
