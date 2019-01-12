@@ -61,6 +61,7 @@
     <Compile Include="N_Pallet.cs" />
     <Compile Include="N_Productor.cs" />
     <Compile Include="N_Recepcion.cs" />
+    <Compile Include="N_SubLote.cs" />
     <Compile Include="N_TipoArmado.cs" />
     <Compile Include="N_TipoComercial.cs" />
     <Compile Include="N_TipoMercado.cs" />

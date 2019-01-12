@@ -48,26 +48,28 @@
             this.lblGuia = new System.Windows.Forms.Label();
             this.txtKilos = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtCantidad_Bandejas = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(274, 417);
+            this.btnCancelar.Location = new System.Drawing.Point(286, 454);
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(128, 31);
-            this.btnCancelar.TabIndex = 4;
+            this.btnCancelar.TabIndex = 5;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnAceptar
             // 
-            this.btnAceptar.Location = new System.Drawing.Point(56, 417);
+            this.btnAceptar.Location = new System.Drawing.Point(56, 454);
             this.btnAceptar.Margin = new System.Windows.Forms.Padding(4);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(128, 31);
-            this.btnAceptar.TabIndex = 3;
+            this.btnAceptar.TabIndex = 4;
             this.btnAceptar.Text = "Aceptar";
             this.btnAceptar.UseVisualStyleBackColor = true;
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
@@ -105,7 +107,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(9, 316);
+            this.label4.Location = new System.Drawing.Point(68, 396);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(84, 17);
@@ -114,11 +116,11 @@
             // 
             // txtFolioNuevo
             // 
-            this.txtFolioNuevo.Location = new System.Drawing.Point(115, 313);
+            this.txtFolioNuevo.Location = new System.Drawing.Point(161, 388);
             this.txtFolioNuevo.Margin = new System.Windows.Forms.Padding(4);
             this.txtFolioNuevo.Name = "txtFolioNuevo";
             this.txtFolioNuevo.Size = new System.Drawing.Size(212, 25);
-            this.txtFolioNuevo.TabIndex = 1;
+            this.txtFolioNuevo.TabIndex = 3;
             // 
             // txtFolio
             // 
@@ -226,27 +228,46 @@
             // 
             // txtKilos
             // 
-            this.txtKilos.Location = new System.Drawing.Point(115, 355);
+            this.txtKilos.Location = new System.Drawing.Point(160, 311);
             this.txtKilos.Margin = new System.Windows.Forms.Padding(4);
             this.txtKilos.Name = "txtKilos";
             this.txtKilos.Size = new System.Drawing.Size(151, 25);
-            this.txtKilos.TabIndex = 2;
+            this.txtKilos.TabIndex = 1;
+            this.txtKilos.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtKilos_KeyPress);
             // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(15, 363);
+            this.label15.Location = new System.Drawing.Point(65, 314);
             this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(87, 17);
             this.label15.TabIndex = 19;
             this.label15.Text = "Kilos Brutos";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(21, 354);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(131, 17);
+            this.label5.TabIndex = 20;
+            this.label5.Text = "Cantidad Bandejas";
+            // 
+            // txtCantidad_Bandejas
+            // 
+            this.txtCantidad_Bandejas.Location = new System.Drawing.Point(161, 351);
+            this.txtCantidad_Bandejas.Name = "txtCantidad_Bandejas";
+            this.txtCantidad_Bandejas.Size = new System.Drawing.Size(144, 25);
+            this.txtCantidad_Bandejas.TabIndex = 2;
+            // 
             // frmSubLote
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(492, 483);
+            this.ClientSize = new System.Drawing.Size(491, 498);
+            this.Controls.Add(this.txtCantidad_Bandejas);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.txtKilos);
             this.Controls.Add(this.lblGuia);
@@ -299,5 +320,7 @@
         private System.Windows.Forms.Label lblGuia;
         private System.Windows.Forms.TextBox txtKilos;
         private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtCantidad_Bandejas;
     }
 }

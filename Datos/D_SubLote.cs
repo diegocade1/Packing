@@ -9,7 +9,7 @@ using MySql.Data.MySqlClient;
 
 namespace Datos
 {
-    class D_SubLote: D_MySQL
+    public class D_SubLote : D_MySQL
     {
         string Mensaje { get; set; }
 
@@ -29,15 +29,41 @@ namespace Datos
                     rst = cmd.ExecuteReader();
                     if (rst.Read())
                     {
-                       
-                        recepcion.ID_Cliente = rst["cliente"].ToString();
+                        recepcion.ID_Registro = rst["ID"].ToString();
+                        recepcion.Cliente = rst["ID_Cliente"].ToString();
+                        recepcion.Cliente = rst["cliente"].ToString();
+                        recepcion.Codigo_Productor = rst["ID_productor"].ToString();
                         recepcion.Productor = rst["productor"].ToString();
-                        recepcion.Especie = rst["especie"].ToString();
-                        recepcion.Descarga = rst["descarga"].ToString();
-                        recepcion.Destino = rst["destino"].ToString();
+                        recepcion.Chofer = rst["chofer"].ToString();
                         recepcion.Guia = rst["guia"].ToString();
-                        recepcion.ID_bandeja = rst["Bandeja"].ToString();
+                        recepcion.ID_Especie = rst["ID_Especie"].ToString();
+                        recepcion.Especie = rst["especie"].ToString();
+                        recepcion.ID_Descarga = rst["ID_Descarga"].ToString();
+                        recepcion.Descarga = rst["Descarga"].ToString();
+                        recepcion.Temperatura = rst["temperatura"].ToString();
+                        recepcion.ID_Destino = rst["productor"].ToString();
+                        recepcion.Destino = rst["destino"].ToString();
+                        recepcion.Fecha = rst["fecha"].ToString();
+                        recepcion.Hora = rst["hora"].ToString();
+                        recepcion.Lote = rst["lote"].ToString();
+                        recepcion.Responsable = rst["responsable"].ToString();
+                        recepcion.Total_Pallet = rst["productor"].ToString();
+                        recepcion.Item = rst["item"].ToString();
+                        recepcion.ID_bandeja = rst["id_bandeja"].ToString();
+                        recepcion.Bandeja = rst["Bandeja"].ToString();
+                        recepcion.Peso_Bandeja = rst["Peso_bandeja"].ToString();
+                        recepcion.Cantidad_Bandejas = rst["cantidad_bandejas"].ToString();
+                        recepcion.Folio = rst["folio"].ToString();
+                        recepcion.Kilos_Brutos = rst["kilos_brutos"].ToString();
+                        recepcion.Tara = rst["tara"].ToString();
+                        recepcion.Kilos_Netos = rst["kilos_netos"].ToString();
                         recepcion.ID_Pallet = rst["id_pallet"].ToString();
+                        recepcion.Tipo_Pallet = rst["tipo_pallet"].ToString();
+                        recepcion.Peso_Pallet = rst["peso_pallet"].ToString();
+                        recepcion.Peso_Promedio = rst["peso_promedio"].ToString();
+                        recepcion.Comentario = rst["comentario"].ToString();
+                        recepcion.estado = rst["estado"].ToString();
+
                         estado = true;
                     }
                     else

@@ -14,7 +14,10 @@ namespace Packing
 {
     public partial class frmSubLote : Form
     {
+        E_Recepcionado_sublote recepcionDetalleSublote = new E_Recepcionado_sublote();
+        N_SubLote recepcionSublote = new N_SubLote();
         private E_Usuario sesion { set; get; }
+
         public frmSubLote(E_Usuario usuario)
         {
             InitializeComponent();
@@ -69,33 +72,59 @@ namespace Packing
                     return;
                 }
 
-                N_Recepcion recepcion1 = new N_Recepcion();
-                E_Pallet pallet1 = new E_Pallet();
-
-                pallet1.Codigo = txtFolio.Text;
-                if (recepcion1.Existe_Pallet(pallet1.Codigo,pallet1) == true) //pallet se utiliza para asignarle datos
+               // N_Recepcion recepcion1 = new N_Recepcion();
+              
+              
+                
+                recepcionDetalleSublote.Folio = txtFolio.Text;
+                if (recepcionSublote.Existe_Pallet_recepcion(recepcionDetalleSublote) == true) //pallet se utiliza para asignarle datos
                 {
-                    if (pallet1.Estado != "0")
+                    if (recepcionDetalleSublote.estado == "0")
                     {
-                        MessageBox .Show ( "Pallet fue asignado no puede Modificar","Folio");
+                        MessageBox .Show ( "Pallet no ha sido asignado","Folio");
                         return;
                     }
 
-                    //lblExportador.Text = pallet1.ID_Cliente;
-                    //lblProductor.Text = pallet1.ID_Productor;
-                    //lblEspecie.Text = pallet1.Descripcion;
-                    //lblDescarga.Text = pallet1.id
-
-                   // lblDescarga.Text = pallet1.desca;
-                   
-                  
-
+                    lblExportador.Text = recepcionDetalleSublote.Cliente;
+                    lblProductor.Text = recepcionDetalleSublote.Productor;
+                    lblEspecie.Text = recepcionDetalleSublote.Especie;
+                    lblDestino.Text = recepcionDetalleSublote.Destino;
+                    lblDescarga.Text = recepcionDetalleSublote.Descarga;
+                    lblGuia.Text = recepcionDetalleSublote.Guia;
+                    txtKilos.Focus();
+                    
                 }
                 else
                 {
                     MessageBox.Show ("Pallet no Existe");                    
                 }
 
+            }
+        }
+
+        private void txtKilos_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //Para obligar a que sólo se introduzcan números
+            if (Char.IsDigit(e.KeyChar) || e.KeyChar == '.')
+            {
+                if (e.KeyChar == '.' && txtKilos.Text.Contains("."))
+                {
+                    e.Handled = true;
+                }
+                else
+                {
+                    e.Handled = false;
+                }
+            }
+            else
+              if (Char.IsControl(e.KeyChar)) //permitir teclas de control como retroceso
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                //el resto de teclas pulsadas se desactivan
+                e.Handled = true;
             }
         }
     }
