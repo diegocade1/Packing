@@ -79,7 +79,7 @@ namespace Packing
                 recepcionDetalleSublote.Folio = txtFolio.Text;
                 if (recepcionSublote.Existe_Pallet_recepcion(recepcionDetalleSublote) == true) //pallet se utiliza para asignarle datos
                 {
-                    if (recepcionDetalleSublote.estado == "0")
+                    if (recepcionDetalleSublote.Estado == "0")
                     {
                         MessageBox .Show ( "Pallet no ha sido asignado","Folio");
                         return;

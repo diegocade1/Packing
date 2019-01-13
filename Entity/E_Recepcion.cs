@@ -130,7 +130,7 @@ namespace Entity
         public string Peso_Pallet { get; set; }
         public string Peso_Promedio { get; set; }
         public string Comentario { get; set; }
-        public string estado { get; set; }
+        public string Estado { get; set; }
 
     }
 

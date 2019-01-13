@@ -62,7 +62,7 @@ namespace Datos
                         recepcion.Peso_Pallet = rst["peso_pallet"].ToString();
                         recepcion.Peso_Promedio = rst["peso_promedio"].ToString();
                         recepcion.Comentario = rst["comentario"].ToString();
-                        recepcion.estado = rst["estado"].ToString();
+                        recepcion.Estado = rst["estado"].ToString();
 
                         estado = true;
                     }
