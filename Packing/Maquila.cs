@@ -45,7 +45,7 @@ namespace Packing
             dgvListaExportacion.Columns.Add("folio", "Folio");
             dgvListaExportacion.Columns.Add("Peso_Teorico", "Peso Teorico");
             dgvListaExportacion.Columns.Add("cantidad_cajas", "Cantidad Cajas");
-            dgvListaExportacion.Columns.Add("cantidad_potes", "Cantidad Potes");            
+            dgvListaExportacion.Columns.Add("cantidad_potes", "Cantidad Potes");
             dgvListaExportacion.Columns.Add("Total_Peso", "Total Peso");
 
             dgvListaComercial.Columns.Add("item", "Item");
@@ -65,12 +65,12 @@ namespace Packing
 
         void IniciarDateTimePicker()
         {
-            dtpFechaRecepcion.Format  = DateTimePickerFormat.Custom;
+            dtpFechaRecepcion.Format = DateTimePickerFormat.Custom;
             dtpFechaRecepcion.CustomFormat = " ";
 
             dtpFechaProceso.Format = DateTimePickerFormat.Custom;
             dtpFechaProceso.CustomFormat = " ";
-           
+
             dtpHoraInicio.Format = DateTimePickerFormat.Custom;
             dtpHoraInicio.CustomFormat = " ";
 
@@ -87,7 +87,7 @@ namespace Packing
             cmbExportador.SelectedIndex = -1;
         }
 
-        N_Maquila maquila1= new N_Maquila();
+        N_Maquila maquila1 = new N_Maquila();
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
@@ -127,7 +127,7 @@ namespace Packing
             maquila1.Maquila.Kilos_Merma = total_kilos_Merma;
             maquila1.Maquila.Kilos_Recepcion = total_kilos_Recepcion;
 
-            if(!maquila1.ValidarGuia())
+            if (!maquila1.ValidarGuia())
             {
                 estado = maquila1.Agregar();
                 if (estado == true)
@@ -203,13 +203,13 @@ namespace Packing
             else
             {
                 MessageBox.Show(maquila1.Mensaje);
-            }        
+            }
         }
 
         bool ValidaCampos()
         {
 
-            if ( cmbExportador.SelectedIndex == -1)
+            if (cmbExportador.SelectedIndex == -1)
             {
                 MessageBox.Show("Seleccione Exportador", "Guardar");
                 cmbExportador.Focus();
@@ -230,7 +230,7 @@ namespace Packing
                 return false;
             }
 
-            if (dtpFechaRecepcion.Text  == " ")
+            if (dtpFechaRecepcion.Text == " ")
             {
                 MessageBox.Show("Ingrese Fecha Recepcion", "Guardar");
                 dtpFechaRecepcion.Focus();
@@ -282,7 +282,7 @@ namespace Packing
 
             if (dgvListaRecepcion.Rows.Count == 0)
             {
-                MessageBox.Show("Ingrese Folio Recepcion","Guardar");
+                MessageBox.Show("Ingrese Folio Recepcion", "Guardar");
                 txtPalletRecepcion.Focus();
                 return false;
             }
@@ -306,7 +306,7 @@ namespace Packing
             return true;
         }
 
-        private void Imprimir_Maquila(E_Maquila maquila, List<E_Recepcion_Detalle> recepcion, List<E_Pallet_Exportacion> exportacion,List<E_Pallet_Comercial> comercial, string total_kilos_netos, string total_kilos_comerciales, string total_kilos_merma, string total_kilos_exportacion, string total_sobrepeso, string total_sobrepeso_cajas, string total_sobrepeso_potes, string total_peso_teorico,string rendimiento_porcentaje )
+        private void Imprimir_Maquila(E_Maquila maquila, List<E_Recepcion_Detalle> recepcion, List<E_Pallet_Exportacion> exportacion, List<E_Pallet_Comercial> comercial, string total_kilos_netos, string total_kilos_comerciales, string total_kilos_merma, string total_kilos_exportacion, string total_sobrepeso, string total_sobrepeso_cajas, string total_sobrepeso_potes, string total_peso_teorico, string rendimiento_porcentaje)
         {
             N_Imprimir imprimir = new N_Imprimir();
             N_Maquila_Encabezado encabezado = new N_Maquila_Encabezado();
@@ -334,7 +334,7 @@ namespace Packing
             // Recepcion detalle           
             N_Maquila_Detalle_Recepcion detalle_recepcion;
             List<N_Maquila_Detalle_Recepcion> lista_detalle_recepcion = new List<N_Maquila_Detalle_Recepcion>();
-             foreach (E_Recepcion_Detalle recepcion2 in recepcion)
+            foreach (E_Recepcion_Detalle recepcion2 in recepcion)
             {
                 detalle_recepcion = new N_Maquila_Detalle_Recepcion();
                 detalle_recepcion.Folio_pallet = recepcion2.Folio;
@@ -343,7 +343,7 @@ namespace Packing
 
             }
 
-             //Corresponde a Exportacion            
+            //Corresponde a Exportacion            
             N_Maquila_Cajas exportacion_detalle = new N_Maquila_Cajas();
 
             List<N_Maquila_Cajas> lista_exportacion_detalle = new List<N_Maquila_Cajas>();
@@ -364,12 +364,12 @@ namespace Packing
             foreach (E_Pallet_Comercial comercial2 in comercial)
             {
                 comercial_detalle = new N_Maquila_Salida_Detalle();
-                if(comercial2.Tipo.ToLower() == "comercial")
+                if (comercial2.Tipo.ToLower() == "comercial")
                 {
                     comercial_detalle.Kilos_comerciales = comercial2.Codigo + ": " + comercial2.Kilos_Netos.ToString();
                     lista_comercial_detalle.Add(comercial_detalle);
-                }                   
-                
+                }
+
             }
             int i = 0;
             bool edita = true;
@@ -416,7 +416,7 @@ namespace Packing
             imprimir.Detalle_recepcion_maquilas = lista_detalle_recepcion; //recepcion
             imprimir.Lista_salida_detalle_maquila = lista_comercial_detalle; //comercial/merma
             imprimir.Lista_cajas_maquila = lista_exportacion_detalle; //exportacion                 
-           
+
 
             imprimir.Fuente = new Font("Verdana", 10);
             imprimir.Coordenadas_impresion = coordenadas;
@@ -474,11 +474,11 @@ namespace Packing
                     panelErrorRecepcion.Visible = true;
                     return;
                 }
-               
+
                 txtPalletRecepcion.Text = txtPalletRecepcion.Text.ToUpper();
 
                 //revisa si  se agrego folio en grilla
-                if (Existe_Pallet_Lista(dgvListaRecepcion,txtPalletRecepcion.Text) == true)
+                if (Existe_Pallet_Lista(dgvListaRecepcion, txtPalletRecepcion.Text) == true)
                 {
                     lblMensajeRecepcion.Text = "Pallet ya esta en la Lista";
                     panelErrorRecepcion.Visible = true;
@@ -493,7 +493,7 @@ namespace Packing
                 pallet1.ID_Cliente = cmbExportador.SelectedValue.ToString();
                 pallet1.ID_Productor = cmbProductor.SelectedValue.ToString();
 
-                if (recepcion1.Existe_Pallet(pallet1)  == true)
+                if (recepcion1.Existe_Pallet(pallet1) == true)
                 {
                     if (pallet1.Estado != "0")
                     {
@@ -509,10 +509,10 @@ namespace Packing
                     dgvListaRecepcion.Rows[rowNuevo].Cells["item"].Value = (dgvListaRecepcion.Rows.Count);
                     dgvListaRecepcion.Rows[rowNuevo].Cells["folio"].Value = pallet1.Codigo;
                     dgvListaRecepcion.Rows[rowNuevo].Cells["kilos_netos"].Value = pallet1.Peso;
-                  //  dgvListaRecepcion.Rows[rowNuevo].Cells["cantidad_bandejas"].Value = pallet1.Cajas;
-                  //  dgvListaRecepcion.Rows[rowNuevo].Cells["descripcion"].Value = pallet1.Descripcion;
+                    //  dgvListaRecepcion.Rows[rowNuevo].Cells["cantidad_bandejas"].Value = pallet1.Cajas;
+                    //  dgvListaRecepcion.Rows[rowNuevo].Cells["descripcion"].Value = pallet1.Descripcion;
                     dgvListaRecepcion.Rows[0].Selected = true;
-                    lblKilosRecepcion.Text = Total_Kilos_Lista(dgvListaRecepcion,"kilos_netos").ToString();
+                    lblKilosRecepcion.Text = Total_Kilos_Lista(dgvListaRecepcion, "kilos_netos").ToString();
 
 
                 }
@@ -546,45 +546,45 @@ namespace Packing
         }
 
 
-        private bool Existe_Pallet_Lista(DataGridView lista,string folio)
+        private bool Existe_Pallet_Lista(DataGridView lista, string folio)
         {
             foreach (DataGridViewRow Row in lista.Rows)
             {
-               // int strFila = Row.Index.ToString();
+                // int strFila = Row.Index.ToString();
                 string valor = Convert.ToString(Row.Cells["Folio"].Value);
 
                 if (valor.ToUpper() == folio.ToUpper())
                 {
-                 //   dgvListaRecepcion.Rows[strFila].DefaultCellStyle.BackColor = Color.Red;
+                    //   dgvListaRecepcion.Rows[strFila].DefaultCellStyle.BackColor = Color.Red;
                     return true;
                 }
             }
             return false;
         }
 
-        private double Total_Kilos_Lista(DataGridView lista,string campo)
+        private double Total_Kilos_Lista(DataGridView lista, string campo)
         {
-            double suma=0.0;
-            double valor=0.0;
+            double suma = 0.0;
+            double valor = 0.0;
             foreach (DataGridViewRow Row in lista.Rows)
             {
                 try
                 {
                     valor = Convert.ToDouble(Row.Cells[campo].Value);
                 }
-                catch 
+                catch
                 {
                     valor = 0.0;
                 }
                 suma = suma + valor;
-               
+
             }
             Math.Round(suma, 2);
             return suma;
         }
 
         //para filtrar los campos que desea contar caso especial merma/comercial
-        private double Total_Kilos_Lista(DataGridView lista, string campo,string tipo)
+        private double Total_Kilos_Lista(DataGridView lista, string campo, string tipo)
         {
             double suma = 0.0;
             double valor = 0.0;
@@ -601,7 +601,7 @@ namespace Packing
                         valor = 0.0;
                     }
                 }
-                catch 
+                catch
                 {
                     valor = 0.0;
                 }
@@ -660,7 +660,7 @@ namespace Packing
                     {
                         lblMensajeExportacion.Text = "Pallet fue asignado";
                         panelErrorExportacion.Visible = true;
-                        txtPalletExportacion.SelectAll();                        
+                        txtPalletExportacion.SelectAll();
                         return;
                     }
                     int rowNuevo;
@@ -681,7 +681,7 @@ namespace Packing
                 {
                     lblMensajeExportacion.Text = "Pallet no Existe";
                     panelErrorExportacion.Visible = true;
-                   // txtPalletExportacion.SelectAll();                    
+                    // txtPalletExportacion.SelectAll();                    
                 }
 
                 txtPalletExportacion.Text = "";
@@ -758,9 +758,9 @@ namespace Packing
                     dgvListaComercial.Rows[rowNuevo].Cells["folio"].Value = pallet1.Codigo;
                     dgvListaComercial.Rows[rowNuevo].Cells["tipo"].Value = pallet1.Tipo;
                     dgvListaComercial.Rows[rowNuevo].Cells["kilos_netos"].Value = pallet1.Kilos_Netos;
-                  //  dgvListaComercial.Rows[rowNuevo].Cells["descripcion"].Value = pallet1.Descripcion;
+                    //  dgvListaComercial.Rows[rowNuevo].Cells["descripcion"].Value = pallet1.Descripcion;
                     dgvListaComercial.Rows[0].Selected = true;
-                    lblKilosSalidaComercial.Text = Total_Kilos_Lista(dgvListaComercial, "kilos_netos","Comercial").ToString();
+                    lblKilosSalidaComercial.Text = Total_Kilos_Lista(dgvListaComercial, "kilos_netos", "Comercial").ToString();
                     lblKilosSalidaMerma.Text = Total_Kilos_Lista(dgvListaComercial, "kilos_netos", "Merma").ToString();
                 }
                 else
@@ -793,9 +793,9 @@ namespace Packing
                 case MouseButtons.Right:
                     dtpFechaRecepcion.Format = DateTimePickerFormat.Custom;
                     dtpFechaRecepcion.CustomFormat = " ";
-                    break;                
+                    break;
             }
-          
+
         }
 
         private void dtpFechaProceso_MouseDown(object sender, MouseEventArgs e)
@@ -852,6 +852,7 @@ namespace Packing
             cmbProductor.DisplayMember = "descripcion";
             cmbProductor.ValueMember = "codigo";
             cmbProductor.SelectedIndex = -1;
+
         }
 
         private void btnAgregarRecepcion_Click(object sender, EventArgs e)
@@ -900,6 +901,104 @@ namespace Packing
             dgvListaExportacion.Rows.Clear();
             dgvListaComercial.DataSource = null;
             dgvListaComercial.Rows.Clear();
+        }
+
+        private void cmbExportador_Click(object sender, EventArgs e)
+        {
+            int indice = cmbExportador.SelectedIndex;
+            if (indice != -1)
+            {
+                if (dgvListaComercial.Rows.Count != 0 || dgvListaExportacion.Rows.Count != 0 || dgvListaRecepcion.Rows.Count != 0)
+                {
+                    cmbExportador.DropDownStyle = ComboBoxStyle.DropDownList;
+                    if (MessageBox.Show("Si cambia el exportador todos los datos ingresados en las listas deben ser borrados, ¿Desea continuar?", "Advertencia!", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        dgvListaRecepcion.DataSource = null;
+                        dgvListaRecepcion.Rows.Clear();
+                        dgvListaExportacion.DataSource = null;
+                        dgvListaExportacion.Rows.Clear();
+                        dgvListaComercial.DataSource = null;
+                        dgvListaComercial.Rows.Clear();
+                        cmbExportador.DroppedDown = true;                        
+                    }
+                }
+            }
+        }
+
+        private void cmbProductor_Click(object sender, EventArgs e)
+        {
+            int indice = cmbProductor.SelectedIndex;
+            if (indice != -1)
+            {
+                if (dgvListaComercial.Rows.Count != 0 || dgvListaExportacion.Rows.Count != 0 || dgvListaRecepcion.Rows.Count != 0)
+                {
+                    if (MessageBox.Show("Si cambia el productor todos los datos ingresados en las listas deben ser borrados, ¿Desea continuar?", "Advertencia!", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        dgvListaRecepcion.DataSource = null;
+                        dgvListaRecepcion.Rows.Clear();
+                        dgvListaExportacion.DataSource = null;
+                        dgvListaExportacion.Rows.Clear();
+                        dgvListaComercial.DataSource = null;
+                        dgvListaComercial.Rows.Clear();
+                        cmbProductor.DroppedDown = true;
+                    }
+                }
+            }
+        }
+
+        private void btnBorrarRecepcion_Click(object sender, EventArgs e)
+        {
+            if(dgvListaRecepcion.Rows.Count != 0)
+            {
+                if (MessageBox.Show("¿Desea borrar la fila seleccionada?", "Registro", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    int item = Convert.ToInt32(dgvListaRecepcion.CurrentRow.Cells["item"].Value);
+                    dgvListaRecepcion.Rows.Remove(dgvListaRecepcion.CurrentRow);
+                    ReOrdenarFilasDataGridView(dgvListaRecepcion, item);
+                    lblKilosRecepcion.Text = Total_Kilos_Lista(dgvListaRecepcion, "kilos_netos").ToString();
+                }
+            }       
+        }
+
+        private void ReOrdenarFilasDataGridView(DataGridView grid,int item)
+        {
+            foreach (DataGridViewRow row in grid.Rows)
+            {
+                int celda = Convert.ToInt32(row.Cells["item"].Value);
+                if(celda>item)
+                {
+                    row.Cells["item"].Value = celda - 1;
+                }
+            }
+        }
+
+        private void btnBorrarExportacion_Click(object sender, EventArgs e)
+        {
+            if(dgvListaExportacion.Rows.Count != 0)
+            {
+                if (MessageBox.Show("¿Desea borrar la fila seleccionada?", "Registro", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    int item = Convert.ToInt32(dgvListaExportacion.CurrentRow.Cells["item"].Value);
+                    dgvListaExportacion.Rows.Remove(dgvListaExportacion.CurrentRow);
+                    ReOrdenarFilasDataGridView(dgvListaExportacion, item);
+                    lblPesoTeorico.Text = Total_Kilos_Lista(dgvListaExportacion, "Total_Peso").ToString();
+                }
+            }
+        }
+
+        private void btnBorrarComercial_Click(object sender, EventArgs e)
+        {
+            if(dgvListaComercial.Rows.Count != 0)
+            {
+                if (MessageBox.Show("¿Desea borrar la fila seleccionada?", "Registro", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    int item = Convert.ToInt32(dgvListaComercial.CurrentRow.Cells["item"].Value);
+                    dgvListaComercial.Rows.Remove(dgvListaComercial.CurrentRow);
+                    ReOrdenarFilasDataGridView(dgvListaComercial, item);
+                    lblKilosSalidaComercial.Text = Total_Kilos_Lista(dgvListaComercial, "kilos_netos", "Comercial").ToString();
+                    lblKilosSalidaMerma.Text = Total_Kilos_Lista(dgvListaComercial, "kilos_netos", "Merma").ToString();
+                }
+            }
         }
     }
 }

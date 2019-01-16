@@ -10,7 +10,7 @@ namespace Datos
 {
     public class D_Usuario : D_MySQL
     {
-        string Mensaje { get; set; }
+        public string Mensaje { get; set; }
         public List<E_Usuario> Lista()
         {
 
@@ -77,17 +77,20 @@ namespace Datos
                             Tipo_usuario = reader.GetString("id_tipo_usuario")
                         };
                         Desconectar();
+                        Mensaje = "";
                         return usuario1;                        
                     }
                     else
                     {
                         Desconectar();
+                        Mensaje = "No se ha encontrado ningun usuario con ese nombre de usuario.";
                         return null;
                     }
                 }
                 else
                 {
                     Desconectar();
+                    Mensaje = "No hay conexion con la base de datos";
                     return null;
                 }
 

@@ -35,6 +35,7 @@ namespace Packing
                 if(txtPassword.Text != string.Empty)
                 {
                     N_Usuario usuario1 = new N_Usuario();
+
                     Usuario = usuario1.ObtenerUsuario(txtUsuario.Text);
 
                     if (Usuario != null)
@@ -56,7 +57,7 @@ namespace Packing
                     }
                     else
                     {
-                        MessageBox.Show("Usuario invalido", "Usuario");
+                        MessageBox.Show(usuario1.Mensaje, "Usuario");
                         txtUsuario.SelectionStart = 0;
                         txtUsuario.SelectionLength = txtUsuario.Text.Length;
                         txtUsuario.Focus();

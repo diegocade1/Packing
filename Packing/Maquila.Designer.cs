@@ -64,7 +64,7 @@
             this.panelErrorComercial = new System.Windows.Forms.Panel();
             this.lblMensajeComercial = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnBorrarComercial = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.dgvListaComercial = new System.Windows.Forms.DataGridView();
             this.cmbExportador = new System.Windows.Forms.ComboBox();
@@ -112,27 +112,27 @@
             this.dgvListaRecepcion.MultiSelect = false;
             this.dgvListaRecepcion.Name = "dgvListaRecepcion";
             this.dgvListaRecepcion.ReadOnly = true;
-            this.dgvListaRecepcion.Size = new System.Drawing.Size(253, 199);
+            this.dgvListaRecepcion.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvListaRecepcion.Size = new System.Drawing.Size(272, 193);
             this.dgvListaRecepcion.TabIndex = 0;
-            this.dgvListaRecepcion.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListaRecepcion_CellContentClick);
             this.dgvListaRecepcion.ColumnAdded += new System.Windows.Forms.DataGridViewColumnEventHandler(this.dgvListaRecepcion_ColumnAdded);
             // 
             // btnGuardar
             // 
-            this.btnGuardar.Location = new System.Drawing.Point(685, 49);
+            this.btnGuardar.Location = new System.Drawing.Point(736, 45);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(137, 37);
-            this.btnGuardar.TabIndex = 2;
+            this.btnGuardar.TabIndex = 14;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(685, 114);
+            this.btnSalir.Location = new System.Drawing.Point(736, 110);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(137, 37);
-            this.btnSalir.TabIndex = 3;
+            this.btnSalir.TabIndex = 15;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
@@ -143,7 +143,7 @@
             this.txtGuia.Location = new System.Drawing.Point(136, 114);
             this.txtGuia.Name = "txtGuia";
             this.txtGuia.Size = new System.Drawing.Size(143, 26);
-            this.txtGuia.TabIndex = 4;
+            this.txtGuia.TabIndex = 3;
             // 
             // txtOrdenEmbalaje
             // 
@@ -198,7 +198,7 @@
             this.txtPalletRecepcion.Location = new System.Drawing.Point(11, 20);
             this.txtPalletRecepcion.Name = "txtPalletRecepcion";
             this.txtPalletRecepcion.Size = new System.Drawing.Size(149, 20);
-            this.txtPalletRecepcion.TabIndex = 13;
+            this.txtPalletRecepcion.TabIndex = 11;
             this.txtPalletRecepcion.TextChanged += new System.EventHandler(this.txtPalletRecepcion_TextChanged);
             this.txtPalletRecepcion.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPalletRecepcion_KeyPress);
             // 
@@ -234,15 +234,15 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(829, 276);
-            this.splitContainer1.SplitterDistance = 271;
+            this.splitContainer1.Size = new System.Drawing.Size(890, 270);
+            this.splitContainer1.SplitterDistance = 290;
             this.splitContainer1.TabIndex = 17;
             // 
             // lblKilosRecepcion
             // 
             this.lblKilosRecepcion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblKilosRecepcion.AutoSize = true;
-            this.lblKilosRecepcion.Location = new System.Drawing.Point(70, 251);
+            this.lblKilosRecepcion.Location = new System.Drawing.Point(70, 245);
             this.lblKilosRecepcion.Name = "lblKilosRecepcion";
             this.lblKilosRecepcion.Size = new System.Drawing.Size(13, 13);
             this.lblKilosRecepcion.TabIndex = 22;
@@ -252,7 +252,7 @@
             // 
             this.label16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(8, 251);
+            this.label16.Location = new System.Drawing.Point(8, 245);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(56, 13);
             this.label16.TabIndex = 20;
@@ -260,20 +260,20 @@
             // 
             // btnBorrarRecepcion
             // 
-            this.btnBorrarRecepcion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnBorrarRecepcion.Location = new System.Drawing.Point(219, 17);
+            this.btnBorrarRecepcion.Location = new System.Drawing.Point(238, 17);
             this.btnBorrarRecepcion.Name = "btnBorrarRecepcion";
             this.btnBorrarRecepcion.Size = new System.Drawing.Size(30, 26);
-            this.btnBorrarRecepcion.TabIndex = 19;
+            this.btnBorrarRecepcion.TabIndex = 17;
             this.btnBorrarRecepcion.Text = "X";
             this.btnBorrarRecepcion.UseVisualStyleBackColor = true;
+            this.btnBorrarRecepcion.Click += new System.EventHandler(this.btnBorrarRecepcion_Click);
             // 
             // btnAgregarRecepcion
             // 
             this.btnAgregarRecepcion.Location = new System.Drawing.Point(166, 17);
             this.btnAgregarRecepcion.Name = "btnAgregarRecepcion";
             this.btnAgregarRecepcion.Size = new System.Drawing.Size(30, 26);
-            this.btnAgregarRecepcion.TabIndex = 17;
+            this.btnAgregarRecepcion.TabIndex = 16;
             this.btnAgregarRecepcion.Text = "...";
             this.btnAgregarRecepcion.UseVisualStyleBackColor = true;
             this.btnAgregarRecepcion.Click += new System.EventHandler(this.btnAgregarRecepcion_Click);
@@ -325,19 +325,19 @@
             this.splitContainer2.Panel2.Controls.Add(this.txtPalletComercial);
             this.splitContainer2.Panel2.Controls.Add(this.panelErrorComercial);
             this.splitContainer2.Panel2.Controls.Add(this.button3);
-            this.splitContainer2.Panel2.Controls.Add(this.button2);
+            this.splitContainer2.Panel2.Controls.Add(this.btnBorrarComercial);
             this.splitContainer2.Panel2.Controls.Add(this.label10);
             this.splitContainer2.Panel2.Controls.Add(this.dgvListaComercial);
             this.splitContainer2.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer2_Panel2_Paint);
-            this.splitContainer2.Size = new System.Drawing.Size(554, 276);
-            this.splitContainer2.SplitterDistance = 272;
+            this.splitContainer2.Size = new System.Drawing.Size(596, 270);
+            this.splitContainer2.SplitterDistance = 290;
             this.splitContainer2.TabIndex = 0;
             // 
             // lblPesoTeorico
             // 
             this.lblPesoTeorico.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblPesoTeorico.AutoSize = true;
-            this.lblPesoTeorico.Location = new System.Drawing.Point(113, 253);
+            this.lblPesoTeorico.Location = new System.Drawing.Point(113, 247);
             this.lblPesoTeorico.Name = "lblPesoTeorico";
             this.lblPesoTeorico.Size = new System.Drawing.Size(13, 13);
             this.lblPesoTeorico.TabIndex = 29;
@@ -347,7 +347,7 @@
             // 
             this.label17.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(10, 253);
+            this.label17.Location = new System.Drawing.Point(10, 247);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(97, 13);
             this.label17.TabIndex = 28;
@@ -355,20 +355,20 @@
             // 
             // btnBorrarExportacion
             // 
-            this.btnBorrarExportacion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnBorrarExportacion.Location = new System.Drawing.Point(225, 14);
+            this.btnBorrarExportacion.Location = new System.Drawing.Point(243, 14);
             this.btnBorrarExportacion.Name = "btnBorrarExportacion";
             this.btnBorrarExportacion.Size = new System.Drawing.Size(30, 26);
-            this.btnBorrarExportacion.TabIndex = 27;
+            this.btnBorrarExportacion.TabIndex = 19;
             this.btnBorrarExportacion.Text = "X";
             this.btnBorrarExportacion.UseVisualStyleBackColor = true;
+            this.btnBorrarExportacion.Click += new System.EventHandler(this.btnBorrarExportacion_Click);
             // 
             // btnAgregarExportacion
             // 
             this.btnAgregarExportacion.Location = new System.Drawing.Point(163, 15);
             this.btnAgregarExportacion.Name = "btnAgregarExportacion";
             this.btnAgregarExportacion.Size = new System.Drawing.Size(30, 26);
-            this.btnAgregarExportacion.TabIndex = 25;
+            this.btnAgregarExportacion.TabIndex = 18;
             this.btnAgregarExportacion.Text = "...";
             this.btnAgregarExportacion.UseVisualStyleBackColor = true;
             // 
@@ -405,7 +405,8 @@
             this.dgvListaExportacion.MultiSelect = false;
             this.dgvListaExportacion.Name = "dgvListaExportacion";
             this.dgvListaExportacion.ReadOnly = true;
-            this.dgvListaExportacion.Size = new System.Drawing.Size(254, 199);
+            this.dgvListaExportacion.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvListaExportacion.Size = new System.Drawing.Size(272, 193);
             this.dgvListaExportacion.TabIndex = 21;
             // 
             // txtPalletExportacion
@@ -413,7 +414,7 @@
             this.txtPalletExportacion.Location = new System.Drawing.Point(5, 20);
             this.txtPalletExportacion.Name = "txtPalletExportacion";
             this.txtPalletExportacion.Size = new System.Drawing.Size(149, 20);
-            this.txtPalletExportacion.TabIndex = 23;
+            this.txtPalletExportacion.TabIndex = 12;
             this.txtPalletExportacion.TextChanged += new System.EventHandler(this.txtPalletExportacion_TextChanged_1);
             this.txtPalletExportacion.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPalletExportacion_KeyPress);
             // 
@@ -431,7 +432,7 @@
             // 
             this.label20.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(9, 257);
+            this.label20.Location = new System.Drawing.Point(9, 251);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(91, 13);
             this.label20.TabIndex = 37;
@@ -441,7 +442,7 @@
             // 
             this.lblKilosSalidaMerma.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblKilosSalidaMerma.AutoSize = true;
-            this.lblKilosSalidaMerma.Location = new System.Drawing.Point(121, 257);
+            this.lblKilosSalidaMerma.Location = new System.Drawing.Point(121, 251);
             this.lblKilosSalidaMerma.Name = "lblKilosSalidaMerma";
             this.lblKilosSalidaMerma.Size = new System.Drawing.Size(13, 13);
             this.lblKilosSalidaMerma.TabIndex = 36;
@@ -451,7 +452,7 @@
             // 
             this.lblKilosSalidaComercial.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblKilosSalidaComercial.AutoSize = true;
-            this.lblKilosSalidaComercial.Location = new System.Drawing.Point(121, 243);
+            this.lblKilosSalidaComercial.Location = new System.Drawing.Point(121, 237);
             this.lblKilosSalidaComercial.Name = "lblKilosSalidaComercial";
             this.lblKilosSalidaComercial.Size = new System.Drawing.Size(13, 13);
             this.lblKilosSalidaComercial.TabIndex = 34;
@@ -461,7 +462,7 @@
             // 
             this.label19.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(9, 243);
+            this.label19.Location = new System.Drawing.Point(9, 237);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(105, 13);
             this.label19.TabIndex = 33;
@@ -472,7 +473,7 @@
             this.txtPalletComercial.Location = new System.Drawing.Point(6, 21);
             this.txtPalletComercial.Name = "txtPalletComercial";
             this.txtPalletComercial.Size = new System.Drawing.Size(149, 20);
-            this.txtPalletComercial.TabIndex = 28;
+            this.txtPalletComercial.TabIndex = 13;
             this.txtPalletComercial.TextChanged += new System.EventHandler(this.txtPalletComercial_TextChanged);
             this.txtPalletComercial.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPalletComercial_KeyPress);
             // 
@@ -502,19 +503,19 @@
             this.button3.Location = new System.Drawing.Point(161, 16);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(30, 26);
-            this.button3.TabIndex = 31;
+            this.button3.TabIndex = 20;
             this.button3.Text = "...";
             this.button3.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btnBorrarComercial
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(222, 15);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(30, 26);
-            this.button2.TabIndex = 30;
-            this.button2.Text = "X";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnBorrarComercial.Location = new System.Drawing.Point(245, 15);
+            this.btnBorrarComercial.Name = "btnBorrarComercial";
+            this.btnBorrarComercial.Size = new System.Drawing.Size(30, 26);
+            this.btnBorrarComercial.TabIndex = 21;
+            this.btnBorrarComercial.Text = "X";
+            this.btnBorrarComercial.UseVisualStyleBackColor = true;
+            this.btnBorrarComercial.Click += new System.EventHandler(this.btnBorrarComercial_Click);
             // 
             // label10
             // 
@@ -537,7 +538,8 @@
             this.dgvListaComercial.Location = new System.Drawing.Point(6, 49);
             this.dgvListaComercial.MultiSelect = false;
             this.dgvListaComercial.Name = "dgvListaComercial";
-            this.dgvListaComercial.Size = new System.Drawing.Size(255, 188);
+            this.dgvListaComercial.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvListaComercial.Size = new System.Drawing.Size(278, 182);
             this.dgvListaComercial.TabIndex = 0;
             // 
             // cmbExportador
@@ -548,8 +550,9 @@
             this.cmbExportador.Location = new System.Drawing.Point(136, 40);
             this.cmbExportador.Name = "cmbExportador";
             this.cmbExportador.Size = new System.Drawing.Size(192, 28);
-            this.cmbExportador.TabIndex = 18;
+            this.cmbExportador.TabIndex = 0;
             this.cmbExportador.SelectedIndexChanged += new System.EventHandler(this.cmbExportador_SelectedIndexChanged);
+            this.cmbExportador.Click += new System.EventHandler(this.cmbExportador_Click);
             // 
             // cmbProductor
             // 
@@ -559,7 +562,8 @@
             this.cmbProductor.Location = new System.Drawing.Point(136, 76);
             this.cmbProductor.Name = "cmbProductor";
             this.cmbProductor.Size = new System.Drawing.Size(192, 28);
-            this.cmbProductor.TabIndex = 19;
+            this.cmbProductor.TabIndex = 2;
+            this.cmbProductor.Click += new System.EventHandler(this.cmbProductor_Click);
             // 
             // comboBox3
             // 
@@ -654,7 +658,7 @@
             this.txtRedimiento.Location = new System.Drawing.Point(467, 177);
             this.txtRedimiento.Name = "txtRedimiento";
             this.txtRedimiento.Size = new System.Drawing.Size(101, 26);
-            this.txtRedimiento.TabIndex = 31;
+            this.txtRedimiento.TabIndex = 10;
             // 
             // dtpHoraInicio
             // 
@@ -664,7 +668,7 @@
             this.dtpHoraInicio.Name = "dtpHoraInicio";
             this.dtpHoraInicio.ShowUpDown = true;
             this.dtpHoraInicio.Size = new System.Drawing.Size(104, 26);
-            this.dtpHoraInicio.TabIndex = 32;
+            this.dtpHoraInicio.TabIndex = 8;
             this.dtpHoraInicio.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dtpHoraInicio_MouseDown);
             // 
             // dtpHoraFin
@@ -675,7 +679,7 @@
             this.dtpHoraFin.Name = "dtpHoraFin";
             this.dtpHoraFin.ShowUpDown = true;
             this.dtpHoraFin.Size = new System.Drawing.Size(104, 26);
-            this.dtpHoraFin.TabIndex = 33;
+            this.dtpHoraFin.TabIndex = 9;
             this.dtpHoraFin.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dtpHoraFin_MouseDown);
             // 
             // dtpFechaRecepcion
@@ -686,7 +690,7 @@
             this.dtpFechaRecepcion.Location = new System.Drawing.Point(136, 149);
             this.dtpFechaRecepcion.Name = "dtpFechaRecepcion";
             this.dtpFechaRecepcion.Size = new System.Drawing.Size(143, 24);
-            this.dtpFechaRecepcion.TabIndex = 34;
+            this.dtpFechaRecepcion.TabIndex = 4;
             this.dtpFechaRecepcion.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dtpFechaRecepcion_MouseDown);
             // 
             // dtpFechaProceso
@@ -696,7 +700,7 @@
             this.dtpFechaProceso.Location = new System.Drawing.Point(467, 49);
             this.dtpFechaProceso.Name = "dtpFechaProceso";
             this.dtpFechaProceso.Size = new System.Drawing.Size(142, 24);
-            this.dtpFechaProceso.TabIndex = 35;
+            this.dtpFechaProceso.TabIndex = 6;
             this.dtpFechaProceso.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dtpFechaProceso_MouseDown);
             // 
             // cmbLinea
@@ -707,13 +711,13 @@
             this.cmbLinea.Location = new System.Drawing.Point(467, 78);
             this.cmbLinea.Name = "cmbLinea";
             this.cmbLinea.Size = new System.Drawing.Size(161, 26);
-            this.cmbLinea.TabIndex = 36;
+            this.cmbLinea.TabIndex = 7;
             // 
             // Maquila
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(845, 513);
+            this.ClientSize = new System.Drawing.Size(906, 507);
             this.Controls.Add(this.cmbLinea);
             this.Controls.Add(this.dtpFechaProceso);
             this.Controls.Add(this.dtpFechaRecepcion);
@@ -800,7 +804,7 @@
         private System.Windows.Forms.Panel panelErrorComercial;
         private System.Windows.Forms.Label lblMensajeComercial;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnBorrarComercial;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtPalletComercial;
         private System.Windows.Forms.DataGridView dgvListaComercial;
