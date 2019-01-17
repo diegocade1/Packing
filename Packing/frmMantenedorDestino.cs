@@ -189,7 +189,7 @@ namespace Packing
 
                 if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
-                    excel1.CargaPlanilla(openFileDialog1.FileName);
+                    //excel1.CargaPlanilla(openFileDialog1.FileName);
 
                 }
 

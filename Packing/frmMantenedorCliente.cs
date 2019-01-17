@@ -140,6 +140,8 @@ namespace Packing
         public override void Importar()
         {
             Leer_ArchivoExcel excel1 = new Negocio.Leer_ArchivoExcel();
+            N_Cliente cliente1 = new N_Cliente();
+
             try
             {
                 OpenFileDialog openFileDialog1 = new OpenFileDialog();
@@ -148,8 +150,8 @@ namespace Packing
                 
                 if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
-                    excel1.CargaPlanilla(openFileDialog1.FileName);
-                   
+                    excel1.CargaPlanillaClientes(openFileDialog1.FileName);
+                    dgvLista.DataSource = cliente1.Lista();
                 }
                
             }
@@ -159,7 +161,7 @@ namespace Packing
                 return;
             }
 
-            MessageBox.Show("Archivo Cargado");
+            MessageBox.Show(excel1.Mensaje,"Carga de Datos");
            
         }
 

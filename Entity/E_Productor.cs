@@ -11,6 +11,6 @@ namespace Entity
         public string Codigo_Cliente { get; set; }
         public string Codigo { get; set; }
         public string Descripcion { get; set; }
-
+        public string Codigo_Productor { get; set; }
     }
 }

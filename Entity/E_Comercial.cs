@@ -27,7 +27,6 @@ namespace Entity
         public int Cantidad_Bandejas { get; set; }
         public string Folio { get; set; }
         public string Fecha { get; set; }
-
-
+        public string Usuario { get; set; }
     }    
 }

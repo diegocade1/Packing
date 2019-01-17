@@ -17,9 +17,11 @@ namespace Packing
 {
     public partial class Maquila : Form
     {
-        public Maquila()
+        private E_Usuario sesion { set; get; }
+        public Maquila(E_Usuario usuario)
         {
             InitializeComponent();
+            sesion = usuario;
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
@@ -126,6 +128,7 @@ namespace Packing
             maquila1.Maquila.Kilos_Comerciales = total_kilos_Comercial;
             maquila1.Maquila.Kilos_Merma = total_kilos_Merma;
             maquila1.Maquila.Kilos_Recepcion = total_kilos_Recepcion;
+            maquila1.Maquila.Usuario = sesion.Usuario;
 
             if (!maquila1.ValidarGuia())
             {

@@ -34,7 +34,8 @@ namespace Datos
                         {
                             Codigo_Cliente = Convert.ToString(reader["codigo_cliente"]),
                             Codigo = Convert.ToString(reader["codigo"]),
-                            Descripcion = Convert.ToString(reader["descripcion"])
+                            Descripcion = Convert.ToString(reader["descripcion"]),
+                            Codigo_Productor = Convert.ToString(reader["codigo_productor"])
                         };
                         lista_productor1.Add(productor1);
 
@@ -75,7 +76,8 @@ namespace Datos
                         {
                             Codigo_Cliente = Convert.ToString(reader["codigo_cliente"]),
                             Codigo = Convert.ToString(reader["codigo"]),
-                            Descripcion = Convert.ToString(reader["descripcion"])
+                            Descripcion = Convert.ToString(reader["descripcion"]),
+                            Codigo_Productor = Convert.ToString(reader["codigo_productor"])
                         };
                         lista_productor1.Add(productor1);
 
@@ -99,8 +101,8 @@ namespace Datos
             string query;
             MySqlCommand cmd;
 
-            query = "insert into tbl_productor(descripcion,codigo_cliente) values " +
-                    "(@descripcion,@codigo)";
+            query = "insert into tbl_productor(descripcion,codigo_cliente,codigo_productor) values " +
+                    "(@descripcion,@codigo,@codigo_productor)";
             try
             {
                 if (Conectar() == true)
@@ -108,6 +110,7 @@ namespace Datos
                     cmd = new MySqlCommand(query, MySQLConexion);
                     cmd.Parameters.AddWithValue("@descripcion", productor1.Descripcion);
                     cmd.Parameters.AddWithValue("@codigo", productor1.Codigo_Cliente);
+                    cmd.Parameters.AddWithValue("@codigo_productor", productor1.Codigo_Productor);
 
                     cmd.ExecuteNonQuery();
                 }
@@ -128,7 +131,7 @@ namespace Datos
             string query;
             MySqlCommand cmd;
 
-            query = "update tbl_productor set descripcion = @descripcion, codigo_cliente = @codigo WHERE codigo=@id";
+            query = "update tbl_productor set descripcion = @descripcion, codigo_cliente = @codigo, codigo_productor = @codigo_productor WHERE codigo=@id";
 
             try
             {
@@ -138,6 +141,7 @@ namespace Datos
                     cmd.Parameters.AddWithValue("@id", productor1.Codigo);
                     cmd.Parameters.AddWithValue("@descripcion", productor1.Descripcion);
                     cmd.Parameters.AddWithValue("@codigo", productor1.Codigo_Cliente);
+                    cmd.Parameters.AddWithValue("@codigo_productor", productor1.Codigo_Productor);
 
                     cmd.ExecuteNonQuery();
                 }

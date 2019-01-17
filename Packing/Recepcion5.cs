@@ -418,6 +418,7 @@ namespace Packing
                 recepcion1.Detalle.Peso_Promedio = peso_promedio.ToString();
                 recepcion1.Detalle.Posicion = numero_actual.ToString();
                 //recepcion1.detalle.posion = contador posicion numero actual
+                recepcion1.Detalle.Usuario = sesion.Usuario;
 
                 exportacion1.Exportacion = new E_Exportacion();
                 exportacion1.Exportacion.Folio = recepcion1.Detalle.Folio;

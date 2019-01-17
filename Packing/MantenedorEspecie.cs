@@ -14,9 +14,11 @@ namespace Packing
 {
     public partial class MantenedorEspecie : frmMantenedorAMB 
     {
-        public MantenedorEspecie()
+        private E_Usuario sesion { set; get; }
+        public MantenedorEspecie(E_Usuario usuario)
         {
             InitializeComponent();
+            sesion = usuario;
         }
 
         private void MantenedorEspecie_Load(object sender, EventArgs e)
@@ -155,31 +157,32 @@ namespace Packing
 
         }
 
-        //public override void Importar()
-        //{
-        //    Leer_ArchivoExcel excel1 = new Negocio.Leer_ArchivoExcel();
-        //    try
-        //    {
-        //        OpenFileDialog openFileDialog1 = new OpenFileDialog();
-        //        openFileDialog1.Filter = "Archivo Excel|*.xlsx";
-        //        openFileDialog1.Title = "Seleccione Archivo";
+        public override void Importar()
+        {
+            Leer_ArchivoExcel excel1 = new Negocio.Leer_ArchivoExcel();
+            N_Especie especie1 = new N_Especie();
+            try
+            {
+                OpenFileDialog openFileDialog1 = new OpenFileDialog();
+                openFileDialog1.Filter = "Archivo Excel|*.xlsx";
+                openFileDialog1.Title = "Seleccione Archivo";
 
-        //        if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-        //        {
-        //            excel1.CargaPlanilla(openFileDialog1.FileName);
+                if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    excel1.CargaPlanillaEspecie(openFileDialog1.FileName);
+                    dgvLista.DataSource = especie1.Lista();
+                }
 
-        //        }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Excel " + ex.Message);
+                return;
+            }
 
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show("Excel " + ex.Message);
-        //        return;
-        //    }
+            MessageBox.Show(excel1.Mensaje,"Carga de Datos");
 
-        //    MessageBox.Show("Archivo Cargado");
-
-        //}
+        }
         public override void CellClick()
         {
             Limpiar();

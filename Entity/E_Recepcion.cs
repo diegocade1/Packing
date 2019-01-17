@@ -45,6 +45,7 @@ namespace Entity
         public string Comentario { get; set; }
         public string Hora { get; set; }
         public string Posicion { get; set; }
+        public string Usuario { get; set; }
 
     }
 
@@ -71,7 +72,6 @@ namespace Entity
         public string Cantidad_Pallets { get; set; }
         public string ID_Tipo { get; set; }
         public string Tipo { get; set; }
-
 
         //public string ID_Cliente { get; set; }
         //public string Cliente { get; set; }

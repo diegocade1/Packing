@@ -14,14 +14,18 @@ namespace Negocio
 {
     public class Leer_ArchivoExcel
     {
-       // object oExcel;
-
+        // object oExcel;
+        public string Mensaje { get; set; }
         Microsoft.Office.Interop.Excel.Application oExcel;
         Microsoft.Office.Interop.Excel.Workbook oBook;
         Microsoft.Office.Interop.Excel.Worksheet oSheet;
-
-
+        // Inicializar
         public void CargaPlanilla(string sFile)
+        {
+
+        }
+        //Cargar archivo Clientes
+        public void CargaPlanillaClientes(string sFile)
         {
             //obtiene el tipo de cultura actual para recuperarlo cuando termine la carga
             System.Globalization.CultureInfo OldCultureInfo =  Thread.CurrentThread.CurrentCulture;
@@ -36,7 +40,7 @@ namespace Negocio
 
             try
             {
-                LoadCodigos(sFile);               
+                LoadCodigosClientes(sFile);               
                 oBook.Close();
                 oExcel.Visible = true;
                 oBook = null; 
@@ -50,6 +54,7 @@ namespace Negocio
             }
             catch(Exception ex)
             {
+                Mensaje = ex.Message;
                 throw new Exception("Error Leer Excel " + ex.Message);
             }
             finally
@@ -60,9 +65,10 @@ namespace Negocio
 
         }
 
-        void LoadCodigos(string sFile)
+        void LoadCodigosClientes(string sFile)
         {
-            int totalHojas,j,i;
+            int totalHojas, j, i;
+            int ingresadas = 0, errores = 0;
             try
             {
                 oBook = oExcel.Workbooks.Open(sFile);// .Workbooks.Open(sFile);
@@ -87,114 +93,280 @@ namespace Negocio
                         eCliente2.Codigo = oSheet.Cells[i, 1].text;
                         eCliente2.Cliente = oSheet.Cells[i, 2].Text;
 
-                        cliente1.AgregarMasivo(eCliente2);
-                        i++;
+                        if(cliente1.Agregar(eCliente2))
+                        {
+                            i++;
+                            ingresadas++;
+                        }
+                        else
+                        {
+                            errores++;
+                        }
+                        
 
                     }
                    // oSheet.Cells[1, 1]
-    //                oSheet.Activate()
+                   // oSheet.Activate()
                 }
 
+                if(ingresadas!= 0 && errores!=0)
+                {
+                    Mensaje = ingresadas + " entradas registradas con exito." + "\n" + errores + " entradas no se pudieron agregar.";
+                }
+                else
+                {
+                    if(ingresadas == 0 && errores!=0)
+                    {
+                        Mensaje = ingresadas + " entradas no se pudieron agregar.";
+                    }
+                    else
+                    {
+                        if(ingresadas!=0 && errores==0)
+                        {
+                            Mensaje = ingresadas + " entradas registradas con exito.";
+                        }
+                        else
+                        {
+                            Mensaje = "El archivo no tiene el formato correcto o no se han encontrado datos";
+                        }
+                    }
+                }
             }
             catch(Exception ex)
             {
+                Mensaje = ex.Message;
                 throw new Exception("Error Excel " + ex.Message);
             }
         }
 
+        // Cargar Archivo Especie
 
-    //    Private Sub LoadCodigos(ByVal sFile As String)
-    //    Dim i As Long
-    //    Dim e_articulo1 As New E_Articulo
-    //    Dim TotalHojas As Integer
-    //    Dim porcentaje As Integer
-    //    Dim registros As Integer
+        public void CargaPlanillaEspecie(string sFile)
+        {
+            //obtiene el tipo de cultura actual para recuperarlo cuando termine la carga
+            System.Globalization.CultureInfo OldCultureInfo = Thread.CurrentThread.CurrentCulture;
+            //Crear una cultura standard (en-US) inglés estados unidos            
+            Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
 
-    //    _Progreso = 1
+            oExcel = new Microsoft.Office.Interop.Excel.Application();
+            oExcel.DisplayAlerts = false; //para no mostrar mensajes de confirmaciòn
+            oExcel.Visible = false;
+            //  oBook = oExcel.Workbooks.Add();
+            //  oSheet = oBook.Sheets.Add();
 
-    //    Try
-    //        oBook = oExcel.Workbooks.Open(sFile)
+            try
+            {
+                LoadCodigosEspecie(sFile);
+                oBook.Close();
+                oExcel.Visible = true;
+                oBook = null;
 
-    //        TotalHojas = oBook.Sheets.Count
+                if (oExcel != null)
+                {
+                    oExcel.Quit();
+                    oExcel = null;
+                }
 
-    //        Dim articulo1 As New D_Articulo
+            }
+            catch (Exception ex)
+            {
+                Mensaje = ex.Message;
+                throw new Exception("Error Leer Excel " + ex.Message);
+            }
+            finally
+            {
+                //Vuelve cultura antigua
+                Thread.CurrentThread.CurrentCulture = OldCultureInfo;
+            }
 
-    //        If articulo1.Conectar = True Then
+        }
 
+        void LoadCodigosEspecie(string sFile)
+        {
+            int totalHojas, j, i;
+            int ingresadas = 0, errores = 0;
+            try
+            {
+                oBook = oExcel.Workbooks.Open(sFile);// .Workbooks.Open(sFile);
+                totalHojas = oBook.Sheets.Count;
+                D_Especie especie1 = new D_Especie();
+                E_Especie especie2;
+                string texto;
+                especie1.Conectar();
+                for (j = 1; j <= totalHojas; j++)
+                {
+                    oSheet = (Microsoft.Office.Interop.Excel.Worksheet)oBook.Worksheets.get_Item(j);//  .Worksheets(j);// oBook.Sheets();
 
-    //            For j = 1 To TotalHojas
-    //                oSheet = oBook.Sheets(j)
-    //                oSheet.Activate()
-    //                ' Cargamos Productos 
-    //                i = 2
-    //                Mensaje = ""
+                    i = 2;
+                    while (true)
+                    {
+                        texto = oSheet.Cells[i, 1].text;
+                        if (texto.Trim() == "")
+                        {
+                            break;
+                        }
+                        especie2 = new E_Especie();
+                        especie2.Descripcion = oSheet.Cells[i, 1].text;
 
-    //                registros = oSheet.Cells.Range("B1").CurrentRegion.Rows.Count()
-
-    //                Do While True
-    //                    If Len(Trim(oSheet.cells(i, 2).Value)) = 0 Then
-    //                        Exit Do
-    //                    End If
-
-    //                    e_articulo1.soldto = Trim(oSheet.cells(i, 6).Value)
-    //                    e_articulo1.skuCliente = Trim(oSheet.cells(i, 2).Value)
-    //                    e_articulo1.EAN = Trim(oSheet.cells(i, 5).Value)
-    //                    e_articulo1.articleNo = Trim(oSheet.cells(i, 3).Value)
-    //                    e_articulo1.size = Trim(oSheet.cells(i, 4).Value)
-    //                    e_articulo1.temporada = Trim(oSheet.cells(i, 7).Value)
-
-    //                    ' Buscar cliente
-    //                    ' solo si es nuevo
-
-    //                    ''falta validar si existe para no duplicar
-    //                    'If articulo1.Existe(e_articulo1) = False Then
-    //                    '    If articulo1.Insertar(e_articulo1) = False Then
-    //                    '        Mensaje = articulo1.Mensaje
-    //                    '    End If
-    //                    'End If
-
-    //                    If articulo1.Existe(e_articulo1) = False Then
-    //                        If articulo1.Insertar(e_articulo1) = False Then
-    //                            Mensaje = articulo1.Mensaje
-    //                        End If
-    //                    Else
-    //                        If articulo1.Actualizar2(e_articulo1) = False Then
-    //                            Mensaje = articulo1.Mensaje
-    //                        End If
-    //                    End If
-
-    //                    porcentaje = (i * 100) / registros
-
-    //                    Application.DoEvents()
-    //                    i = i + 1
-    //                    If porcentaje > 100 Then porcentaje = 100
-
-    //                    _Progreso = porcentaje
-    //                    If Cancelar = True Then
-    //                        Exit For
-    //                    End If
-    //                    N_Generic.porcentaje = (i - 2) * 100 / registros   'resto 2 porque estoy utilizando las posiciones y parten en 2
-    //                    If N_Generic.porcentaje > 100 Then
-    //                        N_Generic.porcentaje = 100
-    //                    End If
-
-    //                Loop
-
-
-    //            Next
-
-    //        End If
-    //        Progreso = 100
-    //        articulo1.Desconectar()
-
-    //    Catch ex As Exception
-    //        MsgBox(ex.Message, MsgBoxStyle.Critical, "ERROR")
-    //        oExcel.Visible = True
-    //        Exit Sub
-    //    End Try
-
-    //End Sub
+                        if (especie1.Agregar(especie2))
+                        {
+                            i++;
+                            ingresadas++;
+                        }
+                        else
+                        {
+                            errores++;
+                        }
 
 
+                    }
+                    // oSheet.Cells[1, 1]
+                    // oSheet.Activate()
+                }
+
+                if (ingresadas != 0 && errores != 0)
+                {
+                    Mensaje = ingresadas + " entradas registradas con exito." + "\n" + errores + " entradas no se pudieron agregar.";
+                }
+                else
+                {
+                    if (ingresadas == 0 && errores != 0)
+                    {
+                        Mensaje = ingresadas + " entradas no se pudieron agregar.";
+                    }
+                    else
+                    {
+                        if (ingresadas != 0 && errores == 0)
+                        {
+                            Mensaje = ingresadas + " entradas registradas con exito.";
+                        }
+                        else
+                        {
+                            Mensaje = "El archivo no tiene el formato correcto o no se han encontrado datos";
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Mensaje = ex.Message;
+                throw new Exception("Error Excel " + ex.Message);
+            }
+        }
+
+        // Cargar Archivo Productor
+
+        public void CargaPlanillaProductor(string sFile)
+        {
+            //obtiene el tipo de cultura actual para recuperarlo cuando termine la carga
+            System.Globalization.CultureInfo OldCultureInfo = Thread.CurrentThread.CurrentCulture;
+            //Crear una cultura standard (en-US) inglés estados unidos            
+            Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
+
+            oExcel = new Microsoft.Office.Interop.Excel.Application();
+            oExcel.DisplayAlerts = false; //para no mostrar mensajes de confirmaciòn
+            oExcel.Visible = false;
+            //  oBook = oExcel.Workbooks.Add();
+            //  oSheet = oBook.Sheets.Add();
+
+            try
+            {
+                LoadCodigosProductor(sFile);
+                oBook.Close();
+                oExcel.Visible = true;
+                oBook = null;
+
+                if (oExcel != null)
+                {
+                    oExcel.Quit();
+                    oExcel = null;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Mensaje = ex.Message;
+                throw new Exception("Error Leer Excel " + ex.Message);
+            }
+            finally
+            {
+                //Vuelve cultura antigua
+                Thread.CurrentThread.CurrentCulture = OldCultureInfo;
+            }
+
+        }
+
+        void LoadCodigosProductor(string sFile)
+        {
+            int totalHojas, j, i;
+            int ingresadas = 0, errores = 0;
+            try
+            {
+                oBook = oExcel.Workbooks.Open(sFile);// .Workbooks.Open(sFile);
+                totalHojas = oBook.Sheets.Count;
+                D_Especie especie1 = new D_Especie();
+                E_Especie especie2;
+                string texto;
+                especie1.Conectar();
+                for (j = 1; j <= totalHojas; j++)
+                {
+                    oSheet = (Microsoft.Office.Interop.Excel.Worksheet)oBook.Worksheets.get_Item(j);//  .Worksheets(j);// oBook.Sheets();
+
+                    i = 2;
+                    while (true)
+                    {
+                        texto = oSheet.Cells[i, 1].text;
+                        if (texto.Trim() == "")
+                        {
+                            break;
+                        }
+                        especie2 = new E_Especie();
+                        especie2.Descripcion = oSheet.Cells[i, 1].text;
+
+                        if (especie1.Agregar(especie2))
+                        {
+                            i++;
+                            ingresadas++;
+                        }
+                        else
+                        {
+                            errores++;
+                        }
+
+
+                    }
+                    // oSheet.Cells[1, 1]
+                    // oSheet.Activate()
+                }
+
+                if (ingresadas != 0 && errores != 0)
+                {
+                    Mensaje = ingresadas + " entradas registradas con exito." + "\n" + errores + " entradas no se pudieron agregar.";
+                }
+                else
+                {
+                    if (ingresadas == 0 && errores != 0)
+                    {
+                        Mensaje = ingresadas + " entradas no se pudieron agregar.";
+                    }
+                    else
+                    {
+                        if (ingresadas != 0 && errores == 0)
+                        {
+                            Mensaje = ingresadas + " entradas registradas con exito.";
+                        }
+                        else
+                        {
+                            Mensaje = "El archivo no tiene el formato correcto o no se han encontrado datos";
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Mensaje = ex.Message;
+                throw new Exception("Error Excel " + ex.Message);
+            }
+        }
     }
 }

@@ -73,6 +73,13 @@ namespace Datos
                     cmd.Parameters.AddWithValue("@cliente", cliente1.Cliente);
 
                     cmd.ExecuteNonQuery();
+                    return true;
+                }
+                else
+                {
+                    Desconectar();
+                    Mensaje = "Error de conexion";
+                    return false;
                 }
             }
             catch (Exception ex)
@@ -81,9 +88,6 @@ namespace Datos
                 Desconectar();
                 return false;
             }
-
-            Desconectar();
-            return true;
         }
 
         public bool AgregarMasivo(E_Cliente cliente1)
