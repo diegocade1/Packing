@@ -26,6 +26,25 @@ namespace Packing
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
+            if (txtKilos.Text.Trim() == "")
+            {
+                MessageBox.Show("Ingrese Kilos Brutos");
+                txtKilos.Focus();
+                return;
+            }
+
+            if (txtCantidad_Bandejas.Text.Trim() == "")
+            {
+                MessageBox.Show("Ingrese Cantidad Bandejas");
+                txtCantidad_Bandejas.Focus();
+                return;
+            }
+            if (txtFolioNuevo.Text.Trim() == "")
+            {
+                MessageBox.Show("Ingrese Nuevo Folio");
+                txtFolioNuevo.Focus();
+                return;
+            }
 
             LimpiarCampos();
             txtFolio.Focus();
@@ -37,6 +56,7 @@ namespace Packing
             txtFolio.Text = "";
             txtFolioNuevo.Text = "";
             txtKilos.Text = "";
+            txtCantidad_Bandejas.Text ="";
 
             lblDescarga.Text = "";
             lblDestino.Text = "";
@@ -44,6 +64,7 @@ namespace Packing
             lblExportador.Text = "";
             lblGuia.Text = "";
             lblProductor.Text = "";
+            lblKilosNetos.Text = "";
                         
         }
 
@@ -91,6 +112,7 @@ namespace Packing
                     lblDestino.Text = recepcionDetalleSublote.Destino;
                     lblDescarga.Text = recepcionDetalleSublote.Descarga;
                     lblGuia.Text = recepcionDetalleSublote.Guia;
+                    lblKilosNetos.Text = recepcionDetalleSublote.Kilos_Netos;
                     txtKilos.Focus();
                     
                 }

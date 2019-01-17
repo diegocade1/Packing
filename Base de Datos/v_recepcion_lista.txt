@@ -1,0 +1,9 @@
+select T1.ID_Recepcion,T2.ID_Cliente,T3.Cliente,T2.ID_Productor,T4.descripcion as Productor,T2.chofer,T2.guia,T2.ID_Especie,
+       T5.descripcion especie,T2.ID_Descarga,T6.descripcion Descarga,T2.temperatura,T2.ID_Destino,T7.descripcion Destino,T2.fecha,T2.lote,T1.responsable,T2.cantidad_pallets Total_Pallet,
+       T1.item,T1.ID_Bandeja,T1.bandeja,T1.peso_bandeja,T1.folio,T1.Kilos_brutos,T1.tara,T1.Kilos_netos,T1.ID_Pallet,T1.tipo_pallet,T1.peso_pallet from  tbl_recepcion_detalle T1
+left join tbl_recepcion T2 on T2.ID = T1.ID_Recepcion
+left join tbl_cliente T3 on T3.ID = T2.ID_Cliente
+left join tbl_productor T4 on  T4.codigo =T2.ID_Productor
+left join tbl_especie T5 on T5.ID_especie = T2.ID_Especie
+left join tbl_tipodescarga T6 on T6.ID = T2.ID_Descarga
+left join tbl_destinorecepcion T7 on T7.ID = T2.ID_Destino

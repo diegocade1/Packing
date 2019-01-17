@@ -50,6 +50,8 @@
             this.label15 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.txtCantidad_Bandejas = new System.Windows.Forms.TextBox();
+            this.lblKilosNetos = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnCancelar
@@ -107,7 +109,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(68, 396);
+            this.label4.Location = new System.Drawing.Point(50, 413);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(84, 17);
@@ -116,7 +118,7 @@
             // 
             // txtFolioNuevo
             // 
-            this.txtFolioNuevo.Location = new System.Drawing.Point(161, 388);
+            this.txtFolioNuevo.Location = new System.Drawing.Point(143, 405);
             this.txtFolioNuevo.Margin = new System.Windows.Forms.Padding(4);
             this.txtFolioNuevo.Name = "txtFolioNuevo";
             this.txtFolioNuevo.Size = new System.Drawing.Size(212, 25);
@@ -228,17 +230,17 @@
             // 
             // txtKilos
             // 
-            this.txtKilos.Location = new System.Drawing.Point(160, 311);
+            this.txtKilos.Location = new System.Drawing.Point(142, 328);
             this.txtKilos.Margin = new System.Windows.Forms.Padding(4);
             this.txtKilos.Name = "txtKilos";
-            this.txtKilos.Size = new System.Drawing.Size(151, 25);
+            this.txtKilos.Size = new System.Drawing.Size(145, 25);
             this.txtKilos.TabIndex = 1;
             this.txtKilos.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtKilos_KeyPress);
             // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(65, 314);
+            this.label15.Location = new System.Drawing.Point(47, 331);
             this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(87, 17);
@@ -248,7 +250,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(21, 354);
+            this.label5.Location = new System.Drawing.Point(3, 371);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(131, 17);
             this.label5.TabIndex = 20;
@@ -256,16 +258,35 @@
             // 
             // txtCantidad_Bandejas
             // 
-            this.txtCantidad_Bandejas.Location = new System.Drawing.Point(161, 351);
+            this.txtCantidad_Bandejas.Location = new System.Drawing.Point(143, 368);
             this.txtCantidad_Bandejas.Name = "txtCantidad_Bandejas";
             this.txtCantidad_Bandejas.Size = new System.Drawing.Size(144, 25);
             this.txtCantidad_Bandejas.TabIndex = 2;
+            // 
+            // lblKilosNetos
+            // 
+            this.lblKilosNetos.BackColor = System.Drawing.Color.White;
+            this.lblKilosNetos.Location = new System.Drawing.Point(112, 287);
+            this.lblKilosNetos.Name = "lblKilosNetos";
+            this.lblKilosNetos.Size = new System.Drawing.Size(284, 27);
+            this.lblKilosNetos.TabIndex = 21;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(21, 293);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(82, 17);
+            this.label7.TabIndex = 22;
+            this.label7.Text = "Kilos Netos";
             // 
             // frmSubLote
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(491, 498);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.lblKilosNetos);
             this.Controls.Add(this.txtCantidad_Bandejas);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label15);
@@ -322,5 +343,7 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtCantidad_Bandejas;
+        private System.Windows.Forms.Label lblKilosNetos;
+        private System.Windows.Forms.Label label7;
     }
 }
