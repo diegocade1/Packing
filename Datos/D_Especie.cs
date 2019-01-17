@@ -162,5 +162,55 @@ namespace Datos
             return true;
         }
 
+        //Obtener especie
+
+        public E_Especie Obtener_Especie(string ID)
+        {
+
+            string query;
+            MySqlCommand cmd;
+
+            query = "select * from tbl_especie where id_especie=@id";
+            try
+            {
+                if (Conectar() == true)
+                {
+                    cmd = new MySqlCommand(query, MySQLConexion);
+                    cmd.Parameters.AddWithValue("@ID", ID);
+                    MySqlDataReader reader = cmd.ExecuteReader();
+                    E_Especie especie1;
+
+                    if(reader.Read())
+                    {
+                        especie1 = new E_Especie
+                        {
+                            Codigo = Convert.ToString(reader["ID_especie"]),
+                            Descripcion = Convert.ToString(reader["descripcion"])
+                        };
+                        Desconectar();
+                        return especie1;
+                    }
+                    else
+                    {
+                        Desconectar();
+                        Mensaje = "No se encontro ninguna especie con ese ID";
+                        return null;
+                    }
+                }
+                else
+                {
+                    Desconectar();
+                    Mensaje = "Error de conexion";
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                Mensaje = ex.Message;
+                Desconectar();
+                return null;
+            }
+        }        //Fin funcion Lista     
+
     }
 }

@@ -45,5 +45,13 @@ namespace Negocio
             D_Etiqueta etiqueta = new D_Etiqueta();
             return etiqueta.LeerEtiqueta(etiqueta1);
         }
+
+        public List<E_Etiqueta_EC> Lista_EC()
+        {
+            D_Etiqueta objeto1 = new D_Etiqueta();
+            return objeto1.Lista_EC();
+        }
+
+        // Listar etiqueta con todos los datos
     }
 }

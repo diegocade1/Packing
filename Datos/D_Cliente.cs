@@ -10,14 +10,14 @@ using MySql.Data.MySqlClient;
 
 namespace Datos
 {
-    public class D_Cliente: D_MySQL 
+    public class D_Cliente : D_MySQL
     {
         string Mensaje { get; set; }
 
 
-       public  List<E_Cliente> Lista()
+        public List<E_Cliente> Lista()
         {
-           
+
             string query;
             MySqlCommand cmd;
             List<E_Cliente> lista_cliente1 = new List<E_Cliente>();
@@ -28,7 +28,7 @@ namespace Datos
                 if (Conectar() == true)
                 {
                     cmd = new MySqlCommand(query, MySQLConexion);
-                    MySqlDataReader reader = cmd.ExecuteReader();                    
+                    MySqlDataReader reader = cmd.ExecuteReader();
                     E_Cliente cliente1;
 
                     while (reader.Read())
@@ -43,10 +43,10 @@ namespace Datos
 
                     }
 
-                } 
+                }
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Mensaje = ex.Message;
                 Desconectar();
@@ -61,7 +61,7 @@ namespace Datos
         {
             string query;
             MySqlCommand cmd;
-           
+
             query = "insert into tbl_Cliente(codigo,cliente) values " +
                     "(@codigo,@cliente)";
             try
@@ -94,12 +94,12 @@ namespace Datos
             query = "insert into tbl_Cliente(codigo,cliente) values " +
                     "(@codigo,@cliente)";
             try
-            {               
+            {
                 cmd = new MySqlCommand(query, MySQLConexion);
                 cmd.Parameters.AddWithValue("@codigo", cliente1.Codigo);
                 cmd.Parameters.AddWithValue("@cliente", cliente1.Cliente);
 
-                cmd.ExecuteNonQuery();                
+                cmd.ExecuteNonQuery();
             }
             catch (Exception ex)
             {
@@ -155,7 +155,7 @@ namespace Datos
                 if (Conectar() == true)
                 {
                     cmd = new MySqlCommand(query, MySQLConexion);
-                    cmd.Parameters.AddWithValue("@ID", ID);                    
+                    cmd.Parameters.AddWithValue("@ID", ID);
 
                     cmd.ExecuteNonQuery();
                 }
@@ -171,5 +171,54 @@ namespace Datos
             return true;
         }
 
+        public E_Cliente Obtener_Cliente(string ID)
+        {
+
+            string query;
+            MySqlCommand cmd;
+
+            query = "select * from tbl_cliente where id = @ID";
+            try
+            {
+                if (Conectar() == true)
+                {
+                    cmd = new MySqlCommand(query, MySQLConexion);
+                    cmd.Parameters.AddWithValue("@ID", ID);
+                    MySqlDataReader reader = cmd.ExecuteReader();
+                    E_Cliente cliente1;
+
+                    if (reader.Read())
+                    {
+                        cliente1 = new E_Cliente
+                        {
+                            ID = Convert.ToString(reader["ID"]),
+                            Codigo = Convert.ToString(reader["codigo"]),
+                            Cliente = Convert.ToString(reader["cliente"])
+                        };
+
+                        Desconectar();
+                        return cliente1;
+                    }
+                    else
+                    {
+                        Desconectar();
+                        return null;
+                    }
+
+                }
+                else
+                {
+                    Desconectar();
+                    return null;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Mensaje = ex.Message;
+                Desconectar();
+                return null;
+            }
+        }        //Fin funcion Lista  
     }
 }

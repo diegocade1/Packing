@@ -27,7 +27,12 @@ namespace Packing
             N_Cliente cliente1 = new N_Cliente();
             N_Especie especie1 = new N_Especie();
 
-            dgvLista.DataSource = etiqueta1.Lista();
+            dgvLista.DataSource = etiqueta1.Lista_EC();
+            dgvLista.Columns["Codigo"].DisplayIndex = 0;
+            dgvLista.Columns["Descripcion"].DisplayIndex = 1;
+            dgvLista.Columns["Cliente"].DisplayIndex = 2;
+            dgvLista.Columns["Especie"].DisplayIndex = 3;
+            
 
             cbCliente.DataSource = cliente1.Lista();
             cbCliente.ValueMember = "id";
@@ -38,6 +43,18 @@ namespace Packing
             cbEspecie.ValueMember = "codigo";
             cbEspecie.DisplayMember = "descripcion";
             cbEspecie.SelectedIndex = -1;
+        }
+
+        private void CargarGrilla()
+        {
+            N_Etiqueta etiqueta1 = new N_Etiqueta();
+
+            dgvLista.DataSource = etiqueta1.Lista_EC();
+            dgvLista.Columns["Codigo"].DisplayIndex = 0;
+            dgvLista.Columns["Descripcion"].DisplayIndex = 1;
+            dgvLista.Columns["Cliente"].DisplayIndex = 2;
+            dgvLista.Columns["Especie"].DisplayIndex = 3;
+            dgvLista.Refresh();
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
@@ -83,6 +100,7 @@ namespace Packing
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             panelCampos.Visible = false;
+            Limpiar();
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -139,8 +157,8 @@ namespace Packing
 
                 if (etiqueta1.Agregar(etiqueta2,especie,cliente) == true)
                 {
-                    dgvLista.DataSource = etiqueta1.Lista();
-                Limpiar();
+                    CargarGrilla();
+                    Limpiar();
                 }
                 else
                 {
@@ -187,7 +205,7 @@ namespace Packing
             string cliente = Convert.ToString(cbCliente.SelectedValue);
             if (etiqueta1.Modificar(etiqueta2,especie,cliente) == true)
             {
-                dgvLista.DataSource = etiqueta1.Lista();
+                CargarGrilla();
                 Limpiar();
             }
             else
@@ -217,7 +235,7 @@ namespace Packing
 
                     if (etiqueta1.Borrar(ID) == true)
                     {
-                        dgvLista.DataSource = etiqueta1.Lista();
+                        CargarGrilla();
                     }
                     else
                     {

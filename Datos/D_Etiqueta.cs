@@ -239,5 +239,59 @@ namespace Datos
                 return null;
             }
         }
+        // Lista con el Cliente
+        public List<E_Etiqueta_EC> Lista_EC()
+        {
+
+            string query;
+            MySqlCommand cmd;
+
+            List<E_Etiqueta_EC> lista1 = new List<E_Etiqueta_EC>();
+
+            query = "select * from tbl_etiqueta";
+            try
+            {
+                if (Conectar() == true)
+                {
+                    D_Cliente cliente1;
+                    D_Especie especie1;
+                    cmd = new MySqlCommand(query, MySQLConexion);
+                    MySqlDataReader reader = cmd.ExecuteReader();
+                    E_Etiqueta_EC objeto1;
+
+                    while (reader.Read())
+                    {
+                        objeto1 = new E_Etiqueta_EC();
+                        cliente1 = new D_Cliente();
+                        especie1 = new D_Especie();
+                        string cliente2 = cliente1.Obtener_Cliente(reader.GetString("id_cliente")).Cliente;
+                        string especie2 = especie1.Obtener_Especie(reader.GetString("id_especie")).Descripcion;
+
+                        objeto1.Codigo = Convert.ToString(reader["ID"]);
+                        objeto1.Descripcion = Convert.ToString(reader["descripcion"]);
+                        objeto1.Cliente = cliente2;
+                        objeto1.Especie = especie2;
+                        //try
+                        //{
+                        //    objeto1.Peso = Convert.ToInt32(reader["peso"]);
+                        //}
+                        //catch
+                        //{
+                        //    objeto1.Peso = 0;
+                        //}
+
+                        lista1.Add(objeto1);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Mensaje = ex.Message;
+                Desconectar();
+            }
+
+            Desconectar();
+            return lista1;
+        }        //Fin funcion  
     }
 }
