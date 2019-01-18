@@ -18,7 +18,7 @@ namespace Packing
     public partial class Recepcion5 : Form
     {
         private E_Usuario sesion { get; set; }
-        private int numero_actual;
+        private int numero_actual;  //Corresponde a la cantidad de pallet que lleva el proceso valida que no supere a cantidad de pallet
 
 
         public Recepcion5(E_Usuario usuario)
@@ -200,6 +200,7 @@ namespace Packing
 
                     if (numero_actual < Convert.ToInt32(recepcion1.Encabezado.Cantidad_Pallets))
                     {
+                        //Agrega detalle de recepcion
                         if (AgregarDetalle(ID) == true)
                         {
                             especie1.Actualizar_Fecha_uso(recepcion1.Encabezado.ID_Especie);

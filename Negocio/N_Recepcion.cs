@@ -69,6 +69,8 @@ namespace Negocio
         }
 
 
+
+
             public bool Agregar_Detalle()
         {
             return recepcion1.Agregar_Detalle(Detalle);
