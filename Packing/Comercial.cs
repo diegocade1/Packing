@@ -217,6 +217,7 @@ namespace Packing
             comercial1.Detalle.Folio = txtFolio.Text;
             comercial1.Detalle.Tara = tara;
             comercial1.Detalle.Kilos_Netos = pesoNeto;
+            comercial1.Detalle.Usuario = sesion.Usuario;
             /*------------------------------------------*/
             recepcion1.Detalle = new E_Recepcion_Detalle();
             recepcion1.Detalle.Folio = comercial1.Detalle.Folio;

@@ -26,5 +26,6 @@ namespace Entity
         public decimal Kilos_Comerciales { get; set; }
         public decimal Kilos_Merma { get; set; }
         public decimal Kilos_Recepcion { get; set; }
+        public string Usuario { get; set; }
     }
 }

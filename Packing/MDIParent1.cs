@@ -129,7 +129,7 @@ namespace Packing
 
         private void especieToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MantenedorEspecie frmobj = new MantenedorEspecie();
+            MantenedorEspecie frmobj = new MantenedorEspecie(Usuario);
             frmobj.MdiParent = this;
             frmobj.Show();
         }
@@ -152,7 +152,7 @@ namespace Packing
         private void maquilaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Visible = false;
-            Maquila frmObj = new Maquila();
+            Maquila frmObj = new Maquila(Usuario);
             frmObj.ShowDialog();
             this.Visible = true;
         }
@@ -181,7 +181,7 @@ namespace Packing
         private void toolStripLabel3_Click(object sender, EventArgs e)
         {
             this.Visible = false;
-            Maquila frmObj = new Maquila();
+            Maquila frmObj = new Maquila(Usuario);
             frmObj.ShowDialog();
             this.Visible = true;
         }

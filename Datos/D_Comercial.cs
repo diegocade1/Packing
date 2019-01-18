@@ -18,8 +18,8 @@ namespace Datos
             string query;
             MySqlCommand cmd;
             
-            query = "insert into tbl_comercial(ID_Cliente,ID_Productor,ID_Especie,ID_Tipo,Total_Pallet,ID_Bandeja,ID_Pallet,kilos_brutos,cantidad_bandejas,folio,fecha,tara,kilos_netos) values " +
-                    "(@ID_Cliente,@ID_Productor,@ID_Especie,@ID_Tipo,@Total_Pallet,@ID_Bandeja,@ID_Pallet,@kilos_brutos,@cantidad_bandejas,@folio,@fecha,@tara,@kilos_netos)";
+            query = "insert into tbl_comercial(ID_Cliente,ID_Productor,ID_Especie,ID_Tipo,Total_Pallet,ID_Bandeja,ID_Pallet,kilos_brutos,cantidad_bandejas,folio,fecha,tara,kilos_netos,usuario) values " +
+                    "(@ID_Cliente,@ID_Productor,@ID_Especie,@ID_Tipo,@Total_Pallet,@ID_Bandeja,@ID_Pallet,@kilos_brutos,@cantidad_bandejas,@folio,@fecha,@tara,@kilos_netos,@usuario)";
             try
             {
                 if (Conectar() == true)
@@ -38,6 +38,7 @@ namespace Datos
                     cmd.Parameters.AddWithValue("@fecha", comercial.Fecha);
                     cmd.Parameters.AddWithValue("@tara", comercial.Tara);
                     cmd.Parameters.AddWithValue("@kilos_netos", comercial.Kilos_Netos);
+                    cmd.Parameters.AddWithValue("@usuario", comercial.Usuario);
 
                     cmd.ExecuteNonQuery();
 

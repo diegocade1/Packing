@@ -30,6 +30,7 @@ namespace Entity
         public string Documento { get; set; }       
         public string Responsable { get; set; }
         public string Hora { get; set; }
-      
+        public string Usuario { get; set; }
+
     }
 }

@@ -95,6 +95,7 @@ namespace Packing
             productor2.Codigo = "0";
             productor2.Descripcion = txtDescripcionProductor.Text;
             productor2.Codigo_Cliente = Convert.ToString(cbCliente.SelectedValue);
+            productor2.Codigo_Productor = txtCodigoProductor.Text;
 
             if (productor1.Agregar(productor2) == true)
             {
@@ -124,6 +125,7 @@ namespace Packing
 
                 txtDescripcionProductor.Text = dgvLista.Rows[pos].Cells["descripcion"].Value.ToString();
                 cbCliente.SelectedValue = dgvLista.Rows[pos].Cells["codigo_cliente"].Value.ToString();
+                txtCodigoProductor.Text = dgvLista.Rows[pos].Cells["codigo_productor"].Value.ToString();
                 lblIDProductor.Text = dgvLista.Rows[pos].Cells["codigo"].Value.ToString();
             }
 
@@ -139,6 +141,7 @@ namespace Packing
             productor2.Codigo = lblIDProductor.Text;
             productor2.Descripcion = txtDescripcionProductor.Text;
             productor2.Codigo_Cliente = Convert.ToString(cbCliente.SelectedValue);
+            productor2.Codigo_Productor = txtCodigoProductor.Text;
 
             if (productor1.Modificar(productor2) == true)
             {
@@ -197,7 +200,7 @@ namespace Packing
 
                 if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
-                    excel1.CargaPlanilla(openFileDialog1.FileName);
+                    //excel1.CargaPlanilla(openFileDialog1.FileName);
 
                 }
 
@@ -218,5 +221,10 @@ namespace Packing
             panelCampos.Visible = false;
         }
         #endregion
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -21,10 +21,10 @@ namespace Datos
 
             query = "insert into tbl_maquila(ID_cliente,ID_productor,lote,documento,fecha_recepcion," +
                     "ordenEmbalaje,Linea,Hora_Inicio,Hora_Termino,rendimiento," +
-                    "kilos_exportacion,kilos_comerciales,kilos_merma,kilos_recepcion) values " +
+                    "kilos_exportacion,kilos_comerciales,kilos_merma,kilos_recepcion,usuario) values " +
                 "(@ID_cliente,@ID_productor,@lote,@documento,@fecha_recepcion," +
                     "@ordenEmbalaje,@Linea,@Hora_Inicio,@Hora_Termino,@rendimiento," +
-                    "@kilos_exportacion,@kilos_comerciales,@kilos_merma,@kilos_recepcion)";
+                    "@kilos_exportacion,@kilos_comerciales,@kilos_merma,@kilos_recepcion,@usuario)";
 
             try
             {
@@ -45,6 +45,7 @@ namespace Datos
                     cmd.Parameters.AddWithValue("@kilos_comerciales", maquila1.Kilos_Comerciales);
                     cmd.Parameters.AddWithValue("@kilos_merma", maquila1.Kilos_Merma);
                     cmd.Parameters.AddWithValue("@kilos_recepcion", maquila1.Kilos_Recepcion);
+                    cmd.Parameters.AddWithValue("@usuario", maquila1.Usuario);
 
                 cmd.ExecuteNonQuery();
 

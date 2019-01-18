@@ -17,4 +17,9 @@ namespace Entity
         public string Especie { set; get; }
         public string Cliente { set; get; }
     }
+
+    public class E_Etiqueta_C : E_Etiqueta
+    {
+        public string Cliente { set; get; }
+    }
 }

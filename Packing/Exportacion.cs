@@ -252,7 +252,8 @@ namespace Packing
                                 Fecha = date.ToString("dd-MM-yyyy"),
                                 Cantidad_Cajas = row.Cells["cantidad_bandejas"].Value.ToString(),
                                 Documento = row.Cells["documento"].Value.ToString(),
-                                Responsable = sesion.Nombre + " " + sesion.Apellido
+                                Responsable = sesion.Nombre + " " + sesion.Apellido,
+                                Usuario = sesion.Usuario
                             };
                             //dgvLista.Columns.Add("item", "Item");
                             //dgvLista.Columns.Add("fecha", "Fecha");

@@ -17,9 +17,11 @@ namespace Packing
 {
     public partial class Maquila : Form
     {
-        public Maquila()
+        private E_Usuario sesion { set; get; }
+        public Maquila(E_Usuario usuario)
         {
             InitializeComponent();
+            sesion = usuario;
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
@@ -126,6 +128,7 @@ namespace Packing
             maquila1.Maquila.Kilos_Comerciales = total_kilos_Comercial;
             maquila1.Maquila.Kilos_Merma = total_kilos_Merma;
             maquila1.Maquila.Kilos_Recepcion = total_kilos_Recepcion;
+            maquila1.Maquila.Usuario = sesion.Usuario;
 
             if (!maquila1.ValidarGuia())
             {
@@ -911,7 +914,7 @@ namespace Packing
                 if (dgvListaComercial.Rows.Count != 0 || dgvListaExportacion.Rows.Count != 0 || dgvListaRecepcion.Rows.Count != 0)
                 {
                     cmbExportador.DropDownStyle = ComboBoxStyle.DropDownList;
-                    if (MessageBox.Show("Si cambia el exportador todos los datos ingresados en las listas deben ser borrados, ¿Desea continuar?", "Advertencia!", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    if (MessageBox.Show("Si cambia el exportador todos los datos ingresados se borrarán, ¿Desea continuar?", "Advertencia!", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
                         dgvListaRecepcion.DataSource = null;
                         dgvListaRecepcion.Rows.Clear();
@@ -919,7 +922,11 @@ namespace Packing
                         dgvListaExportacion.Rows.Clear();
                         dgvListaComercial.DataSource = null;
                         dgvListaComercial.Rows.Clear();
-                        cmbExportador.DroppedDown = true;                        
+                        cmbExportador.DroppedDown = true;
+                        lblKilosRecepcion.Text = "0";
+                        lblKilosSalidaComercial.Text = "0";
+                        lblKilosSalidaMerma.Text = "0";
+                        lblPesoTeorico.Text = "0";
                     }
                 }
             }
@@ -932,7 +939,7 @@ namespace Packing
             {
                 if (dgvListaComercial.Rows.Count != 0 || dgvListaExportacion.Rows.Count != 0 || dgvListaRecepcion.Rows.Count != 0)
                 {
-                    if (MessageBox.Show("Si cambia el productor todos los datos ingresados en las listas deben ser borrados, ¿Desea continuar?", "Advertencia!", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    if (MessageBox.Show("Si cambia el productor todos los datos ingresados se borrarán, ¿Desea continuar?", "Advertencia!", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
                         dgvListaRecepcion.DataSource = null;
                         dgvListaRecepcion.Rows.Clear();
@@ -941,6 +948,10 @@ namespace Packing
                         dgvListaComercial.DataSource = null;
                         dgvListaComercial.Rows.Clear();
                         cmbProductor.DroppedDown = true;
+                        lblKilosRecepcion.Text = "0";
+                        lblKilosSalidaComercial.Text = "0";
+                        lblKilosSalidaMerma.Text = "0";
+                        lblPesoTeorico.Text = "0";
                     }
                 }
             }
