@@ -152,6 +152,15 @@ namespace Packing
                 {
                     excel1.CargaPlanillaClientes(openFileDialog1.FileName);
                     dgvLista.DataSource = cliente1.Lista();
+
+                    if (excel1.Detalle != "")
+                    {
+                        MessageBox.Show(excel1.Mensaje + "\n" + "_________________________________________________________________________" + "\n\n" + "Detalles: \n" + excel1.Detalle, "Carga de Datos");
+                    }
+                    else
+                    {
+                        MessageBox.Show(excel1.Mensaje, "Carga de Datos");
+                    }
                 }
                
             }
@@ -160,9 +169,6 @@ namespace Packing
                 MessageBox.Show ("Excel " + ex.Message);
                 return;
             }
-
-            MessageBox.Show(excel1.Mensaje,"Carga de Datos");
-           
         }
 
         public override void CellClick()

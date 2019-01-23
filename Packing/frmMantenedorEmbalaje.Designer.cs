@@ -60,7 +60,7 @@
             // btnSalir
             // 
             this.btnSalir.Location = new System.Drawing.Point(641, 9);
-            this.btnSalir.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSalir.Margin = new System.Windows.Forms.Padding(2);
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // btnModificar
@@ -82,7 +82,7 @@
             this.panelCampos.Controls.Add(this.btnAceptar);
             this.panelCampos.Controls.Add(this.txtDescripcionCaja);
             this.panelCampos.Controls.Add(this.lblDescripcion);
-            this.panelCampos.Location = new System.Drawing.Point(12, 3);
+            this.panelCampos.Location = new System.Drawing.Point(720, 4);
             this.panelCampos.Name = "panelCampos";
             this.panelCampos.Size = new System.Drawing.Size(608, 84);
             this.panelCampos.TabIndex = 32;
@@ -93,7 +93,7 @@
             this.cbCliente.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbCliente.FormattingEnabled = true;
             this.cbCliente.Location = new System.Drawing.Point(348, 9);
-            this.cbCliente.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbCliente.Margin = new System.Windows.Forms.Padding(2);
             this.cbCliente.Name = "cbCliente";
             this.cbCliente.Size = new System.Drawing.Size(146, 21);
             this.cbCliente.TabIndex = 15;
@@ -209,9 +209,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(530, 470);
+            this.ClientSize = new System.Drawing.Size(751, 470);
             this.Controls.Add(this.panelCampos);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmMantenedorEmbalaje";
             this.Text = "Mantenedor Embalaje";
             this.Load += new System.EventHandler(this.frmMantenedorCaja_Load);

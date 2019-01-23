@@ -12,7 +12,7 @@ namespace Datos
 {
     public class D_Cliente : D_MySQL
     {
-        string Mensaje { get; set; }
+        public string Mensaje { get; set; }
 
 
         public List<E_Cliente> Lista()

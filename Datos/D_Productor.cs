@@ -11,7 +11,7 @@ namespace Datos
 {
     public class D_Productor : D_MySQL   
     {
-        string Mensaje { get; set; }
+        public string Mensaje { get; set; }
         public List<E_Productor> Lista(string cliente)
         {
 
@@ -113,6 +113,13 @@ namespace Datos
                     cmd.Parameters.AddWithValue("@codigo_productor", productor1.Codigo_Productor);
 
                     cmd.ExecuteNonQuery();
+                    return true;
+                }
+                else
+                {
+                    Desconectar();
+                    Mensaje = "Error de conexion";
+                    return false;
                 }
             }
             catch (Exception ex)
@@ -121,9 +128,6 @@ namespace Datos
                 Desconectar();
                 return false;
             }
-
-            Desconectar();
-            return true;
         }
 
         public bool Modificar(E_Productor productor1)

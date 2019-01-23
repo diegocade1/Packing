@@ -10,7 +10,7 @@ namespace Datos
 {
     public class D_Especie : D_MySQL
     {
-        string Mensaje { get; set; }
+        public string Mensaje { get; set; }
 
 
         public List<E_Especie> Lista()
@@ -65,6 +65,13 @@ namespace Datos
                     cmd.Parameters.AddWithValue("@descripcion", especie1.Descripcion);
 
                     cmd.ExecuteNonQuery();
+                    return true;
+                }
+                else
+                {
+                    Desconectar();
+                    Mensaje = "Error de conexion";
+                    return false;
                 }
             }
             catch (Exception ex)
@@ -73,9 +80,6 @@ namespace Datos
                 Desconectar();
                 return false;
             }
-
-            Desconectar();
-            return true;
         }
 
         public bool Modificar(E_Especie especie1)

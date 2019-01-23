@@ -16,6 +16,7 @@ namespace Negocio
     {
         // object oExcel;
         public string Mensaje { get; set; }
+        public string Detalle { get; set; }
         Microsoft.Office.Interop.Excel.Application oExcel;
         Microsoft.Office.Interop.Excel.Workbook oBook;
         Microsoft.Office.Interop.Excel.Worksheet oSheet;
@@ -84,7 +85,7 @@ namespace Negocio
                     i = 2;
                     while (true)
                     {
-                        texto = oSheet.Cells[i, 2].text;
+                        texto = oSheet.Cells[i, 1].text;
                         if (texto.Trim() == "")
                         {
                             break;
@@ -100,6 +101,8 @@ namespace Negocio
                         }
                         else
                         {
+                            Detalle += "Linea Excel " + i + ": " + cliente1.Mensaje + "\n";
+                            i++;
                             errores++;
                         }
                         
@@ -215,6 +218,8 @@ namespace Negocio
                         }
                         else
                         {
+                            Detalle += "Linea Excel " + i + ": " + especie1.Mensaje + "\n";
+                            i++;
                             errores++;
                         }
 
@@ -304,10 +309,10 @@ namespace Negocio
             {
                 oBook = oExcel.Workbooks.Open(sFile);// .Workbooks.Open(sFile);
                 totalHojas = oBook.Sheets.Count;
-                D_Especie especie1 = new D_Especie();
-                E_Especie especie2;
+                D_Productor productor1 = new D_Productor();
+                E_Productor productor2;
                 string texto;
-                especie1.Conectar();
+                productor1.Conectar();
                 for (j = 1; j <= totalHojas; j++)
                 {
                     oSheet = (Microsoft.Office.Interop.Excel.Worksheet)oBook.Worksheets.get_Item(j);//  .Worksheets(j);// oBook.Sheets();
@@ -320,16 +325,20 @@ namespace Negocio
                         {
                             break;
                         }
-                        especie2 = new E_Especie();
-                        especie2.Descripcion = oSheet.Cells[i, 1].text;
+                        productor2 = new E_Productor();
+                        productor2.Descripcion = oSheet.Cells[i, 1].text;
+                        productor2.Codigo_Cliente = oSheet.Cells[i, 2].text;
+                        productor2.Codigo_Productor = oSheet.Cells[i, 3].text;
 
-                        if (especie1.Agregar(especie2))
+                        if (productor1.Agregar(productor2))
                         {
                             i++;
                             ingresadas++;
                         }
                         else
                         {
+                            Detalle += "Linea Excel "+i+": "+productor1.Mensaje + "\n";
+                            i++;
                             errores++;
                         }
 
@@ -347,7 +356,7 @@ namespace Negocio
                 {
                     if (ingresadas == 0 && errores != 0)
                     {
-                        Mensaje = ingresadas + " entradas no se pudieron agregar.";
+                        Mensaje = errores + " entradas no se pudieron agregar.";
                     }
                     else
                     {

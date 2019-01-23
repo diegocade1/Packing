@@ -27,12 +27,28 @@ namespace Packing
             N_Cliente cliente1 = new N_Cliente();
 
             dgvLista.DataSource = productor1.ListaCompleta();
+            dgvLista.Columns["Codigo"].DisplayIndex = 0;
+            dgvLista.Columns["Descripcion"].DisplayIndex = 1;
+            dgvLista.Columns["Codigo_cliente"].DisplayIndex = 2;
+            dgvLista.Columns["Codigo_productor"].DisplayIndex = 3;
 
             cbCliente.DataSource = cliente1.Lista();
             cbCliente.ValueMember = "id";
             cbCliente.DisplayMember = "cliente";
             cbCliente.SelectedIndex = -1;
 
+        }
+
+        private void CargarLista()
+        {
+            N_Productor productor1 = new N_Productor();
+
+            dgvLista.DataSource = productor1.ListaCompleta();
+            dgvLista.Columns["Codigo"].DisplayIndex = 0;
+            dgvLista.Columns["Descripcion"].DisplayIndex = 1;
+            dgvLista.Columns["Codigo_cliente"].DisplayIndex = 2;
+            dgvLista.Columns["Codigo_productor"].DisplayIndex = 3;
+            dgvLista.Refresh();
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
@@ -99,7 +115,7 @@ namespace Packing
 
             if (productor1.Agregar(productor2) == true)
             {
-                dgvLista.DataSource = productor1.ListaCompleta();
+                CargarLista();
                 Limpiar();
             }
             else
@@ -145,7 +161,7 @@ namespace Packing
 
             if (productor1.Modificar(productor2) == true)
             {
-                dgvLista.DataSource = productor1.ListaCompleta();
+                CargarLista();
                 Limpiar();
             }
             else
@@ -175,7 +191,7 @@ namespace Packing
 
                 if (productor1.Borrar(ID) == true)
                 {
-                    dgvLista.DataSource = productor1.ListaCompleta();
+                    CargarLista();
                 }
                 else
                 {
@@ -192,6 +208,7 @@ namespace Packing
         public override void Importar()
         {
             Leer_ArchivoExcel excel1 = new Negocio.Leer_ArchivoExcel();
+            N_Productor productor1 = new N_Productor();
             try
             {
                 OpenFileDialog openFileDialog1 = new OpenFileDialog();
@@ -200,19 +217,25 @@ namespace Packing
 
                 if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
-                    //excel1.CargaPlanilla(openFileDialog1.FileName);
+                    excel1.CargaPlanillaProductor(openFileDialog1.FileName);
+                    CargarLista();
 
+                    if (excel1.Detalle != "")
+                    {
+                        MessageBox.Show(excel1.Mensaje + "\n"+ "_________________________________________________________________________"+ "\n\n" + "Detalles: \n" + excel1.Detalle, "Carga de Datos");
+                    }
+                    else
+                    {
+                        MessageBox.Show(excel1.Mensaje, "Carga de Datos");
+                    }
                 }
-
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Excel " + ex.Message);
                 return;
             }
-
-            MessageBox.Show("Archivo Cargado");
-
+            
         }
 
         public override void CellClick()
