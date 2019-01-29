@@ -87,10 +87,7 @@ namespace Packing
             {
                 txtFolioNuevo.Focus();
                 txtFolioNuevo.SelectAll();
-            }
-
-
-            
+            }                      
 
         }
 
@@ -155,6 +152,7 @@ namespace Packing
                 recepcion1.Detalle.Peso_Bandeja = pesoBandeja.ToString();
                 recepcion1.Detalle.Cantidad_Bandejas = txtCantidad_Bandejas.Text;
                 recepcion1.Detalle.Folio = txtFolioNuevo.Text;
+                recepcion1.Detalle.Usuario = sesion.Usuario;
                 //recepcion1.Detalle.su
                 recepcion1.Detalle.Kilos_Brutos = txtKilos.Text;
                 tara = (pesoBandeja * Convert.ToInt32(txtCantidad_Bandejas.Text)) + pesoPallet;
@@ -261,7 +259,7 @@ namespace Packing
 
         private void frmSubLote_Load(object sender, EventArgs e)
         {
-
+            lblUsuario.Text = "Usuario Activo: " + sesion.Usuario;
         }
 
         private void txtFolio_TextChanged(object sender, EventArgs e)

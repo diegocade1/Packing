@@ -52,6 +52,7 @@
             this.txtCantidad_Bandejas = new System.Windows.Forms.TextBox();
             this.lblKilosNetos = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.lblUsuario = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnCancelar
@@ -280,11 +281,22 @@
             this.label7.TabIndex = 22;
             this.label7.Text = "Kilos Netos";
             // 
+            // lblUsuario
+            // 
+            this.lblUsuario.AutoSize = true;
+            this.lblUsuario.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsuario.Location = new System.Drawing.Point(4, 493);
+            this.lblUsuario.Name = "lblUsuario";
+            this.lblUsuario.Size = new System.Drawing.Size(54, 14);
+            this.lblUsuario.TabIndex = 23;
+            this.lblUsuario.Text = "lblUsuario";
+            // 
             // frmSubLote
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(491, 498);
+            this.ClientSize = new System.Drawing.Size(491, 515);
+            this.Controls.Add(this.lblUsuario);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.lblKilosNetos);
             this.Controls.Add(this.txtCantidad_Bandejas);
@@ -345,5 +357,6 @@
         private System.Windows.Forms.TextBox txtCantidad_Bandejas;
         private System.Windows.Forms.Label lblKilosNetos;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label lblUsuario;
     }
 }

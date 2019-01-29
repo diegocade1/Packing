@@ -614,7 +614,7 @@ namespace Datos
                     cmd.Parameters.AddWithValue("@peso_Bandeja", detalle1.Peso_Bandeja.Replace(",", "."));
                     cmd.Parameters.AddWithValue("@cantidad_bandejas", detalle1.Cantidad_Bandejas);
                     cmd.Parameters.AddWithValue("@folio", detalle1.Folio);                    
-                    cmd.Parameters.AddWithValue("@@kilos_brutos_original", detalle1.Kilos_Brutos.Replace(",", "."));
+                    cmd.Parameters.AddWithValue("@kilos_brutos_original", detalle1.Kilos_Brutos.Replace(",", "."));
                     cmd.Parameters.AddWithValue("@kilos_brutos", detalle1.Kilos_Brutos.Replace(",", "."));
                     cmd.Parameters.AddWithValue("@tara", detalle1.Tara.Replace(",", "."));
                     cmd.Parameters.AddWithValue("@kilos_netos", detalle1.Kilos_Netos.Replace(",", "."));

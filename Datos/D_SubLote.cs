@@ -46,7 +46,7 @@ namespace Datos
                         recepcion.Fecha = rst["fecha"].ToString();
                         //recepcion.Hora = rst["hora"].ToString();
                         recepcion.Lote = rst["lote"].ToString();
-                        recepcion.Responsable = rst["responsable"].ToString();
+                        recepcion.Usuario = rst["usuario"].ToString();
                         recepcion.Total_Pallet = rst["total_pallet"].ToString();
                         recepcion.Item = rst["item"].ToString();
                         recepcion.ID_bandeja = rst["id_bandeja"].ToString();
@@ -58,7 +58,7 @@ namespace Datos
                         recepcion.Tara = rst["tara"].ToString();
                         recepcion.Kilos_Netos = rst["kilos_netos"].ToString();
                         recepcion.ID_Pallet = rst["id_pallet"].ToString();
-                        //recepcion.Tipo_Pallet = rst["tipo_pallet"].ToString();
+                        recepcion.Tipo_Pallet = rst["tipo_pallet"].ToString();
                         //recepcion.Peso_Pallet = rst["peso_pallet"].ToString();
                         //recepcion.Peso_Promedio = rst["peso_promedio"].ToString();
                         //recepcion.Comentario = rst["comentario"].ToString();

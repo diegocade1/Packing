@@ -113,7 +113,7 @@ namespace Entity
         public string Fecha { get; set; }
         public string Hora { get; set; }
         public string Lote { get; set; }
-        public string Responsable { get; set; }
+        public string Usuario { get; set; }
         public string Total_Pallet { get; set; }
       
         public string Item { get; set; }
