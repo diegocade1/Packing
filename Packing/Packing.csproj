@@ -151,11 +151,23 @@
     <Compile Include="frmMantenedorUsuario.Designer.cs">
       <DependentUpon>frmMantenedorUsuario.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmMantenedorVariedad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMantenedorVariedad.Designer.cs">
+      <DependentUpon>frmMantenedorVariedad.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmSubLote.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmSubLote.Designer.cs">
       <DependentUpon>frmSubLote.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmVentaModificar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmVentaModificar.Designer.cs">
+      <DependentUpon>frmVentaModificar.cs</DependentUpon>
     </Compile>
     <Compile Include="ListaPalletRecepcion.cs">
       <SubType>Form</SubType>
@@ -282,8 +294,14 @@
     <EmbeddedResource Include="frmMantenedorUsuario.resx">
       <DependentUpon>frmMantenedorUsuario.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmMantenedorVariedad.resx">
+      <DependentUpon>frmMantenedorVariedad.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmSubLote.resx">
       <DependentUpon>frmSubLote.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmVentaModificar.resx">
+      <DependentUpon>frmVentaModificar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ListaPalletRecepcion.resx">
       <DependentUpon>ListaPalletRecepcion.cs</DependentUpon>

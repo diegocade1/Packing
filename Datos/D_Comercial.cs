@@ -18,8 +18,8 @@ namespace Datos
             string query;
             MySqlCommand cmd;
             
-            query = "insert into tbl_comercial(ID_Cliente,ID_Productor,ID_Especie,ID_Tipo,Total_Pallet,ID_Bandeja,ID_Pallet,kilos_brutos,cantidad_bandejas,folio,fecha,tara,kilos_netos,usuario) values " +
-                    "(@ID_Cliente,@ID_Productor,@ID_Especie,@ID_Tipo,@Total_Pallet,@ID_Bandeja,@ID_Pallet,@kilos_brutos,@cantidad_bandejas,@folio,@fecha,@tara,@kilos_netos,@usuario)";
+            query = "insert into tbl_comercial(ID_Cliente,ID_Productor,ID_Especie,ID_Tipo,ID_Bandeja,ID_Pallet,kilos_brutos,cantidad_bandejas,folio,fecha,tara,kilos_netos,usuario) values " +
+                    "(@ID_Cliente,@ID_Productor,@ID_Especie,@ID_Tipo,@ID_Bandeja,@ID_Pallet,@kilos_brutos,@cantidad_bandejas,@folio,@fecha,@tara,@kilos_netos,@usuario)";
             try
             {
                 if (Conectar() == true)
@@ -29,7 +29,7 @@ namespace Datos
                     cmd.Parameters.AddWithValue("@ID_Productor", comercial.ID_Productor);
                     cmd.Parameters.AddWithValue("@ID_Especie", comercial.ID_Especie);
                     cmd.Parameters.AddWithValue("@ID_Tipo", comercial.ID_Tipo);
-                    cmd.Parameters.AddWithValue("@Total_Pallet", comercial.Total_Pallet);
+                    //cmd.Parameters.AddWithValue("@Total_Pallet", comercial.Total_Pallet);
                     cmd.Parameters.AddWithValue("@ID_Bandeja", comercial.ID_Bandeja);
                     cmd.Parameters.AddWithValue("@ID_Pallet", comercial.ID_Pallet);
                     cmd.Parameters.AddWithValue("@kilos_brutos", comercial.Kilos_Brutos);

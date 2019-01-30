@@ -262,6 +262,10 @@ namespace Packing
                             //dgvLista.Columns.Add("cantidad_bandejas", "cantidad_bandejas");
                             //dgvLista.Columns.Add("documento", "Documento");
                             estado = exportacion1.Agregar();
+                            if(estado!=false)
+                            {
+                                especie1.Actualizar_Fecha_uso(exportacion1.Exportacion.ID_Especie);
+                            }
                             lista_Exportacion.Add(exportacion1.Exportacion);
                         }
                         if (estado == true)

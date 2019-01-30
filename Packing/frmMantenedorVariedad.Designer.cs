@@ -1,6 +1,6 @@
 ﻿namespace Packing
 {
-    partial class frmMantenedorBandeja
+    partial class frmMantenedorVariedad
     {
         /// <summary>
         /// Required designer variable.
@@ -29,13 +29,11 @@
         private void InitializeComponent()
         {
             this.panelCampos = new System.Windows.Forms.Panel();
-            this.txtPeso = new System.Windows.Forms.TextBox();
-            this.lblPeso = new System.Windows.Forms.Label();
-            this.lblIDBandeja = new System.Windows.Forms.Label();
+            this.lblIDVariedad = new System.Windows.Forms.Label();
             this.lblTipoAccion = new System.Windows.Forms.Label();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnAceptar = new System.Windows.Forms.Button();
-            this.txtDescripcionBandeja = new System.Windows.Forms.TextBox();
+            this.txtDescripcionVariedad = new System.Windows.Forms.TextBox();
             this.lblDescripcion = new System.Windows.Forms.Label();
             this.panelCampos.SuspendLayout();
             this.SuspendLayout();
@@ -62,50 +60,32 @@
             // 
             // panelCampos
             // 
-            this.panelCampos.Controls.Add(this.txtPeso);
-            this.panelCampos.Controls.Add(this.lblPeso);
-            this.panelCampos.Controls.Add(this.lblIDBandeja);
+            this.panelCampos.Controls.Add(this.lblIDVariedad);
             this.panelCampos.Controls.Add(this.lblTipoAccion);
             this.panelCampos.Controls.Add(this.btnCancelar);
             this.panelCampos.Controls.Add(this.btnAceptar);
-            this.panelCampos.Controls.Add(this.txtDescripcionBandeja);
+            this.panelCampos.Controls.Add(this.txtDescripcionVariedad);
             this.panelCampos.Controls.Add(this.lblDescripcion);
             this.panelCampos.Location = new System.Drawing.Point(513, 12);
             this.panelCampos.Name = "panelCampos";
-            this.panelCampos.Size = new System.Drawing.Size(423, 84);
-            this.panelCampos.TabIndex = 31;
+            this.panelCampos.Size = new System.Drawing.Size(423, 74);
+            this.panelCampos.TabIndex = 32;
             this.panelCampos.Visible = false;
             // 
-            // txtPeso
+            // lblIDVariedad
             // 
-            this.txtPeso.Location = new System.Drawing.Point(128, 42);
-            this.txtPeso.Name = "txtPeso";
-            this.txtPeso.Size = new System.Drawing.Size(171, 20);
-            this.txtPeso.TabIndex = 9;
-            // 
-            // lblPeso
-            // 
-            this.lblPeso.AutoSize = true;
-            this.lblPeso.Location = new System.Drawing.Point(9, 42);
-            this.lblPeso.Name = "lblPeso";
-            this.lblPeso.Size = new System.Drawing.Size(73, 13);
-            this.lblPeso.TabIndex = 8;
-            this.lblPeso.Text = "Peso Bandeja";
-            // 
-            // lblIDBandeja
-            // 
-            this.lblIDBandeja.AutoSize = true;
-            this.lblIDBandeja.Location = new System.Drawing.Point(86, 63);
-            this.lblIDBandeja.Name = "lblIDBandeja";
-            this.lblIDBandeja.Size = new System.Drawing.Size(67, 13);
-            this.lblIDBandeja.TabIndex = 7;
-            this.lblIDBandeja.Text = "lblIDBandeja";
-            this.lblIDBandeja.Visible = false;
+            this.lblIDVariedad.AutoSize = true;
+            this.lblIDVariedad.Location = new System.Drawing.Point(86, 56);
+            this.lblIDVariedad.Name = "lblIDVariedad";
+            this.lblIDVariedad.Size = new System.Drawing.Size(70, 13);
+            this.lblIDVariedad.TabIndex = 7;
+            this.lblIDVariedad.Text = "lblIDVariedad";
+            this.lblIDVariedad.Visible = false;
             // 
             // lblTipoAccion
             // 
             this.lblTipoAccion.AutoSize = true;
-            this.lblTipoAccion.Location = new System.Drawing.Point(9, 63);
+            this.lblTipoAccion.Location = new System.Drawing.Point(9, 56);
             this.lblTipoAccion.Name = "lblTipoAccion";
             this.lblTipoAccion.Size = new System.Drawing.Size(71, 13);
             this.lblTipoAccion.TabIndex = 6;
@@ -132,32 +112,31 @@
             this.btnAceptar.UseVisualStyleBackColor = true;
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
-            // txtDescripcionBandeja
+            // txtDescripcionVariedad
             // 
-            this.txtDescripcionBandeja.Location = new System.Drawing.Point(128, 17);
-            this.txtDescripcionBandeja.Name = "txtDescripcionBandeja";
-            this.txtDescripcionBandeja.Size = new System.Drawing.Size(171, 20);
-            this.txtDescripcionBandeja.TabIndex = 3;
+            this.txtDescripcionVariedad.Location = new System.Drawing.Point(128, 17);
+            this.txtDescripcionVariedad.Name = "txtDescripcionVariedad";
+            this.txtDescripcionVariedad.Size = new System.Drawing.Size(171, 20);
+            this.txtDescripcionVariedad.TabIndex = 3;
             // 
             // lblDescripcion
             // 
             this.lblDescripcion.AutoSize = true;
             this.lblDescripcion.Location = new System.Drawing.Point(9, 17);
             this.lblDescripcion.Name = "lblDescripcion";
-            this.lblDescripcion.Size = new System.Drawing.Size(105, 13);
+            this.lblDescripcion.Size = new System.Drawing.Size(108, 13);
             this.lblDescripcion.TabIndex = 1;
-            this.lblDescripcion.Text = "Descripcion Bandeja";
+            this.lblDescripcion.Text = "Descripcion Variedad";
             // 
-            // frmMantenedorBandeja
+            // frmMantenedorVariedad
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(527, 460);
+            this.ClientSize = new System.Drawing.Size(534, 467);
             this.Controls.Add(this.panelCampos);
-            this.Margin = new System.Windows.Forms.Padding(2);
-            this.Name = "frmMantenedorBandeja";
-            this.Text = "frmMantenedorBandeja";
-            this.Load += new System.EventHandler(this.frmMantenedorBandeja_Load);
+            this.Name = "frmMantenedorVariedad";
+            this.Text = "frmMantenedorVariedad";
+            this.Load += new System.EventHandler(this.frmMantenedorVariedad_Load);
             this.Controls.SetChildIndex(this.btnModificar, 0);
             this.Controls.SetChildIndex(this.btnSalir, 0);
             this.Controls.SetChildIndex(this.btnEliminar, 0);
@@ -173,13 +152,11 @@
         #endregion
 
         private System.Windows.Forms.Panel panelCampos;
-        private System.Windows.Forms.Label lblIDBandeja;
+        private System.Windows.Forms.Label lblIDVariedad;
         private System.Windows.Forms.Label lblTipoAccion;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnAceptar;
-        private System.Windows.Forms.TextBox txtDescripcionBandeja;
+        private System.Windows.Forms.TextBox txtDescripcionVariedad;
         private System.Windows.Forms.Label lblDescripcion;
-        private System.Windows.Forms.TextBox txtPeso;
-        private System.Windows.Forms.Label lblPeso;
     }
 }

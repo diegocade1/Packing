@@ -65,6 +65,7 @@
             this.lblUsuario = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.cmbTipo = new System.Windows.Forms.ComboBox();
+            this.btnModificarTotalPallets = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -176,6 +177,7 @@
             this.txtGuia.Name = "txtGuia";
             this.txtGuia.Size = new System.Drawing.Size(180, 26);
             this.txtGuia.TabIndex = 7;
+            this.txtGuia.Leave += new System.EventHandler(this.txtGuia_Leave);
             // 
             // txtChofer
             // 
@@ -236,6 +238,7 @@
             this.cmbProductor.Size = new System.Drawing.Size(273, 28);
             this.cmbProductor.TabIndex = 1;
             this.cmbProductor.SelectedIndexChanged += new System.EventHandler(this.cmbProductor_SelectedIndexChanged);
+            this.cmbProductor.Leave += new System.EventHandler(this.cmbProductor_Leave);
             // 
             // cmbCliente
             // 
@@ -441,11 +444,22 @@
             this.cmbTipo.Size = new System.Drawing.Size(151, 28);
             this.cmbTipo.TabIndex = 74;
             // 
+            // btnModificarTotalPallets
+            // 
+            this.btnModificarTotalPallets.Location = new System.Drawing.Point(294, 206);
+            this.btnModificarTotalPallets.Name = "btnModificarTotalPallets";
+            this.btnModificarTotalPallets.Size = new System.Drawing.Size(58, 23);
+            this.btnModificarTotalPallets.TabIndex = 75;
+            this.btnModificarTotalPallets.Text = "Modificar";
+            this.btnModificarTotalPallets.UseVisualStyleBackColor = true;
+            this.btnModificarTotalPallets.Click += new System.EventHandler(this.btnModificarTotalPallets_Click);
+            // 
             // Recepcion5
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 561);
+            this.Controls.Add(this.btnModificarTotalPallets);
             this.Controls.Add(this.cmbTipo);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.lblUsuario);
@@ -522,5 +536,6 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.ComboBox cmbTipo;
         private System.Windows.Forms.Button btnLista;
+        private System.Windows.Forms.Button btnModificarTotalPallets;
     }
 }

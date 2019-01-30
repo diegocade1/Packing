@@ -124,6 +124,37 @@ namespace Negocio
             return estado;
         }
 
+        public E_Recepcion_Encabezado Obtener_Encabezado()
+        {
+            E_Recepcion_Encabezado recepcion2;
+            if (recepcion1.Conectar() == true)
+            {
+                recepcion2 = recepcion1.Obtener_Encabezado(Encabezado.Guia,Encabezado.Codigo_Productor);
+                if (recepcion2 != null)
+                {
+                    return recepcion2;
+                }
+                else
+                {
+                    Mensaje = recepcion1.Mensaje;
+                    return null;
+                }
+            }
+            else
+            {
+                // UltimoID = 0;
+                Mensaje = "Error en Conexion";
+                return null;
+            }
+        }
+
+        public bool ModificarCantidadPallets_Encabezado()
+        {
+            bool estado = recepcion1.ModificarCantidadPallets_Encabezado(Encabezado);
+            Mensaje = recepcion1.Mensaje;
+            return estado;
+        }
+
         #region Metodos Destino
         public List<E_Destino> Lista_Destino()
         {
