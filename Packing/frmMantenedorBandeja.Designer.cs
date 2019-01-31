@@ -70,7 +70,7 @@
             this.panelCampos.Controls.Add(this.btnAceptar);
             this.panelCampos.Controls.Add(this.txtDescripcionBandeja);
             this.panelCampos.Controls.Add(this.lblDescripcion);
-            this.panelCampos.Location = new System.Drawing.Point(513, 12);
+            this.panelCampos.Location = new System.Drawing.Point(513, 4);
             this.panelCampos.Name = "panelCampos";
             this.panelCampos.Size = new System.Drawing.Size(423, 84);
             this.panelCampos.TabIndex = 31;

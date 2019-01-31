@@ -196,6 +196,7 @@ namespace Packing
             if (estado == true)
             {
                 txtTotalPallets.ReadOnly = true;
+                btnModificarTotalPallets.Visible = true;
                     int ID = recepcion1.UltimoID;
                     if (recepcion1.nuevo)
                     {
@@ -734,80 +735,6 @@ namespace Packing
 
         }
 
-        private void cmbProductor_Leave(object sender, EventArgs e)
-        {
-            N_Recepcion recepcion2 = new N_Recepcion();
-            string guia = txtGuia.Text;
-            string productor = cmbProductor.Text.ToString();
-
-            if (productor.Trim() == "")
-            {
-                return;
-            }
-
-            if (guia.Trim() == "")
-            {
-                return;
-            }
-
-            productor = cmbProductor.SelectedValue.ToString();
-            recepcion1.Encabezado = new E_Recepcion_Encabezado()
-            {
-                Guia = guia,
-                Codigo_Productor = productor
-            };
-            recepcion2.Encabezado = recepcion1.Obtener_Encabezado();
-            if (recepcion2.Encabezado != null)
-            {
-                cmbCliente.SelectedValue = recepcion2.Encabezado.ID_Cliente;
-                cmbEspecie.SelectedValue = recepcion2.Encabezado.ID_Especie;
-                txtChofer.Text = recepcion2.Encabezado.Chofer;
-                txtTemperatura.Text = recepcion2.Encabezado.Temperatura;
-                txtTotalPallets.Text = recepcion2.Encabezado.Cantidad_Pallets;
-                cmbDescarga.SelectedValue = recepcion2.Encabezado.ID_Descarga;
-                cmbDestino.SelectedValue = recepcion2.Encabezado.ID_Destino;
-                cmbTipo.SelectedValue = recepcion2.Encabezado.ID_Tipo;
-                txtTotalPallets.ReadOnly = true;
-            }
-        }
-
-        private void txtGuia_Leave(object sender, EventArgs e)
-        {
-            N_Recepcion recepcion2 = new N_Recepcion();
-            string guia = txtGuia.Text;
-            string productor = cmbProductor.Text.ToString();
-
-            if (guia.Trim() == "")
-            {
-                return;
-            }
-
-            if (productor.Trim() == "")
-            {
-                return;
-            }
-
-            productor = cmbProductor.SelectedValue.ToString();
-            recepcion1.Encabezado = new E_Recepcion_Encabezado()
-            {
-                Guia = guia,
-                Codigo_Productor = productor
-            };
-            recepcion2.Encabezado = recepcion1.Obtener_Encabezado();
-            if(recepcion2.Encabezado!=null)
-            {
-                cmbCliente.SelectedValue = recepcion2.Encabezado.ID_Cliente;
-                cmbEspecie.SelectedValue = recepcion2.Encabezado.ID_Especie;
-                txtChofer.Text = recepcion2.Encabezado.Chofer;
-                txtTemperatura.Text = recepcion2.Encabezado.Temperatura;
-                txtTotalPallets.Text = recepcion2.Encabezado.Cantidad_Pallets;
-                cmbDescarga.SelectedValue = recepcion2.Encabezado.ID_Descarga;
-                cmbDestino.SelectedValue = recepcion2.Encabezado.ID_Destino;
-                cmbTipo.SelectedValue = recepcion2.Encabezado.ID_Tipo;
-                txtTotalPallets.ReadOnly = true;
-            }
-        }
-
         private void btnModificarTotalPallets_Click(object sender, EventArgs e)
         {
             N_Recepcion recepcion2 = new N_Recepcion();
@@ -838,6 +765,101 @@ namespace Packing
                 recepcion2.Encabezado = recepcion1.Obtener_Encabezado();
                 txtTotalPallets.Text = recepcion2.Encabezado.Cantidad_Pallets;
             }
+        }
+
+        private void btnLista_Click(object sender, EventArgs e)
+        {
+            N_Recepcion recepcion2 = new N_Recepcion();
+            string guia = txtGuia.Text;
+            string productor = cmbProductor.Text.ToString();
+
+            if (guia.Trim() == "")
+            {
+                return;
+            }
+
+            if (productor.Trim() == "")
+            {
+                return;
+            }
+
+            productor = cmbProductor.SelectedValue.ToString();
+            recepcion1.Encabezado = new E_Recepcion_Encabezado()
+            {
+                Guia = guia,
+                Codigo_Productor = productor
+            };
+            recepcion2.Encabezado = recepcion1.Obtener_Encabezado();
+            if (recepcion2.Encabezado != null)
+            {
+                frmLista frm = new frmLista(sesion, recepcion2);
+                frm.ShowDialog();
+            }
+        }
+
+        private void btnRecuperar_Click(object sender, EventArgs e)
+        {
+            N_Recepcion recepcion2 = new N_Recepcion();
+            string guia = txtGuia.Text;
+            string productor = cmbProductor.Text.ToString();
+
+            if (cmbCliente.SelectedIndex == -1)
+            {
+                MessageBox.Show("Seleccionar Exportador");
+                return;
+            }
+
+            if (productor.Trim() == "")
+            {                
+                MessageBox.Show("Seleccionar Productor");
+                return;
+            }
+
+            if (guia.Trim() == "")
+            {
+                MessageBox.Show("Ingrese guia");
+                return;
+            }
+
+            productor = cmbProductor.SelectedValue.ToString();
+            recepcion1.Encabezado = new E_Recepcion_Encabezado()
+            {
+                Guia = guia,
+                Codigo_Productor = productor
+            };
+            recepcion2.Encabezado = recepcion1.Obtener_Encabezado();
+            if (recepcion2.Encabezado != null)
+            {
+                cmbCliente.SelectedValue = recepcion2.Encabezado.ID_Cliente;
+                cmbEspecie.SelectedValue = recepcion2.Encabezado.ID_Especie;
+                txtChofer.Text = recepcion2.Encabezado.Chofer;
+                double temperatura = Convert.ToDouble(recepcion2.Encabezado.Temperatura);
+                txtTemperatura.Text = temperatura.ToString().Replace(",",".");
+                txtTotalPallets.Text = recepcion2.Encabezado.Cantidad_Pallets;
+                cmbDescarga.SelectedValue = recepcion2.Encabezado.ID_Descarga;
+                cmbDestino.SelectedValue = recepcion2.Encabezado.ID_Destino;
+                cmbTipo.SelectedValue = recepcion2.Encabezado.ID_Tipo;
+                txtTotalPallets.ReadOnly = true;
+            }
+            else
+            {
+                Limpiar();
+            }
+        }
+
+        private void Limpiar()
+        {
+            //cmbCliente.SelectedIndex = -1;
+            cmbEspecie.SelectedIndex = -1;
+            txtChofer.Text = string.Empty;
+            txtTemperatura.Text = string.Empty;
+            txtTotalPallets.Text = string.Empty;
+            cmbDescarga.SelectedIndex = -1;
+            cmbDestino.SelectedIndex = -1;
+            cmbTipo.SelectedIndex = -1;
+            txtTotalPallets.Text = string.Empty;
+            txtTotalPallets.ReadOnly = false;
+            btnModificarTotalPallets.Visible = false;
         }
     }
 }

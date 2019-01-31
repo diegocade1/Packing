@@ -61,6 +61,12 @@
     <Compile Include="Exportacion.Designer.cs">
       <DependentUpon>Exportacion.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmLista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLista.Designer.cs">
+      <DependentUpon>frmLista.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -248,6 +254,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Exportacion.resx">
       <DependentUpon>Exportacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLista.resx">
+      <DependentUpon>frmLista.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
