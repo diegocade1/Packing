@@ -117,12 +117,12 @@ namespace Packing
                 return false;
             }
 
-            if (txtTotalPallet.Text.Trim() == "")
-            {
-                MessageBox.Show("Ingrese Total Pallet", "");
-                txtTotalPallet.Focus();
-                return false;
-            }
+            //if (txtTotalPallet.Text.Trim() == "")
+            //{
+            //    MessageBox.Show("Ingrese Total Pallet", "");
+            //    txtTotalPallet.Focus();
+            //    return false;
+            //}
 
             if (cmbBandeja.SelectedIndex == -1)
             {
@@ -204,7 +204,7 @@ namespace Packing
             comercial1.Detalle.Productor = cmbProductor.Text.ToString();
             comercial1.Detalle.ID_Tipo = cmbTipo.SelectedValue.ToString();
             comercial1.Detalle.Tipo = cmbTipo.Text.ToString();
-            comercial1.Detalle.Total_Pallet = Convert.ToInt32(txtTotalPallet.Text);
+            //comercial1.Detalle.Total_Pallet = Convert.ToInt32(txtTotalPallet.Text);
             comercial1.Detalle.ID_Bandeja = cmbBandeja.SelectedValue.ToString();
             comercial1.Detalle.Bandeja = cmbBandeja.Text.ToString();
             comercial1.Detalle.ID_Pallet = cmbTipoPallet.SelectedValue.ToString();

@@ -298,6 +298,43 @@ namespace Datos
             return true;
         }
 
+        public bool ModificarCantidadPallets_Encabezado(E_Recepcion_Encabezado encabezado1)
+        {
+            string query;
+            MySqlCommand cmd;
+            List<E_Descarga> lista1 = new List<E_Descarga>();
+
+            query = "update tbl_recepcion set cantidad_pallets = " + "@cantidad_pallets" + " where id = @id";
+            try
+            {
+                if (Conectar() == true)
+                {
+                    cmd = new MySqlCommand(query, MySQLConexion);
+                    cmd.Parameters.AddWithValue("@id", encabezado1.ID_Registro);
+                    cmd.Parameters.AddWithValue("@cantidad_pallets", encabezado1.Cantidad_Pallets);
+
+                    cmd.ExecuteNonQuery();
+                    Desconectar();
+                    Mensaje = "";
+                    return true;
+
+                }
+                else
+                {
+
+                    Mensaje = "Error de conexion";
+                    Desconectar();
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                Mensaje = ex.Message;
+                Desconectar();
+                return false;
+            }
+        }
+
         public bool Existe_ID_recepcion(E_Recepcion_Encabezado encabezado1)
         {
             bool existe = false;
@@ -306,7 +343,7 @@ namespace Datos
 
 
             query = "select * from  tbl_recepcion Where ID_Cliente=@ID_Cliente and ID_Productor=@ID_Productor and chofer=@chofer and guia=@guia and ID_Especie=@ID_Especie and " +
-                "ID_Descarga=@ID_Descarga and temperatura=@temperatura and ID_Destino=@ID_Destino";
+                "ID_Descarga=@ID_Descarga and temperatura=@temperatura and ID_Destino=@ID_Destino and ID_Tipo = @ID_tipo";
             try
             {
 
@@ -319,6 +356,7 @@ namespace Datos
                 cmd.Parameters.AddWithValue("@ID_Descarga", encabezado1.ID_Descarga);
                 cmd.Parameters.AddWithValue("@temperatura", encabezado1.Temperatura.Replace(",", "."));
                 cmd.Parameters.AddWithValue("@ID_Destino", encabezado1.ID_Destino);
+                cmd.Parameters.AddWithValue("@ID_tipo", encabezado1.ID_Tipo);
                 //cmd.Parameters.AddWithValue("@fecha", encabezado1.Fecha);
                 //cmd.Parameters.AddWithValue("@lote", encabezado1.Lote);
                 rst = cmd.ExecuteReader();
@@ -434,19 +472,19 @@ namespace Datos
             bool estado = false;
             MySqlCommand cmd;
 
-            query = "select * from tbl_recepcion where guia = " +
-                    "@guia";
+            query = "select * from tbl_recepcion where guia = " + "@guia "+"and id_productor = "+"@productor";
             try
             {
                 if (Conectar() == true)
                 {
                     cmd = new MySqlCommand(query, MySQLConexion);
                     cmd.Parameters.AddWithValue("@guia", encabezado.Guia);
+                    cmd.Parameters.AddWithValue("@productor", encabezado.Codigo_Productor);
                     MySqlDataReader reader = cmd.ExecuteReader();
                     if (reader.Read())
                     {
                         Desconectar();
-                        Mensaje = "La guia ya fue utilizada en un proceso de Recepcion. Intente con otra guia.";
+                        Mensaje = "La guia ya fue utilizada en un proceso de Recepcion. Intente con otra guia o productor.";
                         estado = true;
                     }
                     else
@@ -638,6 +676,46 @@ namespace Datos
             return true;
         }
 
+        public bool Modificar_Detalle(E_Recepcion_Detalle detalle1)
+        {
+            string query;
+            MySqlCommand cmd;
+            List<E_Descarga> lista1 = new List<E_Descarga>();
+
+            query = "update tbl_recepcion_detalle set ID_bandeja = @id_bandeja, bandeja = @bandeja, peso_bandeja = @peso_bandeja, cantidad_bandejas = @cantidad_bandejas, kilos_brutos_original = @kilos_brutos, kilos_brutos = @kilos_brutos, tara = @tara,"+
+                    " kilos_netos = @kilos_netos, id_pallet = @id_pallet, tipo_pallet = @tipo_pallet, peso_pallet = @peso_pallet where id = @id";
+            try
+            {
+                if (Conectar() == true)
+                {
+                    cmd = new MySqlCommand(query, MySQLConexion);
+                    cmd.Parameters.AddWithValue("@id_bandeja", detalle1.ID_bandeja);
+                    cmd.Parameters.AddWithValue("@bandeja", detalle1.Bandeja);
+                    cmd.Parameters.AddWithValue("@peso_bandeja", detalle1.Peso_Bandeja.Replace(",", "."));
+                    cmd.Parameters.AddWithValue("@cantidad_bandejas", detalle1.Cantidad_Bandejas);
+                    cmd.Parameters.AddWithValue("@kilos_brutos", detalle1.Kilos_Brutos);
+                    cmd.Parameters.AddWithValue("@tara", detalle1.Tara.Replace(",", "."));
+                    cmd.Parameters.AddWithValue("@kilos_netos", detalle1.Kilos_Netos.Replace(",", "."));
+                    cmd.Parameters.AddWithValue("@id_pallet", detalle1.ID_Pallet);
+                    cmd.Parameters.AddWithValue("@tipo_pallet", detalle1.Tipo_Pallet);
+                    cmd.Parameters.AddWithValue("@peso_pallet", detalle1.Peso_Pallet.Replace(",", "."));
+                    cmd.Parameters.AddWithValue("@id", detalle1.ID);
+
+                    cmd.ExecuteNonQuery();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Mensaje = ex.Message;
+                Desconectar();
+                return false;
+            }
+
+            Desconectar();
+            return true;
+        }
+
         public bool Posicion_detalle(E_Recepcion_Encabezado encabezado1)
         {
             bool existe = false;
@@ -675,6 +753,161 @@ namespace Datos
             }
 
             return existe;
+        }
+
+        public E_Recepcion_Encabezado Obtener_Encabezado(string guia, string productor)
+        {
+            string query;
+            
+            MySqlCommand cmd;
+
+            query = "SELECT * FROM packing.tbl_recepcion where guia = @guia and id_productor = @productor;";
+            try
+            {
+                cmd = new MySqlCommand(query, MySQLConexion);
+                cmd.Parameters.AddWithValue("@guia", guia);
+                cmd.Parameters.AddWithValue("@productor", productor);
+
+                MySqlDataReader rst = cmd.ExecuteReader();
+                if (rst.Read())
+                {
+                    E_Recepcion_Encabezado encabezado1 = new E_Recepcion_Encabezado()
+                    {
+                        ID_Registro = rst["id"].ToString(),
+                        ID_Cliente = rst["id_cliente"].ToString(),
+                        Codigo_Productor = rst["id_productor"].ToString(),
+                        Chofer = rst["chofer"].ToString(),
+                        Guia = rst["guia"].ToString(),
+                        ID_Especie = rst["id_especie"].ToString(),
+                        ID_Descarga = rst["id_descarga"].ToString(),
+                        Temperatura = rst["temperatura"].ToString(),
+                        ID_Destino = rst["id_destino"].ToString(),
+                        Fecha = rst["fecha"].ToString(),
+                        Lote = rst["lote"].ToString(),
+                        Cantidad_Pallets = rst["cantidad_pallets"].ToString(),
+                        ID_Tipo = rst["id_tipo"].ToString(),                     
+                    };
+                    Desconectar();
+                    return encabezado1;
+                }
+                else
+                {
+                    Mensaje = "No se encontraron registros";
+                    Desconectar();
+                    return null;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Mensaje = ex.Message;
+                Desconectar();
+                return null;
+            }
+        }
+
+        public List<E_Recepcion_Detalle> Obtener_Detalles_Recepcion(string id)
+        {
+            string query;
+
+            MySqlCommand cmd;
+
+            List<E_Recepcion_Detalle> listatemp = new List<E_Recepcion_Detalle>();
+
+            query = "SELECT * FROM tbl_recepcion_detalle where id_recepcion = @id;";
+            try
+            {
+                cmd = new MySqlCommand(query, MySQLConexion);
+                cmd.Parameters.AddWithValue("@id", id);
+
+                MySqlDataReader rst = cmd.ExecuteReader();
+                while(rst.Read())
+                {
+                    double kilos = Convert.ToDouble(rst["kilos_brutos"].ToString());
+                    E_Recepcion_Detalle encabezado1 = new E_Recepcion_Detalle()
+                    {
+                        ID = rst["ID"].ToString(),
+                        ID_Recepcion = rst["id_recepcion"].ToString(),
+                        ID_bandeja = rst["id_bandeja"].ToString(),
+                        Bandeja = rst["bandeja"].ToString(),
+                        Peso_Bandeja = rst["peso_bandeja"].ToString(),
+                        Cantidad_Bandejas = rst["cantidad_bandejas"].ToString(),
+                        Folio = rst["folio"].ToString(),
+                        Kilos_Brutos = kilos.ToString().Replace(",", "."),
+                        Tara = rst["tara"].ToString(),
+                        Kilos_Netos = rst["kilos_netos"].ToString(),
+                        ID_Pallet = rst["id_pallet"].ToString(),
+                        Tipo_Pallet = rst["tipo_pallet"].ToString(),
+                        Peso_Pallet = rst["peso_pallet"].ToString(),
+                        Fecha = rst["fecha"].ToString(),
+                        Posicion = rst["posicion"].ToString()
+                    };                    
+                    listatemp.Add(encabezado1);                   
+                }
+
+                if(listatemp.Count==0)
+                {
+                    Mensaje = "Lista Vacia";
+                }
+                Desconectar();
+                return listatemp;
+            }
+            catch (Exception ex)
+            {
+                Mensaje = ex.Message;
+                Desconectar();
+                return null;
+            }
+        }
+
+        public E_Recepcion_Detalle Obtener_Detalle_Recepcion(string id)
+        {
+            string query;
+
+            MySqlCommand cmd;
+
+            query = "SELECT * FROM tbl_recepcion_detalle where id = @id;";
+            try
+            {
+                cmd = new MySqlCommand(query, MySQLConexion);
+                cmd.Parameters.AddWithValue("@id", id);
+
+                MySqlDataReader rst = cmd.ExecuteReader();
+                if(rst.Read())
+                {
+                    E_Recepcion_Detalle encabezado1 = new E_Recepcion_Detalle()
+                    {
+                        ID = rst["ID"].ToString(),
+                        ID_Recepcion = rst["id_recepcion"].ToString(),
+                        ID_bandeja = rst["id_bandeja"].ToString(),
+                        Bandeja = rst["bandeja"].ToString(),
+                        Peso_Bandeja = rst["peso_bandeja"].ToString(),
+                        Cantidad_Bandejas = rst["cantidad_bandejas"].ToString(),
+                        Folio = rst["folio"].ToString(),
+                        Kilos_Brutos = rst["kilos_brutos"].ToString(),
+                        Tara = rst["tara"].ToString(),
+                        Kilos_Netos = rst["kilos_netos"].ToString(),
+                        ID_Pallet = rst["id_pallet"].ToString(),
+                        Tipo_Pallet = rst["tipo_pallet"].ToString(),
+                        Peso_Pallet = rst["peso_pallet"].ToString(),
+                        Fecha = rst["fecha"].ToString(),
+                        Posicion = rst["posicion"].ToString()
+                    };
+                    return encabezado1;
+                }
+                else
+                {
+                    Mensaje = "No se encontro detalle";
+                    Desconectar();
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                Mensaje = ex.Message;
+                Desconectar();
+                return null;
+            }
         }
 
         #region Validacion Pallet

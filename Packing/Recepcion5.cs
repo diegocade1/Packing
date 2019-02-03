@@ -180,13 +180,23 @@ namespace Packing
             recepcion1.Encabezado.Hora = hora;
             //lote se obtiene en agregar encabezado
            // recepcion1.Encabezado.Lote = lote.ToString();
-            recepcion1.Encabezado.Cantidad_Pallets = txtTotalPallets.Text;
+           if(txtTotalPallets.Text.Trim() != "")
+            {
+                recepcion1.Encabezado.Cantidad_Pallets = txtTotalPallets.Text;
+            }
+            else
+            {
+                recepcion1.Encabezado.Cantidad_Pallets = "0";
+            }
 
             //if (!recepcion1.Validacion_Guia())
             //{
                 bool estado = recepcion1.Agregar_Encabezado();
-                if (estado == true)
-                {
+
+            if (estado == true)
+            {
+                txtTotalPallets.ReadOnly = true;
+                btnModificarTotalPallets.Visible = true;
                     int ID = recepcion1.UltimoID;
                     if (recepcion1.nuevo)
                     {
@@ -194,14 +204,16 @@ namespace Packing
                     }
                     else
                     {
-                        txtTotalPallets.Text = recepcion1.Encabezado.Cantidad_Pallets;
+                        //txtTotalPallets.Text = recepcion1.Encabezado.Cantidad_Pallets;
                         numero_actual = recepcion1.Posicion;
                     }
 
+                if (Convert.ToInt32(recepcion1.Encabezado.Cantidad_Pallets)!=0)
+                {
                     if (numero_actual < Convert.ToInt32(recepcion1.Encabezado.Cantidad_Pallets))
                     {
                         //Agrega detalle de recepcion
-                        if (AgregarDetalle(ID) == true)
+                        if (AgregarDetalle(ID, recepcion1.Encabezado.Codigo_Productor) == true)
                         {
                             especie1.Actualizar_Fecha_uso(recepcion1.Encabezado.ID_Especie);
                             //txtKilos.Text = string.Empty;
@@ -230,19 +242,46 @@ namespace Packing
                 }
                 else
                 {
-                    MessageBox.Show(recepcion1.Mensaje);
-                    //txtFolio.Text = string.Empty;
-                    //txtFolio.Focus();
-                    //cmbCliente.Focus();
-                    txtGuia.SelectAll();
-                    txtGuia.Focus();
-                }             
+                    if (AgregarDetalle(ID, recepcion1.Encabezado.Codigo_Productor) == true)
+                    {
+                        especie1.Actualizar_Fecha_uso(recepcion1.Encabezado.ID_Especie);
+                        //txtKilos.Text = string.Empty;
+                        //txtFolio.Text = string.Empty;
+                        //txtCantidadBandejas.Text = string.Empty;
+                        //cmbBandeja.Focus();
+                        //cmbBandeja.SelectedIndex = -1;
+                        //cmbTipoPallet.SelectedIndex = -1;
+                    }
+                    else
+                    {
+                        //MessageBox.Show("Error al registrar el detalle de la recepcion");
+                        //txtKilos.SelectAll();
+                        //txtCantidadBandejas.SelectAll();
+                        txtFolio.SelectAll();
+                        //cmbBandeja.SelectedIndex = -1;
+                        //cmbTipoPallet.SelectedIndex = -1;
+                        //cmbBandeja.Focus();
+                        txtFolio.Focus();
+                    }
+                }
+                    
+
+            }
+            else
+            {
+                MessageBox.Show(recepcion1.Mensaje);
+                //txtFolio.Text = string.Empty;
+                //txtFolio.Focus();
+                //cmbCliente.Focus();
+                txtGuia.SelectAll();
+                txtGuia.Focus();
+            }
             //}
             //else
             //{
-                //MessageBox.Show(recepcion1.Mensaje);
-                //txtGuia.SelectAll();
-                //txtGuia.Focus();
+            //    MessageBox.Show(recepcion1.Mensaje);
+            //    txtGuia.SelectAll();
+            //    txtGuia.Focus();
             //}
         }
 
@@ -306,12 +345,12 @@ namespace Packing
             }
 
              
-            if (txtTotalPallets.Text.Trim() == "")          
-            {
-                MessageBox.Show("Ingrese Total Pallet", "");
-                txtTotalPallets.Focus();
-                return false;
-            }
+            //if (txtTotalPallets.Text.Trim() == "")          
+            //{
+            //    MessageBox.Show("Ingrese Total Pallet", "");
+            //    txtTotalPallets.Focus();
+            //    return false;
+            //}
 
             if (cmbTipo.SelectedIndex == -1)
             {
@@ -378,7 +417,7 @@ namespace Packing
             return true;
         }
 
-        private bool AgregarDetalle(int ID_recepcion)
+        private bool AgregarDetalle(int ID_recepcion,string id_productor)
         {
             numero_actual += 1;
 
@@ -694,6 +733,133 @@ namespace Packing
         private void txtFolio_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnModificarTotalPallets_Click(object sender, EventArgs e)
+        {
+            N_Recepcion recepcion2 = new N_Recepcion();
+            string guia = txtGuia.Text;
+            string productor = cmbProductor.Text.ToString();
+
+            if (guia.Trim() == "")
+            {
+                return;
+            }
+
+            if (productor.Trim() == "")
+            {
+                return;
+            }
+
+            productor = cmbProductor.SelectedValue.ToString();
+            recepcion1.Encabezado = new E_Recepcion_Encabezado()
+            {
+                Guia = guia,
+                Codigo_Productor = productor
+            };
+            recepcion2.Encabezado = recepcion1.Obtener_Encabezado();
+            if (recepcion2.Encabezado != null)
+            {
+                frmVentaModificar frm = new frmVentaModificar(sesion, recepcion2);
+                frm.ShowDialog();
+                recepcion2.Encabezado = recepcion1.Obtener_Encabezado();
+                txtTotalPallets.Text = recepcion2.Encabezado.Cantidad_Pallets;
+            }
+        }
+
+        private void btnLista_Click(object sender, EventArgs e)
+        {
+            N_Recepcion recepcion2 = new N_Recepcion();
+            string guia = txtGuia.Text;
+            string productor = cmbProductor.Text.ToString();
+
+            if (guia.Trim() == "")
+            {
+                return;
+            }
+
+            if (productor.Trim() == "")
+            {
+                return;
+            }
+
+            productor = cmbProductor.SelectedValue.ToString();
+            recepcion1.Encabezado = new E_Recepcion_Encabezado()
+            {
+                Guia = guia,
+                Codigo_Productor = productor
+            };
+            recepcion2.Encabezado = recepcion1.Obtener_Encabezado();
+            if (recepcion2.Encabezado != null)
+            {
+                frmLista frm = new frmLista(sesion, recepcion2);
+                frm.ShowDialog();
+            }
+        }
+
+        private void btnRecuperar_Click(object sender, EventArgs e)
+        {
+            N_Recepcion recepcion2 = new N_Recepcion();
+            string guia = txtGuia.Text;
+            string productor = cmbProductor.Text.ToString();
+
+            if (cmbCliente.SelectedIndex == -1)
+            {
+                MessageBox.Show("Seleccionar Exportador");
+                return;
+            }
+
+            if (productor.Trim() == "")
+            {                
+                MessageBox.Show("Seleccionar Productor");
+                return;
+            }
+
+            if (guia.Trim() == "")
+            {
+                MessageBox.Show("Ingrese guia");
+                return;
+            }
+
+            productor = cmbProductor.SelectedValue.ToString();
+            recepcion1.Encabezado = new E_Recepcion_Encabezado()
+            {
+                Guia = guia,
+                Codigo_Productor = productor
+            };
+            recepcion2.Encabezado = recepcion1.Obtener_Encabezado();
+            if (recepcion2.Encabezado != null)
+            {
+                cmbCliente.SelectedValue = recepcion2.Encabezado.ID_Cliente;
+                cmbEspecie.SelectedValue = recepcion2.Encabezado.ID_Especie;
+                txtChofer.Text = recepcion2.Encabezado.Chofer;
+                double temperatura = Convert.ToDouble(recepcion2.Encabezado.Temperatura);
+                txtTemperatura.Text = temperatura.ToString().Replace(",",".");
+                txtTotalPallets.Text = recepcion2.Encabezado.Cantidad_Pallets;
+                cmbDescarga.SelectedValue = recepcion2.Encabezado.ID_Descarga;
+                cmbDestino.SelectedValue = recepcion2.Encabezado.ID_Destino;
+                cmbTipo.SelectedValue = recepcion2.Encabezado.ID_Tipo;
+                txtTotalPallets.ReadOnly = true;
+            }
+            else
+            {
+                Limpiar();
+            }
+        }
+
+        private void Limpiar()
+        {
+            //cmbCliente.SelectedIndex = -1;
+            cmbEspecie.SelectedIndex = -1;
+            txtChofer.Text = string.Empty;
+            txtTemperatura.Text = string.Empty;
+            txtTotalPallets.Text = string.Empty;
+            cmbDescarga.SelectedIndex = -1;
+            cmbDestino.SelectedIndex = -1;
+            cmbTipo.SelectedIndex = -1;
+            txtTotalPallets.Text = string.Empty;
+            txtTotalPallets.ReadOnly = false;
+            btnModificarTotalPallets.Visible = false;
         }
     }
 }

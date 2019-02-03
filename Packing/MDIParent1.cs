@@ -294,5 +294,12 @@ namespace Packing
         {
 
         }
+
+        private void variedadToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmMantenedorVariedad frmObj = new frmMantenedorVariedad(Usuario);
+            frmObj.MdiParent = this;
+            frmObj.Show();
+        }
     }
 }

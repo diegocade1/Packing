@@ -50,8 +50,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.cmbProductor = new System.Windows.Forms.ComboBox();
             this.cmbCliente = new System.Windows.Forms.ComboBox();
-            this.txtTotalPallet = new System.Windows.Forms.TextBox();
-            this.label15 = new System.Windows.Forms.Label();
             this.lblUsuario = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -286,28 +284,6 @@
             this.cmbCliente.TabIndex = 70;
             this.cmbCliente.SelectedIndexChanged += new System.EventHandler(this.cmbCliente_SelectedIndexChanged);
             // 
-            // txtTotalPallet
-            // 
-            this.txtTotalPallet.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTotalPallet.Location = new System.Drawing.Point(120, 148);
-            this.txtTotalPallet.MaxLength = 4;
-            this.txtTotalPallet.Name = "txtTotalPallet";
-            this.txtTotalPallet.Size = new System.Drawing.Size(183, 26);
-            this.txtTotalPallet.TabIndex = 93;
-            this.txtTotalPallet.Visible = false;
-            this.txtTotalPallet.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTotalPallet_KeyPress);
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(27, 148);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(87, 20);
-            this.label15.TabIndex = 94;
-            this.label15.Text = "Total Pallet";
-            this.label15.Visible = false;
-            // 
             // lblUsuario
             // 
             this.lblUsuario.AutoSize = true;
@@ -324,8 +300,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(804, 609);
             this.Controls.Add(this.lblUsuario);
-            this.Controls.Add(this.label15);
-            this.Controls.Add(this.txtTotalPallet);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.btnAceptar);
@@ -372,8 +346,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cmbProductor;
         private System.Windows.Forms.ComboBox cmbCliente;
-        private System.Windows.Forms.TextBox txtTotalPallet;
-        private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label lblUsuario;
     }
 }

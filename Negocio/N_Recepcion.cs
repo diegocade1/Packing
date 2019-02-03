@@ -76,6 +76,11 @@ namespace Negocio
             return recepcion1.Agregar_Detalle(Detalle);
         }
 
+        public bool Modificar_Detalle()
+        {
+            return recepcion1.Modificar_Detalle(Detalle);
+        }
+
         public bool Validacion_Folio()
         {
             bool estado;
@@ -122,6 +127,78 @@ namespace Negocio
                 estado = false;
             }
             return estado;
+        }
+
+        public E_Recepcion_Encabezado Obtener_Encabezado()
+        {
+            E_Recepcion_Encabezado recepcion2;
+            if (recepcion1.Conectar() == true)
+            {
+                recepcion2 = recepcion1.Obtener_Encabezado(Encabezado.Guia,Encabezado.Codigo_Productor);
+                if (recepcion2 != null)
+                {
+                    return recepcion2;
+                }
+                else
+                {
+                    Mensaje = recepcion1.Mensaje;
+                    return null;
+                }
+            }
+            else
+            {
+                // UltimoID = 0;
+                Mensaje = "Error en Conexion";
+                return null;
+            }
+        }
+
+        public E_Recepcion_Detalle Obtener_Detalle()
+        {
+            E_Recepcion_Detalle recepcion2;
+            if (recepcion1.Conectar() == true)
+            {
+                recepcion2 = recepcion1.Obtener_Detalle_Recepcion(Detalle.ID);
+                if (recepcion2 != null)
+                {
+                    return recepcion2;
+                }
+                else
+                {
+                    Mensaje = recepcion1.Mensaje;
+                    return null;
+                }
+            }
+            else
+            {
+                // UltimoID = 0;
+                Mensaje = "Error en Conexion";
+                return null;
+            }
+        }
+
+        public bool ModificarCantidadPallets_Encabezado()
+        {
+            bool estado = recepcion1.ModificarCantidadPallets_Encabezado(Encabezado);
+            Mensaje = recepcion1.Mensaje;
+            return estado;
+        }
+
+        public List<E_Recepcion_Detalle> Obtener_Detalles_Recepcion()
+        {
+            if (recepcion1.Conectar() == true)
+            {
+                List<E_Recepcion_Detalle > lista = recepcion1.Obtener_Detalles_Recepcion(Encabezado.ID_Registro);
+                Mensaje = recepcion1.Mensaje;
+
+                return lista;
+            }
+            else
+            {
+                // UltimoID = 0;
+                Mensaje = "Error en Conexion";
+                return null;
+            }
         }
 
         #region Metodos Destino

@@ -58,6 +58,95 @@ namespace Datos
             Desconectar();
             return lista1;
         }        //Fin funcion  
+
+        public bool Agregar(E_Variedad variedad1)
+        {
+            string query;
+            MySqlCommand cmd;
+
+            query = "insert into tbl_variedad(descripcion) values " +
+                    "(@descripcion)";
+            try
+            {
+                if (Conectar() == true)
+                {
+                    cmd = new MySqlCommand(query, MySQLConexion);
+                    cmd.Parameters.AddWithValue("@descripcion", variedad1.Descripcion);
+
+                    cmd.ExecuteNonQuery();
+                    return true;
+                }
+                else
+                {
+                    Desconectar();
+                    Mensaje = "Error de conexion";
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                Mensaje = ex.Message;
+                Desconectar();
+                return false;
+            }
+        }
+
+        public bool Modificar(E_Variedad variedad1)
+        {
+            string query;
+            MySqlCommand cmd;
+
+            query = "update tbl_variedad set descripcion=@descripcion WHERE ID_variedad=@ID";
+
+            try
+            {
+                if (Conectar() == true)
+                {
+                    cmd = new MySqlCommand(query, MySQLConexion);
+                    cmd.Parameters.AddWithValue("@ID", variedad1.Codigo);
+                    cmd.Parameters.AddWithValue("@descripcion", variedad1.Descripcion);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                Mensaje = ex.Message;
+                Desconectar();
+                return false;
+            }
+
+            Desconectar();
+            return true;
+        }
+
+        public bool Borrar(string variedad1)
+        {
+            string query;
+            MySqlCommand cmd;
+
+            query = "delete from tbl_variedad WHERE ID=@ID";
+
+            try
+            {
+                if (Conectar() == true)
+                {
+                    cmd = new MySqlCommand(query, MySQLConexion);
+                    cmd.Parameters.AddWithValue("@ID", variedad1);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                Mensaje = ex.Message;
+                Desconectar();
+                return false;
+            }
+
+            Desconectar();
+            return true;
+        }
     }
 }
 

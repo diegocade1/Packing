@@ -8,24 +8,24 @@ namespace Entity
 {
     public class E_Recepcion_Detalle
     {
-       // public string ID_Recepcion { get; set; }
-       // public string Item { get; set; }
-       // public string ID_bandeja { get; set; }
-       // public string Bandeja { get; set; }
-       // public string Peso_Bandeja { get; set; }
-       // public string Cantidad_Bandejas { get; set; }
-       // public string ID_Descarga { get; set; }
-       //// public string Descarga { get; set; } //esta en el encabezado
-       // public string Folio { get; set; }
-       // public string Kilos_Brutos { get; set; } 
-       // public string Tara { get; set; }
-       // public string Kilos_Netos { get; set; }
-       // public string ID_Pallet { get; set; }
-       // public string Tipo_Pallet { get; set; }
-       // public string Peso_Pallet { get; set; }
-       // public string Comentario { get; set; }           
-       // public string Hora { get; set; }
-
+        // public string ID_Recepcion { get; set; }
+        // public string Item { get; set; }
+        // public string ID_bandeja { get; set; }
+        // public string Bandeja { get; set; }
+        // public string Peso_Bandeja { get; set; }
+        // public string Cantidad_Bandejas { get; set; }
+        // public string ID_Descarga { get; set; }
+        //// public string Descarga { get; set; } //esta en el encabezado
+        // public string Folio { get; set; }
+        // public string Kilos_Brutos { get; set; } 
+        // public string Tara { get; set; }
+        // public string Kilos_Netos { get; set; }
+        // public string ID_Pallet { get; set; }
+        // public string Tipo_Pallet { get; set; }
+        // public string Peso_Pallet { get; set; }
+        // public string Comentario { get; set; }           
+        // public string Hora { get; set; }
+        public string ID { get; set; }
         public string ID_Recepcion { get; set; }
         public string Item { get; set; }
         public string ID_bandeja { get; set; }
@@ -46,6 +46,7 @@ namespace Entity
         public string Hora { get; set; }
         public string Posicion { get; set; }
         public string Usuario { get; set; }
+        public string Fecha { get; set; }
 
     }
 
