@@ -113,7 +113,7 @@
             this.dgvListaRecepcion.Name = "dgvListaRecepcion";
             this.dgvListaRecepcion.ReadOnly = true;
             this.dgvListaRecepcion.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvListaRecepcion.Size = new System.Drawing.Size(272, 193);
+            this.dgvListaRecepcion.Size = new System.Drawing.Size(272, 201);
             this.dgvListaRecepcion.TabIndex = 0;
             this.dgvListaRecepcion.ColumnAdded += new System.Windows.Forms.DataGridViewColumnEventHandler(this.dgvListaRecepcion_ColumnAdded);
             // 
@@ -148,7 +148,7 @@
             // txtOrdenEmbalaje
             // 
             this.txtOrdenEmbalaje.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtOrdenEmbalaje.Location = new System.Drawing.Point(136, 183);
+            this.txtOrdenEmbalaje.Location = new System.Drawing.Point(135, 188);
             this.txtOrdenEmbalaje.Name = "txtOrdenEmbalaje";
             this.txtOrdenEmbalaje.Size = new System.Drawing.Size(143, 26);
             this.txtOrdenEmbalaje.TabIndex = 5;
@@ -167,7 +167,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(7, 186);
+            this.label3.Location = new System.Drawing.Point(6, 191);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(123, 20);
             this.label3.TabIndex = 9;
@@ -217,7 +217,7 @@
             this.splitContainer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.splitContainer1.Location = new System.Drawing.Point(10, 225);
+            this.splitContainer1.Location = new System.Drawing.Point(10, 236);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -234,7 +234,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(890, 270);
+            this.splitContainer1.Size = new System.Drawing.Size(892, 278);
             this.splitContainer1.SplitterDistance = 290;
             this.splitContainer1.TabIndex = 17;
             // 
@@ -242,7 +242,7 @@
             // 
             this.lblKilosRecepcion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblKilosRecepcion.AutoSize = true;
-            this.lblKilosRecepcion.Location = new System.Drawing.Point(70, 245);
+            this.lblKilosRecepcion.Location = new System.Drawing.Point(70, 253);
             this.lblKilosRecepcion.Name = "lblKilosRecepcion";
             this.lblKilosRecepcion.Size = new System.Drawing.Size(13, 13);
             this.lblKilosRecepcion.TabIndex = 22;
@@ -252,7 +252,7 @@
             // 
             this.label16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(8, 245);
+            this.label16.Location = new System.Drawing.Point(8, 253);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(56, 13);
             this.label16.TabIndex = 20;
@@ -329,7 +329,7 @@
             this.splitContainer2.Panel2.Controls.Add(this.label10);
             this.splitContainer2.Panel2.Controls.Add(this.dgvListaComercial);
             this.splitContainer2.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer2_Panel2_Paint);
-            this.splitContainer2.Size = new System.Drawing.Size(596, 270);
+            this.splitContainer2.Size = new System.Drawing.Size(598, 278);
             this.splitContainer2.SplitterDistance = 290;
             this.splitContainer2.TabIndex = 0;
             // 
@@ -337,7 +337,7 @@
             // 
             this.lblPesoTeorico.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblPesoTeorico.AutoSize = true;
-            this.lblPesoTeorico.Location = new System.Drawing.Point(113, 247);
+            this.lblPesoTeorico.Location = new System.Drawing.Point(113, 255);
             this.lblPesoTeorico.Name = "lblPesoTeorico";
             this.lblPesoTeorico.Size = new System.Drawing.Size(13, 13);
             this.lblPesoTeorico.TabIndex = 29;
@@ -347,7 +347,7 @@
             // 
             this.label17.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(10, 247);
+            this.label17.Location = new System.Drawing.Point(10, 255);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(97, 13);
             this.label17.TabIndex = 28;
@@ -406,7 +406,7 @@
             this.dgvListaExportacion.Name = "dgvListaExportacion";
             this.dgvListaExportacion.ReadOnly = true;
             this.dgvListaExportacion.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvListaExportacion.Size = new System.Drawing.Size(272, 193);
+            this.dgvListaExportacion.Size = new System.Drawing.Size(272, 201);
             this.dgvListaExportacion.TabIndex = 21;
             // 
             // txtPalletExportacion
@@ -432,7 +432,7 @@
             // 
             this.label20.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(9, 251);
+            this.label20.Location = new System.Drawing.Point(9, 259);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(91, 13);
             this.label20.TabIndex = 37;
@@ -442,7 +442,7 @@
             // 
             this.lblKilosSalidaMerma.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblKilosSalidaMerma.AutoSize = true;
-            this.lblKilosSalidaMerma.Location = new System.Drawing.Point(121, 251);
+            this.lblKilosSalidaMerma.Location = new System.Drawing.Point(121, 259);
             this.lblKilosSalidaMerma.Name = "lblKilosSalidaMerma";
             this.lblKilosSalidaMerma.Size = new System.Drawing.Size(13, 13);
             this.lblKilosSalidaMerma.TabIndex = 36;
@@ -452,7 +452,7 @@
             // 
             this.lblKilosSalidaComercial.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblKilosSalidaComercial.AutoSize = true;
-            this.lblKilosSalidaComercial.Location = new System.Drawing.Point(121, 237);
+            this.lblKilosSalidaComercial.Location = new System.Drawing.Point(121, 245);
             this.lblKilosSalidaComercial.Name = "lblKilosSalidaComercial";
             this.lblKilosSalidaComercial.Size = new System.Drawing.Size(13, 13);
             this.lblKilosSalidaComercial.TabIndex = 34;
@@ -462,7 +462,7 @@
             // 
             this.label19.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(9, 237);
+            this.label19.Location = new System.Drawing.Point(9, 245);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(105, 13);
             this.label19.TabIndex = 33;
@@ -539,7 +539,7 @@
             this.dgvListaComercial.MultiSelect = false;
             this.dgvListaComercial.Name = "dgvListaComercial";
             this.dgvListaComercial.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvListaComercial.Size = new System.Drawing.Size(278, 182);
+            this.dgvListaComercial.Size = new System.Drawing.Size(280, 190);
             this.dgvListaComercial.TabIndex = 0;
             // 
             // cmbExportador
@@ -572,6 +572,7 @@
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(58, 21);
             this.comboBox3.TabIndex = 20;
+            this.comboBox3.Visible = false;
             // 
             // label7
             // 
@@ -601,6 +602,7 @@
             this.label9.Size = new System.Drawing.Size(28, 13);
             this.label9.TabIndex = 23;
             this.label9.Text = "Lote";
+            this.label9.Visible = false;
             // 
             // label11
             // 
@@ -717,7 +719,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(906, 507);
+            this.ClientSize = new System.Drawing.Size(908, 526);
             this.Controls.Add(this.cmbLinea);
             this.Controls.Add(this.dtpFechaProceso);
             this.Controls.Add(this.dtpFechaRecepcion);

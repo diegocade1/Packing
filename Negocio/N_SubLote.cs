@@ -23,5 +23,20 @@ namespace Negocio
             }
 
         }
+
+        public bool Existe_Guia_recepcion(E_Recepcionado_sublote recepcion)
+        {
+            if (subloteRecepcion.Existe_Guia_recepcion(recepcion) == true) //Primer registro nuevo encabezado
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
+
+       
     }
 }

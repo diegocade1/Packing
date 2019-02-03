@@ -59,7 +59,6 @@
             this.label14 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnLista = new System.Windows.Forms.Button();
-            this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.label15 = new System.Windows.Forms.Label();
             this.txtTotalPallets = new System.Windows.Forms.TextBox();
             this.lblUsuario = new System.Windows.Forms.Label();
@@ -387,10 +386,6 @@
             this.btnLista.Text = "Lista";
             this.btnLista.UseVisualStyleBackColor = true;
             // 
-            // printDialog1
-            // 
-            this.printDialog1.UseEXDialog = true;
-            // 
             // label15
             // 
             this.label15.AutoSize = true;
@@ -515,7 +510,6 @@
         private System.Windows.Forms.TextBox txtFolio;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.PrintDialog printDialog1;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox txtTotalPallets;
         private System.Windows.Forms.Label lblUsuario;

@@ -85,6 +85,60 @@ namespace Datos
             return estado;
         }
 
+        public bool Existe_Guia_recepcion(E_Recepcionado_sublote recepcion)
+        {
+            bool estado = false;
+            string query;
+            MySqlDataReader rst;
+
+
+            query = "select * from v_recepcion_lista3 where Guia = '" + recepcion.Guia + "'";
+            try
+            {
+                if (Conectar())
+                {
+                    MySqlCommand cmd = new MySqlCommand(query, MySQLConexion);
+                    rst = cmd.ExecuteReader();
+                    if (rst.Read())
+                    {
+                        recepcion.ID_Registro = rst["ID_recepcion"].ToString();
+                        recepcion.ID_Cliente = rst["ID_Cliente"].ToString();
+                        recepcion.Cliente = rst["cliente"].ToString();
+                        recepcion.Codigo_Productor = rst["ID_productor"].ToString();
+                        recepcion.Productor = rst["productor"].ToString();
+                        recepcion.Chofer = rst["chofer"].ToString();
+                        recepcion.Guia = rst["guia"].ToString();
+                        recepcion.ID_Especie = rst["ID_Especie"].ToString();
+                        recepcion.Especie = rst["especie"].ToString();
+                        recepcion.ID_Descarga = rst["ID_Descarga"].ToString();
+                        recepcion.Descarga = rst["Descarga"].ToString();
+                        recepcion.Temperatura = rst["temperatura"].ToString();
+                        recepcion.ID_Destino = rst["ID_destino"].ToString();
+                        recepcion.Destino = rst["destino"].ToString();
+                        recepcion.Fecha = rst["fecha"].ToString();                        
+                        recepcion.Lote = rst["lote"].ToString();                  
+                     
+                        estado = true;
+                    }
+                    else
+                    {
+                        estado = false;
+                    }
+                    rst.Close();
+                    cmd.Dispose();
+                    Desconectar();
+                }
+            }
+            catch (Exception ex)
+            {
+                Mensaje = ex.Message;
+                estado = false;
+
+            }
+
+            return estado;
+        }
+
 
 
     }

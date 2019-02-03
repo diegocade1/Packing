@@ -4,11 +4,13 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Negocio;
+using Clases.Impresion;
 
 namespace Packing
 {
@@ -26,6 +28,21 @@ namespace Packing
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
+
+            if (cmbBandeja.SelectedIndex == -1)
+            {
+                MessageBox.Show("Seleccione Bandejas", "");
+                cmbBandeja.Focus();
+                return;
+            }
+
+            if (cmbTipoPallet.Text.Trim() == "")
+            {
+                MessageBox.Show("Seleccione Tipo Pallet", "");
+                cmbTipoPallet.Focus();
+                return;
+            }
+
             if (txtKilos.Text.Trim() == "")
             {
                 MessageBox.Show("Ingrese Kilos Brutos");
@@ -77,11 +94,12 @@ namespace Packing
             //    T Format Specifier      fr-FR Culture                                 17:04:32
             string hora = DateTime.Now.ToString("HH: mm:ss");
 
+            AgregarEncabezado(); //Para impresion
 
-            if (AgregarDetalle())
+            if (AgregarDetalle())  //valida folios que no se repita, ingresa registro
             {
                 LimpiarCampos();
-                txtFolio.Focus();
+                txtGuia.Focus();
             }
             else
             {
@@ -109,9 +127,9 @@ namespace Packing
             kilos_brutos = Convert.ToDouble(txtKilos.Text);
 
             //PENDIENTE:revisar si viene peso en bandeja e ID_Bandeja
-            pesoBandeja = bandeja1.Peso(recepcionDetalleSublote.ID_bandeja);
+            pesoBandeja = bandeja1.Peso(cmbBandeja.SelectedValue.ToString()); //  recepcionDetalleSublote.ID_bandeja);
             pesoBandeja = pesoBandeja * Convert.ToInt32(txtCantidad_Bandejas.Text);
-            pesoPallet = pallet1.Peso(recepcionDetalleSublote.ID_Pallet);
+            pesoPallet = pallet1.Peso(cmbTipoPallet.SelectedValue.ToString());
             tara = pesoBandeja + pesoPallet;
 
             if (kilos_brutos <= tara)
@@ -119,6 +137,46 @@ namespace Packing
                 return false;
             }
             return true;
+        }
+        N_Recepcion recepcion1 = new N_Recepcion();  //Para encabezado y detalle
+
+
+        private void AgregarEncabezado()
+        {
+            string fecha = DateTime.Now.ToString("s");
+
+            //    T Format Specifier      de-DE Culture                                 17:04:32
+            //    T Format Specifier      en-US Culture                               5:04:32 PM
+            //    T Format Specifier      es-ES Culture                                 17:04:32
+            //    T Format Specifier      fr-FR Culture                                 17:04:32
+            string hora = DateTime.Now.ToString("HH: mm:ss");
+
+            //Random rnd = new Random();
+            //int lote = rnd.Next(1, 99999);
+
+            recepcion1.Encabezado = new E_Recepcion_Encabezado();
+            recepcion1.Encabezado.Cliente = recepcionDetalleSublote.Cliente;
+            recepcion1.Encabezado.ID_Cliente = recepcionDetalleSublote.ID_Cliente;
+            recepcion1.Encabezado.Productor = recepcionDetalleSublote.Productor;
+            recepcion1.Encabezado.Codigo_Productor = recepcionDetalleSublote.Codigo_Productor;
+            recepcion1.Encabezado.Chofer = recepcionDetalleSublote.Chofer;
+            recepcion1.Encabezado.Guia = recepcionDetalleSublote.Guia;
+            recepcion1.Encabezado.ID_Especie = recepcionDetalleSublote.ID_Especie;
+            recepcion1.Encabezado.Especie = recepcionDetalleSublote.Especie;
+            recepcion1.Encabezado.ID_Descarga = recepcionDetalleSublote.ID_Descarga;
+            recepcion1.Encabezado.Descarga = recepcionDetalleSublote.Descarga;
+            recepcion1.Encabezado.Temperatura = recepcionDetalleSublote.Temperatura;
+            recepcion1.Encabezado.ID_Destino = recepcionDetalleSublote.ID_Destino;
+            recepcion1.Encabezado.Destino = recepcionDetalleSublote.Destino;
+            recepcion1.Encabezado.Responsable = sesion.Nombre + " " + sesion.Apellido;
+            recepcion1.Encabezado.ID_Tipo = "0"; // recepcionDetalleSublote.id_tipo;
+            recepcion1.Encabezado.Tipo = "0";// recepcionDetalleSublote.Tipo;
+
+            recepcion1.Encabezado.Fecha = fecha;
+            recepcion1.Encabezado.Hora = hora;
+            //lote se obtiene en agregar encabezado
+            // recepcion1.Encabezado.Lote = lote.ToString();
+            recepcion1.Encabezado.Cantidad_Pallets = "0";
         }
 
         N_Exportacion exportacion1 = new N_Exportacion();
@@ -135,20 +193,21 @@ namespace Packing
 
             N_Bandeja bandeja1 = new N_Bandeja();
             N_Pallet pallet1 = new N_Pallet();
-            N_Recepcion recepcion1 = new N_Recepcion();
+            
 
             try
             {
-                pesoBandeja = bandeja1.Peso(recepcionDetalleSublote.ID_bandeja);            
-                pesoPallet = pallet1.Peso(recepcionDetalleSublote.ID_Pallet);
+
+                pesoBandeja = bandeja1.Peso(cmbBandeja.SelectedValue.ToString());            
+                pesoPallet = pallet1.Peso(cmbTipoPallet.SelectedValue.ToString());
 
                 item_posicion = recepcion1.Posicion_Pallet(recepcionDetalleSublote.ID_Registro); //PENDIENTE: obtener la ultima posicion y agregar siguiente
 
                 recepcion1.Detalle = new E_Recepcion_Detalle();
                 recepcion1.Detalle.ID_Recepcion = recepcionDetalleSublote.ID_Registro;
                 recepcion1.Detalle.Item = item_posicion.ToString(); //obtener de la base de datos el ultimo registro                
-                recepcion1.Detalle.ID_bandeja = recepcionDetalleSublote.ID_bandeja;
-                recepcion1.Detalle.Bandeja = recepcionDetalleSublote.Bandeja;
+                recepcion1.Detalle.ID_bandeja = cmbBandeja.SelectedValue.ToString();
+                recepcion1.Detalle.Bandeja = cmbBandeja.Text;
                 recepcion1.Detalle.Peso_Bandeja = pesoBandeja.ToString();
                 recepcion1.Detalle.Cantidad_Bandejas = txtCantidad_Bandejas.Text;
                 recepcion1.Detalle.Folio = txtFolioNuevo.Text;
@@ -159,10 +218,10 @@ namespace Packing
                 recepcion1.Detalle.Tara = tara.ToString();
                 pesoNeto = Convert.ToDouble(txtKilos.Text) - tara;
                 recepcion1.Detalle.Kilos_Netos = pesoNeto.ToString();
-                recepcion1.Detalle.ID_Pallet = recepcionDetalleSublote.ID_Pallet;
-                recepcion1.Detalle.Tipo_Pallet = recepcionDetalleSublote.Tipo_Pallet;
+                recepcion1.Detalle.ID_Pallet = cmbTipoPallet.SelectedValue.ToString();
+                recepcion1.Detalle.Tipo_Pallet = cmbTipoPallet.Text;
                 recepcion1.Detalle.Peso_Pallet = pesoPallet.ToString();
-                peso_promedio = pesoNeto / Convert.ToInt32(recepcion1.Detalle.Cantidad_Bandejas);
+                peso_promedio = pesoNeto / Convert.ToInt32(txtCantidad_Bandejas.Text);
                 peso_promedio = Math.Round(peso_promedio, 2);//redondea a 2 decimales 
                 recepcion1.Detalle.Peso_Promedio = peso_promedio.ToString();
                 recepcion1.Detalle.Posicion = item_posicion.ToString(); // numero_actual.ToString();
@@ -184,16 +243,17 @@ namespace Packing
                             if (estado == true)
                             {
                                 txtKilos.Text = string.Empty;
-                                txtFolio.Text = string.Empty;
+                                txtGuia.Text = string.Empty;
                                 txtCantidad_Bandejas.Text = string.Empty;
-                                txtFolio.Focus();
-                                txtFolio.Text = string.Empty;
+                                txtGuia.Focus();
+                                cmbBandeja.SelectedIndex = -1;
+                                cmbTipoPallet.SelectedIndex = -1;
                                 txtKilos.Text = string.Empty;
                                 txtCantidad_Bandejas.Text = string.Empty;
                                 txtFolioNuevo.Text = string.Empty;
 
                                 //PENDIENTE: Imprimir formato recepcion
-                                //Imprimir_Recepcion(recepcion1.Encabezado, recepcion1.Detalle);
+                                Imprimir_Recepcion(recepcion1.Encabezado, recepcion1.Detalle);
                                 return true;
                             }
                             else
@@ -235,9 +295,84 @@ namespace Packing
             }
         }
 
+        private void Imprimir_Recepcion(E_Recepcion_Encabezado encabezado_recepcion, E_Recepcion_Detalle detalle_recepcion)
+        {
+
+
+            DateTime fecha = DateTime.ParseExact(encabezado_recepcion.Fecha, "yyyy-MM-ddTHH:mm:ss",
+                                       System.Globalization.CultureInfo.InvariantCulture);
+
+            N_Imprimir imprimir = new N_Imprimir();
+            N_Recepcion_Encabezado encabezado = new N_Recepcion_Encabezado()
+            {
+                Chofer = encabezado_recepcion.Chofer,
+                Codigo_productor = encabezado_recepcion.Codigo_Productor,
+                Correlativo = encabezado_recepcion.Lote,
+                Exportador = encabezado_recepcion.Cliente,
+                //    s Format Specifier      de-DE Culture                      2008-10-01T17:04:32
+
+                Fecha = fecha.ToShortDateString(),
+                Guia_despacho = encabezado_recepcion.Guia,
+                Hora = encabezado_recepcion.Hora,
+                Productor = encabezado_recepcion.Productor,
+                Especie = encabezado_recepcion.Especie,
+                Responsable = encabezado_recepcion.Responsable,
+                Tipo = encabezado_recepcion.Tipo
+            };
+            N_Recepcion_Detalle detalle = new N_Recepcion_Detalle()
+            {
+                Cantidad = detalle_recepcion.Cantidad_Bandejas,
+                Comentario = detalle_recepcion.Comentario,
+                Descarga = encabezado_recepcion.Descarga,
+                Destino = encabezado_recepcion.Destino,
+                Folio = detalle_recepcion.Folio,
+                Hora_recepcion = detalle_recepcion.Hora,
+                Kilos_brutos = detalle_recepcion.Kilos_Brutos,
+                Tara = detalle_recepcion.Tara,
+                Kilos_netos = detalle_recepcion.Kilos_Netos,
+                Numero_lote = encabezado_recepcion.Lote,
+                Peso_pallet = detalle_recepcion.Peso_Pallet,
+                Peso_promedio = detalle_recepcion.Peso_Promedio,
+                Peso_rejillas = detalle_recepcion.Peso_Bandeja,
+                Responsable = encabezado_recepcion.Responsable,
+                Sub_lote = "",
+                Temperatura = encabezado_recepcion.Temperatura,
+                Tipo_rejilla_bandeja = detalle_recepcion.Bandeja,
+                Posicion_Pallet = detalle_recepcion.Item
+            };
+            N_Coordenadas_Impresion coordenadas = new N_Coordenadas_Impresion()
+            {
+                PosicionX = "-3",
+                PosicionY = "0"
+            };
+            imprimir.Detalle = detalle;
+            imprimir.Encabezado = encabezado;
+            imprimir.Fuente = new Font("Verdana", 10);
+            imprimir.Coordenadas_impresion = coordenadas;
+            imprimir.Numero = "0"; // numero_actual.ToString();
+            imprimir.Limite = encabezado_recepcion.Cantidad_Pallets;
+            PrintDocument pd = new PrintDocument();
+
+            pd.PrintPage += new PrintPageEventHandler(imprimir.PrintTextFileHandlerRecepcion);
+            pd.DefaultPageSettings.PrinterSettings.PrinterName = N_Impresora.Nombre;
+            if (pd.PrinterSettings.IsValid)
+            {
+                pd.Print();
+            }
+            else
+            {
+                MessageBox.Show("Impresora " + N_Impresora.Nombre + " no esta instalada");
+                return;
+            }
+            //para utilizar con printdialog
+            //printDialog1.Document = pd;
+            //Llamar al printDialog 
+            //if (printDialog1.ShowDialog() == DialogResult.OK) pd.Print();
+        }
+
         void LimpiarCampos()
         {
-            txtFolio.Text = "";
+            txtGuia.Text = "";
             txtFolioNuevo.Text = "";
             txtKilos.Text = "";
             txtCantidad_Bandejas.Text ="";
@@ -260,53 +395,58 @@ namespace Packing
         private void frmSubLote_Load(object sender, EventArgs e)
         {
             lblUsuario.Text = "Usuario Activo: " + sesion.Usuario;
+
+            cmbBandeja.DataSource = bandeja1.Lista();
+            cmbBandeja.DisplayMember = "descripcion";
+            cmbBandeja.ValueMember = "codigo";
+            cmbBandeja.SelectedIndex = -1;
+
+            cmbTipoPallet.DataSource = pallet1.Lista();
+            cmbTipoPallet.DisplayMember = "descripcion";
+            cmbTipoPallet.ValueMember = "codigo";
+            cmbTipoPallet.SelectedIndex = -1;
         }
 
-        private void txtFolio_TextChanged(object sender, EventArgs e)
-        {
+        //private void txtFolio_KeyPress(object sender, KeyPressEventArgs e)
+        //{
+        //    if (e.KeyChar == Convert.ToChar(Keys.Enter))
+        //    {
+        //        if (txtFolio.Text.Trim() == "")
+        //        {
+        //           MessageBox.Show ("Ingrese Folio","Folio");
+        //            return;
+        //        }
 
-        }
-
-        private void txtFolio_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == Convert.ToChar(Keys.Enter))
-            {
-                if (txtFolio.Text.Trim() == "")
-                {
-                   MessageBox.Show ("Ingrese Folio","Folio");
-                    return;
-                }
-
-               // N_Recepcion recepcion1 = new N_Recepcion();
+        //       // N_Recepcion recepcion1 = new N_Recepcion();
               
               
                 
-                recepcionDetalleSublote.Folio = txtFolio.Text;
-                if (recepcionSublote.Existe_Pallet_recepcion(recepcionDetalleSublote) == true) //pallet se utiliza para asignarle datos
-                {
-                    if (recepcionDetalleSublote.Estado == "0")
-                    {
-                        MessageBox .Show ( "Pallet no ha sido asignado","Folio");
-                        return;
-                    }
+        //        recepcionDetalleSublote.Folio = txtFolio.Text;
+        //        if (recepcionSublote.Existe_Pallet_recepcion(recepcionDetalleSublote) == true) //pallet se utiliza para asignarle datos
+        //        {
+        //            if (recepcionDetalleSublote.Estado == "0")
+        //            {
+        //                MessageBox .Show ( "Pallet no ha sido asignado","Folio");
+        //                return;
+        //            }
 
-                    lblExportador.Text = recepcionDetalleSublote.Cliente;
-                    lblProductor.Text = recepcionDetalleSublote.Productor;
-                    lblEspecie.Text = recepcionDetalleSublote.Especie;
-                    lblDestino.Text = recepcionDetalleSublote.Destino;
-                    lblDescarga.Text = recepcionDetalleSublote.Descarga;
-                    lblGuia.Text = recepcionDetalleSublote.Guia;
-                    lblKilosNetos.Text = recepcionDetalleSublote.Kilos_Netos;
-                    txtKilos.Focus();
+        //            lblExportador.Text = recepcionDetalleSublote.Cliente;
+        //            lblProductor.Text = recepcionDetalleSublote.Productor;
+        //            lblEspecie.Text = recepcionDetalleSublote.Especie;
+        //            lblDestino.Text = recepcionDetalleSublote.Destino;
+        //            lblDescarga.Text = recepcionDetalleSublote.Descarga;
+        //            lblGuia.Text = recepcionDetalleSublote.Guia;
+        //            lblKilosNetos.Text = recepcionDetalleSublote.Kilos_Netos;
+        //            txtKilos.Focus();
                     
-                }
-                else
-                {
-                    MessageBox.Show ("Pallet no Existe");                    
-                }
+        //        }
+        //        else
+        //        {
+        //            MessageBox.Show ("Pallet no Existe");                    
+        //        }
 
-            }
-        }
+        //    }
+        //}
 
         private void txtKilos_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -332,6 +472,52 @@ namespace Packing
                 //el resto de teclas pulsadas se desactivan
                 e.Handled = true;
             }
+        }
+
+        private void txtGuia_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                if (txtGuia.Text.Trim() == "")
+                {
+                    MessageBox.Show("Ingrese Guia", "Guia");
+                    return;
+                }
+
+                // N_Recepcion recepcion1 = new N_Recepcion();
+
+
+
+                recepcionDetalleSublote.Guia = txtGuia.Text;
+                if (recepcionSublote.Existe_Guia_recepcion(recepcionDetalleSublote) == true) //pallet se utiliza para asignarle datos
+                {
+                    //if (recepcionDetalleSublote.Estado == "0")
+                    //{
+                    //    MessageBox.Show("Pallet no ha sido asignado", "Folio");
+                    //    return;
+                    //}
+
+                    lblExportador.Text = recepcionDetalleSublote.Cliente;
+                    lblProductor.Text = recepcionDetalleSublote.Productor;
+                    lblEspecie.Text = recepcionDetalleSublote.Especie;
+                    lblDestino.Text = recepcionDetalleSublote.Destino;
+                    lblDescarga.Text = recepcionDetalleSublote.Descarga;
+                    lblGuia.Text = recepcionDetalleSublote.Guia;
+                    //lblKilosNetos.Text = recepcionDetalleSublote.Kilos_Netos;
+                    txtKilos.Focus();
+
+                }
+                else
+                {
+                    MessageBox.Show("Guia no Existe");
+                }
+
+            }
+        }
+
+        private void txtGuia_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
