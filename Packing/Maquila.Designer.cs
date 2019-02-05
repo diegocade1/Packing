@@ -144,6 +144,7 @@
             this.txtGuia.Name = "txtGuia";
             this.txtGuia.Size = new System.Drawing.Size(143, 26);
             this.txtGuia.TabIndex = 3;
+            this.txtGuia.TextChanged += new System.EventHandler(this.txtGuia_TextChanged);
             // 
             // txtOrdenEmbalaje
             // 

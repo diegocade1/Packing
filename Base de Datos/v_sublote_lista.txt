@@ -1,0 +1,9 @@
+select t1.ID AS ID_Recepcion,t1.ID_cliente AS ID_Cliente,t3.Cliente AS cliente,t1.ID_productor AS ID_Productor,
+t4.descripcion AS productor,t1.chofer AS chofer,t1.guia AS guia,t1.ID_especie AS ID_Especie,t5.Descripcion AS especie,t1.ID_descarga AS ID_Descarga,t6.Descripcion AS descarga,t1.temperatura AS temperatura,t1.ID_destino AS ID_Destino,
+t7.Descripcion AS destino,t1.fecha AS fecha,t1.lote AS lote,t1.id_tipo,t8.descripcion tipo from tbl_recepcion t1 
+left join tbl_cliente t3 on t3.ID = t1.ID_cliente
+left join tbl_productor t4 on t4.codigo = t1.ID_productor
+left join tbl_especie t5 on t5.ID_especie = t1.ID_especie
+left join tbl_tipodescarga t6 on t6.ID = t1.ID_descarga
+left join tbl_destinorecepcion t7 on t7.ID = t1.ID_destino
+left join tbl_tiporecepcion t8 on t8.ID = t1.ID_tipo

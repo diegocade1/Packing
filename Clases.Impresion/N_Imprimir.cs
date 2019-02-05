@@ -225,8 +225,19 @@ namespace Clases.Impresion
             xPos = (float)(38 + Convert.ToDouble(coordenadas_impresion.PosicionX)) * fuente.GetHeight(g);
             yPos = (float)linea * fuente.GetHeight(g);
             g.DrawString(detalle_recepcion.Peso_rejillas, fuente, Brushes.Black, xPos, yPos, new StringFormat()); //Peso Rejillas
+            //Mensaje sublote codicional solo si es sublote                                                                                                      //
+            linea += 3.5;  //linea igual suma aunque no se imprima mensaje sublote porque avanzan los siguientes campos (folio,lote)            
+            if (!string.IsNullOrEmpty(detalle_recepcion.Sub_lote))
+            {
+                if (detalle_recepcion.Sub_lote != "0")
+                {
+                    xPos = (float)(12 + Convert.ToDouble(coordenadas_impresion.PosicionX)) * fuente.GetHeight(g);
+                    yPos = (float)linea * fuente.GetHeight(g);
+                    g.DrawString("***************** S U B L O T E **********************", fuente, Brushes.Black, xPos, yPos, new StringFormat());  // Mensaje SUBLOTE
+                }
+            }
             //Move to next line
-            linea += 5.5;
+            linea += 2.0;// 5.5 anterior a mensaje sublote;
             xPos = (float)(38 + Convert.ToDouble(coordenadas_impresion.PosicionX)) * fuente.GetHeight(g);
             yPos = (float)linea * fuente.GetHeight(g);
             g.DrawString(detalle_recepcion.Folio, fuente, Brushes.Black, xPos, yPos, new StringFormat());       // Pallet(#/Lote)

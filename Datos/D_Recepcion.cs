@@ -638,8 +638,8 @@ namespace Datos
             MySqlCommand cmd;
             List<E_Descarga> lista1 = new List<E_Descarga>();
 
-            query = "insert into tbl_recepcion_detalle(ID_Recepcion,item,ID_Bandeja,bandeja,peso_Bandeja,cantidad_bandejas,folio,kilos_brutos_original,kilos_brutos,tara,kilos_netos,id_pallet,tipo_pallet,peso_pallet,posicion,usuario) values " +
-                    "(@ID_Recepcion,@item,@ID_Bandeja,@bandeja,@peso_Bandeja,@cantidad_bandejas,@folio,@kilos_brutos_original,@kilos_brutos,@tara,@kilos_netos,@id_pallet,@tipo_pallet,@peso_pallet,@posicion,@usuario)";
+            query = "insert into tbl_recepcion_detalle(ID_Recepcion,item,ID_Bandeja,bandeja,peso_Bandeja,cantidad_bandejas,folio,kilos_brutos_original,kilos_brutos,tara,kilos_netos,id_pallet,tipo_pallet,peso_pallet,posicion,usuario,sublote) values " +
+                    "(@ID_Recepcion,@item,@ID_Bandeja,@bandeja,@peso_Bandeja,@cantidad_bandejas,@folio,@kilos_brutos_original,@kilos_brutos,@tara,@kilos_netos,@id_pallet,@tipo_pallet,@peso_pallet,@posicion,@usuario,@sublote)";
             try
             {
                 if (Conectar() == true)
@@ -661,6 +661,7 @@ namespace Datos
                     cmd.Parameters.AddWithValue("@peso_pallet", detalle1.Peso_Pallet.Replace(",", "."));
                     cmd.Parameters.AddWithValue("@posicion", detalle1.Posicion);
                     cmd.Parameters.AddWithValue("@usuario", detalle1.Usuario);
+                    cmd.Parameters.AddWithValue("@sublote", detalle1.Sublote);
                     cmd.ExecuteNonQuery();
 
                 }

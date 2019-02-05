@@ -47,6 +47,7 @@ namespace Entity
         public string Posicion { get; set; }
         public string Usuario { get; set; }
         public string Fecha { get; set; }
+        public string Sublote { get; set; }
 
     }
 
@@ -132,9 +133,12 @@ namespace Entity
         public string Peso_Promedio { get; set; }
         public string Comentario { get; set; }
         public string Estado { get; set; }
+        public string ID_Tipo { get; set; }
+        public string Tipo { get; set; }
+
 
     }
 
-    
+
 
 }

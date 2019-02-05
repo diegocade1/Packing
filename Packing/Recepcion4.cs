@@ -189,7 +189,7 @@ namespace Packing
                 recepcion1.Detalle.Tipo_Pallet = cmbTipoPallet.Text;
                 recepcion1.Detalle.Peso_Pallet = pesoPallet.ToString();
 
-                recepcion1.Agregar_Detalle();
+                recepcion1.Agregar_Detalle("recepcion");
                 Imprimir_Recepcion(recepcion1.Encabezado, recepcion1.Detalle);
 
             }
@@ -323,7 +323,7 @@ namespace Packing
                     recepcion1.Detalle.Tipo_Pallet = cmbTipoPallet.Text;
                     recepcion1.Detalle.Peso_Pallet = pesoPallet.ToString();
                     
-                    recepcion1.Agregar_Detalle();
+                    recepcion1.Agregar_Detalle("recepcion");
                     Imprimir_Recepcion(recepcion1.Encabezado, recepcion1.Detalle);
                            
             }

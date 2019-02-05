@@ -92,7 +92,7 @@ namespace Datos
             MySqlDataReader rst;
 
 
-            query = "select * from v_recepcion_lista3 where Guia = '" + recepcion.Guia + "'";
+            query = "select * from v_sublote_lista where Guia = '" + recepcion.Guia + "'";
             try
             {
                 if (Conectar())
@@ -116,8 +116,10 @@ namespace Datos
                         recepcion.ID_Destino = rst["ID_destino"].ToString();
                         recepcion.Destino = rst["destino"].ToString();
                         recepcion.Fecha = rst["fecha"].ToString();                        
-                        recepcion.Lote = rst["lote"].ToString();                  
-                     
+                        recepcion.Lote = rst["lote"].ToString();
+                        recepcion.ID_Tipo = rst["ID_Tipo"].ToString();
+                        recepcion.Tipo = rst["tipo"].ToString();
+
                         estado = true;
                     }
                     else

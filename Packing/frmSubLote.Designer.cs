@@ -49,16 +49,16 @@
             this.txtGuia = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtKilos = new System.Windows.Forms.TextBox();
             this.btnLista = new System.Windows.Forms.Button();
+            this.txtFolioNuevo = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.cmbTipoPallet = new System.Windows.Forms.ComboBox();
             this.txtCantidad_Bandejas = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.txtKilos = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.cmbBandeja = new System.Windows.Forms.ComboBox();
-            this.txtFolioNuevo = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -68,7 +68,7 @@
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(128, 31);
-            this.btnCancelar.TabIndex = 5;
+            this.btnCancelar.TabIndex = 7;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
@@ -79,7 +79,7 @@
             this.btnAceptar.Margin = new System.Windows.Forms.Padding(4);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(128, 31);
-            this.btnAceptar.TabIndex = 4;
+            this.btnAceptar.TabIndex = 6;
             this.btnAceptar.Text = "Aceptar";
             this.btnAceptar.UseVisualStyleBackColor = true;
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
@@ -269,8 +269,17 @@
             this.groupBox1.Location = new System.Drawing.Point(12, 310);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(629, 137);
-            this.groupBox1.TabIndex = 27;
+            this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
+            // 
+            // txtKilos
+            // 
+            this.txtKilos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtKilos.Location = new System.Drawing.Point(6, 90);
+            this.txtKilos.MaxLength = 10;
+            this.txtKilos.Name = "txtKilos";
+            this.txtKilos.Size = new System.Drawing.Size(132, 26);
+            this.txtKilos.TabIndex = 3;
             // 
             // btnLista
             // 
@@ -280,6 +289,15 @@
             this.btnLista.TabIndex = 75;
             this.btnLista.Text = "Lista";
             this.btnLista.UseVisualStyleBackColor = true;
+            // 
+            // txtFolioNuevo
+            // 
+            this.txtFolioNuevo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFolioNuevo.Location = new System.Drawing.Point(351, 90);
+            this.txtFolioNuevo.MaxLength = 30;
+            this.txtFolioNuevo.Name = "txtFolioNuevo";
+            this.txtFolioNuevo.Size = new System.Drawing.Size(160, 26);
+            this.txtFolioNuevo.TabIndex = 5;
             // 
             // label14
             // 
@@ -330,15 +348,6 @@
             this.label6.TabIndex = 55;
             this.label6.Text = "Cantidad Bandejas";
             // 
-            // txtKilos
-            // 
-            this.txtKilos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtKilos.Location = new System.Drawing.Point(6, 90);
-            this.txtKilos.MaxLength = 10;
-            this.txtKilos.Name = "txtKilos";
-            this.txtKilos.Size = new System.Drawing.Size(132, 26);
-            this.txtKilos.TabIndex = 3;
-            // 
             // label16
             // 
             this.label16.AutoSize = true;
@@ -358,15 +367,6 @@
             this.cmbBandeja.Name = "cmbBandeja";
             this.cmbBandeja.Size = new System.Drawing.Size(221, 28);
             this.cmbBandeja.TabIndex = 1;
-            // 
-            // txtFolioNuevo
-            // 
-            this.txtFolioNuevo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFolioNuevo.Location = new System.Drawing.Point(351, 90);
-            this.txtFolioNuevo.MaxLength = 30;
-            this.txtFolioNuevo.Name = "txtFolioNuevo";
-            this.txtFolioNuevo.Size = new System.Drawing.Size(160, 26);
-            this.txtFolioNuevo.TabIndex = 5;
             // 
             // frmSubLote
             // 

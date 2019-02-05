@@ -71,8 +71,21 @@ namespace Negocio
 
 
 
-            public bool Agregar_Detalle()
+        public bool Agregar_Detalle(string tipoProceso )
         {
+
+            if (tipoProceso == "sublote")
+            {
+                
+                Detalle.Sublote = recepcion1.Correlativo("sublote", "sublote").ToString();
+            }
+            else
+            {
+                Detalle.Sublote = "0";
+            }
+
+
+
             return recepcion1.Agregar_Detalle(Detalle);
         }
 

@@ -1011,5 +1011,10 @@ namespace Packing
                 }
             }
         }
+
+        private void txtGuia_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

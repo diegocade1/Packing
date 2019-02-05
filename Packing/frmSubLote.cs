@@ -169,9 +169,9 @@ namespace Packing
             recepcion1.Encabezado.ID_Destino = recepcionDetalleSublote.ID_Destino;
             recepcion1.Encabezado.Destino = recepcionDetalleSublote.Destino;
             recepcion1.Encabezado.Responsable = sesion.Nombre + " " + sesion.Apellido;
-            recepcion1.Encabezado.ID_Tipo = "0"; // recepcionDetalleSublote.id_tipo;
-            recepcion1.Encabezado.Tipo = "0";// recepcionDetalleSublote.Tipo;
-
+            recepcion1.Encabezado.ID_Tipo = recepcionDetalleSublote.ID_Tipo; // recepcionDetalleSublote.id_tipo;
+            recepcion1.Encabezado.Tipo = recepcionDetalleSublote.Tipo;// recepcionDetalleSublote.Tipo;
+            recepcion1.Encabezado.Lote = "0"; // recepcionDetalleSublote.Lote; //04-02-201 va en cero por solicitud de cliente en reunion puede que cambie en produccion
             recepcion1.Encabezado.Fecha = fecha;
             recepcion1.Encabezado.Hora = hora;
             //lote se obtiene en agregar encabezado
@@ -226,7 +226,7 @@ namespace Packing
                 recepcion1.Detalle.Peso_Promedio = peso_promedio.ToString();
                 recepcion1.Detalle.Posicion = item_posicion.ToString(); // numero_actual.ToString();
                                                   //recepcion1.detalle.posion = contador posicion numero actual
-
+                //para validar que no se repita folio
                 exportacion1.Exportacion = new E_Exportacion();
                 exportacion1.Exportacion.Folio = txtFolioNuevo.Text;
 
@@ -239,7 +239,8 @@ namespace Packing
                     {
                         if (!comercial1.Validacion_Folio())
                         {
-                            bool estado = recepcion1.Agregar_Detalle();
+                            
+                            bool estado = recepcion1.Agregar_Detalle("sublote");
                             if (estado == true)
                             {
                                 txtKilos.Text = string.Empty;
@@ -251,6 +252,7 @@ namespace Packing
                                 txtKilos.Text = string.Empty;
                                 txtCantidad_Bandejas.Text = string.Empty;
                                 txtFolioNuevo.Text = string.Empty;
+                                
 
                                 //PENDIENTE: Imprimir formato recepcion
                                 Imprimir_Recepcion(recepcion1.Encabezado, recepcion1.Detalle);
@@ -335,10 +337,11 @@ namespace Packing
                 Peso_promedio = detalle_recepcion.Peso_Promedio,
                 Peso_rejillas = detalle_recepcion.Peso_Bandeja,
                 Responsable = encabezado_recepcion.Responsable,
-                Sub_lote = "",
+                Sub_lote = detalle_recepcion.Sublote,
                 Temperatura = encabezado_recepcion.Temperatura,
                 Tipo_rejilla_bandeja = detalle_recepcion.Bandeja,
-                Posicion_Pallet = detalle_recepcion.Item
+                Posicion_Pallet = detalle_recepcion.Item                 
+                
             };
             N_Coordenadas_Impresion coordenadas = new N_Coordenadas_Impresion()
             {
@@ -504,7 +507,7 @@ namespace Packing
                     lblDescarga.Text = recepcionDetalleSublote.Descarga;
                     lblGuia.Text = recepcionDetalleSublote.Guia;
                     //lblKilosNetos.Text = recepcionDetalleSublote.Kilos_Netos;
-                    txtKilos.Focus();
+                    cmbBandeja.Focus();
 
                 }
                 else

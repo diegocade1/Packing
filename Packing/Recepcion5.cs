@@ -472,7 +472,7 @@ namespace Packing
                     {
                         if (!comercial1.Validacion_Folio())
                         {
-                            bool estado = recepcion1.Agregar_Detalle();
+                            bool estado = recepcion1.Agregar_Detalle("recepcion");
                             if (estado == true)
                             {
                                 txtKilos.Text = string.Empty;
