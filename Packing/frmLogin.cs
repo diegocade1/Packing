@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Configuration;
 
 namespace Packing
 {
@@ -26,6 +27,8 @@ namespace Packing
         private void frmLogin_Load(object sender, EventArgs e)
         {
             Login = false;
+            N_MySQL con = new N_MySQL();
+            con.setConnectionString(ConfigurationManager.ConnectionStrings["MiConexion"].ConnectionString);
         }
 
         private void btnLogin_Click(object sender, EventArgs e)

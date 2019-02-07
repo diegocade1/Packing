@@ -46,7 +46,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="E_Encabezado.cs" />
     <Compile Include="Leer_ArchivoExcel.cs" />
     <Compile Include="N_Bandeja.cs" />
     <Compile Include="N_Cliente.cs" />
@@ -58,6 +57,7 @@
     <Compile Include="N_Impresora.cs" />
     <Compile Include="N_Maquila.cs" />
     <Compile Include="N_Mercado.cs" />
+    <Compile Include="N_MySQL.cs" />
     <Compile Include="N_Pallet.cs" />
     <Compile Include="N_Productor.cs" />
     <Compile Include="N_Recepcion.cs" />

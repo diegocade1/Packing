@@ -11,9 +11,9 @@ namespace Datos
     {
         static string _StringConexion="";
 
-        public string StringConexion 
+        public static string StringConexion 
         {
-            get => _StringConexion;  //Leee desde Variable sArchivo
+            get => _StringConexion;  //Lee desde Variable sArchivo
             set => _StringConexion = value;  //escribe a variable sArchivo
         }
 
@@ -21,21 +21,21 @@ namespace Datos
 
         public bool Conectar()
         {          
-            string sConexionMysql;
+            //string sConexionMysql;
             bool estado = false;
-            if (StringConexion.Trim() == "" )
-            {
-                sConexionMysql = "server = pcl-pc;user id = atc;password = 123atc;port = 3306;database = packing5";
-                //sConexionMysql = "server = localhost;user id = admin;password = 57706897;port = 3306;database = packing";
-            }
-            else
-            {
-                sConexionMysql = StringConexion;
-            }
+            //if (StringConexion.Trim() == "" )
+            //{
+            //    sConexionMysql = "server = pcl-pc;user id = atc;password = 123atc;port = 3306;database = packing5";
+            //    //sConexionMysql = "server = localhost;user id = admin;password = 57706897;port = 3306;database = packing";
+            //}
+            //else
+            //{
+            //    sConexionMysql = StringConexion;
+            //}
             try
             {
                 MySQLConexion = new MySqlConnection();
-                MySQLConexion.ConnectionString = sConexionMysql;
+                MySQLConexion.ConnectionString = StringConexion;
                 MySQLConexion.Open();
                 estado = true;
             }

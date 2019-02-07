@@ -73,7 +73,7 @@
             this.panelCampos.Controls.Add(this.label5);
             this.panelCampos.Controls.Add(this.label8);
             this.panelCampos.Controls.Add(this.cmbBandeja);
-            this.panelCampos.Location = new System.Drawing.Point(983, 12);
+            this.panelCampos.Location = new System.Drawing.Point(982, 12);
             this.panelCampos.Name = "panelCampos";
             this.panelCampos.Size = new System.Drawing.Size(885, 91);
             this.panelCampos.TabIndex = 29;

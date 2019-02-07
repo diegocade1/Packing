@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Negocio;
 using Entity;
+using System.Configuration;
+using System.Collections.Specialized;
 
 namespace Packing
 {
@@ -136,9 +138,23 @@ namespace Packing
 
         private void MDIContenedorPrincipal_Load(object sender, EventArgs e)
         {
+            NameValueCollection settings = ConfigurationManager.GetSection("ImpresorasGroup/Impresora") as NameValueCollection;
+
+            if (settings != null)
+            {
+                foreach (string key in settings.AllKeys)
+                {
+                    Console.Write(key + ": " + settings[key]);
+                    bool predeterminada = Convert.ToBoolean(settings[key]);
+                    if(predeterminada!=false)
+                    {
+                        N_Impresora.Nombre = key;
+                    }
+                }
+            }
             this.Text = this.Text + " " + Usuario.Usuario;
             //N_Impresora.Nombre = "Microsoft Print to PDF";
-            N_Impresora.Nombre = "OKI DATA CORP ML320/1TURBO";
+            //N_Impresora.Nombre = "OKI DATA CORP ML320/1TURBO";
         }
 
         private void exportacionToolStripMenuItem_Click(object sender, EventArgs e)
@@ -300,6 +316,11 @@ namespace Packing
             frmMantenedorVariedad frmObj = new frmMantenedorVariedad(Usuario);
             frmObj.MdiParent = this;
             frmObj.Show();
+        }
+
+        private void printSetupToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
