@@ -1,0 +1,2 @@
+select t2.ID_cliente AS ID_Cliente,t2.ID_productor AS ID_Productor,t1.folio AS folio,t1.bandeja AS bandeja,t1.kilos_netos AS kilos_netos,t1.cantidad_bandejas AS cantidad_bandejas,t1.estado AS estado, t2.guia from tbl_recepcion_detalle t1 
+left join tbl_recepcion t2 on t2.ID = t1.ID_Recepcion

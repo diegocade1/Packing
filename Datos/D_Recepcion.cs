@@ -762,7 +762,7 @@ namespace Datos
             
             MySqlCommand cmd;
 
-            query = "SELECT * FROM packing.tbl_recepcion where guia = @guia and id_productor = @productor;";
+            query = "SELECT * FROM tbl_recepcion where guia = @guia and id_productor = @productor;";
             try
             {
                 cmd = new MySqlCommand(query, MySQLConexion);
@@ -786,7 +786,9 @@ namespace Datos
                         Fecha = rst["fecha"].ToString(),
                         Lote = rst["lote"].ToString(),
                         Cantidad_Pallets = rst["cantidad_pallets"].ToString(),
-                        ID_Tipo = rst["id_tipo"].ToString(),                     
+                        ID_Tipo = rst["id_tipo"].ToString(), 
+                      
+                        
                     };
                     Desconectar();
                     return encabezado1;
@@ -975,6 +977,7 @@ namespace Datos
                         pallet.Peso = Convert.ToDouble(rst["kilos_netos"]);
                         pallet.Cajas = Convert.ToInt32 (rst["cantidad_bandejas"]);
                         pallet.Estado = rst["estado"].ToString();
+                        pallet.Guia = rst["guia"].ToString();
                         estado = true;
                     }
                     else

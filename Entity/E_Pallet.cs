@@ -16,6 +16,7 @@ namespace Entity
         public int Cajas { get; set; }
         public double Total_Peso { get; set; }
         public string Estado { get; set; }
+        public string Guia { get; set; }
         
     }
 

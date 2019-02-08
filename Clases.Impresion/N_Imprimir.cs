@@ -33,7 +33,8 @@ namespace Clases.Impresion
         public string Total_sobrepeso_pote { get; set; }
         public string Total_peso_teorico { get; set; }
         public string Rendimiento_Porcentaje { get; set; }
-        public string Numero
+        public string Descuento_Sublote { get; set; }
+        public string Numero            
         {
             get { return numero; }
             set { numero = value; }
@@ -501,6 +502,14 @@ namespace Clases.Impresion
                 //PENDIENTE obtener desde negocio kilos merma
                 //total_kilos_merma = total_kilos_merma + Convert.ToDouble(detalle.Kilos_merma);
                 tempLinea += 1.5;
+            }
+            if (Descuento_Sublote != "0")
+            {
+                tempLinea = 29.6 + Convert.ToDouble(coordenadas_impresion.PosicionY); ;
+                xPos = (float)(13.5 + Convert.ToDouble(coordenadas_impresion.PosicionX)) * fuente.GetHeight(g);
+                yPos = (float)tempLinea * fuente.GetHeight(g);
+                Descuento_Sublote = "Sublote: " + Descuento_Sublote;
+                g.DrawString(Descuento_Sublote, fuente, Brushes.Black, xPos, yPos, new StringFormat()); // total kilos netos
             }
             //Move to next line
             string slinea = linea.ToString();

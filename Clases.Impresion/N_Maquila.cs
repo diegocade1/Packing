@@ -76,6 +76,7 @@ namespace Clases.Impresion
             get { return _folio_pallet; }
             set { _folio_pallet = value; }
         }
+       
     }
 
     public class N_Maquila_Cajas

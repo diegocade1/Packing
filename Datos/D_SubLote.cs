@@ -141,6 +141,46 @@ namespace Datos
             return estado;
         }
 
+        public decimal Descuento_por_Guia(string ID_Productor,string guia)
+        {
+            decimal valor;
+            string query;
+            MySqlDataReader rst;
+
+            query = "select sum(kilos_netos) from v_recepcion_lista where Guia = '" + guia + "' and ID_Productor = " + ID_Productor + " and uso_descuento = 0";
+            try
+            {
+                if (Conectar())
+                {
+                    MySqlCommand cmd = new MySqlCommand(query, MySQLConexion);
+                    rst = cmd.ExecuteReader();
+                    if (rst.Read())
+                    {
+                        valor = Convert.ToDecimal(rst[0]);
+                    }
+                    else
+                    {
+                        valor = 0;
+                    }
+
+                    rst.Close();
+                    cmd.Dispose();
+                    Desconectar();
+                }
+                else
+                {
+                    valor = 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                Mensaje = ex.Message;
+                valor = 0;
+
+            }
+            return valor;
+        }
+
 
 
     }

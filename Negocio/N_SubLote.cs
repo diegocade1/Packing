@@ -37,6 +37,15 @@ namespace Negocio
 
         }
 
-       
+        public Decimal Descuento_por_Guia(string id_Productor,string guia)
+        {
+
+            return subloteRecepcion.Descuento_por_Guia(id_Productor, guia);
+
+        }
+
+
+
+
     }
 }

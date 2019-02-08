@@ -67,7 +67,7 @@ namespace Datos
             MySqlCommand cmd;
 
 
-            query = "SELECT * FROM tbl_maquila where documento = @guia";
+            query = "SELECT * FROM tbl_maquila where documento = @guia and id_productor = @id_productor";
 
             try
             {
@@ -75,6 +75,7 @@ namespace Datos
                 {
                     cmd = new MySqlCommand(query, MySQLConexion);
                     cmd.Parameters.AddWithValue("@guia", maquila1.Documento);
+                    cmd.Parameters.AddWithValue("@id_productor", maquila1.ID_Productor);
                     MySqlDataReader reader = cmd.ExecuteReader();
                     if (reader.Read())
                     {
