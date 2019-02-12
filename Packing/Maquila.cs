@@ -123,8 +123,11 @@ namespace Packing
             maquila1.Maquila.Documento = txtGuia.Text;
             
             //descuento de sublote si existe
-            total_kilos_descuentos_sublote = sublote1.Descuento_por_Guia(maquila1.Maquila.ID_Productor, maquila1.Maquila.Documento); 
-
+            total_kilos_descuentos_sublote = sublote1.Descuento_por_Guia(maquila1.Maquila.ID_Productor, maquila1.Maquila.Documento);
+            if (total_kilos_descuentos_sublote != 0)
+            {
+                sublote1.ModificarSublotePorGuia(maquila1.Maquila.ID_Productor, maquila1.Maquila.Documento);
+            }
             maquila1.Maquila.Fecha_Recepcion = dtpFechaRecepcion.Value;
             maquila1.Maquila.Fecha_Proceso = dtpFechaProceso.Value;
             maquila1.Maquila.OrdenEmbalaje = txtOrdenEmbalaje.Text;
@@ -1090,6 +1093,14 @@ namespace Packing
                 MessageBox.Show("Guia no existe en recepcion", "Buscar Guia");
                 txtGuia.Text = "";
                 lblLote.Text = "";
+            }
+        }
+
+        private void txtGuia_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                txtOrdenEmbalaje.Focus();
             }
         }
     }

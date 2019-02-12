@@ -147,7 +147,7 @@ namespace Datos
             string query;
             MySqlDataReader rst;
 
-            query = "select sum(kilos_netos) from v_recepcion_lista where Guia = '" + guia + "' and ID_Productor = " + ID_Productor + " and uso_descuento = 0";
+            query = "select coalesce(sum(kilos_netos),0) from v_recepcion_lista where Guia = '" + guia + "' and ID_Productor = " + ID_Productor + " and sublote <> 0 and uso_descuento = 0";
             try
             {
                 if (Conectar())
@@ -181,7 +181,36 @@ namespace Datos
             return valor;
         }
 
+        public bool ModificarSublotePorGuia(string ID_Productor, string guia)
+        { 
+            string query;
+            MySqlCommand cmd;
 
+            query = "update tbl_recepcion_detalle T1 left join tbl_recepcion T2 on T1.ID_Recepcion = T2.ID set T1.uso_descuento = true WHERE T2.guia = @guia and T2.ID_productor = @ID_productor and sublote <> 0";
+
+
+            try
+            {
+                if (Conectar() == true)
+                {
+                    cmd = new MySqlCommand(query, MySQLConexion);
+                    cmd.Parameters.AddWithValue("@ID_productor", ID_Productor);
+                    cmd.Parameters.AddWithValue("@guia", guia);
+                  
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                Mensaje = ex.Message;
+                Desconectar();
+                return false;
+            }
+
+            Desconectar();
+            return true;
+        }
 
     }
 }

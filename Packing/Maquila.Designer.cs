@@ -144,6 +144,7 @@
             this.txtGuia.Name = "txtGuia";
             this.txtGuia.Size = new System.Drawing.Size(143, 26);
             this.txtGuia.TabIndex = 3;
+            this.txtGuia.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtGuia_KeyPress);
             this.txtGuia.Leave += new System.EventHandler(this.txtGuia_Leave);
             // 
             // txtOrdenEmbalaje

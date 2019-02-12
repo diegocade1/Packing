@@ -503,7 +503,7 @@ namespace Clases.Impresion
                 //total_kilos_merma = total_kilos_merma + Convert.ToDouble(detalle.Kilos_merma);
                 tempLinea += 1.5;
             }
-            if (Descuento_Sublote != "0")
+            if (Descuento_Sublote != "0,000" && Descuento_Sublote != "0")
             {
                 tempLinea = 29.6 + Convert.ToDouble(coordenadas_impresion.PosicionY); ;
                 xPos = (float)(13.5 + Convert.ToDouble(coordenadas_impresion.PosicionX)) * fuente.GetHeight(g);

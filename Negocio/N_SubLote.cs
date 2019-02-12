@@ -44,6 +44,11 @@ namespace Negocio
 
         }
 
+        public bool ModificarSublotePorGuia(string ID_Productor, string guia)
+        {
+            return subloteRecepcion.ModificarSublotePorGuia(ID_Productor, guia);
+        }
+
 
 
 
