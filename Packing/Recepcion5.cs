@@ -138,6 +138,15 @@ namespace Packing
                 return;
             }
 
+            if (pallet1.ValidaPrefijoActivo(txtFolio.Text) == false)
+            {
+                MessageBox.Show("Folio Ingresado no contiene prefijo activo [" + pallet1.GetPrefijoActivo() + "]");
+                txtFolio.SelectAll();
+                txtFolio.Focus();
+                return;
+            }                   
+
+
             //    G Format Specifier      de-DE Culture                      01.10.2008 17:04:32
             //    G Format Specifier      en-US Culture                     10/1/2008 5:04:32 PM
             //    G Format Specifier      es-ES Culture                      01/10/2008 17:04:32
@@ -147,7 +156,7 @@ namespace Packing
             //    s Format Specifier      es-ES Culture                      2008-10-01T17:04:32
             //    s Format Specifier      fr-FR Culture                      2008-10-01T17:04:32
             //string fecha = DateTime.Now.ToString("G");
-            string fecha = DateTime.Now.ToString("s");
+                string fecha = DateTime.Now.ToString("s");
 
             //    T Format Specifier      de-DE Culture                                 17:04:32
             //    T Format Specifier      en-US Culture                               5:04:32 PM

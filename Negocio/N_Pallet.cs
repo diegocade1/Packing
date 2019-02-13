@@ -41,5 +41,37 @@ namespace Negocio
             D_Pallet pallet = new D_Pallet();
             return pallet.Borrar(pallet1);
         }
+
+        public void SetPrefijoActivo()
+        {
+            D_Pallet pallet = new D_Pallet();
+            E_Pallet_General.Prefijo = pallet.GetPrefijoActivo();
+        }
+
+        public string GetPrefijoActivo()
+        {
+            return E_Pallet_General.Prefijo;
+        }
+
+        public bool ValidaPrefijoActivo(string folio)
+        {
+            string prefijoActivo = GetPrefijoActivo();
+            int largo = prefijoActivo.Length;
+            if (largo > -1)
+            {
+                string prefijoFolio = folio.Substring(0, largo);
+                if (prefijoActivo != prefijoFolio)
+                {
+                    return false;
+                }
+                else
+                    return true;
+            }
+            else
+            {
+                //retorna verdadero para que lo acepte sin validar pensar en dejar opcion para que no valide
+                return true;
+            }
+        }
     }
 }

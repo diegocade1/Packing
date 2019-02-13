@@ -182,5 +182,44 @@ namespace Datos
             Desconectar();
             return true;
         }
+
+        public string GetPrefijoActivo()
+        {
+
+            string query;
+            string prefijo="";
+            MySqlCommand cmd;
+
+            query = "select * from tbl_Prefijo Where estado = true";
+            try
+            {
+                if (Conectar() == true)
+                {
+                    cmd = new MySqlCommand(query, MySQLConexion);
+                    MySqlDataReader reader = cmd.ExecuteReader();
+
+                    if (reader.Read())
+                    {
+                        try
+                        {
+                            prefijo = reader["prefijo"].ToString();
+                        }
+                        catch
+                        {
+                            prefijo  = "";
+                        }
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Mensaje = ex.Message;
+                Desconectar();
+            }
+
+            Desconectar();
+            return prefijo;
+        }
     }
 }
