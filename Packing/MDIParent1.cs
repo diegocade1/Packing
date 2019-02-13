@@ -320,7 +320,13 @@ namespace Packing
 
         private void printSetupToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            frmImpresora frmObj = new frmImpresora(Usuario);
+            frmObj.MdiParent = this;
+            frmObj.Show();
+            frmObj.FormClosed += new System.Windows.Forms.FormClosedEventHandler(MDIContenedorPrincipal_Load);
 
         }
+
+
     }
 }

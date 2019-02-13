@@ -62,6 +62,12 @@
     <Compile Include="Exportacion.Designer.cs">
       <DependentUpon>Exportacion.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmImpresora.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmImpresora.Designer.cs">
+      <DependentUpon>frmImpresora.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmLista.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -255,6 +261,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Exportacion.resx">
       <DependentUpon>Exportacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmImpresora.resx">
+      <DependentUpon>frmImpresora.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLista.resx">
       <DependentUpon>frmLista.cs</DependentUpon>
