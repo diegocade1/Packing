@@ -10,7 +10,7 @@ namespace Datos
 {
     public class D_Tipo_Usuario_Permiso : D_MySQL
     {
-        string Mensaje { get; set; }
+        public string Mensaje { get; set; }
         public List<E_Tipo_Usuario_Permiso> Lista()
         {
 
@@ -67,6 +67,7 @@ namespace Datos
                     cmd = new MySqlCommand(query, MySQLConexion);
                     cmd.Parameters.AddWithValue("@id", tipo_usuario);
                     MySqlDataReader reader = cmd.ExecuteReader();
+
                     if (reader.Read())
                     {
                         E_Tipo_Usuario_Permiso usuario1 = new E_Tipo_Usuario_Permiso

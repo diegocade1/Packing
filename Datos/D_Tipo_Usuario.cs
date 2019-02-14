@@ -10,7 +10,8 @@ namespace Datos
 {
     public class D_Tipo_Usuario : D_MySQL
     {
-        string Mensaje { get; set; }
+        public string Mensaje { get; set; }
+        public string UltimoId { set; get; }
         public List<E_Tipo_Usuario> Lista()
         {
 
@@ -111,6 +112,7 @@ namespace Datos
                     cmd.Parameters.AddWithValue("@descripcion", usuario1.Descripcion);
 
                     cmd.ExecuteNonQuery();
+                    UltimoId = Ultimo_ID().ToString();
                 }
             }
             catch (Exception ex)
@@ -177,6 +179,41 @@ namespace Datos
             }
             Desconectar();
             return true;
+        }
+
+        public int Ultimo_ID()
+        {
+            string aux = "0";
+            string query;
+            MySqlDataReader rst;
+
+
+            query = "select LAST_INSERT_ID() as UltimoID";
+            try
+            {
+
+                MySqlCommand cmd = new MySqlCommand(query, MySQLConexion);
+                rst = cmd.ExecuteReader();
+                if (rst.Read())
+                {
+                    aux = rst["UltimoID"].ToString();
+                }
+                else
+                {
+                    aux = "0";
+                }
+                rst.Close();
+                cmd.Dispose();
+
+
+            }
+            catch (Exception ex)
+            {
+                Mensaje = ex.Message;
+                aux = "0";
+            }
+
+            return Convert.ToInt32(aux);
         }
     }
 }

@@ -12,11 +12,11 @@ using System.Windows.Forms;
 
 namespace Packing
 {
-    public partial class frmVentaModificar : Form
+    public partial class frmVentanaModificar : Form
     {
         E_Usuario sesion { set; get; }
         N_Recepcion recepcion1 { set; get; }
-        public frmVentaModificar(E_Usuario usuario, N_Recepcion recepcion)
+        public frmVentanaModificar(E_Usuario usuario, N_Recepcion recepcion)
         {
             InitializeComponent();
             sesion = usuario;

@@ -10,6 +10,8 @@ namespace Negocio
 {
     public class N_Tipo_Usuario
     {
+        public string UltimoID { set; get; }
+        public string Mensaje { get; set; }
         public List<E_Tipo_Usuario> Lista()
         {
             D_Tipo_Usuario usuario = new D_Tipo_Usuario();
@@ -19,7 +21,16 @@ namespace Negocio
         public bool Agregar(E_Tipo_Usuario usuario1)
         {
             D_Tipo_Usuario usuario = new D_Tipo_Usuario();
-            return usuario.Agregar(usuario1);
+            if(usuario.Agregar(usuario1))
+            {
+                UltimoID = usuario.UltimoId;
+                return true;
+            }
+            else
+            {
+                Mensaje = usuario.Mensaje;
+                return false;
+            }
         }
 
         public bool Modificar(E_Tipo_Usuario usuario1)

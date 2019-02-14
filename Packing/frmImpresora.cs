@@ -17,7 +17,7 @@ namespace Packing
 {
     public partial class frmImpresora : Form
     {
-        public E_Usuario sesion { get; set; }
+        private E_Usuario sesion { get; set; }
         public frmImpresora(E_Usuario usuario)
         {
             InitializeComponent();

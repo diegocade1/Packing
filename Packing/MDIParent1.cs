@@ -153,6 +153,12 @@ namespace Packing
                 }
             }
             this.Text = this.Text + " " + Usuario.Usuario;
+            //HideAll();
+            //N_Tipo_Usuario_Permiso permisos_usuario_actual1 = new N_Tipo_Usuario_Permiso();
+            //E_Tipo_Usuario_Permiso permisos_usuario_actual2 = permisos_usuario_actual1.ObtenerPermisos(Usuario.Tipo_usuario);
+            //string[] arrayPermisos = permisos_usuario_actual2.Permisos.Split(',');
+            //ShowControlsByPermission(arrayPermisos);
+
             //N_Impresora.Nombre = "Microsoft Print to PDF";
             //N_Impresora.Nombre = "OKI DATA CORP ML320/1TURBO";
         }
@@ -327,6 +333,65 @@ namespace Packing
 
         }
 
+        private Control GetControlPorNombre(string Name)
+        {
+            foreach (Control c in this.Controls)
+                if (c.Name == Name)
+                    return c;
 
+            return null;
+        }
+
+        private ToolStripMenuItem getToolStripMenuItemPorNombre(string nameParam)
+        {
+            ToolStripMenuItem item = menuStrip.Items
+                .Find(nameParam, true)
+                .OfType<ToolStripMenuItem>()
+                .SingleOrDefault();
+            return item;
+        }
+
+        private void tipoDeUsuarioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmMantenedorTipoUsuario frmObj = new frmMantenedorTipoUsuario(Usuario);
+            frmObj.MdiParent = this;
+            frmObj.Show();
+        }
+
+        private void HideAll()
+        {
+            foreach (Control c in this.Controls)
+            {
+                if(c.Name != "statusStrip")
+                {
+                    c.Visible = false;//or true.
+                }              
+            }
+        }
+
+        private void ShowControlsByPermission(string [] array)
+        {
+            foreach (string permiso in array)
+            {
+                if(permiso.ToLower().Trim().Contains("strip"))
+                {
+                    Control control = GetControlPorNombre(permiso);
+                    if (control != null)
+                    {
+                        control.Visible = true;
+                    }
+                }
+            }
+
+            foreach (string permiso in array)
+            {
+                ToolStripMenuItem item = getToolStripMenuItemPorNombre(permiso);
+                if (item != null)
+                {
+                    item.Visible = true;
+                }
+            }
+
+        }
     }
 }
