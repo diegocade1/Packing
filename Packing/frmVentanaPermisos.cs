@@ -77,5 +77,23 @@ namespace Packing
             permisosFrm = permisos;
             Close();
         }
+
+        private void cbSeleccionarTodo_CheckedChanged(object sender, EventArgs e)
+        {
+            if(cbSeleccionarTodo.Checked!=false)
+            {
+                for (int i = 0; i < clbPermisos.Items.Count; i++)
+                {
+                        clbPermisos.SetItemChecked(i, true);
+                }
+            }
+            else
+            {
+                for (int i = 0; i < clbPermisos.Items.Count; i++)
+                {
+                    clbPermisos.SetItemChecked(i, false);
+                }
+            }
+        }
     }
 }

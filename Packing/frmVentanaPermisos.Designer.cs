@@ -31,6 +31,7 @@
             this.clbPermisos = new System.Windows.Forms.CheckedListBox();
             this.btnConfirmar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
+            this.cbSeleccionarTodo = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // clbPermisos
@@ -38,7 +39,7 @@
             this.clbPermisos.FormattingEnabled = true;
             this.clbPermisos.Location = new System.Drawing.Point(12, 25);
             this.clbPermisos.Name = "clbPermisos";
-            this.clbPermisos.Size = new System.Drawing.Size(776, 319);
+            this.clbPermisos.Size = new System.Drawing.Size(776, 289);
             this.clbPermisos.TabIndex = 0;
             // 
             // btnConfirmar
@@ -63,11 +64,24 @@
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
+            // cbSeleccionarTodo
+            // 
+            this.cbSeleccionarTodo.AutoSize = true;
+            this.cbSeleccionarTodo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbSeleccionarTodo.Location = new System.Drawing.Point(22, 320);
+            this.cbSeleccionarTodo.Name = "cbSeleccionarTodo";
+            this.cbSeleccionarTodo.Size = new System.Drawing.Size(139, 22);
+            this.cbSeleccionarTodo.TabIndex = 3;
+            this.cbSeleccionarTodo.Text = "Seleccionar todo";
+            this.cbSeleccionarTodo.UseVisualStyleBackColor = true;
+            this.cbSeleccionarTodo.CheckedChanged += new System.EventHandler(this.cbSeleccionarTodo_CheckedChanged);
+            // 
             // frmVentanaPermisos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.cbSeleccionarTodo);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnConfirmar);
             this.Controls.Add(this.clbPermisos);
@@ -75,6 +89,7 @@
             this.Text = "frmVentanaPermisos";
             this.Load += new System.EventHandler(this.frmVentanaPermisos_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -83,5 +98,6 @@
         private System.Windows.Forms.CheckedListBox clbPermisos;
         private System.Windows.Forms.Button btnConfirmar;
         private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.CheckBox cbSeleccionarTodo;
     }
 }
