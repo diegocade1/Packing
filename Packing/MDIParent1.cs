@@ -161,6 +161,12 @@ namespace Packing
 
             //N_Impresora.Nombre = "Microsoft Print to PDF";
             //N_Impresora.Nombre = "OKI DATA CORP ML320/1TURBO";
+
+            //asignar prefijo general para validar
+           
+            N_Pallet pallet1 = new N_Pallet();
+            pallet1.SetPrefijoActivo();
+
         }
 
         private void exportacionToolStripMenuItem_Click(object sender, EventArgs e)

@@ -46,4 +46,9 @@ namespace Entity
         public double Kilos_Netos { get; set; }
     }
 
+    public class E_Pallet_General
+    {
+        public static string Prefijo { get; set; } 
+    }
+
 }
