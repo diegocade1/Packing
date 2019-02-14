@@ -27,7 +27,11 @@ namespace Packing
         {
             if(permisosFrm != "lblIDTipoUsuario")
             {
+                N_Tipo_Usuario_Permiso tipo_usuario1 = new N_Tipo_Usuario_Permiso();
+                E_Tipo_Usuario_Permiso obj = tipo_usuario1.ObtenerPermisos(permisosFrm);
+                permisosFrm = obj.Permisos;
                 LlenarLista();
+                LlenarListaPermisosExistentes();
             }
             else
             {
@@ -38,10 +42,13 @@ namespace Packing
 
         private void LlenarLista()
         {
+            int index = 0;
             N_Permiso permiso1 = new N_Permiso();
             foreach(E_Permiso obj in permiso1.Lista())
             {
-                clbPermisos.Items.Insert(0, new { Text = obj.Nombre, Value = obj.Llave });
+                //clbPermisos.Items.Insert(0, new { Text = obj.Nombre, Value = obj.Llave });
+                clbPermisos.Items.Insert(index, new { Text = obj.Nombre, Value = obj.Llave });
+                index++;
             }
 
             clbPermisos.DisplayMember = "Text";
@@ -76,6 +83,21 @@ namespace Packing
             Console.WriteLine(permisos);
             permisosFrm = permisos;
             Close();
+        }
+
+        private void LlenarListaPermisosExistentes()
+        {
+            string[] array = permisosFrm.Split(',');
+            for (int i = 0; i < clbPermisos.Items.Count; i++)
+            {
+                for(int j = 0; j < array.Length;j++)
+                {
+                    if (clbPermisos.Items[i].ToString().Contains(array[j]))
+                    {
+                        clbPermisos.SetItemChecked(i, true);
+                    }
+                }
+            }
         }
 
         private void cbSeleccionarTodo_CheckedChanged(object sender, EventArgs e)
