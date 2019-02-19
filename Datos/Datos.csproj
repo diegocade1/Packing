@@ -55,6 +55,7 @@
     <Compile Include="D_Maquila.cs" />
     <Compile Include="D_MySQL.cs" />
     <Compile Include="D_Pallet.cs" />
+    <Compile Include="D_Permiso.cs" />
     <Compile Include="D_Productor.cs" />
     <Compile Include="D_Recepcion.cs" />
     <Compile Include="D_SubLote.cs" />

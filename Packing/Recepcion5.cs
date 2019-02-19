@@ -769,7 +769,7 @@ namespace Packing
             recepcion2.Encabezado = recepcion1.Obtener_Encabezado();
             if (recepcion2.Encabezado != null)
             {
-                frmVentaModificar frm = new frmVentaModificar(sesion, recepcion2);
+                frmVentanaModificar frm = new frmVentanaModificar(sesion, recepcion2);
                 frm.ShowDialog();
                 recepcion2.Encabezado = recepcion1.Obtener_Encabezado();
                 txtTotalPallets.Text = recepcion2.Encabezado.Cantidad_Pallets;

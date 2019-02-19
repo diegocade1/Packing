@@ -1,6 +1,6 @@
 ﻿namespace Packing
 {
-    partial class frmVentaModificar
+    partial class frmVentanaModificar
     {
         /// <summary>
         /// Required designer variable.

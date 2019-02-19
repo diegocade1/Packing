@@ -51,6 +51,7 @@
     <Compile Include="E_Exportacion.cs" />
     <Compile Include="E_Maquila.cs" />
     <Compile Include="E_Pallet.cs" />
+    <Compile Include="E_Permiso.cs" />
     <Compile Include="E_Productor.cs" />
     <Compile Include="E_Recepcion.cs" />
     <Compile Include="E_TipoArmado.cs" />
