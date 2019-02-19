@@ -1,6 +1,6 @@
 /*
 SQLyog Community Edition- MySQL GUI v6.07
-Host - 5.6.21-log : Database - packing2
+Host - 5.6.21-log : Database - packing
 *********************************************************************
 Server version : 5.6.21-log
 */
@@ -9,7 +9,7 @@ Server version : 5.6.21-log
 
 /*!40101 SET SQL_MODE=''*/;
 
-create database if not exists `packing2`;
+create database if not exists `packing`;
 
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
@@ -42,7 +42,7 @@ CREATE TABLE `tbl_cliente` (
   `Codigo` varchar(50) NOT NULL,
   `Cliente` varchar(50) NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=1730 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1772 DEFAULT CHARSET=utf8;
 
 /*Data for the table `tbl_cliente` */
 
@@ -1269,6 +1269,14 @@ insert  into `tbl_cliente`(`ID`,`Codigo`,`Cliente`) values (1726,'2218','Cliente
 insert  into `tbl_cliente`(`ID`,`Codigo`,`Cliente`) values (1727,'2219','Cliente 1219');
 insert  into `tbl_cliente`(`ID`,`Codigo`,`Cliente`) values (1728,'111','clieten111');
 insert  into `tbl_cliente`(`ID`,`Codigo`,`Cliente`) values (1729,'222','cliente222');
+insert  into `tbl_cliente`(`ID`,`Codigo`,`Cliente`) values (1764,'1010','Cliente de Prueba 1');
+insert  into `tbl_cliente`(`ID`,`Codigo`,`Cliente`) values (1765,'1111','Cliente de Prueba 2');
+insert  into `tbl_cliente`(`ID`,`Codigo`,`Cliente`) values (1766,'1214','Cliente de Prueba 3');
+insert  into `tbl_cliente`(`ID`,`Codigo`,`Cliente`) values (1767,'1216','Cliente de Prueba 4');
+insert  into `tbl_cliente`(`ID`,`Codigo`,`Cliente`) values (1768,'1220','Cliente de Prueba 5');
+insert  into `tbl_cliente`(`ID`,`Codigo`,`Cliente`) values (1769,'1222','Cliente de Prueba 6');
+insert  into `tbl_cliente`(`ID`,`Codigo`,`Cliente`) values (1770,'1224','Cliente de Prueba 7');
+insert  into `tbl_cliente`(`ID`,`Codigo`,`Cliente`) values (1771,'1226','Cliente de Prueba 8');
 
 /*Table structure for table `tbl_comercial` */
 
@@ -1280,7 +1288,6 @@ CREATE TABLE `tbl_comercial` (
   `ID_Productor` bigint(20) DEFAULT NULL,
   `ID_Especie` bigint(20) DEFAULT NULL,
   `ID_Tipo` bigint(20) DEFAULT NULL,
-  `Total_Pallet` int(11) DEFAULT NULL,
   `ID_Bandeja` bigint(20) DEFAULT NULL,
   `ID_Pallet` bigint(20) DEFAULT NULL,
   `kilos_Brutos` decimal(10,3) DEFAULT NULL,
@@ -1292,28 +1299,36 @@ CREATE TABLE `tbl_comercial` (
   `fecha_sistema` datetime DEFAULT CURRENT_TIMESTAMP,
   `estado` varchar(10) DEFAULT '0',
   `Maquila` varchar(50) DEFAULT NULL,
+  `usuario` varchar(15) NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
 
 /*Data for the table `tbl_comercial` */
 
-insert  into `tbl_comercial`(`ID`,`ID_Cliente`,`ID_Productor`,`ID_Especie`,`ID_Tipo`,`Total_Pallet`,`ID_Bandeja`,`ID_Pallet`,`kilos_Brutos`,`tara`,`kilos_netos`,`cantidad_bandejas`,`folio`,`fecha`,`fecha_sistema`,`estado`,`Maquila`) values (1,6,1,1,1,100,1,1,'1000.000','100.000','900.000',50,'GQ123','2018-12-24T19:12:13',NULL,'1','35');
-insert  into `tbl_comercial`(`ID`,`ID_Cliente`,`ID_Productor`,`ID_Especie`,`ID_Tipo`,`Total_Pallet`,`ID_Bandeja`,`ID_Pallet`,`kilos_Brutos`,`tara`,`kilos_netos`,`cantidad_bandejas`,`folio`,`fecha`,`fecha_sistema`,`estado`,`Maquila`) values (2,6,1,1,2,100,1,1,'1000.000','50.000','950.000',50,'GS123','2018-12-24T19:14:37',NULL,'1','35');
-insert  into `tbl_comercial`(`ID`,`ID_Cliente`,`ID_Productor`,`ID_Especie`,`ID_Tipo`,`Total_Pallet`,`ID_Bandeja`,`ID_Pallet`,`kilos_Brutos`,`tara`,`kilos_netos`,`cantidad_bandejas`,`folio`,`fecha`,`fecha_sistema`,`estado`,`Maquila`) values (3,6,1,1,1,100,1,1,'100.000',NULL,NULL,10,'FC0044','2018-12-27T01:30:39',NULL,'0',NULL);
-insert  into `tbl_comercial`(`ID`,`ID_Cliente`,`ID_Productor`,`ID_Especie`,`ID_Tipo`,`Total_Pallet`,`ID_Bandeja`,`ID_Pallet`,`kilos_Brutos`,`tara`,`kilos_netos`,`cantidad_bandejas`,`folio`,`fecha`,`fecha_sistema`,`estado`,`Maquila`) values (4,6,1,2,1,10,1,1,'121.000','21.160','99.840',10,'1','2019-01-03T13:31:44',NULL,'1','35');
-insert  into `tbl_comercial`(`ID`,`ID_Cliente`,`ID_Productor`,`ID_Especie`,`ID_Tipo`,`Total_Pallet`,`ID_Bandeja`,`ID_Pallet`,`kilos_Brutos`,`tara`,`kilos_netos`,`cantidad_bandejas`,`folio`,`fecha`,`fecha_sistema`,`estado`,`Maquila`) values (5,6,1,2,1,10,2,1,'122.000','24.060','97.940',11,'2','2019-01-03T13:32:42',NULL,'1','35');
-insert  into `tbl_comercial`(`ID`,`ID_Cliente`,`ID_Productor`,`ID_Especie`,`ID_Tipo`,`Total_Pallet`,`ID_Bandeja`,`ID_Pallet`,`kilos_Brutos`,`tara`,`kilos_netos`,`cantidad_bandejas`,`folio`,`fecha`,`fecha_sistema`,`estado`,`Maquila`) values (6,6,2,6,2,10,1,1,'1211.000','75.160','1135.840',40,'FC11','2019-01-04T00:14:08',NULL,'0','24');
-insert  into `tbl_comercial`(`ID`,`ID_Cliente`,`ID_Productor`,`ID_Especie`,`ID_Tipo`,`Total_Pallet`,`ID_Bandeja`,`ID_Pallet`,`kilos_Brutos`,`tara`,`kilos_netos`,`cantidad_bandejas`,`folio`,`fecha`,`fecha_sistema`,`estado`,`Maquila`) values (7,6,1,6,1,2,1,1,'100.000','21.160','78.840',10,'fcgt555','2019-01-05T01:20:35',NULL,'0',NULL);
-insert  into `tbl_comercial`(`ID`,`ID_Cliente`,`ID_Productor`,`ID_Especie`,`ID_Tipo`,`Total_Pallet`,`ID_Bandeja`,`ID_Pallet`,`kilos_Brutos`,`tara`,`kilos_netos`,`cantidad_bandejas`,`folio`,`fecha`,`fecha_sistema`,`estado`,`Maquila`) values (8,6,1,6,1,2,1,1,'322.000','93.160','228.840',50,'fcg555','2019-01-05T01:20:51',NULL,'0',NULL);
-insert  into `tbl_comercial`(`ID`,`ID_Cliente`,`ID_Productor`,`ID_Especie`,`ID_Tipo`,`Total_Pallet`,`ID_Bandeja`,`ID_Pallet`,`kilos_Brutos`,`tara`,`kilos_netos`,`cantidad_bandejas`,`folio`,`fecha`,`fecha_sistema`,`estado`,`Maquila`) values (9,6,1,6,1,2,2,1,'422.000','234.960','187.040',122,'de333','2019-01-05T01:21:05',NULL,'0',NULL);
-insert  into `tbl_comercial`(`ID`,`ID_Cliente`,`ID_Productor`,`ID_Especie`,`ID_Tipo`,`Total_Pallet`,`ID_Bandeja`,`ID_Pallet`,`kilos_Brutos`,`tara`,`kilos_netos`,`cantidad_bandejas`,`folio`,`fecha`,`fecha_sistema`,`estado`,`Maquila`) values (10,6,1,6,2,2,1,1,'121.000','222.760','-101.760',122,'121','2019-01-05T01:21:54',NULL,'0','33');
-insert  into `tbl_comercial`(`ID`,`ID_Cliente`,`ID_Productor`,`ID_Especie`,`ID_Tipo`,`Total_Pallet`,`ID_Bandeja`,`ID_Pallet`,`kilos_Brutos`,`tara`,`kilos_netos`,`cantidad_bandejas`,`folio`,`fecha`,`fecha_sistema`,`estado`,`Maquila`) values (11,6,1,6,2,1211,1,1,'1233.000','22162.960','-20929.960',12311,'gff','2019-01-05T01:30:08',NULL,'0','24');
-insert  into `tbl_comercial`(`ID`,`ID_Cliente`,`ID_Productor`,`ID_Especie`,`ID_Tipo`,`Total_Pallet`,`ID_Bandeja`,`ID_Pallet`,`kilos_Brutos`,`tara`,`kilos_netos`,`cantidad_bandejas`,`folio`,`fecha`,`fecha_sistema`,`estado`,`Maquila`) values (12,6,2,6,1,10,1,1,'10011.000','21.160','9989.840',10,'Fc001','2019-01-08T12:53:12',NULL,'0',NULL);
-insert  into `tbl_comercial`(`ID`,`ID_Cliente`,`ID_Productor`,`ID_Especie`,`ID_Tipo`,`Total_Pallet`,`ID_Bandeja`,`ID_Pallet`,`kilos_Brutos`,`tara`,`kilos_netos`,`cantidad_bandejas`,`folio`,`fecha`,`fecha_sistema`,`estado`,`Maquila`) values (13,7,4,2,1,10,1,1,'123.330','21.160','102.170',10,'','2019-01-08T13:02:09',NULL,'0',NULL);
-insert  into `tbl_comercial`(`ID`,`ID_Cliente`,`ID_Productor`,`ID_Especie`,`ID_Tipo`,`Total_Pallet`,`ID_Bandeja`,`ID_Pallet`,`kilos_Brutos`,`tara`,`kilos_netos`,`cantidad_bandejas`,`folio`,`fecha`,`fecha_sistema`,`estado`,`Maquila`) values (14,6,1,6,1,3,2,1,'123.340','193.160','-69.820',100,'FC786','2019-01-09T12:04:40','2019-01-09 12:04:40','0',NULL);
-insert  into `tbl_comercial`(`ID`,`ID_Cliente`,`ID_Productor`,`ID_Especie`,`ID_Tipo`,`Total_Pallet`,`ID_Bandeja`,`ID_Pallet`,`kilos_Brutos`,`tara`,`kilos_netos`,`cantidad_bandejas`,`folio`,`fecha`,`fecha_sistema`,`estado`,`Maquila`) values (15,6,1,6,1,3,1,1,'222.200','219.160','3.040',120,'FC6544','2019-01-09T12:05:38','2019-01-09 12:05:38','1','35');
-insert  into `tbl_comercial`(`ID`,`ID_Cliente`,`ID_Productor`,`ID_Especie`,`ID_Tipo`,`Total_Pallet`,`ID_Bandeja`,`ID_Pallet`,`kilos_Brutos`,`tara`,`kilos_netos`,`cantidad_bandejas`,`folio`,`fecha`,`fecha_sistema`,`estado`,`Maquila`) values (16,6,1,6,1,12,1,2,'12231.000','226.100','12004.900',123,'FC655','2019-01-09T15:41:06','2019-01-09 15:41:06','0',NULL);
-insert  into `tbl_comercial`(`ID`,`ID_Cliente`,`ID_Productor`,`ID_Especie`,`ID_Tipo`,`Total_Pallet`,`ID_Bandeja`,`ID_Pallet`,`kilos_Brutos`,`tara`,`kilos_netos`,`cantidad_bandejas`,`folio`,`fecha`,`fecha_sistema`,`estado`,`Maquila`) values (17,6,1,6,1,12,1,1,'123.000','224.560','-101.560',123,'FC555','2019-01-09T15:41:26','2019-01-09 15:41:26','0',NULL);
+insert  into `tbl_comercial`(`ID`,`ID_Cliente`,`ID_Productor`,`ID_Especie`,`ID_Tipo`,`ID_Bandeja`,`ID_Pallet`,`kilos_Brutos`,`tara`,`kilos_netos`,`cantidad_bandejas`,`folio`,`fecha`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (1,6,1,1,1,1,1,'1000.000','100.000','900.000',50,'GQ123','2018-12-24T19:12:13',NULL,'1','53','');
+insert  into `tbl_comercial`(`ID`,`ID_Cliente`,`ID_Productor`,`ID_Especie`,`ID_Tipo`,`ID_Bandeja`,`ID_Pallet`,`kilos_Brutos`,`tara`,`kilos_netos`,`cantidad_bandejas`,`folio`,`fecha`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (2,6,1,1,2,1,1,'1000.000','50.000','950.000',50,'GS123','2018-12-24T19:14:37',NULL,'1','53','');
+insert  into `tbl_comercial`(`ID`,`ID_Cliente`,`ID_Productor`,`ID_Especie`,`ID_Tipo`,`ID_Bandeja`,`ID_Pallet`,`kilos_Brutos`,`tara`,`kilos_netos`,`cantidad_bandejas`,`folio`,`fecha`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (3,6,1,1,1,1,1,'100.000','60.000','40.000',10,'FC0044','2018-12-27T01:30:39',NULL,'1','54','');
+insert  into `tbl_comercial`(`ID`,`ID_Cliente`,`ID_Productor`,`ID_Especie`,`ID_Tipo`,`ID_Bandeja`,`ID_Pallet`,`kilos_Brutos`,`tara`,`kilos_netos`,`cantidad_bandejas`,`folio`,`fecha`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (4,6,1,2,1,1,1,'121.000','21.160','99.840',10,'11','2019-01-03T13:31:44',NULL,'0','35','');
+insert  into `tbl_comercial`(`ID`,`ID_Cliente`,`ID_Productor`,`ID_Especie`,`ID_Tipo`,`ID_Bandeja`,`ID_Pallet`,`kilos_Brutos`,`tara`,`kilos_netos`,`cantidad_bandejas`,`folio`,`fecha`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (5,6,1,2,1,2,1,'122.000','24.060','97.940',11,'22','2019-01-03T13:32:42',NULL,'0','35','');
+insert  into `tbl_comercial`(`ID`,`ID_Cliente`,`ID_Productor`,`ID_Especie`,`ID_Tipo`,`ID_Bandeja`,`ID_Pallet`,`kilos_Brutos`,`tara`,`kilos_netos`,`cantidad_bandejas`,`folio`,`fecha`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (6,6,2,6,2,1,1,'1211.000','75.160','1135.840',40,'FC11','2019-01-04T00:14:08',NULL,'0','24','');
+insert  into `tbl_comercial`(`ID`,`ID_Cliente`,`ID_Productor`,`ID_Especie`,`ID_Tipo`,`ID_Bandeja`,`ID_Pallet`,`kilos_Brutos`,`tara`,`kilos_netos`,`cantidad_bandejas`,`folio`,`fecha`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (7,6,1,6,1,1,1,'100.000','21.160','78.840',10,'fcgt555','2019-01-05T01:20:35',NULL,'0','38','');
+insert  into `tbl_comercial`(`ID`,`ID_Cliente`,`ID_Productor`,`ID_Especie`,`ID_Tipo`,`ID_Bandeja`,`ID_Pallet`,`kilos_Brutos`,`tara`,`kilos_netos`,`cantidad_bandejas`,`folio`,`fecha`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (8,6,1,6,1,1,1,'322.000','93.160','228.840',50,'fcg555','2019-01-05T01:20:51',NULL,'0','39','');
+insert  into `tbl_comercial`(`ID`,`ID_Cliente`,`ID_Productor`,`ID_Especie`,`ID_Tipo`,`ID_Bandeja`,`ID_Pallet`,`kilos_Brutos`,`tara`,`kilos_netos`,`cantidad_bandejas`,`folio`,`fecha`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (9,6,1,6,1,2,1,'422.000','234.960','187.040',122,'de333','2019-01-05T01:21:05',NULL,'0','37','');
+insert  into `tbl_comercial`(`ID`,`ID_Cliente`,`ID_Productor`,`ID_Especie`,`ID_Tipo`,`ID_Bandeja`,`ID_Pallet`,`kilos_Brutos`,`tara`,`kilos_netos`,`cantidad_bandejas`,`folio`,`fecha`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (10,6,1,6,2,1,1,'121.000','222.760','-101.760',122,'121','2019-01-05T01:21:54',NULL,'0','36','');
+insert  into `tbl_comercial`(`ID`,`ID_Cliente`,`ID_Productor`,`ID_Especie`,`ID_Tipo`,`ID_Bandeja`,`ID_Pallet`,`kilos_Brutos`,`tara`,`kilos_netos`,`cantidad_bandejas`,`folio`,`fecha`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (11,6,1,6,2,1,1,'1233.000','22162.960','-20929.960',12311,'gff','2019-01-05T01:30:08',NULL,'0','40','');
+insert  into `tbl_comercial`(`ID`,`ID_Cliente`,`ID_Productor`,`ID_Especie`,`ID_Tipo`,`ID_Bandeja`,`ID_Pallet`,`kilos_Brutos`,`tara`,`kilos_netos`,`cantidad_bandejas`,`folio`,`fecha`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (12,6,2,6,1,1,1,'10011.000','21.160','9989.840',10,'Fc001','2019-01-08T12:53:12',NULL,'0',NULL,'');
+insert  into `tbl_comercial`(`ID`,`ID_Cliente`,`ID_Productor`,`ID_Especie`,`ID_Tipo`,`ID_Bandeja`,`ID_Pallet`,`kilos_Brutos`,`tara`,`kilos_netos`,`cantidad_bandejas`,`folio`,`fecha`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (13,7,4,2,1,1,1,'123.330','21.160','102.170',10,'33','2019-01-08T13:02:09',NULL,'0',NULL,'');
+insert  into `tbl_comercial`(`ID`,`ID_Cliente`,`ID_Productor`,`ID_Especie`,`ID_Tipo`,`ID_Bandeja`,`ID_Pallet`,`kilos_Brutos`,`tara`,`kilos_netos`,`cantidad_bandejas`,`folio`,`fecha`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (14,6,1,6,1,2,1,'123.340','193.160','-69.820',100,'FC786','2019-01-09T12:04:40','2019-01-09 12:04:40','0','43','');
+insert  into `tbl_comercial`(`ID`,`ID_Cliente`,`ID_Productor`,`ID_Especie`,`ID_Tipo`,`ID_Bandeja`,`ID_Pallet`,`kilos_Brutos`,`tara`,`kilos_netos`,`cantidad_bandejas`,`folio`,`fecha`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (15,6,1,6,1,1,1,'222.200','219.160','3.040',120,'FC6544','2019-01-09T12:05:38','2019-01-09 12:05:38','0','35','');
+insert  into `tbl_comercial`(`ID`,`ID_Cliente`,`ID_Productor`,`ID_Especie`,`ID_Tipo`,`ID_Bandeja`,`ID_Pallet`,`kilos_Brutos`,`tara`,`kilos_netos`,`cantidad_bandejas`,`folio`,`fecha`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (16,6,1,6,1,1,2,'12231.000','226.100','12004.900',123,'FC655','2019-01-09T15:41:06','2019-01-09 15:41:06','0',NULL,'');
+insert  into `tbl_comercial`(`ID`,`ID_Cliente`,`ID_Productor`,`ID_Especie`,`ID_Tipo`,`ID_Bandeja`,`ID_Pallet`,`kilos_Brutos`,`tara`,`kilos_netos`,`cantidad_bandejas`,`folio`,`fecha`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (17,6,1,6,1,1,1,'123.000','224.560','-101.560',123,'fc003','2019-01-09T15:41:26','2019-01-09 15:41:26','0',NULL,'');
+insert  into `tbl_comercial`(`ID`,`ID_Cliente`,`ID_Productor`,`ID_Especie`,`ID_Tipo`,`ID_Bandeja`,`ID_Pallet`,`kilos_Brutos`,`tara`,`kilos_netos`,`cantidad_bandejas`,`folio`,`fecha`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (18,6,1,1,1,1,2,'123.000','26.300','96.700',12,'fc010','2019-01-17T16:07:27','2019-01-17 16:07:27','0',NULL,'diegocade');
+insert  into `tbl_comercial`(`ID`,`ID_Cliente`,`ID_Productor`,`ID_Especie`,`ID_Tipo`,`ID_Bandeja`,`ID_Pallet`,`kilos_Brutos`,`tara`,`kilos_netos`,`cantidad_bandejas`,`folio`,`fecha`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (19,6,1,1,1,3,2,'412.000','40.442','371.558',21,'fc011','2019-01-17T16:07:55','2019-01-17 16:07:55','0',NULL,'diegocade');
+insert  into `tbl_comercial`(`ID`,`ID_Cliente`,`ID_Productor`,`ID_Especie`,`ID_Tipo`,`ID_Bandeja`,`ID_Pallet`,`kilos_Brutos`,`tara`,`kilos_netos`,`cantidad_bandejas`,`folio`,`fecha`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (20,6,1,8,1,1,1,'12.000','6.760','5.240',2,'fc555','2019-01-23T11:08:36','2019-01-23 11:08:36','0','42','diegocade');
+insert  into `tbl_comercial`(`ID`,`ID_Cliente`,`ID_Productor`,`ID_Especie`,`ID_Tipo`,`ID_Bandeja`,`ID_Pallet`,`kilos_Brutos`,`tara`,`kilos_netos`,`cantidad_bandejas`,`folio`,`fecha`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (21,6,1,6,1,1,1,'123.000','24.760','98.240',12,'asd1','2019-01-30T16:15:56','2019-01-30 16:15:56','0',NULL,'usuario');
+insert  into `tbl_comercial`(`ID`,`ID_Cliente`,`ID_Productor`,`ID_Especie`,`ID_Tipo`,`ID_Bandeja`,`ID_Pallet`,`kilos_Brutos`,`tara`,`kilos_netos`,`cantidad_bandejas`,`folio`,`fecha`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (22,6,1,6,2,1,1,'100.000','21.160','78.840',10,'FC077','2019-02-04T10:44:46','2019-02-04 10:44:48','0','42','usuario');
+insert  into `tbl_comercial`(`ID`,`ID_Cliente`,`ID_Productor`,`ID_Especie`,`ID_Tipo`,`ID_Bandeja`,`ID_Pallet`,`kilos_Brutos`,`tara`,`kilos_netos`,`cantidad_bandejas`,`folio`,`fecha`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (23,7,4,6,1,1,1,'250.000','93.160','156.840',50,'FC087','2019-02-04T10:46:44','2019-02-04 10:46:45','0',NULL,'usuario');
+insert  into `tbl_comercial`(`ID`,`ID_Cliente`,`ID_Productor`,`ID_Especie`,`ID_Tipo`,`ID_Bandeja`,`ID_Pallet`,`kilos_Brutos`,`tara`,`kilos_netos`,`cantidad_bandejas`,`folio`,`fecha`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (24,7,4,6,1,1,1,'260.000','93.160','166.840',50,'FC0923','2019-02-04T10:47:26','2019-02-04 10:47:26','0',NULL,'usuario');
 
 /*Table structure for table `tbl_correlativo` */
 
@@ -1327,7 +1342,8 @@ CREATE TABLE `tbl_correlativo` (
 
 /*Data for the table `tbl_correlativo` */
 
-insert  into `tbl_correlativo`(`Proceso`,`SubProceso`,`correlativo_disponible`) values ('Recepcion','Recepcion',24);
+insert  into `tbl_correlativo`(`Proceso`,`SubProceso`,`correlativo_disponible`) values ('Recepcion','Recepcion',43);
+insert  into `tbl_correlativo`(`Proceso`,`SubProceso`,`correlativo_disponible`) values ('sublote','sublote',10);
 
 /*Table structure for table `tbl_destinorecepcion` */
 
@@ -1353,16 +1369,18 @@ CREATE TABLE `tbl_embalaje` (
   `descripcion` varchar(50) DEFAULT NULL,
   `peso` decimal(10,3) DEFAULT NULL,
   `potes` int(11) DEFAULT NULL,
+  `ID_cliente` bigint(20) NOT NULL,
   UNIQUE KEY `codigo` (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 /*Data for the table `tbl_embalaje` */
 
-insert  into `tbl_embalaje`(`ID`,`descripcion`,`peso`,`potes`) values (1,'1.1','10.000',4);
-insert  into `tbl_embalaje`(`ID`,`descripcion`,`peso`,`potes`) values (2,'2.2','11.000',35);
-insert  into `tbl_embalaje`(`ID`,`descripcion`,`peso`,`potes`) values (3,'3.3','10.000',50);
-insert  into `tbl_embalaje`(`ID`,`descripcion`,`peso`,`potes`) values (4,'4.4','20.000',40);
-insert  into `tbl_embalaje`(`ID`,`descripcion`,`peso`,`potes`) values (5,'5.5','11.000',30);
+insert  into `tbl_embalaje`(`ID`,`descripcion`,`peso`,`potes`,`ID_cliente`) values (1,'1.1','10.000',4,6);
+insert  into `tbl_embalaje`(`ID`,`descripcion`,`peso`,`potes`,`ID_cliente`) values (2,'2.2','11.000',35,7);
+insert  into `tbl_embalaje`(`ID`,`descripcion`,`peso`,`potes`,`ID_cliente`) values (3,'3.3','10.000',50,6);
+insert  into `tbl_embalaje`(`ID`,`descripcion`,`peso`,`potes`,`ID_cliente`) values (4,'4.4','20.000',40,7);
+insert  into `tbl_embalaje`(`ID`,`descripcion`,`peso`,`potes`,`ID_cliente`) values (5,'5.5','11.000',30,6);
+insert  into `tbl_embalaje`(`ID`,`descripcion`,`peso`,`potes`,`ID_cliente`) values (6,'1.1.1','12.000',13,509);
 
 /*Table structure for table `tbl_especie` */
 
@@ -1373,7 +1391,7 @@ CREATE TABLE `tbl_especie` (
   `Descripcion` varchar(50) NOT NULL,
   `fecha_uso` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`ID_especie`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 
 /*Data for the table `tbl_especie` */
 
@@ -1382,7 +1400,15 @@ insert  into `tbl_especie`(`ID_especie`,`Descripcion`,`fecha_uso`) values (2,'Ce
 insert  into `tbl_especie`(`ID_especie`,`Descripcion`,`fecha_uso`) values (3,'Melon','2018-11-19 13:46:00');
 insert  into `tbl_especie`(`ID_especie`,`Descripcion`,`fecha_uso`) values (4,'Durazno','2018-11-19 13:46:56');
 insert  into `tbl_especie`(`ID_especie`,`Descripcion`,`fecha_uso`) values (5,'Frutilla','2018-11-19 13:47:00');
-insert  into `tbl_especie`(`ID_especie`,`Descripcion`,`fecha_uso`) values (6,'Manzana','2019-01-07 17:41:06');
+insert  into `tbl_especie`(`ID_especie`,`Descripcion`,`fecha_uso`) values (6,'Manzana','2019-02-13 16:57:57');
+insert  into `tbl_especie`(`ID_especie`,`Descripcion`,`fecha_uso`) values (7,'Especie de Prueba 1','2019-01-17 17:22:58');
+insert  into `tbl_especie`(`ID_especie`,`Descripcion`,`fecha_uso`) values (8,'Especie de Prueba 2','2019-01-30 13:56:27');
+insert  into `tbl_especie`(`ID_especie`,`Descripcion`,`fecha_uso`) values (9,'Especie de Prueba 3','2019-01-17 17:23:00');
+insert  into `tbl_especie`(`ID_especie`,`Descripcion`,`fecha_uso`) values (10,'Especie de Prueba 4','2019-01-17 17:23:00');
+insert  into `tbl_especie`(`ID_especie`,`Descripcion`,`fecha_uso`) values (11,'Especie de Prueba 5','2019-01-17 17:23:00');
+insert  into `tbl_especie`(`ID_especie`,`Descripcion`,`fecha_uso`) values (12,'Especie de Prueba 6','2019-01-17 17:23:00');
+insert  into `tbl_especie`(`ID_especie`,`Descripcion`,`fecha_uso`) values (13,'Especie de Prueba 7','2019-01-17 17:23:00');
+insert  into `tbl_especie`(`ID_especie`,`Descripcion`,`fecha_uso`) values (14,'Especie de Prueba 8','2019-01-30 11:45:11');
 
 /*Table structure for table `tbl_etiqueta` */
 
@@ -1398,9 +1424,9 @@ CREATE TABLE `tbl_etiqueta` (
 
 /*Data for the table `tbl_etiqueta` */
 
-insert  into `tbl_etiqueta`(`ID`,`Descripcion`,`ID_especie`,`ID_cliente`) values (1,'Berry Fresh 1',1,1);
-insert  into `tbl_etiqueta`(`ID`,`Descripcion`,`ID_especie`,`ID_cliente`) values (2,'Berry Fresh 2',1,1);
-insert  into `tbl_etiqueta`(`ID`,`Descripcion`,`ID_especie`,`ID_cliente`) values (3,'Berry Fresh 3',1,1);
+insert  into `tbl_etiqueta`(`ID`,`Descripcion`,`ID_especie`,`ID_cliente`) values (1,'Berry Fresh 1',6,6);
+insert  into `tbl_etiqueta`(`ID`,`Descripcion`,`ID_especie`,`ID_cliente`) values (2,'Berry Fresh 2',2,7);
+insert  into `tbl_etiqueta`(`ID`,`Descripcion`,`ID_especie`,`ID_cliente`) values (3,'Berry Fresh 3',1,6);
 
 /*Table structure for table `tbl_exportacion` */
 
@@ -1419,77 +1445,92 @@ CREATE TABLE `tbl_exportacion` (
   `ID_Variedad` bigint(20) DEFAULT NULL,
   `fecha` varchar(50) DEFAULT NULL,
   `cantidad_cajas` bigint(20) DEFAULT NULL,
-  `kilos_netos` decimal(10,3) DEFAULT NULL,
   `documento` varchar(50) DEFAULT NULL,
   `fecha_sistema` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `estado` int(11) NOT NULL DEFAULT '0',
   `Maquila` varchar(50) DEFAULT NULL,
+  `usuario` varchar(15) NOT NULL DEFAULT ' ',
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=62 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=77 DEFAULT CHARSET=utf8;
 
 /*Data for the table `tbl_exportacion` */
 
-insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`kilos_netos`,`documento`,`fecha_sistema`,`estado`,`Maquila`) values (1,6,6,2,1,1,2,'FC001',1,1,'-2025',10,'99.800','1','2018-12-05 12:18:59',1,'35');
-insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`kilos_netos`,`documento`,`fecha_sistema`,`estado`,`Maquila`) values (2,6,6,2,1,1,2,'FC001',2,2,'-2025',50,'99.800','400','2018-12-05 12:19:17',0,'24');
-insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`kilos_netos`,`documento`,`fecha_sistema`,`estado`,`Maquila`) values (3,6,6,2,1,1,2,'FC001',2,2,'-2025',121,'99.800','122','2018-12-05 12:19:27',0,'24');
-insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`kilos_netos`,`documento`,`fecha_sistema`,`estado`,`Maquila`) values (4,6,6,2,1,1,1,'FC001',1,1,'-2025',10,'99.800','1001','2018-12-05 12:21:44',1,'35');
-insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`kilos_netos`,`documento`,`fecha_sistema`,`estado`,`Maquila`) values (5,6,6,2,1,1,1,'FC001',2,1,'-2025',20,'99.800','2001','2018-12-05 12:21:44',0,'24');
-insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`kilos_netos`,`documento`,`fecha_sistema`,`estado`,`Maquila`) values (6,6,6,2,1,1,1,'FC001',3,2,'-2025',30,'99.800','3001','2018-12-05 12:21:44',0,'24');
-insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`kilos_netos`,`documento`,`fecha_sistema`,`estado`,`Maquila`) values (7,6,6,2,1,1,1,'FC001',1,1,'-2025',10,'99.800','1001','2018-12-05 12:24:07',1,'35');
-insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`kilos_netos`,`documento`,`fecha_sistema`,`estado`,`Maquila`) values (8,6,6,2,1,1,1,'FC001',2,1,'-2025',20,'99.800','2001','2018-12-05 12:24:08',0,'24');
-insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`kilos_netos`,`documento`,`fecha_sistema`,`estado`,`Maquila`) values (9,6,6,2,1,1,1,'FC001',3,2,'-2025',30,'99.800','3001','2018-12-05 12:24:08',0,'24');
-insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`kilos_netos`,`documento`,`fecha_sistema`,`estado`,`Maquila`) values (10,6,6,2,1,1,1,'FC001',1,1,'-2025',10,'99.800','1001','2018-12-05 12:24:54',1,'35');
-insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`kilos_netos`,`documento`,`fecha_sistema`,`estado`,`Maquila`) values (11,6,6,2,1,1,1,'FC001',2,1,'-2025',20,'99.800','2001','2018-12-05 12:24:55',0,'24');
-insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`kilos_netos`,`documento`,`fecha_sistema`,`estado`,`Maquila`) values (12,6,6,2,1,1,1,'FC001',3,2,'-2025',30,'99.800','3001','2018-12-05 12:24:55',0,'24');
-insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`kilos_netos`,`documento`,`fecha_sistema`,`estado`,`Maquila`) values (13,6,6,1,1,1,1,'FC001',1,1,'-2025',10,'99.800','1001','2018-12-05 12:30:08',1,'35');
-insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`kilos_netos`,`documento`,`fecha_sistema`,`estado`,`Maquila`) values (14,6,6,1,1,1,1,'FC001',1,2,'-2025',20,'99.800','1002','2018-12-05 12:30:09',1,'35');
-insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`kilos_netos`,`documento`,`fecha_sistema`,`estado`,`Maquila`) values (15,6,6,1,1,1,1,'FC001',1,2,'-2025',30,'99.800','1003','2018-12-05 12:30:09',1,'35');
-insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`kilos_netos`,`documento`,`fecha_sistema`,`estado`,`Maquila`) values (16,6,6,1,1,1,1,'FC001',1,1,'-2025',10,'99.800','1001','2018-12-05 12:30:29',1,'35');
-insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`kilos_netos`,`documento`,`fecha_sistema`,`estado`,`Maquila`) values (17,6,6,1,1,1,1,'FC001',1,2,'-2025',20,'99.800','1002','2018-12-05 12:30:29',1,'35');
-insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`kilos_netos`,`documento`,`fecha_sistema`,`estado`,`Maquila`) values (18,6,6,1,1,1,1,'FC001',1,2,'-2025',30,'99.800','1003','2018-12-05 12:30:29',1,'35');
-insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`kilos_netos`,`documento`,`fecha_sistema`,`estado`,`Maquila`) values (19,6,6,1,1,1,1,'FC001',1,1,'-2025',10,'99.800','1001','2018-12-05 12:31:55',1,'35');
-insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`kilos_netos`,`documento`,`fecha_sistema`,`estado`,`Maquila`) values (20,6,6,1,1,1,1,'FC001',1,2,'-2025',20,'99.800','1002','2018-12-05 12:31:55',1,'35');
-insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`kilos_netos`,`documento`,`fecha_sistema`,`estado`,`Maquila`) values (21,6,6,1,1,1,1,'FC001',1,2,'-2025',30,'99.800','1003','2018-12-05 12:31:55',1,'35');
-insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`kilos_netos`,`documento`,`fecha_sistema`,`estado`,`Maquila`) values (22,6,6,1,1,1,1,'FC001',1,1,'-2025',11,'99.800','11','2018-12-05 12:34:08',1,'35');
-insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`kilos_netos`,`documento`,`fecha_sistema`,`estado`,`Maquila`) values (23,6,6,1,2,1,1,'1211',2,1,'-2025',1231,'99.800','112','2018-12-05 15:36:21',0,'19');
-insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`kilos_netos`,`documento`,`fecha_sistema`,`estado`,`Maquila`) values (24,6,6,1,2,1,1,'1211',2,1,'-2025',121,'99.800','122','2018-12-05 15:36:21',0,'19');
-insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`kilos_netos`,`documento`,`fecha_sistema`,`estado`,`Maquila`) values (25,6,6,1,2,1,1,'1211',2,1,'-2025',1231,'99.800','112','2018-12-05 15:38:48',0,'19');
-insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`kilos_netos`,`documento`,`fecha_sistema`,`estado`,`Maquila`) values (26,6,6,1,2,1,1,'1211',2,1,'-2025',121,'99.800','122','2018-12-05 15:38:49',0,'19');
-insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`kilos_netos`,`documento`,`fecha_sistema`,`estado`,`Maquila`) values (27,6,6,1,2,1,1,'1211',2,1,'-2025',1231,'99.800','112','2018-12-05 15:39:19',0,'19');
-insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`kilos_netos`,`documento`,`fecha_sistema`,`estado`,`Maquila`) values (28,6,6,1,2,1,1,'1211',2,1,'-2025',121,'99.800','122','2018-12-05 15:39:20',0,'19');
-insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`kilos_netos`,`documento`,`fecha_sistema`,`estado`,`Maquila`) values (29,6,6,2,1,1,1,'FC001',1,1,'-2025',100,'99.800','12','2018-12-05 15:43:33',1,'35');
-insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`kilos_netos`,`documento`,`fecha_sistema`,`estado`,`Maquila`) values (30,6,6,2,1,1,1,'FC001',1,1,'-2025',33,'99.800','21','2018-12-05 15:43:33',1,'35');
-insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`kilos_netos`,`documento`,`fecha_sistema`,`estado`,`Maquila`) values (31,6,6,2,1,1,1,'FC001',1,1,'-2025',121,'99.800','211','2018-12-05 15:43:34',1,'35');
-insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`kilos_netos`,`documento`,`fecha_sistema`,`estado`,`Maquila`) values (32,7,6,1,2,1,1,'fc005',4,1,'-2025',10212,'99.800','122','2018-12-05 15:46:44',0,'18');
-insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`kilos_netos`,`documento`,`fecha_sistema`,`estado`,`Maquila`) values (33,7,6,1,2,1,1,'fc005',4,1,'-2025',2333,'99.800','554','2018-12-05 15:46:45',0,'18');
-insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`kilos_netos`,`documento`,`fecha_sistema`,`estado`,`Maquila`) values (34,7,6,1,2,1,1,'fc005',4,1,'-2025',668,'99.800','566','2018-12-05 15:46:46',0,'18');
-insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`kilos_netos`,`documento`,`fecha_sistema`,`estado`,`Maquila`) values (35,6,6,1,1,1,2,'FC001',1,1,'-2025',30,'99.800','432','2018-12-05 15:51:12',1,'35');
-insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`kilos_netos`,`documento`,`fecha_sistema`,`estado`,`Maquila`) values (36,6,6,1,1,1,2,'FC001',1,1,'-2025',1221,'99.800','432','2018-12-05 15:51:12',1,'35');
-insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`kilos_netos`,`documento`,`fecha_sistema`,`estado`,`Maquila`) values (37,6,6,1,1,1,2,'FC001',1,1,'-2025',1211,'99.800','5454','2018-12-05 15:51:12',1,'35');
-insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`kilos_netos`,`documento`,`fecha_sistema`,`estado`,`Maquila`) values (38,6,6,1,1,1,2,'FC001',1,1,'-2025',1,'99.800','1','2018-12-05 15:51:13',1,'35');
-insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`kilos_netos`,`documento`,`fecha_sistema`,`estado`,`Maquila`) values (39,6,6,1,1,1,2,'FC001',1,1,'-2025',2,'99.800','2','2018-12-05 15:51:14',1,'35');
-insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`kilos_netos`,`documento`,`fecha_sistema`,`estado`,`Maquila`) values (40,6,6,1,1,1,2,'FC001',1,1,'-2025',3,'99.800','3','2018-12-05 15:51:15',1,'35');
-insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`kilos_netos`,`documento`,`fecha_sistema`,`estado`,`Maquila`) values (41,6,6,1,1,1,2,'FC001',1,1,'-2025',4,'99.800','4','2018-12-05 15:51:15',1,'35');
-insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`kilos_netos`,`documento`,`fecha_sistema`,`estado`,`Maquila`) values (42,6,6,1,1,1,2,'FC001',1,1,'-2025',5,'99.800','5','2018-12-05 15:51:15',1,'35');
-insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`kilos_netos`,`documento`,`fecha_sistema`,`estado`,`Maquila`) values (43,6,6,1,1,1,2,'FC001',1,1,'-2025',66,'99.800','6','2018-12-05 15:51:15',1,'35');
-insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`kilos_netos`,`documento`,`fecha_sistema`,`estado`,`Maquila`) values (44,6,6,1,1,1,2,'FC001',1,1,'-2025',7,'99.800','7','2018-12-05 15:51:15',1,'35');
-insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`kilos_netos`,`documento`,`fecha_sistema`,`estado`,`Maquila`) values (45,7,6,1,1,1,1,'FC001',4,1,'-2025',1,'99.800','1','2018-12-05 15:59:12',0,'24');
-insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`kilos_netos`,`documento`,`fecha_sistema`,`estado`,`Maquila`) values (46,7,6,1,1,1,1,'FC001',4,1,'-2025',2,'99.800','2','2018-12-05 15:59:13',0,'24');
-insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`kilos_netos`,`documento`,`fecha_sistema`,`estado`,`Maquila`) values (47,7,6,1,1,1,1,'FC001',4,1,'-2025',3,'99.800','3','2018-12-05 15:59:14',0,'24');
-insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`kilos_netos`,`documento`,`fecha_sistema`,`estado`,`Maquila`) values (48,7,6,1,1,1,1,'FC001',4,1,'-2025',4,'99.800','4','2018-12-05 15:59:14',0,'24');
-insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`kilos_netos`,`documento`,`fecha_sistema`,`estado`,`Maquila`) values (49,7,6,1,1,1,1,'FC001',4,1,'-2025',5,'99.800','5','2018-12-05 15:59:14',0,'24');
-insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`kilos_netos`,`documento`,`fecha_sistema`,`estado`,`Maquila`) values (50,7,6,1,1,1,1,'FC001',4,1,'-2025',6,'99.800','6','2018-12-05 15:59:15',0,'24');
-insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`kilos_netos`,`documento`,`fecha_sistema`,`estado`,`Maquila`) values (51,7,6,1,1,1,1,'FC001',4,1,'-2025',7,'99.800','7','2018-12-05 15:59:16',0,'24');
-insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`kilos_netos`,`documento`,`fecha_sistema`,`estado`,`Maquila`) values (52,7,6,1,1,1,1,'FC001',4,1,'-2025',8,'99.800','8','2018-12-05 15:59:16',0,'24');
-insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`kilos_netos`,`documento`,`fecha_sistema`,`estado`,`Maquila`) values (53,7,6,1,1,1,1,'FC001',4,1,'-2025',9,'99.800','9','2018-12-05 15:59:16',0,'24');
-insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`kilos_netos`,`documento`,`fecha_sistema`,`estado`,`Maquila`) values (54,7,6,1,1,1,1,'FC001',4,1,'-2025',10,'99.800','10','2018-12-05 15:59:16',0,'24');
-insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`kilos_netos`,`documento`,`fecha_sistema`,`estado`,`Maquila`) values (55,7,6,1,1,1,1,'FA001',4,1,'-2024',50,'99.800','121','2018-12-06 16:36:03',0,'16');
-insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`kilos_netos`,`documento`,`fecha_sistema`,`estado`,`Maquila`) values (56,7,6,1,1,1,1,'FA001',4,2,'-2024',30,'99.800','332','2018-12-06 16:36:03',0,'16');
-insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`kilos_netos`,`documento`,`fecha_sistema`,`estado`,`Maquila`) values (57,7,6,1,1,1,1,'FA001',4,2,'-2024',121,'99.800','2211','2018-12-06 16:36:04',0,'16');
-insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`kilos_netos`,`documento`,`fecha_sistema`,`estado`,`Maquila`) values (58,6,2,1,1,1,1,'FC9765',1,1,'-2000',30,NULL,'32','2018-12-30 01:34:58',0,'30');
-insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`kilos_netos`,`documento`,`fecha_sistema`,`estado`,`Maquila`) values (59,6,2,1,1,1,1,'FC9765',1,1,'-2000',122,NULL,'43','2018-12-30 01:34:58',0,'30');
-insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`kilos_netos`,`documento`,`fecha_sistema`,`estado`,`Maquila`) values (60,6,6,1,1,1,1,'FC021',1,1,'-2016',12,NULL,'12','2019-01-04 00:13:26',1,'35');
-insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`kilos_netos`,`documento`,`fecha_sistema`,`estado`,`Maquila`) values (61,6,6,1,1,1,1,'FC021',1,1,'-2016',33,NULL,'12','2019-01-04 00:13:26',1,'35');
+insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`documento`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (1,6,6,2,1,1,2,'FC001',1,1,'-2025',10,'1','2018-12-05 12:18:59',1,'53',' ');
+insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`documento`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (2,6,6,2,1,1,2,'FC001',2,2,'-2025',50,'400','2018-12-05 12:19:17',0,'24',' ');
+insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`documento`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (3,6,6,2,1,1,2,'FC001',2,2,'-2025',121,'122','2018-12-05 12:19:27',0,'24',' ');
+insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`documento`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (4,6,6,2,1,1,1,'FC001',1,1,'-2025',10,'1001','2018-12-05 12:21:44',1,'53',' ');
+insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`documento`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (5,6,6,2,1,1,1,'FC001',2,1,'-2025',20,'2001','2018-12-05 12:21:44',0,'24',' ');
+insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`documento`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (6,6,6,2,1,1,1,'FC001',3,2,'-2025',30,'3001','2018-12-05 12:21:44',0,'24',' ');
+insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`documento`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (7,6,6,2,1,1,1,'FC001',1,1,'-2025',10,'1001','2018-12-05 12:24:07',1,'53',' ');
+insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`documento`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (8,6,6,2,1,1,1,'FC001',2,1,'-2025',20,'2001','2018-12-05 12:24:08',0,'24',' ');
+insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`documento`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (9,6,6,2,1,1,1,'FC001',3,2,'-2025',30,'3001','2018-12-05 12:24:08',0,'24',' ');
+insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`documento`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (10,6,6,2,1,1,1,'FC001',1,1,'-2025',10,'1001','2018-12-05 12:24:54',1,'53',' ');
+insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`documento`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (11,6,6,2,1,1,1,'FC001',2,1,'-2025',20,'2001','2018-12-05 12:24:55',0,'24',' ');
+insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`documento`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (12,6,6,2,1,1,1,'FC001',3,2,'-2025',30,'3001','2018-12-05 12:24:55',0,'24',' ');
+insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`documento`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (13,6,6,1,1,1,1,'FC001',1,1,'-2025',10,'1001','2018-12-05 12:30:08',1,'53',' ');
+insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`documento`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (14,6,6,1,1,1,1,'FC001',1,2,'-2025',20,'1002','2018-12-05 12:30:09',1,'53',' ');
+insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`documento`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (15,6,6,1,1,1,1,'FC001',1,2,'-2025',30,'1003','2018-12-05 12:30:09',1,'53',' ');
+insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`documento`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (16,6,6,1,1,1,1,'FC001',1,1,'-2025',10,'1001','2018-12-05 12:30:29',1,'53',' ');
+insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`documento`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (17,6,6,1,1,1,1,'FC001',1,2,'-2025',20,'1002','2018-12-05 12:30:29',1,'53',' ');
+insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`documento`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (18,6,6,1,1,1,1,'FC001',1,2,'-2025',30,'1003','2018-12-05 12:30:29',1,'53',' ');
+insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`documento`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (19,6,6,1,1,1,1,'FC001',1,1,'-2025',10,'1001','2018-12-05 12:31:55',1,'53',' ');
+insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`documento`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (20,6,6,1,1,1,1,'FC001',1,2,'-2025',20,'1002','2018-12-05 12:31:55',1,'53',' ');
+insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`documento`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (21,6,6,1,1,1,1,'FC001',1,2,'-2025',30,'1003','2018-12-05 12:31:55',1,'53',' ');
+insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`documento`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (22,6,6,1,1,1,1,'FC001',1,1,'-2025',11,'11','2018-12-05 12:34:08',1,'53',' ');
+insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`documento`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (23,6,6,1,2,1,1,'1211',2,1,'-2025',1231,'112','2018-12-05 15:36:21',0,'19',' ');
+insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`documento`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (24,6,6,1,2,1,1,'1211',2,1,'-2025',121,'122','2018-12-05 15:36:21',0,'19',' ');
+insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`documento`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (25,6,6,1,2,1,1,'1211',2,1,'-2025',1231,'112','2018-12-05 15:38:48',0,'19',' ');
+insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`documento`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (26,6,6,1,2,1,1,'1211',2,1,'-2025',121,'122','2018-12-05 15:38:49',0,'19',' ');
+insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`documento`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (27,6,6,1,2,1,1,'1211',2,1,'-2025',1231,'112','2018-12-05 15:39:19',0,'19',' ');
+insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`documento`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (28,6,6,1,2,1,1,'1211',2,1,'-2025',121,'122','2018-12-05 15:39:20',0,'19',' ');
+insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`documento`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (29,6,6,2,1,1,1,'FC001',1,1,'-2025',100,'12','2018-12-05 15:43:33',1,'53',' ');
+insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`documento`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (30,6,6,2,1,1,1,'FC001',1,1,'-2025',33,'21','2018-12-05 15:43:33',1,'53',' ');
+insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`documento`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (31,6,6,2,1,1,1,'FC001',1,1,'-2025',121,'211','2018-12-05 15:43:34',1,'53',' ');
+insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`documento`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (32,7,6,1,2,1,1,'fc005',4,1,'-2025',10212,'122','2018-12-05 15:46:44',0,'18',' ');
+insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`documento`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (33,7,6,1,2,1,1,'fc005',4,1,'-2025',2333,'554','2018-12-05 15:46:45',0,'18',' ');
+insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`documento`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (34,7,6,1,2,1,1,'fc005',4,1,'-2025',668,'566','2018-12-05 15:46:46',0,'18',' ');
+insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`documento`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (35,6,6,1,1,1,2,'FC001',1,1,'-2025',30,'432','2018-12-05 15:51:12',1,'53',' ');
+insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`documento`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (36,6,6,1,1,1,2,'FC001',1,1,'-2025',1221,'432','2018-12-05 15:51:12',1,'53',' ');
+insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`documento`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (37,6,6,1,1,1,2,'FC001',1,1,'-2025',1211,'5454','2018-12-05 15:51:12',1,'53',' ');
+insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`documento`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (38,6,6,1,1,1,2,'FC001',1,1,'-2025',1,'1','2018-12-05 15:51:13',1,'53',' ');
+insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`documento`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (39,6,6,1,1,1,2,'FC001',1,1,'-2025',2,'2','2018-12-05 15:51:14',1,'53',' ');
+insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`documento`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (40,6,6,1,1,1,2,'FC001',1,1,'-2025',3,'3','2018-12-05 15:51:15',1,'53',' ');
+insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`documento`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (41,6,6,1,1,1,2,'FC001',1,1,'-2025',4,'4','2018-12-05 15:51:15',1,'53',' ');
+insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`documento`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (42,6,6,1,1,1,2,'FC001',1,1,'-2025',5,'5','2018-12-05 15:51:15',1,'53',' ');
+insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`documento`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (43,6,6,1,1,1,2,'FC001',1,1,'-2025',66,'6','2018-12-05 15:51:15',1,'53',' ');
+insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`documento`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (44,6,6,1,1,1,2,'FC001',1,1,'-2025',7,'7','2018-12-05 15:51:15',1,'53',' ');
+insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`documento`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (45,7,6,1,1,1,1,'FC001',4,1,'-2025',1,'1','2018-12-05 15:59:12',0,'24',' ');
+insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`documento`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (46,7,6,1,1,1,1,'FC001',4,1,'-2025',2,'2','2018-12-05 15:59:13',0,'24',' ');
+insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`documento`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (47,7,6,1,1,1,1,'FC001',4,1,'-2025',3,'3','2018-12-05 15:59:14',0,'24',' ');
+insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`documento`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (48,7,6,1,1,1,1,'FC001',4,1,'-2025',4,'4','2018-12-05 15:59:14',0,'24',' ');
+insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`documento`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (49,7,6,1,1,1,1,'FC001',4,1,'-2025',5,'5','2018-12-05 15:59:14',0,'24',' ');
+insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`documento`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (50,7,6,1,1,1,1,'FC001',4,1,'-2025',6,'6','2018-12-05 15:59:15',0,'24',' ');
+insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`documento`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (51,7,6,1,1,1,1,'FC001',4,1,'-2025',7,'7','2018-12-05 15:59:16',0,'24',' ');
+insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`documento`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (52,7,6,1,1,1,1,'FC001',4,1,'-2025',8,'8','2018-12-05 15:59:16',0,'24',' ');
+insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`documento`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (53,7,6,1,1,1,1,'FC001',4,1,'-2025',9,'9','2018-12-05 15:59:16',0,'24',' ');
+insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`documento`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (54,7,6,1,1,1,1,'FC001',4,1,'-2025',10,'10','2018-12-05 15:59:16',0,'24',' ');
+insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`documento`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (55,7,6,1,1,1,1,'FA001',4,1,'-2024',50,'121','2018-12-06 16:36:03',0,'16',' ');
+insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`documento`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (56,7,6,1,1,1,1,'FA001',4,2,'-2024',30,'332','2018-12-06 16:36:03',0,'16',' ');
+insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`documento`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (57,7,6,1,1,1,1,'FA001',4,2,'-2024',121,'2211','2018-12-06 16:36:04',0,'16',' ');
+insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`documento`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (58,6,2,1,1,1,1,'FC9765',1,1,'-2000',30,'32','2018-12-30 01:34:58',0,'37',' ');
+insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`documento`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (59,6,2,1,1,1,1,'FC9765',1,1,'-2000',122,'43','2018-12-30 01:34:58',0,'37',' ');
+insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`documento`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (60,6,6,1,1,1,1,'FC002',1,1,'-2016',12,'12','2019-01-04 00:13:26',1,'54',' ');
+insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`documento`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (61,6,6,1,1,1,1,'FC002',1,1,'-2016',33,'12','2019-01-04 00:13:26',1,'54',' ');
+insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`documento`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (62,6,6,1,1,1,1,'fc004',2,1,'2008',12,'123','2019-01-10 11:46:42',0,NULL,' ');
+insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`documento`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (63,6,6,1,1,1,1,'fc006',2,2,'2008',1,'','2019-01-10 11:53:59',0,NULL,' ');
+insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`documento`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (64,6,6,1,1,1,1,'fc007',1,2,'2008',1,'','2019-01-10 11:54:54',0,'38',' ');
+insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`documento`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (65,6,6,1,1,1,1,'fc007',2,2,'2008',1,'','2019-01-10 11:55:01',0,NULL,' ');
+insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`documento`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (66,6,6,1,1,1,1,'fc008',1,2,'2008',1,'','2019-01-10 11:56:01',0,'36',' ');
+insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`documento`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (67,6,6,1,1,1,1,'fc008',2,2,'2008',1,'','2019-01-10 11:56:03',0,NULL,' ');
+insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`documento`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (68,6,6,1,1,1,1,'12123',1,1,'2010',12,'12','2019-01-10 14:58:17',0,'39',' ');
+insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`documento`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (69,6,6,1,1,1,1,'12124',1,1,'2010',12,'12','2019-01-10 14:59:48',0,'48',' ');
+insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`documento`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (70,6,6,1,1,1,1,'12125',1,1,'2008',12,'12','2019-01-10 15:00:09',0,NULL,' ');
+insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`documento`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (71,6,6,1,1,2,2,'123124',1,2,'10-01-2019',12,'12','2019-01-10 15:07:08',0,'42',' ');
+insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`documento`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (72,6,6,1,1,2,2,'123125',1,2,'10-01-2019',12,'12','2019-01-10 15:10:35',0,'40',' ');
+insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`documento`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (73,7,6,2,2,1,2,'fc009',5,1,'17-01-2019',11,'','2019-01-17 16:05:34',0,NULL,'diegocade');
+insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`documento`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (74,7,9,2,2,1,1,'fc444',4,1,'23-01-2019',12,'1232','2019-01-23 11:07:38',0,NULL,'diegocade');
+insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`documento`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (75,7,9,2,2,1,1,'fc444',5,3,'23-01-2019',23,'13432','2019-01-23 11:07:43',0,NULL,'diegocade');
+insert  into `tbl_exportacion`(`ID`,`ID_Cliente`,`ID_Especie`,`ID_Embalaje`,`ID_Etiqueta`,`ID_TipoArmado`,`ID_TipoMercado`,`Folio`,`ID_Productor`,`ID_Variedad`,`fecha`,`cantidad_cajas`,`documento`,`fecha_sistema`,`estado`,`Maquila`,`usuario`) values (76,6,14,1,1,1,1,'122412',1,1,'30-01-2019',12,'','2019-01-30 10:09:31',0,'43','usuario');
 
 /*Table structure for table `tbl_maquila` */
 
@@ -1512,46 +1553,66 @@ CREATE TABLE `tbl_maquila` (
   `kilos_comerciales` decimal(10,3) DEFAULT NULL,
   `kilos_merma` decimal(10,3) DEFAULT NULL,
   `kilos_recepcion` decimal(10,3) DEFAULT NULL,
+  `usuario` varchar(15) NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=utf8;
 
 /*Data for the table `tbl_maquila` */
 
-insert  into `tbl_maquila`(`ID`,`ID_Cliente`,`ID_Productor`,`Lote`,`documento`,`fecha_sistema`,`fecha_recepcion`,`ordenEmbalaje`,`Linea`,`hora_Inicio`,`hora_Termino`,`rendimiento`,`kilos_exportacion`,`kilos_comerciales`,`kilos_merma`,`kilos_recepcion`) values (1,'6','1',1,'555','2018-12-29 20:13:06','2018-12-29 20:06:40','12311',6,'2018-12-29 20:06:47.666','2018-12-29 20:06:49.054','80','0.000','0.000','0.000',NULL);
-insert  into `tbl_maquila`(`ID`,`ID_Cliente`,`ID_Productor`,`Lote`,`documento`,`fecha_sistema`,`fecha_recepcion`,`ordenEmbalaje`,`Linea`,`hora_Inicio`,`hora_Termino`,`rendimiento`,`kilos_exportacion`,`kilos_comerciales`,`kilos_merma`,`kilos_recepcion`) values (2,'6','1',1,'123','2019-01-01 01:25:16','2019-01-01 01:24:16','1232',1,'2019-01-01 01:24:13.754','2019-01-01 01:24:15.051','50','0.000','0.000','0.000',NULL);
-insert  into `tbl_maquila`(`ID`,`ID_Cliente`,`ID_Productor`,`Lote`,`documento`,`fecha_sistema`,`fecha_recepcion`,`ordenEmbalaje`,`Linea`,`hora_Inicio`,`hora_Termino`,`rendimiento`,`kilos_exportacion`,`kilos_comerciales`,`kilos_merma`,`kilos_recepcion`) values (3,'6','1',1,'1231','2019-01-01 02:38:06','2019-01-01 02:37:00','5442',1,'2019-01-01 02:36:56.898','2019-01-01 02:37:04.186','99','0.000','0.000','0.000',NULL);
-insert  into `tbl_maquila`(`ID`,`ID_Cliente`,`ID_Productor`,`Lote`,`documento`,`fecha_sistema`,`fecha_recepcion`,`ordenEmbalaje`,`Linea`,`hora_Inicio`,`hora_Termino`,`rendimiento`,`kilos_exportacion`,`kilos_comerciales`,`kilos_merma`,`kilos_recepcion`) values (4,'6','1',1,'1231','2019-01-01 02:42:34','2019-01-01 02:42:12','1221',1,'2019-01-01 02:42:10.911','2019-01-01 02:42:11.288','99','0.000','0.000','0.000',NULL);
-insert  into `tbl_maquila`(`ID`,`ID_Cliente`,`ID_Productor`,`Lote`,`documento`,`fecha_sistema`,`fecha_recepcion`,`ordenEmbalaje`,`Linea`,`hora_Inicio`,`hora_Termino`,`rendimiento`,`kilos_exportacion`,`kilos_comerciales`,`kilos_merma`,`kilos_recepcion`) values (5,'6','1',1,'123','2019-01-01 02:47:34','2019-01-01 02:47:14','12',3,'2019-01-01 02:47:17.108','2019-01-01 02:47:19.228','77','0.000','0.000','0.000',NULL);
-insert  into `tbl_maquila`(`ID`,`ID_Cliente`,`ID_Productor`,`Lote`,`documento`,`fecha_sistema`,`fecha_recepcion`,`ordenEmbalaje`,`Linea`,`hora_Inicio`,`hora_Termino`,`rendimiento`,`kilos_exportacion`,`kilos_comerciales`,`kilos_merma`,`kilos_recepcion`) values (6,'6','1',1,'123','2019-01-01 02:52:56','2019-01-01 02:52:31','1231',3,'2019-01-01 02:52:37.613','2019-01-01 02:52:38.045','77','0.000','0.000','0.000',NULL);
-insert  into `tbl_maquila`(`ID`,`ID_Cliente`,`ID_Productor`,`Lote`,`documento`,`fecha_sistema`,`fecha_recepcion`,`ordenEmbalaje`,`Linea`,`hora_Inicio`,`hora_Termino`,`rendimiento`,`kilos_exportacion`,`kilos_comerciales`,`kilos_merma`,`kilos_recepcion`) values (7,'6','1',1,'1211','2019-01-02 01:06:23','2019-01-02 01:06:01','1211',1,'2019-01-02 01:05:57.271','2019-01-02 01:05:58.036','122','0.000','0.000','0.000',NULL);
-insert  into `tbl_maquila`(`ID`,`ID_Cliente`,`ID_Productor`,`Lote`,`documento`,`fecha_sistema`,`fecha_recepcion`,`ordenEmbalaje`,`Linea`,`hora_Inicio`,`hora_Termino`,`rendimiento`,`kilos_exportacion`,`kilos_comerciales`,`kilos_merma`,`kilos_recepcion`) values (8,'6','1',1,'1221','2019-01-02 01:07:47','2019-01-02 01:07:30','3221',21,'2019-01-02 01:07:25.172','2019-01-02 01:07:25.589','12','0.000','0.000','0.000',NULL);
-insert  into `tbl_maquila`(`ID`,`ID_Cliente`,`ID_Productor`,`Lote`,`documento`,`fecha_sistema`,`fecha_recepcion`,`ordenEmbalaje`,`Linea`,`hora_Inicio`,`hora_Termino`,`rendimiento`,`kilos_exportacion`,`kilos_comerciales`,`kilos_merma`,`kilos_recepcion`) values (9,'6','1',1,'1221','2019-01-02 01:09:11','2019-01-02 01:07:30','3221',21,'2019-01-02 01:07:25.172','2019-01-02 01:07:25.589','12','0.000','0.000','0.000',NULL);
-insert  into `tbl_maquila`(`ID`,`ID_Cliente`,`ID_Productor`,`Lote`,`documento`,`fecha_sistema`,`fecha_recepcion`,`ordenEmbalaje`,`Linea`,`hora_Inicio`,`hora_Termino`,`rendimiento`,`kilos_exportacion`,`kilos_comerciales`,`kilos_merma`,`kilos_recepcion`) values (10,'6','1',1,'1221','2019-01-02 01:09:37','2019-01-02 01:07:30','3221',21,'2019-01-02 01:07:25.172','2019-01-02 01:07:25.589','12','0.000','0.000','0.000',NULL);
-insert  into `tbl_maquila`(`ID`,`ID_Cliente`,`ID_Productor`,`Lote`,`documento`,`fecha_sistema`,`fecha_recepcion`,`ordenEmbalaje`,`Linea`,`hora_Inicio`,`hora_Termino`,`rendimiento`,`kilos_exportacion`,`kilos_comerciales`,`kilos_merma`,`kilos_recepcion`) values (11,'6','1',1,'1221','2019-01-02 01:10:31','2019-01-02 01:07:30','3221',21,'2019-01-02 01:07:25.172','2019-01-02 01:07:25.589','12','0.000','0.000','0.000',NULL);
-insert  into `tbl_maquila`(`ID`,`ID_Cliente`,`ID_Productor`,`Lote`,`documento`,`fecha_sistema`,`fecha_recepcion`,`ordenEmbalaje`,`Linea`,`hora_Inicio`,`hora_Termino`,`rendimiento`,`kilos_exportacion`,`kilos_comerciales`,`kilos_merma`,`kilos_recepcion`) values (12,'6','1',1,'1211','2019-01-02 22:37:06','2019-01-02 22:36:42','6655',1231,'2019-01-02 22:36:49.496','2019-01-02 22:36:50.336','65','0.000','0.000','0.000',NULL);
-insert  into `tbl_maquila`(`ID`,`ID_Cliente`,`ID_Productor`,`Lote`,`documento`,`fecha_sistema`,`fecha_recepcion`,`ordenEmbalaje`,`Linea`,`hora_Inicio`,`hora_Termino`,`rendimiento`,`kilos_exportacion`,`kilos_comerciales`,`kilos_merma`,`kilos_recepcion`) values (13,'6','1',1,'444','2019-01-02 22:42:33','2019-01-02 22:42:23','22',33,'2019-01-02 22:42:28.099','2019-01-02 22:42:28.431','12','0.000','0.000','0.000',NULL);
-insert  into `tbl_maquila`(`ID`,`ID_Cliente`,`ID_Productor`,`Lote`,`documento`,`fecha_sistema`,`fecha_recepcion`,`ordenEmbalaje`,`Linea`,`hora_Inicio`,`hora_Termino`,`rendimiento`,`kilos_exportacion`,`kilos_comerciales`,`kilos_merma`,`kilos_recepcion`) values (14,'6','1',1,'1231','2019-01-03 12:19:36','2019-01-03 12:19:25','213',12,'2019-01-03 12:18:29.664','2019-01-03 12:18:30.046','12','0.000','0.000','0.000',NULL);
-insert  into `tbl_maquila`(`ID`,`ID_Cliente`,`ID_Productor`,`Lote`,`documento`,`fecha_sistema`,`fecha_recepcion`,`ordenEmbalaje`,`Linea`,`hora_Inicio`,`hora_Termino`,`rendimiento`,`kilos_exportacion`,`kilos_comerciales`,`kilos_merma`,`kilos_recepcion`) values (15,'6','1',1,'1231','2019-01-03 12:21:55','2019-01-03 12:19:25','213',12,'2019-01-03 12:18:29.664','2019-01-03 12:18:30.046','12','0.000','0.000','0.000',NULL);
-insert  into `tbl_maquila`(`ID`,`ID_Cliente`,`ID_Productor`,`Lote`,`documento`,`fecha_sistema`,`fecha_recepcion`,`ordenEmbalaje`,`Linea`,`hora_Inicio`,`hora_Termino`,`rendimiento`,`kilos_exportacion`,`kilos_comerciales`,`kilos_merma`,`kilos_recepcion`) values (16,'6','1',1,'121','2019-01-04 00:16:14','2019-01-04 00:16:05','',2,'2019-01-04 00:16:01.510','2019-01-04 00:16:02.009','12','0.000','0.000','0.000',NULL);
-insert  into `tbl_maquila`(`ID`,`ID_Cliente`,`ID_Productor`,`Lote`,`documento`,`fecha_sistema`,`fecha_recepcion`,`ordenEmbalaje`,`Linea`,`hora_Inicio`,`hora_Termino`,`rendimiento`,`kilos_exportacion`,`kilos_comerciales`,`kilos_merma`,`kilos_recepcion`) values (17,'6','1',1,'121','2019-01-04 13:27:15','2019-01-04 13:24:47','',2,'2019-01-04 13:24:52.203','2019-01-04 00:24:52 ','12','0.000','0.000','0.000',NULL);
-insert  into `tbl_maquila`(`ID`,`ID_Cliente`,`ID_Productor`,`Lote`,`documento`,`fecha_sistema`,`fecha_recepcion`,`ordenEmbalaje`,`Linea`,`hora_Inicio`,`hora_Termino`,`rendimiento`,`kilos_exportacion`,`kilos_comerciales`,`kilos_merma`,`kilos_recepcion`) values (18,'6','1',1,'1231','2019-01-04 13:31:46','2019-01-04 13:31:29','',1,'2019-01-04 13:31:25.759','2019-01-04 13:31:26.224','10','0.000','0.000','0.000',NULL);
-insert  into `tbl_maquila`(`ID`,`ID_Cliente`,`ID_Productor`,`Lote`,`documento`,`fecha_sistema`,`fecha_recepcion`,`ordenEmbalaje`,`Linea`,`hora_Inicio`,`hora_Termino`,`rendimiento`,`kilos_exportacion`,`kilos_comerciales`,`kilos_merma`,`kilos_recepcion`) values (19,'6','1',1,'121','2019-01-06 01:51:10','2019-01-06 01:50:18','1221',3,'2019-01-06 01:50:11.077','2019-01-06 01:50:11.595','211','12410.000','900.000','950.000','103.000');
-insert  into `tbl_maquila`(`ID`,`ID_Cliente`,`ID_Productor`,`Lote`,`documento`,`fecha_sistema`,`fecha_recepcion`,`ordenEmbalaje`,`Linea`,`hora_Inicio`,`hora_Termino`,`rendimiento`,`kilos_exportacion`,`kilos_comerciales`,`kilos_merma`,`kilos_recepcion`) values (20,'6','1',1,'11','2019-01-06 01:58:32','2019-01-06 01:58:28','32',1,'2019-01-06 01:58:22.740','2019-01-06 01:58:23.258','1','100.000','900.000','950.000','100.000');
-insert  into `tbl_maquila`(`ID`,`ID_Cliente`,`ID_Productor`,`Lote`,`documento`,`fecha_sistema`,`fecha_recepcion`,`ordenEmbalaje`,`Linea`,`hora_Inicio`,`hora_Termino`,`rendimiento`,`kilos_exportacion`,`kilos_comerciales`,`kilos_merma`,`kilos_recepcion`) values (21,'6','1',1,'121','2019-01-06 02:06:37','2019-01-06 02:05:58','122',1,'2019-01-06 02:06:01.088','2019-01-06 02:06:02.245','122','100.000','900.000','950.000','100.000');
-insert  into `tbl_maquila`(`ID`,`ID_Cliente`,`ID_Productor`,`Lote`,`documento`,`fecha_sistema`,`fecha_recepcion`,`ordenEmbalaje`,`Linea`,`hora_Inicio`,`hora_Termino`,`rendimiento`,`kilos_exportacion`,`kilos_comerciales`,`kilos_merma`,`kilos_recepcion`) values (22,'6','1',1,'12','2019-01-06 02:33:41','2019-01-06 02:33:20','322',2,'2019-01-06 02:33:14.559','2019-01-06 02:33:22.822','121','100.000','900.000','950.000','100.000');
-insert  into `tbl_maquila`(`ID`,`ID_Cliente`,`ID_Productor`,`Lote`,`documento`,`fecha_sistema`,`fecha_recepcion`,`ordenEmbalaje`,`Linea`,`hora_Inicio`,`hora_Termino`,`rendimiento`,`kilos_exportacion`,`kilos_comerciales`,`kilos_merma`,`kilos_recepcion`) values (23,'6','1',1,'12','2019-01-06 02:36:48','2019-01-06 02:33:20','322',2,'2019-01-06 02:33:14.559','2019-01-06 02:33:22.822','121','100.000','1097.780','848.240','100.000');
-insert  into `tbl_maquila`(`ID`,`ID_Cliente`,`ID_Productor`,`Lote`,`documento`,`fecha_sistema`,`fecha_recepcion`,`ordenEmbalaje`,`Linea`,`hora_Inicio`,`hora_Termino`,`rendimiento`,`kilos_exportacion`,`kilos_comerciales`,`kilos_merma`,`kilos_recepcion`) values (24,'6','1',1,'12','2019-01-06 02:40:15','2019-01-06 02:33:20','322',2,'2019-01-06 02:33:14.559','2019-01-06 02:33:22.822','121','100.000','1097.780','-18945.880','100.000');
-insert  into `tbl_maquila`(`ID`,`ID_Cliente`,`ID_Productor`,`Lote`,`documento`,`fecha_sistema`,`fecha_recepcion`,`ordenEmbalaje`,`Linea`,`hora_Inicio`,`hora_Termino`,`rendimiento`,`kilos_exportacion`,`kilos_comerciales`,`kilos_merma`,`kilos_recepcion`) values (25,'6','1',1,'122','2019-01-07 11:59:08','2019-01-07 11:55:56','22',1,'2019-01-07 11:55:51.425','2019-01-07 11:55:51.967','12','100.000','0.000','950.000','75.240');
-insert  into `tbl_maquila`(`ID`,`ID_Cliente`,`ID_Productor`,`Lote`,`documento`,`fecha_sistema`,`fecha_recepcion`,`ordenEmbalaje`,`Linea`,`hora_Inicio`,`hora_Termino`,`rendimiento`,`kilos_exportacion`,`kilos_comerciales`,`kilos_merma`,`kilos_recepcion`) values (26,'6','1',1,'12','2019-01-07 12:06:01','2019-01-07 12:04:39','121',2,'2019-01-07 12:04:36.205','2019-01-07 12:04:36.655','33','100.000','900.000','950.000','75.240');
-insert  into `tbl_maquila`(`ID`,`ID_Cliente`,`ID_Productor`,`Lote`,`documento`,`fecha_sistema`,`fecha_recepcion`,`ordenEmbalaje`,`Linea`,`hora_Inicio`,`hora_Termino`,`rendimiento`,`kilos_exportacion`,`kilos_comerciales`,`kilos_merma`,`kilos_recepcion`) values (27,'6','1',1,'111','2019-01-07 12:13:40','2019-01-07 12:13:06','1211',1,'2019-01-07 12:13:11.074','2019-01-07 12:13:11.625','211','100.000','900.000','950.000','75.240');
-insert  into `tbl_maquila`(`ID`,`ID_Cliente`,`ID_Productor`,`Lote`,`documento`,`fecha_sistema`,`fecha_recepcion`,`ordenEmbalaje`,`Linea`,`hora_Inicio`,`hora_Termino`,`rendimiento`,`kilos_exportacion`,`kilos_comerciales`,`kilos_merma`,`kilos_recepcion`) values (28,'6','1',1,'11','2019-01-07 12:28:42','2019-01-07 12:27:52','32',1,'2019-01-07 12:27:55.794','2019-01-07 12:27:56.253','11','100.000','0.000','950.000','75.240');
-insert  into `tbl_maquila`(`ID`,`ID_Cliente`,`ID_Productor`,`Lote`,`documento`,`fecha_sistema`,`fecha_recepcion`,`ordenEmbalaje`,`Linea`,`hora_Inicio`,`hora_Termino`,`rendimiento`,`kilos_exportacion`,`kilos_comerciales`,`kilos_merma`,`kilos_recepcion`) values (29,'6','1',1,'1211','2019-01-07 12:41:47','2019-01-07 12:38:23','1211',1,'2019-01-07 12:38:19.161','2019-01-07 12:38:20.069','211','400.000','900.000','950.000','75.240');
-insert  into `tbl_maquila`(`ID`,`ID_Cliente`,`ID_Productor`,`Lote`,`documento`,`fecha_sistema`,`fecha_recepcion`,`ordenEmbalaje`,`Linea`,`hora_Inicio`,`hora_Termino`,`rendimiento`,`kilos_exportacion`,`kilos_comerciales`,`kilos_merma`,`kilos_recepcion`) values (30,'6','1',1,'1211','2019-01-07 12:43:26','2019-01-07 12:38:23','1211',1,'2019-01-07 12:38:19.161','2019-01-07 12:38:20.069','211','400.000','900.000','950.000','71.280');
-insert  into `tbl_maquila`(`ID`,`ID_Cliente`,`ID_Productor`,`Lote`,`documento`,`fecha_sistema`,`fecha_recepcion`,`ordenEmbalaje`,`Linea`,`hora_Inicio`,`hora_Termino`,`rendimiento`,`kilos_exportacion`,`kilos_comerciales`,`kilos_merma`,`kilos_recepcion`) values (31,'6','1',1,'12','2019-01-09 11:47:27','2019-01-09 11:47:11','1222',2,'2019-01-09 11:43:01.913','2019-01-09 11:43:02.947','12','220.000','900.000','950.000','75.240');
-insert  into `tbl_maquila`(`ID`,`ID_Cliente`,`ID_Productor`,`Lote`,`documento`,`fecha_sistema`,`fecha_recepcion`,`ordenEmbalaje`,`Linea`,`hora_Inicio`,`hora_Termino`,`rendimiento`,`kilos_exportacion`,`kilos_comerciales`,`kilos_merma`,`kilos_recepcion`) values (32,'6','1',1,'12','2019-01-09 11:49:56','2019-01-09 11:47:11','1222',2,'2019-01-09 11:43:01.913','2019-01-09 11:43:02.947','12','220.000','1097.780','848.240','59.714');
-insert  into `tbl_maquila`(`ID`,`ID_Cliente`,`ID_Productor`,`Lote`,`documento`,`fecha_sistema`,`fecha_recepcion`,`ordenEmbalaje`,`Linea`,`hora_Inicio`,`hora_Termino`,`rendimiento`,`kilos_exportacion`,`kilos_comerciales`,`kilos_merma`,`kilos_recepcion`) values (33,'6','1',1,'12','2019-01-09 11:50:48','2019-01-09 11:47:11','1222',2,'2019-01-09 11:43:01.913','2019-01-09 11:43:02.947','12','220.000','1097.780','848.240','59.714');
-insert  into `tbl_maquila`(`ID`,`ID_Cliente`,`ID_Productor`,`Lote`,`documento`,`fecha_sistema`,`fecha_recepcion`,`ordenEmbalaje`,`Linea`,`hora_Inicio`,`hora_Termino`,`rendimiento`,`kilos_exportacion`,`kilos_comerciales`,`kilos_merma`,`kilos_recepcion`) values (34,'6','1',1,'1231','2019-01-09 15:38:37','2019-01-09 15:36:02','121',2,'2019-01-09 15:38:31.327','2019-01-09 15:38:31.775','11','220.000','1100.820','950.000','66.520');
-insert  into `tbl_maquila`(`ID`,`ID_Cliente`,`ID_Productor`,`Lote`,`documento`,`fecha_sistema`,`fecha_recepcion`,`ordenEmbalaje`,`Linea`,`hora_Inicio`,`hora_Termino`,`rendimiento`,`kilos_exportacion`,`kilos_comerciales`,`kilos_merma`,`kilos_recepcion`) values (35,'6','1',1,'1231','2019-01-09 15:39:20','2019-01-09 15:36:02','121',2,'2019-01-09 15:38:31.327','2019-01-09 15:38:31.775','11','220.000','1100.820','950.000','66.520');
+insert  into `tbl_maquila`(`ID`,`ID_Cliente`,`ID_Productor`,`Lote`,`documento`,`fecha_sistema`,`fecha_recepcion`,`ordenEmbalaje`,`Linea`,`hora_Inicio`,`hora_Termino`,`rendimiento`,`kilos_exportacion`,`kilos_comerciales`,`kilos_merma`,`kilos_recepcion`,`usuario`) values (1,'6','1',1,'555','2018-12-29 20:13:06','2018-12-29 20:06:40','12311',6,'2018-12-29 20:06:47.666','2018-12-29 20:06:49.054','80','0.000','0.000','0.000',NULL,'');
+insert  into `tbl_maquila`(`ID`,`ID_Cliente`,`ID_Productor`,`Lote`,`documento`,`fecha_sistema`,`fecha_recepcion`,`ordenEmbalaje`,`Linea`,`hora_Inicio`,`hora_Termino`,`rendimiento`,`kilos_exportacion`,`kilos_comerciales`,`kilos_merma`,`kilos_recepcion`,`usuario`) values (2,'6','1',1,'123','2019-01-01 01:25:16','2019-01-01 01:24:16','1232',1,'2019-01-01 01:24:13.754','2019-01-01 01:24:15.051','50','0.000','0.000','0.000',NULL,'');
+insert  into `tbl_maquila`(`ID`,`ID_Cliente`,`ID_Productor`,`Lote`,`documento`,`fecha_sistema`,`fecha_recepcion`,`ordenEmbalaje`,`Linea`,`hora_Inicio`,`hora_Termino`,`rendimiento`,`kilos_exportacion`,`kilos_comerciales`,`kilos_merma`,`kilos_recepcion`,`usuario`) values (3,'6','1',1,'1231','2019-01-01 02:38:06','2019-01-01 02:37:00','5442',1,'2019-01-01 02:36:56.898','2019-01-01 02:37:04.186','99','0.000','0.000','0.000',NULL,'');
+insert  into `tbl_maquila`(`ID`,`ID_Cliente`,`ID_Productor`,`Lote`,`documento`,`fecha_sistema`,`fecha_recepcion`,`ordenEmbalaje`,`Linea`,`hora_Inicio`,`hora_Termino`,`rendimiento`,`kilos_exportacion`,`kilos_comerciales`,`kilos_merma`,`kilos_recepcion`,`usuario`) values (4,'6','1',1,'1231','2019-01-01 02:42:34','2019-01-01 02:42:12','1221',1,'2019-01-01 02:42:10.911','2019-01-01 02:42:11.288','99','0.000','0.000','0.000',NULL,'');
+insert  into `tbl_maquila`(`ID`,`ID_Cliente`,`ID_Productor`,`Lote`,`documento`,`fecha_sistema`,`fecha_recepcion`,`ordenEmbalaje`,`Linea`,`hora_Inicio`,`hora_Termino`,`rendimiento`,`kilos_exportacion`,`kilos_comerciales`,`kilos_merma`,`kilos_recepcion`,`usuario`) values (5,'6','1',1,'123','2019-01-01 02:47:34','2019-01-01 02:47:14','12',3,'2019-01-01 02:47:17.108','2019-01-01 02:47:19.228','77','0.000','0.000','0.000',NULL,'');
+insert  into `tbl_maquila`(`ID`,`ID_Cliente`,`ID_Productor`,`Lote`,`documento`,`fecha_sistema`,`fecha_recepcion`,`ordenEmbalaje`,`Linea`,`hora_Inicio`,`hora_Termino`,`rendimiento`,`kilos_exportacion`,`kilos_comerciales`,`kilos_merma`,`kilos_recepcion`,`usuario`) values (6,'6','1',1,'123','2019-01-01 02:52:56','2019-01-01 02:52:31','1231',3,'2019-01-01 02:52:37.613','2019-01-01 02:52:38.045','77','0.000','0.000','0.000',NULL,'');
+insert  into `tbl_maquila`(`ID`,`ID_Cliente`,`ID_Productor`,`Lote`,`documento`,`fecha_sistema`,`fecha_recepcion`,`ordenEmbalaje`,`Linea`,`hora_Inicio`,`hora_Termino`,`rendimiento`,`kilos_exportacion`,`kilos_comerciales`,`kilos_merma`,`kilos_recepcion`,`usuario`) values (7,'6','1',1,'1211','2019-01-02 01:06:23','2019-01-02 01:06:01','1211',1,'2019-01-02 01:05:57.271','2019-01-02 01:05:58.036','122','0.000','0.000','0.000',NULL,'');
+insert  into `tbl_maquila`(`ID`,`ID_Cliente`,`ID_Productor`,`Lote`,`documento`,`fecha_sistema`,`fecha_recepcion`,`ordenEmbalaje`,`Linea`,`hora_Inicio`,`hora_Termino`,`rendimiento`,`kilos_exportacion`,`kilos_comerciales`,`kilos_merma`,`kilos_recepcion`,`usuario`) values (8,'6','1',1,'1221','2019-01-02 01:07:47','2019-01-02 01:07:30','3221',21,'2019-01-02 01:07:25.172','2019-01-02 01:07:25.589','12','0.000','0.000','0.000',NULL,'');
+insert  into `tbl_maquila`(`ID`,`ID_Cliente`,`ID_Productor`,`Lote`,`documento`,`fecha_sistema`,`fecha_recepcion`,`ordenEmbalaje`,`Linea`,`hora_Inicio`,`hora_Termino`,`rendimiento`,`kilos_exportacion`,`kilos_comerciales`,`kilos_merma`,`kilos_recepcion`,`usuario`) values (9,'6','1',1,'1221','2019-01-02 01:09:11','2019-01-02 01:07:30','3221',21,'2019-01-02 01:07:25.172','2019-01-02 01:07:25.589','12','0.000','0.000','0.000',NULL,'');
+insert  into `tbl_maquila`(`ID`,`ID_Cliente`,`ID_Productor`,`Lote`,`documento`,`fecha_sistema`,`fecha_recepcion`,`ordenEmbalaje`,`Linea`,`hora_Inicio`,`hora_Termino`,`rendimiento`,`kilos_exportacion`,`kilos_comerciales`,`kilos_merma`,`kilos_recepcion`,`usuario`) values (10,'6','1',1,'1221','2019-01-02 01:09:37','2019-01-02 01:07:30','3221',21,'2019-01-02 01:07:25.172','2019-01-02 01:07:25.589','12','0.000','0.000','0.000',NULL,'');
+insert  into `tbl_maquila`(`ID`,`ID_Cliente`,`ID_Productor`,`Lote`,`documento`,`fecha_sistema`,`fecha_recepcion`,`ordenEmbalaje`,`Linea`,`hora_Inicio`,`hora_Termino`,`rendimiento`,`kilos_exportacion`,`kilos_comerciales`,`kilos_merma`,`kilos_recepcion`,`usuario`) values (11,'6','1',1,'1221','2019-01-02 01:10:31','2019-01-02 01:07:30','3221',21,'2019-01-02 01:07:25.172','2019-01-02 01:07:25.589','12','0.000','0.000','0.000',NULL,'');
+insert  into `tbl_maquila`(`ID`,`ID_Cliente`,`ID_Productor`,`Lote`,`documento`,`fecha_sistema`,`fecha_recepcion`,`ordenEmbalaje`,`Linea`,`hora_Inicio`,`hora_Termino`,`rendimiento`,`kilos_exportacion`,`kilos_comerciales`,`kilos_merma`,`kilos_recepcion`,`usuario`) values (12,'6','1',1,'1211','2019-01-02 22:37:06','2019-01-02 22:36:42','6655',1231,'2019-01-02 22:36:49.496','2019-01-02 22:36:50.336','65','0.000','0.000','0.000',NULL,'');
+insert  into `tbl_maquila`(`ID`,`ID_Cliente`,`ID_Productor`,`Lote`,`documento`,`fecha_sistema`,`fecha_recepcion`,`ordenEmbalaje`,`Linea`,`hora_Inicio`,`hora_Termino`,`rendimiento`,`kilos_exportacion`,`kilos_comerciales`,`kilos_merma`,`kilos_recepcion`,`usuario`) values (13,'6','1',1,'444','2019-01-02 22:42:33','2019-01-02 22:42:23','22',33,'2019-01-02 22:42:28.099','2019-01-02 22:42:28.431','12','0.000','0.000','0.000',NULL,'');
+insert  into `tbl_maquila`(`ID`,`ID_Cliente`,`ID_Productor`,`Lote`,`documento`,`fecha_sistema`,`fecha_recepcion`,`ordenEmbalaje`,`Linea`,`hora_Inicio`,`hora_Termino`,`rendimiento`,`kilos_exportacion`,`kilos_comerciales`,`kilos_merma`,`kilos_recepcion`,`usuario`) values (14,'6','1',1,'1231','2019-01-03 12:19:36','2019-01-03 12:19:25','213',12,'2019-01-03 12:18:29.664','2019-01-03 12:18:30.046','12','0.000','0.000','0.000',NULL,'');
+insert  into `tbl_maquila`(`ID`,`ID_Cliente`,`ID_Productor`,`Lote`,`documento`,`fecha_sistema`,`fecha_recepcion`,`ordenEmbalaje`,`Linea`,`hora_Inicio`,`hora_Termino`,`rendimiento`,`kilos_exportacion`,`kilos_comerciales`,`kilos_merma`,`kilos_recepcion`,`usuario`) values (15,'6','1',1,'1231','2019-01-03 12:21:55','2019-01-03 12:19:25','213',12,'2019-01-03 12:18:29.664','2019-01-03 12:18:30.046','12','0.000','0.000','0.000',NULL,'');
+insert  into `tbl_maquila`(`ID`,`ID_Cliente`,`ID_Productor`,`Lote`,`documento`,`fecha_sistema`,`fecha_recepcion`,`ordenEmbalaje`,`Linea`,`hora_Inicio`,`hora_Termino`,`rendimiento`,`kilos_exportacion`,`kilos_comerciales`,`kilos_merma`,`kilos_recepcion`,`usuario`) values (16,'6','1',1,'121','2019-01-04 00:16:14','2019-01-04 00:16:05','',2,'2019-01-04 00:16:01.510','2019-01-04 00:16:02.009','12','0.000','0.000','0.000',NULL,'');
+insert  into `tbl_maquila`(`ID`,`ID_Cliente`,`ID_Productor`,`Lote`,`documento`,`fecha_sistema`,`fecha_recepcion`,`ordenEmbalaje`,`Linea`,`hora_Inicio`,`hora_Termino`,`rendimiento`,`kilos_exportacion`,`kilos_comerciales`,`kilos_merma`,`kilos_recepcion`,`usuario`) values (17,'6','1',1,'121','2019-01-04 13:27:15','2019-01-04 13:24:47','',2,'2019-01-04 13:24:52.203','2019-01-04 00:24:52 ','12','0.000','0.000','0.000',NULL,'');
+insert  into `tbl_maquila`(`ID`,`ID_Cliente`,`ID_Productor`,`Lote`,`documento`,`fecha_sistema`,`fecha_recepcion`,`ordenEmbalaje`,`Linea`,`hora_Inicio`,`hora_Termino`,`rendimiento`,`kilos_exportacion`,`kilos_comerciales`,`kilos_merma`,`kilos_recepcion`,`usuario`) values (18,'6','1',1,'1231','2019-01-04 13:31:46','2019-01-04 13:31:29','',1,'2019-01-04 13:31:25.759','2019-01-04 13:31:26.224','10','0.000','0.000','0.000',NULL,'');
+insert  into `tbl_maquila`(`ID`,`ID_Cliente`,`ID_Productor`,`Lote`,`documento`,`fecha_sistema`,`fecha_recepcion`,`ordenEmbalaje`,`Linea`,`hora_Inicio`,`hora_Termino`,`rendimiento`,`kilos_exportacion`,`kilos_comerciales`,`kilos_merma`,`kilos_recepcion`,`usuario`) values (19,'6','1',1,'121','2019-01-06 01:51:10','2019-01-06 01:50:18','1221',3,'2019-01-06 01:50:11.077','2019-01-06 01:50:11.595','211','12410.000','900.000','950.000','103.000','');
+insert  into `tbl_maquila`(`ID`,`ID_Cliente`,`ID_Productor`,`Lote`,`documento`,`fecha_sistema`,`fecha_recepcion`,`ordenEmbalaje`,`Linea`,`hora_Inicio`,`hora_Termino`,`rendimiento`,`kilos_exportacion`,`kilos_comerciales`,`kilos_merma`,`kilos_recepcion`,`usuario`) values (20,'6','1',1,'11','2019-01-06 01:58:32','2019-01-06 01:58:28','32',1,'2019-01-06 01:58:22.740','2019-01-06 01:58:23.258','1','100.000','900.000','950.000','100.000','');
+insert  into `tbl_maquila`(`ID`,`ID_Cliente`,`ID_Productor`,`Lote`,`documento`,`fecha_sistema`,`fecha_recepcion`,`ordenEmbalaje`,`Linea`,`hora_Inicio`,`hora_Termino`,`rendimiento`,`kilos_exportacion`,`kilos_comerciales`,`kilos_merma`,`kilos_recepcion`,`usuario`) values (21,'6','1',1,'121','2019-01-06 02:06:37','2019-01-06 02:05:58','122',1,'2019-01-06 02:06:01.088','2019-01-06 02:06:02.245','122','100.000','900.000','950.000','100.000','');
+insert  into `tbl_maquila`(`ID`,`ID_Cliente`,`ID_Productor`,`Lote`,`documento`,`fecha_sistema`,`fecha_recepcion`,`ordenEmbalaje`,`Linea`,`hora_Inicio`,`hora_Termino`,`rendimiento`,`kilos_exportacion`,`kilos_comerciales`,`kilos_merma`,`kilos_recepcion`,`usuario`) values (22,'6','1',1,'12','2019-01-06 02:33:41','2019-01-06 02:33:20','322',2,'2019-01-06 02:33:14.559','2019-01-06 02:33:22.822','121','100.000','900.000','950.000','100.000','');
+insert  into `tbl_maquila`(`ID`,`ID_Cliente`,`ID_Productor`,`Lote`,`documento`,`fecha_sistema`,`fecha_recepcion`,`ordenEmbalaje`,`Linea`,`hora_Inicio`,`hora_Termino`,`rendimiento`,`kilos_exportacion`,`kilos_comerciales`,`kilos_merma`,`kilos_recepcion`,`usuario`) values (23,'6','1',1,'12','2019-01-06 02:36:48','2019-01-06 02:33:20','322',2,'2019-01-06 02:33:14.559','2019-01-06 02:33:22.822','121','100.000','1097.780','848.240','100.000','');
+insert  into `tbl_maquila`(`ID`,`ID_Cliente`,`ID_Productor`,`Lote`,`documento`,`fecha_sistema`,`fecha_recepcion`,`ordenEmbalaje`,`Linea`,`hora_Inicio`,`hora_Termino`,`rendimiento`,`kilos_exportacion`,`kilos_comerciales`,`kilos_merma`,`kilos_recepcion`,`usuario`) values (24,'6','1',1,'12','2019-01-06 02:40:15','2019-01-06 02:33:20','322',2,'2019-01-06 02:33:14.559','2019-01-06 02:33:22.822','121','100.000','1097.780','-18945.880','100.000','');
+insert  into `tbl_maquila`(`ID`,`ID_Cliente`,`ID_Productor`,`Lote`,`documento`,`fecha_sistema`,`fecha_recepcion`,`ordenEmbalaje`,`Linea`,`hora_Inicio`,`hora_Termino`,`rendimiento`,`kilos_exportacion`,`kilos_comerciales`,`kilos_merma`,`kilos_recepcion`,`usuario`) values (25,'6','1',1,'122','2019-01-07 11:59:08','2019-01-07 11:55:56','22',1,'2019-01-07 11:55:51.425','2019-01-07 11:55:51.967','12','100.000','0.000','950.000','75.240','');
+insert  into `tbl_maquila`(`ID`,`ID_Cliente`,`ID_Productor`,`Lote`,`documento`,`fecha_sistema`,`fecha_recepcion`,`ordenEmbalaje`,`Linea`,`hora_Inicio`,`hora_Termino`,`rendimiento`,`kilos_exportacion`,`kilos_comerciales`,`kilos_merma`,`kilos_recepcion`,`usuario`) values (26,'6','1',1,'12','2019-01-07 12:06:01','2019-01-07 12:04:39','121',2,'2019-01-07 12:04:36.205','2019-01-07 12:04:36.655','33','100.000','900.000','950.000','75.240','');
+insert  into `tbl_maquila`(`ID`,`ID_Cliente`,`ID_Productor`,`Lote`,`documento`,`fecha_sistema`,`fecha_recepcion`,`ordenEmbalaje`,`Linea`,`hora_Inicio`,`hora_Termino`,`rendimiento`,`kilos_exportacion`,`kilos_comerciales`,`kilos_merma`,`kilos_recepcion`,`usuario`) values (27,'6','1',1,'111','2019-01-07 12:13:40','2019-01-07 12:13:06','1211',1,'2019-01-07 12:13:11.074','2019-01-07 12:13:11.625','211','100.000','900.000','950.000','75.240','');
+insert  into `tbl_maquila`(`ID`,`ID_Cliente`,`ID_Productor`,`Lote`,`documento`,`fecha_sistema`,`fecha_recepcion`,`ordenEmbalaje`,`Linea`,`hora_Inicio`,`hora_Termino`,`rendimiento`,`kilos_exportacion`,`kilos_comerciales`,`kilos_merma`,`kilos_recepcion`,`usuario`) values (28,'6','1',1,'11','2019-01-07 12:28:42','2019-01-07 12:27:52','32',1,'2019-01-07 12:27:55.794','2019-01-07 12:27:56.253','11','100.000','0.000','950.000','75.240','');
+insert  into `tbl_maquila`(`ID`,`ID_Cliente`,`ID_Productor`,`Lote`,`documento`,`fecha_sistema`,`fecha_recepcion`,`ordenEmbalaje`,`Linea`,`hora_Inicio`,`hora_Termino`,`rendimiento`,`kilos_exportacion`,`kilos_comerciales`,`kilos_merma`,`kilos_recepcion`,`usuario`) values (29,'6','1',1,'1211','2019-01-07 12:41:47','2019-01-07 12:38:23','1211',1,'2019-01-07 12:38:19.161','2019-01-07 12:38:20.069','211','400.000','900.000','950.000','75.240','');
+insert  into `tbl_maquila`(`ID`,`ID_Cliente`,`ID_Productor`,`Lote`,`documento`,`fecha_sistema`,`fecha_recepcion`,`ordenEmbalaje`,`Linea`,`hora_Inicio`,`hora_Termino`,`rendimiento`,`kilos_exportacion`,`kilos_comerciales`,`kilos_merma`,`kilos_recepcion`,`usuario`) values (30,'6','1',1,'1211','2019-01-07 12:43:26','2019-01-07 12:38:23','1211',1,'2019-01-07 12:38:19.161','2019-01-07 12:38:20.069','211','400.000','900.000','950.000','71.280','');
+insert  into `tbl_maquila`(`ID`,`ID_Cliente`,`ID_Productor`,`Lote`,`documento`,`fecha_sistema`,`fecha_recepcion`,`ordenEmbalaje`,`Linea`,`hora_Inicio`,`hora_Termino`,`rendimiento`,`kilos_exportacion`,`kilos_comerciales`,`kilos_merma`,`kilos_recepcion`,`usuario`) values (31,'6','1',1,'12','2019-01-09 11:47:27','2019-01-09 11:47:11','1222',2,'2019-01-09 11:43:01.913','2019-01-09 11:43:02.947','12','220.000','900.000','950.000','75.240','');
+insert  into `tbl_maquila`(`ID`,`ID_Cliente`,`ID_Productor`,`Lote`,`documento`,`fecha_sistema`,`fecha_recepcion`,`ordenEmbalaje`,`Linea`,`hora_Inicio`,`hora_Termino`,`rendimiento`,`kilos_exportacion`,`kilos_comerciales`,`kilos_merma`,`kilos_recepcion`,`usuario`) values (32,'6','1',1,'12','2019-01-09 11:49:56','2019-01-09 11:47:11','1222',2,'2019-01-09 11:43:01.913','2019-01-09 11:43:02.947','12','220.000','1097.780','848.240','59.714','');
+insert  into `tbl_maquila`(`ID`,`ID_Cliente`,`ID_Productor`,`Lote`,`documento`,`fecha_sistema`,`fecha_recepcion`,`ordenEmbalaje`,`Linea`,`hora_Inicio`,`hora_Termino`,`rendimiento`,`kilos_exportacion`,`kilos_comerciales`,`kilos_merma`,`kilos_recepcion`,`usuario`) values (33,'6','1',1,'12','2019-01-09 11:50:48','2019-01-09 11:47:11','1222',2,'2019-01-09 11:43:01.913','2019-01-09 11:43:02.947','12','220.000','1097.780','848.240','59.714','');
+insert  into `tbl_maquila`(`ID`,`ID_Cliente`,`ID_Productor`,`Lote`,`documento`,`fecha_sistema`,`fecha_recepcion`,`ordenEmbalaje`,`Linea`,`hora_Inicio`,`hora_Termino`,`rendimiento`,`kilos_exportacion`,`kilos_comerciales`,`kilos_merma`,`kilos_recepcion`,`usuario`) values (34,'6','1',1,'1231','2019-01-09 15:38:37','2019-01-09 15:36:02','121',2,'2019-01-09 15:38:31.327','2019-01-09 15:38:31.775','11','220.000','1100.820','950.000','66.520','');
+insert  into `tbl_maquila`(`ID`,`ID_Cliente`,`ID_Productor`,`Lote`,`documento`,`fecha_sistema`,`fecha_recepcion`,`ordenEmbalaje`,`Linea`,`hora_Inicio`,`hora_Termino`,`rendimiento`,`kilos_exportacion`,`kilos_comerciales`,`kilos_merma`,`kilos_recepcion`,`usuario`) values (35,'6','1',1,'1231','2019-01-09 15:39:20','2019-01-09 15:36:02','121',2,'2019-01-09 15:38:31.327','2019-01-09 15:38:31.775','11','220.000','1100.820','950.000','66.520','');
+insert  into `tbl_maquila`(`ID`,`ID_Cliente`,`ID_Productor`,`Lote`,`documento`,`fecha_sistema`,`fecha_recepcion`,`ordenEmbalaje`,`Linea`,`hora_Inicio`,`hora_Termino`,`rendimiento`,`kilos_exportacion`,`kilos_comerciales`,`kilos_merma`,`kilos_recepcion`,`usuario`) values (36,'6','1',1,'121213','2019-01-10 17:13:19','2019-01-10 17:06:31','1242',1,'2019-01-10 17:06:31.655','2019-01-10 17:06:32.229','23','10.000','0.000','-101.760','-6.806','');
+insert  into `tbl_maquila`(`ID`,`ID_Cliente`,`ID_Productor`,`Lote`,`documento`,`fecha_sistema`,`fecha_recepcion`,`ordenEmbalaje`,`Linea`,`hora_Inicio`,`hora_Termino`,`rendimiento`,`kilos_exportacion`,`kilos_comerciales`,`kilos_merma`,`kilos_recepcion`,`usuario`) values (37,'6','1',1,'211231','2019-01-10 17:17:26','2019-01-10 17:16:23','131312',1,'2019-01-10 17:16:18.898','2019-01-10 17:16:19.279','12','300.000','187.040','0.000','-8.300','');
+insert  into `tbl_maquila`(`ID`,`ID_Cliente`,`ID_Productor`,`Lote`,`documento`,`fecha_sistema`,`fecha_recepcion`,`ordenEmbalaje`,`Linea`,`hora_Inicio`,`hora_Termino`,`rendimiento`,`kilos_exportacion`,`kilos_comerciales`,`kilos_merma`,`kilos_recepcion`,`usuario`) values (38,'6','1',1,'1231','2019-01-10 17:23:11','2019-01-10 17:22:30','13414',1,'2019-01-10 17:22:28.985','2019-01-10 17:22:29.441','131','10.000','78.840','0.000','-7.160','');
+insert  into `tbl_maquila`(`ID`,`ID_Cliente`,`ID_Productor`,`Lote`,`documento`,`fecha_sistema`,`fecha_recepcion`,`ordenEmbalaje`,`Linea`,`hora_Inicio`,`hora_Termino`,`rendimiento`,`kilos_exportacion`,`kilos_comerciales`,`kilos_merma`,`kilos_recepcion`,`usuario`) values (39,'6','1',1,'556','2019-01-10 17:41:06','2019-01-10 17:39:50','12',1,'2019-01-10 17:39:44.266','2019-01-10 17:39:44.751','23','120.000','228.840','0.000','-8.000','');
+insert  into `tbl_maquila`(`ID`,`ID_Cliente`,`ID_Productor`,`Lote`,`documento`,`fecha_sistema`,`fecha_recepcion`,`ordenEmbalaje`,`Linea`,`hora_Inicio`,`hora_Termino`,`rendimiento`,`kilos_exportacion`,`kilos_comerciales`,`kilos_merma`,`kilos_recepcion`,`usuario`) values (40,'6','1',1,'12321','2019-01-17 16:10:36','2019-01-17 16:08:49','41',1,'2019-01-17 16:08:43.181','2019-01-17 16:08:43.542','12','120.000','0.000','-20929.960','12284.700','diegocade');
+insert  into `tbl_maquila`(`ID`,`ID_Cliente`,`ID_Productor`,`Lote`,`documento`,`fecha_sistema`,`fecha_recepcion`,`ordenEmbalaje`,`Linea`,`hora_Inicio`,`hora_Termino`,`rendimiento`,`kilos_exportacion`,`kilos_comerciales`,`kilos_merma`,`kilos_recepcion`,`usuario`) values (41,'6','1',16,'123','2019-02-07 17:32:18','2019-02-07 17:29:35','123',1,'2019-02-07 17:29:37.349','2019-02-07 17:50:38 ','20','120.000','5.240','0.000','-75.240','usuario');
+insert  into `tbl_maquila`(`ID`,`ID_Cliente`,`ID_Productor`,`Lote`,`documento`,`fecha_sistema`,`fecha_recepcion`,`ordenEmbalaje`,`Linea`,`hora_Inicio`,`hora_Termino`,`rendimiento`,`kilos_exportacion`,`kilos_comerciales`,`kilos_merma`,`kilos_recepcion`,`usuario`) values (42,'6','1',16,'123','2019-02-07 17:46:56','2019-02-07 17:44:20','1211',1,'2019-02-07 17:44:21.838','2019-02-07 17:44:23.025','11','120.000','5.240','78.840','-75.240','usuario');
+insert  into `tbl_maquila`(`ID`,`ID_Cliente`,`ID_Productor`,`Lote`,`documento`,`fecha_sistema`,`fecha_recepcion`,`ordenEmbalaje`,`Linea`,`hora_Inicio`,`hora_Termino`,`rendimiento`,`kilos_exportacion`,`kilos_comerciales`,`kilos_merma`,`kilos_recepcion`,`usuario`) values (43,'6','1',16,'123','2019-02-07 23:56:20','2019-02-07 23:44:19','12',1,'2019-02-07 23:44:21.512','2019-02-07 23:44:22.629','56','120.000','-69.820','0.000','-75.240','usuario');
+insert  into `tbl_maquila`(`ID`,`ID_Cliente`,`ID_Productor`,`Lote`,`documento`,`fecha_sistema`,`fecha_recepcion`,`ordenEmbalaje`,`Linea`,`hora_Inicio`,`hora_Termino`,`rendimiento`,`kilos_exportacion`,`kilos_comerciales`,`kilos_merma`,`kilos_recepcion`,`usuario`) values (44,'6','1',14,'655','2019-02-08 13:07:36','2019-02-08 12:37:08','1222',1,'2019-02-08 12:37:09.826','2019-02-08 12:37:10.637','12','120.000','40.000','0.000','-8500.300','usuario');
+insert  into `tbl_maquila`(`ID`,`ID_Cliente`,`ID_Productor`,`Lote`,`documento`,`fecha_sistema`,`fecha_recepcion`,`ordenEmbalaje`,`Linea`,`hora_Inicio`,`hora_Termino`,`rendimiento`,`kilos_exportacion`,`kilos_comerciales`,`kilos_merma`,`kilos_recepcion`,`usuario`) values (45,'6','1',14,'655','2019-02-08 13:16:43','2019-02-08 13:16:17','11',1,'2019-02-08 13:16:19.674','2019-02-08 13:16:20.765','19','120.000','40.000','0.000','-8500.300','usuario');
+insert  into `tbl_maquila`(`ID`,`ID_Cliente`,`ID_Productor`,`Lote`,`documento`,`fecha_sistema`,`fecha_recepcion`,`ordenEmbalaje`,`Linea`,`hora_Inicio`,`hora_Termino`,`rendimiento`,`kilos_exportacion`,`kilos_comerciales`,`kilos_merma`,`kilos_recepcion`,`usuario`) values (46,'6','1',14,'655','2019-02-08 13:33:39','2019-02-08 13:33:11','111',1,'2019-02-08 13:33:12.118','2019-02-08 13:33:12.583','12','120.000','40.000','0.000','-8500.300','usuario');
+insert  into `tbl_maquila`(`ID`,`ID_Cliente`,`ID_Productor`,`Lote`,`documento`,`fecha_sistema`,`fecha_recepcion`,`ordenEmbalaje`,`Linea`,`hora_Inicio`,`hora_Termino`,`rendimiento`,`kilos_exportacion`,`kilos_comerciales`,`kilos_merma`,`kilos_recepcion`,`usuario`) values (47,'6','1',14,'655','2019-02-08 13:39:58','2019-02-08 13:39:53','121',1,'2019-02-08 13:39:54.366','2019-02-08 13:39:55.079','12','120.000','40.000','0.000','-8500.300','usuario');
+insert  into `tbl_maquila`(`ID`,`ID_Cliente`,`ID_Productor`,`Lote`,`documento`,`fecha_sistema`,`fecha_recepcion`,`ordenEmbalaje`,`Linea`,`hora_Inicio`,`hora_Termino`,`rendimiento`,`kilos_exportacion`,`kilos_comerciales`,`kilos_merma`,`kilos_recepcion`,`usuario`) values (48,'6','1',14,'655','2019-02-08 13:45:57','2019-02-08 13:45:20','122',1,'2019-02-08 01:45:21 ','2019-02-08 13:45:22.185','12','120.000','40.000','0.000','-8500.300','usuario');
+insert  into `tbl_maquila`(`ID`,`ID_Cliente`,`ID_Productor`,`Lote`,`documento`,`fecha_sistema`,`fecha_recepcion`,`ordenEmbalaje`,`Linea`,`hora_Inicio`,`hora_Termino`,`rendimiento`,`kilos_exportacion`,`kilos_comerciales`,`kilos_merma`,`kilos_recepcion`,`usuario`) values (49,'6','1',16,'123','2019-02-11 13:40:10','2019-02-11 13:31:57','123',1,'2019-02-11 13:31:58.486','2019-02-11 13:31:59.554','12','100.000','0.000','950.000','75.240','usuario');
+insert  into `tbl_maquila`(`ID`,`ID_Cliente`,`ID_Productor`,`Lote`,`documento`,`fecha_sistema`,`fecha_recepcion`,`ordenEmbalaje`,`Linea`,`hora_Inicio`,`hora_Termino`,`rendimiento`,`kilos_exportacion`,`kilos_comerciales`,`kilos_merma`,`kilos_recepcion`,`usuario`) values (50,'6','1',14,'655','2019-02-11 13:51:21','2019-02-11 13:50:32','1221',1,'2019-02-11 13:50:33.597','2019-02-11 13:50:34.131','12','100.000','900.000','950.000','790.080','usuario');
+insert  into `tbl_maquila`(`ID`,`ID_Cliente`,`ID_Productor`,`Lote`,`documento`,`fecha_sistema`,`fecha_recepcion`,`ordenEmbalaje`,`Linea`,`hora_Inicio`,`hora_Termino`,`rendimiento`,`kilos_exportacion`,`kilos_comerciales`,`kilos_merma`,`kilos_recepcion`,`usuario`) values (51,'6','1',14,'655','2019-02-11 13:50:47','2019-02-11 14:02:16','12',1,'2019-02-11 14:02:17.050','2019-02-11 14:02:17.765','12','100.000','900.000','950.000','329.240','usuario');
+insert  into `tbl_maquila`(`ID`,`ID_Cliente`,`ID_Productor`,`Lote`,`documento`,`fecha_sistema`,`fecha_recepcion`,`ordenEmbalaje`,`Linea`,`hora_Inicio`,`hora_Termino`,`rendimiento`,`kilos_exportacion`,`kilos_comerciales`,`kilos_merma`,`kilos_recepcion`,`usuario`) values (52,'6','1',14,'655','2019-02-11 13:57:28','2019-02-11 14:07:37','121',1,'2019-02-11 14:07:38.184','2019-02-11 14:07:38.763','213','120.000','40.000','0.000','8530.680','usuario');
+insert  into `tbl_maquila`(`ID`,`ID_Cliente`,`ID_Productor`,`Lote`,`documento`,`fecha_sistema`,`fecha_recepcion`,`ordenEmbalaje`,`Linea`,`hora_Inicio`,`hora_Termino`,`rendimiento`,`kilos_exportacion`,`kilos_comerciales`,`kilos_merma`,`kilos_recepcion`,`usuario`) values (53,'6','1',14,'655','2019-02-11 14:14:41','2019-02-11 14:18:54','12',1,'2019-02-11 14:18:55.814','2019-02-11 14:18:56.696','45','100.000','900.000','950.000','8069.840','usuario');
+insert  into `tbl_maquila`(`ID`,`ID_Cliente`,`ID_Productor`,`Lote`,`documento`,`fecha_sistema`,`fecha_recepcion`,`ordenEmbalaje`,`Linea`,`hora_Inicio`,`hora_Termino`,`rendimiento`,`kilos_exportacion`,`kilos_comerciales`,`kilos_merma`,`kilos_recepcion`,`usuario`) values (54,'6','1',14,'655','2019-02-11 14:18:43','2019-02-11 14:21:45','12',2,'2019-02-11 14:21:46.285','2019-02-11 14:21:46.912','32','120.000','40.000','0.000','111.240','usuario');
 
 /*Table structure for table `tbl_pallet` */
 
@@ -1570,6 +1631,37 @@ insert  into `tbl_pallet`(`ID`,`Descripcion`,`Peso`) values (1,'Madera','3.160')
 insert  into `tbl_pallet`(`ID`,`Descripcion`,`Peso`) values (2,'Metal','4.700');
 insert  into `tbl_pallet`(`ID`,`Descripcion`,`Peso`) values (3,'Plastico','2.077');
 
+/*Table structure for table `tbl_permiso` */
+
+DROP TABLE IF EXISTS `tbl_permiso`;
+
+CREATE TABLE `tbl_permiso` (
+  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(25) NOT NULL,
+  `llave` varchar(40) NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `tbl_permiso` */
+
+/*Table structure for table `tbl_prefijo` */
+
+DROP TABLE IF EXISTS `tbl_prefijo`;
+
+CREATE TABLE `tbl_prefijo` (
+  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `Prefijo` varchar(6) DEFAULT NULL,
+  `Estado` tinyint(4) DEFAULT '0',
+  `fechaCreacion` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+/*Data for the table `tbl_prefijo` */
+
+insert  into `tbl_prefijo`(`ID`,`Prefijo`,`Estado`,`fechaCreacion`) values (1,'PF',1,'2019-02-12 16:52:05');
+insert  into `tbl_prefijo`(`ID`,`Prefijo`,`Estado`,`fechaCreacion`) values (2,'66',0,'2019-02-12 16:52:07');
+insert  into `tbl_prefijo`(`ID`,`Prefijo`,`Estado`,`fechaCreacion`) values (3,'66',0,'2019-02-12 16:52:39');
+
 /*Table structure for table `tbl_productor` */
 
 DROP TABLE IF EXISTS `tbl_productor`;
@@ -1578,21 +1670,30 @@ CREATE TABLE `tbl_productor` (
   `codigo` bigint(20) NOT NULL AUTO_INCREMENT,
   `descripcion` varchar(50) NOT NULL,
   `codigo_cliente` bigint(20) NOT NULL,
+  `codigo_productor` varchar(30) NOT NULL,
   PRIMARY KEY (`codigo`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 
 /*Data for the table `tbl_productor` */
 
-insert  into `tbl_productor`(`codigo`,`descripcion`,`codigo_cliente`) values (1,'Productor1',6);
-insert  into `tbl_productor`(`codigo`,`descripcion`,`codigo_cliente`) values (2,'productor2',6);
-insert  into `tbl_productor`(`codigo`,`descripcion`,`codigo_cliente`) values (3,'productor3',6);
-insert  into `tbl_productor`(`codigo`,`descripcion`,`codigo_cliente`) values (4,'productor4',7);
-insert  into `tbl_productor`(`codigo`,`descripcion`,`codigo_cliente`) values (5,'productor5',7);
-insert  into `tbl_productor`(`codigo`,`descripcion`,`codigo_cliente`) values (6,'productor6',3);
-insert  into `tbl_productor`(`codigo`,`descripcion`,`codigo_cliente`) values (7,'productor7',3);
-insert  into `tbl_productor`(`codigo`,`descripcion`,`codigo_cliente`) values (8,'productor8',3);
-insert  into `tbl_productor`(`codigo`,`descripcion`,`codigo_cliente`) values (9,'productor9',4);
-insert  into `tbl_productor`(`codigo`,`descripcion`,`codigo_cliente`) values (10,'productor10',4);
+insert  into `tbl_productor`(`codigo`,`descripcion`,`codigo_cliente`,`codigo_productor`) values (1,'Productor1',6,'123');
+insert  into `tbl_productor`(`codigo`,`descripcion`,`codigo_cliente`,`codigo_productor`) values (2,'productor2',6,'234');
+insert  into `tbl_productor`(`codigo`,`descripcion`,`codigo_cliente`,`codigo_productor`) values (3,'productor3',6,'345');
+insert  into `tbl_productor`(`codigo`,`descripcion`,`codigo_cliente`,`codigo_productor`) values (4,'productor4',7,'456');
+insert  into `tbl_productor`(`codigo`,`descripcion`,`codigo_cliente`,`codigo_productor`) values (5,'productor5',7,'567');
+insert  into `tbl_productor`(`codigo`,`descripcion`,`codigo_cliente`,`codigo_productor`) values (6,'productor6',511,'678');
+insert  into `tbl_productor`(`codigo`,`descripcion`,`codigo_cliente`,`codigo_productor`) values (7,'productor7',511,'789');
+insert  into `tbl_productor`(`codigo`,`descripcion`,`codigo_cliente`,`codigo_productor`) values (8,'productor8',512,'1123');
+insert  into `tbl_productor`(`codigo`,`descripcion`,`codigo_cliente`,`codigo_productor`) values (9,'productor9',512,'2234');
+insert  into `tbl_productor`(`codigo`,`descripcion`,`codigo_cliente`,`codigo_productor`) values (10,'productor10',513,'3345');
+insert  into `tbl_productor`(`codigo`,`descripcion`,`codigo_cliente`,`codigo_productor`) values (11,'Productor de Prueba 1',6,'112');
+insert  into `tbl_productor`(`codigo`,`descripcion`,`codigo_cliente`,`codigo_productor`) values (12,'Productor de Prueba 2',7,'222');
+insert  into `tbl_productor`(`codigo`,`descripcion`,`codigo_cliente`,`codigo_productor`) values (13,'Productor de Prueba 3',509,'333');
+insert  into `tbl_productor`(`codigo`,`descripcion`,`codigo_cliente`,`codigo_productor`) values (14,'Productor de Prueba 4',510,'444');
+insert  into `tbl_productor`(`codigo`,`descripcion`,`codigo_cliente`,`codigo_productor`) values (15,'Productor de Prueba 5',511,'555');
+insert  into `tbl_productor`(`codigo`,`descripcion`,`codigo_cliente`,`codigo_productor`) values (16,'Productor de Prueba 6',512,'666');
+insert  into `tbl_productor`(`codigo`,`descripcion`,`codigo_cliente`,`codigo_productor`) values (17,'Productor de Prueba 7',513,'777');
+insert  into `tbl_productor`(`codigo`,`descripcion`,`codigo_cliente`,`codigo_productor`) values (18,'Productor de Prueba 8',514,'889');
 
 /*Table structure for table `tbl_recepcion` */
 
@@ -1613,26 +1714,46 @@ CREATE TABLE `tbl_recepcion` (
   `lote` bigint(20) DEFAULT NULL,
   `estado` int(11) NOT NULL DEFAULT '0',
   `cantidad_pallets` bigint(20) NOT NULL,
+  `ID_tipo` bigint(20) NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
 
 /*Data for the table `tbl_recepcion` */
 
-insert  into `tbl_recepcion`(`ID`,`ID_cliente`,`ID_productor`,`chofer`,`guia`,`ID_especie`,`ID_descarga`,`temperatura`,`ID_destino`,`fecha`,`fecha_sistema`,`lote`,`estado`,`cantidad_pallets`) values (1,6,1,'Fulano','1122',1,1,'1.000',2,'2019-01-03 16:36:18','2019-01-03 16:37:22',12,0,3);
-insert  into `tbl_recepcion`(`ID`,`ID_cliente`,`ID_productor`,`chofer`,`guia`,`ID_especie`,`ID_descarga`,`temperatura`,`ID_destino`,`fecha`,`fecha_sistema`,`lote`,`estado`,`cantidad_pallets`) values (2,6,1,'Fulano','1122',1,1,'1.000',1,'2019-01-03 16:49:41','2019-01-03 16:50:02',13,0,3);
-insert  into `tbl_recepcion`(`ID`,`ID_cliente`,`ID_productor`,`chofer`,`guia`,`ID_especie`,`ID_descarga`,`temperatura`,`ID_destino`,`fecha`,`fecha_sistema`,`lote`,`estado`,`cantidad_pallets`) values (3,6,1,'huttt','655',1,1,'-87.000',1,'2019-01-03 22:49:15','2019-01-03 22:49:23',14,0,10);
-insert  into `tbl_recepcion`(`ID`,`ID_cliente`,`ID_productor`,`chofer`,`guia`,`ID_especie`,`ID_descarga`,`temperatura`,`ID_destino`,`fecha`,`fecha_sistema`,`lote`,`estado`,`cantidad_pallets`) values (4,6,1,'hu','5433',6,1,'-55.000',1,'2019-01-03 23:24:17','2019-01-03 23:24:20',15,0,100);
-insert  into `tbl_recepcion`(`ID`,`ID_cliente`,`ID_productor`,`chofer`,`guia`,`ID_especie`,`ID_descarga`,`temperatura`,`ID_destino`,`fecha`,`fecha_sistema`,`lote`,`estado`,`cantidad_pallets`) values (5,6,1,'121','123',6,1,'-122.000',1,'2019-01-04 00:12:37','2019-01-04 00:12:40',16,0,10);
-insert  into `tbl_recepcion`(`ID`,`ID_cliente`,`ID_productor`,`chofer`,`guia`,`ID_especie`,`ID_descarga`,`temperatura`,`ID_destino`,`fecha`,`fecha_sistema`,`lote`,`estado`,`cantidad_pallets`) values (6,6,1,'fulano','1231',6,1,'1231.000',1,'2019-01-04 12:04:40','2019-01-04 12:04:41',17,0,10);
-insert  into `tbl_recepcion`(`ID`,`ID_cliente`,`ID_productor`,`chofer`,`guia`,`ID_especie`,`ID_descarga`,`temperatura`,`ID_destino`,`fecha`,`fecha_sistema`,`lote`,`estado`,`cantidad_pallets`) values (7,6,1,'12311','12311',6,1,'12.000',1,'2019-01-05 01:36:00','2019-01-05 01:36:01',18,0,120);
-insert  into `tbl_recepcion`(`ID`,`ID_cliente`,`ID_productor`,`chofer`,`guia`,`ID_especie`,`ID_descarga`,`temperatura`,`ID_destino`,`fecha`,`fecha_sistema`,`lote`,`estado`,`cantidad_pallets`) values (8,6,1,'fulano','33',1,1,'22.220',1,'2019-01-07 17:36:08','2019-01-07 17:36:09',19,0,11);
-insert  into `tbl_recepcion`(`ID`,`ID_cliente`,`ID_productor`,`chofer`,`guia`,`ID_especie`,`ID_descarga`,`temperatura`,`ID_destino`,`fecha`,`fecha_sistema`,`lote`,`estado`,`cantidad_pallets`) values (9,6,1,'fulano','22',6,1,'12.000',2,'2019-01-07 17:41:04','2019-01-07 17:41:05',20,0,333);
+insert  into `tbl_recepcion`(`ID`,`ID_cliente`,`ID_productor`,`chofer`,`guia`,`ID_especie`,`ID_descarga`,`temperatura`,`ID_destino`,`fecha`,`fecha_sistema`,`lote`,`estado`,`cantidad_pallets`,`ID_tipo`) values (1,6,1,'Fulano','1125',1,1,'1.000',2,'2019-01-03 16:36:18','2019-01-03 16:37:22',12,0,4,0);
+insert  into `tbl_recepcion`(`ID`,`ID_cliente`,`ID_productor`,`chofer`,`guia`,`ID_especie`,`ID_descarga`,`temperatura`,`ID_destino`,`fecha`,`fecha_sistema`,`lote`,`estado`,`cantidad_pallets`,`ID_tipo`) values (2,6,1,'Fulano','1122',1,1,'1.000',1,'2019-01-03 16:49:41','2019-01-03 16:50:02',13,0,3,0);
+insert  into `tbl_recepcion`(`ID`,`ID_cliente`,`ID_productor`,`chofer`,`guia`,`ID_especie`,`ID_descarga`,`temperatura`,`ID_destino`,`fecha`,`fecha_sistema`,`lote`,`estado`,`cantidad_pallets`,`ID_tipo`) values (3,6,1,'huttt','655',1,1,'-87.000',1,'2019-01-03 22:49:15','2019-01-03 22:49:23',14,0,10,0);
+insert  into `tbl_recepcion`(`ID`,`ID_cliente`,`ID_productor`,`chofer`,`guia`,`ID_especie`,`ID_descarga`,`temperatura`,`ID_destino`,`fecha`,`fecha_sistema`,`lote`,`estado`,`cantidad_pallets`,`ID_tipo`) values (4,6,1,'hu','5433',6,1,'-55.000',1,'2019-01-03 23:24:17','2019-01-03 23:24:20',15,0,100,0);
+insert  into `tbl_recepcion`(`ID`,`ID_cliente`,`ID_productor`,`chofer`,`guia`,`ID_especie`,`ID_descarga`,`temperatura`,`ID_destino`,`fecha`,`fecha_sistema`,`lote`,`estado`,`cantidad_pallets`,`ID_tipo`) values (5,6,1,'121','123',6,1,'-122.000',1,'2019-01-04 00:12:37','2019-01-04 00:12:40',16,0,10,1);
+insert  into `tbl_recepcion`(`ID`,`ID_cliente`,`ID_productor`,`chofer`,`guia`,`ID_especie`,`ID_descarga`,`temperatura`,`ID_destino`,`fecha`,`fecha_sistema`,`lote`,`estado`,`cantidad_pallets`,`ID_tipo`) values (6,6,1,'fulano','1231',6,1,'1231.000',1,'2019-01-04 12:04:40','2019-01-04 12:04:41',17,0,10,0);
+insert  into `tbl_recepcion`(`ID`,`ID_cliente`,`ID_productor`,`chofer`,`guia`,`ID_especie`,`ID_descarga`,`temperatura`,`ID_destino`,`fecha`,`fecha_sistema`,`lote`,`estado`,`cantidad_pallets`,`ID_tipo`) values (7,6,1,'12311','12311',6,1,'12.000',1,'2019-01-05 01:36:00','2019-01-05 01:36:01',18,0,120,0);
+insert  into `tbl_recepcion`(`ID`,`ID_cliente`,`ID_productor`,`chofer`,`guia`,`ID_especie`,`ID_descarga`,`temperatura`,`ID_destino`,`fecha`,`fecha_sistema`,`lote`,`estado`,`cantidad_pallets`,`ID_tipo`) values (8,6,1,'fulano','33',1,1,'22.220',1,'2019-01-07 17:36:08','2019-01-07 17:36:09',19,0,11,0);
+insert  into `tbl_recepcion`(`ID`,`ID_cliente`,`ID_productor`,`chofer`,`guia`,`ID_especie`,`ID_descarga`,`temperatura`,`ID_destino`,`fecha`,`fecha_sistema`,`lote`,`estado`,`cantidad_pallets`,`ID_tipo`) values (9,6,1,'fulano','22',6,1,'12.000',2,'2019-01-07 17:41:04','2019-01-07 17:41:05',20,0,333,0);
+insert  into `tbl_recepcion`(`ID`,`ID_cliente`,`ID_productor`,`chofer`,`guia`,`ID_especie`,`ID_descarga`,`temperatura`,`ID_destino`,`fecha`,`fecha_sistema`,`lote`,`estado`,`cantidad_pallets`,`ID_tipo`) values (10,6,1,'Fulanito','121241223',6,1,'1.000',1,'2019-01-09 17:08:36','2019-01-09 17:08:36',24,0,12,0);
+insert  into `tbl_recepcion`(`ID`,`ID_cliente`,`ID_productor`,`chofer`,`guia`,`ID_especie`,`ID_descarga`,`temperatura`,`ID_destino`,`fecha`,`fecha_sistema`,`lote`,`estado`,`cantidad_pallets`,`ID_tipo`) values (11,6,1,'Fulano de tal','1123',6,1,'-2.500',1,'2019-01-10 15:54:22','2019-01-10 15:55:15',26,0,5,1);
+insert  into `tbl_recepcion`(`ID`,`ID_cliente`,`ID_productor`,`chofer`,`guia`,`ID_especie`,`ID_descarga`,`temperatura`,`ID_destino`,`fecha`,`fecha_sistema`,`lote`,`estado`,`cantidad_pallets`,`ID_tipo`) values (12,6,1,'FF','1123',6,1,'-2.500',1,'2019-01-10 16:05:44','2019-01-10 16:06:35',27,0,3,1);
+insert  into `tbl_recepcion`(`ID`,`ID_cliente`,`ID_productor`,`chofer`,`guia`,`ID_especie`,`ID_descarga`,`temperatura`,`ID_destino`,`fecha`,`fecha_sistema`,`lote`,`estado`,`cantidad_pallets`,`ID_tipo`) values (13,7,4,'Fulano de tal','1124',6,1,'-2.500',1,'2019-01-10 16:45:55','2019-01-10 16:46:08',28,0,3,1);
+insert  into `tbl_recepcion`(`ID`,`ID_cliente`,`ID_productor`,`chofer`,`guia`,`ID_especie`,`ID_descarga`,`temperatura`,`ID_destino`,`fecha`,`fecha_sistema`,`lote`,`estado`,`cantidad_pallets`,`ID_tipo`) values (14,6,1,'Fulano','fc002',6,1,'1.650',1,'2019-01-17 15:59:46','2019-01-17 15:59:46',29,0,3,1);
+insert  into `tbl_recepcion`(`ID`,`ID_cliente`,`ID_productor`,`chofer`,`guia`,`ID_especie`,`ID_descarga`,`temperatura`,`ID_destino`,`fecha`,`fecha_sistema`,`lote`,`estado`,`cantidad_pallets`,`ID_tipo`) values (15,6,1,'FUlano','1231123',8,1,'12.000',1,'2019-01-23 11:05:04','2019-01-23 11:05:04',30,0,2,2);
+insert  into `tbl_recepcion`(`ID`,`ID_cliente`,`ID_productor`,`chofer`,`guia`,`ID_especie`,`ID_descarga`,`temperatura`,`ID_destino`,`fecha`,`fecha_sistema`,`lote`,`estado`,`cantidad_pallets`,`ID_tipo`) values (16,6,1,'Fulanuto','22331144',6,1,'-1.300',1,'2019-01-30 11:12:51','2019-01-30 11:12:51',31,0,2,1);
+insert  into `tbl_recepcion`(`ID`,`ID_cliente`,`ID_productor`,`chofer`,`guia`,`ID_especie`,`ID_descarga`,`temperatura`,`ID_destino`,`fecha`,`fecha_sistema`,`lote`,`estado`,`cantidad_pallets`,`ID_tipo`) values (17,6,2,'Fasioas','1122',14,1,'-1.200',1,'2019-01-30 11:45:09','2019-01-30 11:45:10',32,0,2,1);
+insert  into `tbl_recepcion`(`ID`,`ID_cliente`,`ID_productor`,`chofer`,`guia`,`ID_especie`,`ID_descarga`,`temperatura`,`ID_destino`,`fecha`,`fecha_sistema`,`lote`,`estado`,`cantidad_pallets`,`ID_tipo`) values (18,6,1,'FUlano','1231122',8,1,'12.000',1,'2019-01-30 13:23:35','2019-01-30 13:23:44',33,0,2,2);
+insert  into `tbl_recepcion`(`ID`,`ID_cliente`,`ID_productor`,`chofer`,`guia`,`ID_especie`,`ID_descarga`,`temperatura`,`ID_destino`,`fecha`,`fecha_sistema`,`lote`,`estado`,`cantidad_pallets`,`ID_tipo`) values (19,6,1,'Fulano','00001',8,1,'1.000',1,'2019-01-30 13:44:59','2019-01-30 13:45:00',34,0,0,1);
+insert  into `tbl_recepcion`(`ID`,`ID_cliente`,`ID_productor`,`chofer`,`guia`,`ID_especie`,`ID_descarga`,`temperatura`,`ID_destino`,`fecha`,`fecha_sistema`,`lote`,`estado`,`cantidad_pallets`,`ID_tipo`) values (20,6,2,'Fulano','00001',8,1,'1.000',1,'2019-01-30 13:52:39','2019-01-30 13:52:39',35,0,3,1);
+insert  into `tbl_recepcion`(`ID`,`ID_cliente`,`ID_productor`,`chofer`,`guia`,`ID_especie`,`ID_descarga`,`temperatura`,`ID_destino`,`fecha`,`fecha_sistema`,`lote`,`estado`,`cantidad_pallets`,`ID_tipo`) values (21,7,4,'fulano','121',6,1,'-3.000',1,'2019-02-04 11:43:50','2019-02-04 11:43:51',36,0,10,1);
+insert  into `tbl_recepcion`(`ID`,`ID_cliente`,`ID_productor`,`chofer`,`guia`,`ID_especie`,`ID_descarga`,`temperatura`,`ID_destino`,`fecha`,`fecha_sistema`,`lote`,`estado`,`cantidad_pallets`,`ID_tipo`) values (22,7,4,'111','1211',6,1,'1.000',1,'2019-02-04 11:53:58','2019-02-04 11:53:59',37,0,12,1);
+insert  into `tbl_recepcion`(`ID`,`ID_cliente`,`ID_productor`,`chofer`,`guia`,`ID_especie`,`ID_descarga`,`temperatura`,`ID_destino`,`fecha`,`fecha_sistema`,`lote`,`estado`,`cantidad_pallets`,`ID_tipo`) values (23,7,4,'fulano','12112',6,1,'-4.000',1,'2019-02-04 13:47:10','2019-02-04 13:47:11',38,0,10,2);
+insert  into `tbl_recepcion`(`ID`,`ID_cliente`,`ID_productor`,`chofer`,`guia`,`ID_especie`,`ID_descarga`,`temperatura`,`ID_destino`,`fecha`,`fecha_sistema`,`lote`,`estado`,`cantidad_pallets`,`ID_tipo`) values (24,7,4,'111','121133',6,1,'11.000',1,'2019-02-04 13:53:05','2019-02-04 13:53:06',39,0,10,1);
+insert  into `tbl_recepcion`(`ID`,`ID_cliente`,`ID_productor`,`chofer`,`guia`,`ID_especie`,`ID_descarga`,`temperatura`,`ID_destino`,`fecha`,`fecha_sistema`,`lote`,`estado`,`cantidad_pallets`,`ID_tipo`) values (25,6,2,'121','123',6,1,'-122.000',1,'2019-02-11 23:26:41','2019-02-11 23:26:42',40,0,10,1);
+insert  into `tbl_recepcion`(`ID`,`ID_cliente`,`ID_productor`,`chofer`,`guia`,`ID_especie`,`ID_descarga`,`temperatura`,`ID_destino`,`fecha`,`fecha_sistema`,`lote`,`estado`,`cantidad_pallets`,`ID_tipo`) values (26,6,1,'fulano','1233',6,1,'1.220',1,'2019-02-13 15:21:54','2019-02-13 15:21:55',41,0,10,1);
+insert  into `tbl_recepcion`(`ID`,`ID_cliente`,`ID_productor`,`chofer`,`guia`,`ID_especie`,`ID_descarga`,`temperatura`,`ID_destino`,`fecha`,`fecha_sistema`,`lote`,`estado`,`cantidad_pallets`,`ID_tipo`) values (27,6,1,'fulano','667',6,1,'11.000',1,'2019-02-13 16:45:04','2019-02-13 16:45:06',42,0,12,1);
 
 /*Table structure for table `tbl_recepcion_detalle` */
 
 DROP TABLE IF EXISTS `tbl_recepcion_detalle`;
 
 CREATE TABLE `tbl_recepcion_detalle` (
+  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
   `ID_Recepcion` bigint(20) DEFAULT NULL,
   `item` bigint(20) DEFAULT NULL,
   `ID_Bandeja` bigint(20) DEFAULT NULL,
@@ -1650,37 +1771,88 @@ CREATE TABLE `tbl_recepcion_detalle` (
   `fecha` datetime DEFAULT CURRENT_TIMESTAMP,
   `estado` int(11) NOT NULL DEFAULT '0',
   `Maquila` varchar(50) DEFAULT NULL,
-  `posicion` bigint(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `posicion` bigint(20) NOT NULL,
+  `usuario` varchar(15) NOT NULL,
+  `sublote` bigint(20) DEFAULT '0',
+  `uso_descuento` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=74 DEFAULT CHARSET=utf8;
 
 /*Data for the table `tbl_recepcion_detalle` */
 
-insert  into `tbl_recepcion_detalle`(`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`) values (1,1,1,'Torito','2',1,'1',NULL,'1.000','4.960','-3.960',1,'Madera','3','2019-01-03 16:37:38',1,'35',1);
-insert  into `tbl_recepcion_detalle`(`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`) values (1,2,1,'Torito','2',2,'2',NULL,'2.000','6.760','-4.760',1,'Madera','3','2019-01-03 16:41:33',1,'35',2);
-insert  into `tbl_recepcion_detalle`(`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`) values (1,3,3,'Verde','2',3,'3',NULL,'3.000','9.806','-6.806',2,'Metal','5','2019-01-03 16:46:52',0,'33',3);
-insert  into `tbl_recepcion_detalle`(`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`) values (2,1,2,'Blanco/Amarillo','2',4,'4',NULL,'4.000','12.300','-8.300',2,'Metal','5','2019-01-03 16:50:21',0,NULL,1);
-insert  into `tbl_recepcion_detalle`(`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`) values (2,2,1,'Torito','2',5,'5',NULL,'5.000','12.160','-7.160',1,'Madera','3','2019-01-03 16:51:30',0,NULL,2);
-insert  into `tbl_recepcion_detalle`(`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`) values (2,3,5,'Rojo','2',6,'6',NULL,'6.000','14.000','-8.000',2,'Metal','5','2019-01-03 16:52:07',0,NULL,3);
-insert  into `tbl_recepcion_detalle`(`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`) values (3,1,2,'Blanco/Amarillo','2',4,'FC4332',NULL,'122.000','10.760','111.240',1,'Madera','3','2019-01-03 22:49:23',0,NULL,1);
-insert  into `tbl_recepcion_detalle`(`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`) values (3,2,2,'Blanco/Amarillo','2',50,'FC776',NULL,'300.000','98.160','201.840',1,'Madera','3','2019-01-03 22:50:19',0,NULL,2);
-insert  into `tbl_recepcion_detalle`(`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`) values (3,3,1,'Torito','2',10,'FC55433',NULL,'700.000','21.160','678.840',1,'Madera','3','2019-01-03 22:52:36',0,NULL,3);
-insert  into `tbl_recepcion_detalle`(`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`) values (3,4,1,'Torito','2',55,'888',NULL,'766.000','102.160','663.840',1,'Madera','3','2019-01-03 22:53:40',0,NULL,4);
-insert  into `tbl_recepcion_detalle`(`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`) values (3,5,1,'Torito','2',10,'fc5444',NULL,'7888.000','21.160','7866.840',1,'Madera','3','2019-01-03 22:54:45',0,NULL,5);
-insert  into `tbl_recepcion_detalle`(`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`) values (3,6,2,'Blanco/Amarillo','2',1121,'122',NULL,'1222.000','2133.060','-911.060',1,'Madera','3','2019-01-03 22:56:50',0,NULL,6);
-insert  into `tbl_recepcion_detalle`(`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`) values (4,1,1,'Torito','2',50,'FC6547',NULL,'6554.000','93.160','6460.840',1,'Madera','3','2019-01-03 23:24:20',0,NULL,1);
-insert  into `tbl_recepcion_detalle`(`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`) values (5,1,1,'Torito','2',12,'FC001',NULL,'100.000','24.760','75.240',1,'Madera','3','2019-01-04 00:12:40',1,'35',1);
-insert  into `tbl_recepcion_detalle`(`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`) values (6,1,1,'Torito','2',50,'AZ001',NULL,'100.000','93.160','6.840',1,'Madera','3','2019-01-04 12:04:41',0,'18',1);
-insert  into `tbl_recepcion_detalle`(`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`) values (6,2,1,'Torito','2',10,'az002',NULL,'200.000','21.160','178.840',1,'Madera','3','2019-01-04 12:05:03',0,NULL,2);
-insert  into `tbl_recepcion_detalle`(`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`) values (6,3,1,'Torito','2',50,'az003',NULL,'300.000','93.160','206.840',1,'Madera','3','2019-01-04 12:05:19',0,NULL,3);
-insert  into `tbl_recepcion_detalle`(`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`) values (6,4,1,'Torito','2',12,'az004',NULL,'111.000','24.760','86.240',1,'Madera','3','2019-01-04 12:06:04',0,NULL,4);
-insert  into `tbl_recepcion_detalle`(`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`) values (6,5,1,'Torito','2',122,'az006',NULL,'6554.000','222.760','6331.240',1,'Madera','3','2019-01-04 12:06:20',0,NULL,5);
-insert  into `tbl_recepcion_detalle`(`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`) values (6,6,1,'Torito','2',10,'az007',NULL,'700.000','21.160','678.840',1,'Madera','3','2019-01-04 12:06:33',0,NULL,6);
-insert  into `tbl_recepcion_detalle`(`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`) values (6,7,1,'Torito','2',12,'az008',NULL,'121.000','24.760','96.240',1,'Madera','3','2019-01-04 12:06:47',0,NULL,7);
-insert  into `tbl_recepcion_detalle`(`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`) values (6,8,1,'Torito','2',10,'az009',NULL,'121.000','21.160','99.840',1,'Madera','3','2019-01-04 12:06:59',0,'17',8);
-insert  into `tbl_recepcion_detalle`(`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`) values (6,9,1,'Torito','2',20,'az010',NULL,'1000.000','39.160','960.840',1,'Madera','3','2019-01-04 12:07:18',0,NULL,9);
-insert  into `tbl_recepcion_detalle`(`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`) values (6,10,1,'Torito','2',12,'az011',NULL,'1122.000','24.760','1097.240',1,'Madera','3','2019-01-04 12:07:40',0,NULL,10);
-insert  into `tbl_recepcion_detalle`(`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`) values (7,1,1,'Torito','2',100,'fc001','1221.000','1221.000','183.160','1037.840',1,'Madera','3','2019-01-05 01:36:01',1,'35',1);
-insert  into `tbl_recepcion_detalle`(`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`) values (9,1,1,'Torito','2',12,'','211.000','211.000','24.760','186.240',1,'Madera','3','2019-01-07 17:41:05',0,NULL,1);
+insert  into `tbl_recepcion_detalle`(`ID`,`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`,`usuario`,`sublote`,`uso_descuento`) values (1,1,1,1,'Torito','2',1,'1','100.000','1.000','4.960','-3.960',1,'Madera','3','2019-01-03 16:37:38',0,'35',1,'',0,0);
+insert  into `tbl_recepcion_detalle`(`ID`,`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`,`usuario`,`sublote`,`uso_descuento`) values (2,1,2,1,'Torito','2',2,'2','100.000','2.000','6.760','-4.760',1,'Madera','3','2019-01-03 16:41:33',0,'35',2,'',0,0);
+insert  into `tbl_recepcion_detalle`(`ID`,`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`,`usuario`,`sublote`,`uso_descuento`) values (3,1,3,3,'Verde','2',3,'3','100.000','3.000','9.806','-6.806',2,'Metal','5','2019-01-03 16:46:52',0,'36',3,'',0,0);
+insert  into `tbl_recepcion_detalle`(`ID`,`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`,`usuario`,`sublote`,`uso_descuento`) values (4,2,1,2,'Blanco/Amarillo','2',4,'4','100.000','4.000','12.300','-8.300',2,'Metal','5','2019-01-03 16:50:21',0,'37',1,'',0,0);
+insert  into `tbl_recepcion_detalle`(`ID`,`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`,`usuario`,`sublote`,`uso_descuento`) values (5,2,2,1,'Torito','2',5,'5','100.000','5.000','12.160','-7.160',1,'Madera','3','2019-01-03 16:51:30',0,'38',2,'',0,0);
+insert  into `tbl_recepcion_detalle`(`ID`,`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`,`usuario`,`sublote`,`uso_descuento`) values (6,2,3,5,'Rojo','2',6,'6','100.000','6.000','14.000','-8.000',2,'Metal','5','2019-01-03 16:52:07',0,'39',3,'',0,0);
+insert  into `tbl_recepcion_detalle`(`ID`,`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`,`usuario`,`sublote`,`uso_descuento`) values (7,3,1,2,'Blanco/Amarillo','2',4,'FC4332','100.000','122.000','10.760','111.240',1,'Madera','3','2019-01-03 22:49:23',1,'54',1,'',0,0);
+insert  into `tbl_recepcion_detalle`(`ID`,`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`,`usuario`,`sublote`,`uso_descuento`) values (8,3,2,2,'Blanco/Amarillo','2',50,'FC776','100.000','300.000','98.160','201.840',1,'Madera','3','2019-01-03 22:50:19',0,NULL,2,'',0,0);
+insert  into `tbl_recepcion_detalle`(`ID`,`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`,`usuario`,`sublote`,`uso_descuento`) values (9,3,3,1,'Torito','2',10,'FC55433','100.000','700.000','21.160','678.840',1,'Madera','3','2019-01-03 22:52:36',0,'51',3,'',0,0);
+insert  into `tbl_recepcion_detalle`(`ID`,`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`,`usuario`,`sublote`,`uso_descuento`) values (10,3,4,1,'Torito','2',55,'888','100.000','766.000','102.160','663.840',1,'Madera','3','2019-01-03 22:53:40',1,'53',4,'',0,0);
+insert  into `tbl_recepcion_detalle`(`ID`,`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`,`usuario`,`sublote`,`uso_descuento`) values (11,3,5,1,'Torito','2',10,'fc5444','100.000','7888.000','21.160','7866.840',1,'Madera','3','2019-01-03 22:54:45',1,'53',5,'',0,0);
+insert  into `tbl_recepcion_detalle`(`ID`,`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`,`usuario`,`sublote`,`uso_descuento`) values (12,3,6,2,'Blanco/Amarillo','2',1121,'122','100.000','1222.000','2133.060','-911.060',1,'Madera','3','2019-01-03 22:56:50',0,NULL,6,'',0,0);
+insert  into `tbl_recepcion_detalle`(`ID`,`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`,`usuario`,`sublote`,`uso_descuento`) values (13,4,1,1,'Torito','2',50,'FC6547','100.000','6554.000','93.160','6460.840',1,'Madera','3','2019-01-03 23:24:20',0,NULL,1,'',0,0);
+insert  into `tbl_recepcion_detalle`(`ID`,`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`,`usuario`,`sublote`,`uso_descuento`) values (14,5,1,1,'Torito','2',12,'FC001','100.000','100.000','24.760','75.240',1,'Madera','3','2019-01-04 00:12:40',0,'49',1,'',0,0);
+insert  into `tbl_recepcion_detalle`(`ID`,`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`,`usuario`,`sublote`,`uso_descuento`) values (15,6,1,1,'Torito','2',50,'AZ001','100.000','100.000','93.160','6.840',1,'Madera','3','2019-01-04 12:04:41',0,'18',1,'',0,0);
+insert  into `tbl_recepcion_detalle`(`ID`,`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`,`usuario`,`sublote`,`uso_descuento`) values (16,6,2,1,'Torito','2',10,'az002','100.000','200.000','21.160','178.840',1,'Madera','3','2019-01-04 12:05:03',0,NULL,2,'',0,0);
+insert  into `tbl_recepcion_detalle`(`ID`,`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`,`usuario`,`sublote`,`uso_descuento`) values (17,6,3,1,'Torito','2',50,'az003','100.000','300.000','93.160','206.840',1,'Madera','3','2019-01-04 12:05:19',0,NULL,3,'',0,0);
+insert  into `tbl_recepcion_detalle`(`ID`,`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`,`usuario`,`sublote`,`uso_descuento`) values (18,6,4,1,'Torito','2',12,'az004','100.000','111.000','24.760','86.240',1,'Madera','3','2019-01-04 12:06:04',0,NULL,4,'',0,0);
+insert  into `tbl_recepcion_detalle`(`ID`,`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`,`usuario`,`sublote`,`uso_descuento`) values (19,6,5,1,'Torito','2',122,'az006','100.000','6554.000','222.760','6331.240',1,'Madera','3','2019-01-04 12:06:20',0,NULL,5,'',0,0);
+insert  into `tbl_recepcion_detalle`(`ID`,`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`,`usuario`,`sublote`,`uso_descuento`) values (20,6,6,1,'Torito','2',10,'az007','100.000','700.000','21.160','678.840',1,'Madera','3','2019-01-04 12:06:33',0,NULL,6,'',0,0);
+insert  into `tbl_recepcion_detalle`(`ID`,`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`,`usuario`,`sublote`,`uso_descuento`) values (21,6,7,1,'Torito','2',12,'az008','100.000','121.000','24.760','96.240',1,'Madera','3','2019-01-04 12:06:47',0,NULL,7,'',0,0);
+insert  into `tbl_recepcion_detalle`(`ID`,`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`,`usuario`,`sublote`,`uso_descuento`) values (22,6,8,1,'Torito','2',10,'az009','100.000','121.000','21.160','99.840',1,'Madera','3','2019-01-04 12:06:59',0,'17',8,'',0,0);
+insert  into `tbl_recepcion_detalle`(`ID`,`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`,`usuario`,`sublote`,`uso_descuento`) values (23,6,9,1,'Torito','2',20,'az010','100.000','1000.000','39.160','960.840',1,'Madera','3','2019-01-04 12:07:18',0,NULL,9,'',0,0);
+insert  into `tbl_recepcion_detalle`(`ID`,`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`,`usuario`,`sublote`,`uso_descuento`) values (24,6,10,1,'Torito','2',12,'az011','100.000','1122.000','24.760','1097.240',1,'Madera','3','2019-01-04 12:07:40',0,NULL,10,'',0,0);
+insert  into `tbl_recepcion_detalle`(`ID`,`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`,`usuario`,`sublote`,`uso_descuento`) values (25,7,1,1,'Torito','2',100,'fc001','1221.000','1221.000','183.160','1037.840',1,'Madera','3','2019-01-05 01:36:01',0,'49',1,'',0,0);
+insert  into `tbl_recepcion_detalle`(`ID`,`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`,`usuario`,`sublote`,`uso_descuento`) values (26,9,1,1,'Torito','2',12,'fc099','211.000','211.000','24.760','186.240',1,'Madera','3','2019-01-07 17:41:05',0,NULL,1,'',0,0);
+insert  into `tbl_recepcion_detalle`(`ID`,`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`,`usuario`,`sublote`,`uso_descuento`) values (27,12,1,1,'Torito','2',12,'FC02','123.100','123.100','24.760','1206.240',1,'Madera','3','2019-01-10 16:14:26',0,NULL,1,'',0,0);
+insert  into `tbl_recepcion_detalle`(`ID`,`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`,`usuario`,`sublote`,`uso_descuento`) values (28,12,2,1,'Torito','2',12,'FC21','122.000','122.000','24.760','97.240',1,'Madera','3','2019-01-10 16:16:21',0,NULL,2,'',0,0);
+insert  into `tbl_recepcion_detalle`(`ID`,`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`,`usuario`,`sublote`,`uso_descuento`) values (29,12,3,1,'Torito','2',12,'FC021','123.200','123.200','24.760','1207.240',1,'Madera','3','2019-01-10 16:26:54',0,NULL,3,'',0,0);
+insert  into `tbl_recepcion_detalle`(`ID`,`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`,`usuario`,`sublote`,`uso_descuento`) values (30,11,1,1,'Torito','2',12,'1234','123.000','123.000','26.300','96.700',2,'Metal','5','2019-01-10 16:42:22',0,NULL,1,'',0,0);
+insert  into `tbl_recepcion_detalle`(`ID`,`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`,`usuario`,`sublote`,`uso_descuento`) values (31,11,2,2,'Blanco/Amarillo','2',12,'112233','123.000','123.000','27.500','95.500',2,'Metal','5','2019-01-10 16:43:04',0,NULL,2,'',0,0);
+insert  into `tbl_recepcion_detalle`(`ID`,`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`,`usuario`,`sublote`,`uso_descuento`) values (32,11,3,3,'Verde','2',2,'12','124.000','124.000','5.481','118.519',3,'Plastico','2','2019-01-10 16:43:35',0,NULL,3,'',0,0);
+insert  into `tbl_recepcion_detalle`(`ID`,`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`,`usuario`,`sublote`,`uso_descuento`) values (33,13,1,5,'Rojo','2',12,'412','123.000','123.000','21.760','101.240',1,'Madera','3','2019-01-10 16:46:09',0,NULL,1,'',0,0);
+insert  into `tbl_recepcion_detalle`(`ID`,`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`,`usuario`,`sublote`,`uso_descuento`) values (34,13,2,3,'Verde','2',21,'123412','231.000','231.000','40.442','190.558',2,'Metal','5','2019-01-10 16:46:45',0,NULL,2,'',0,0);
+insert  into `tbl_recepcion_detalle`(`ID`,`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`,`usuario`,`sublote`,`uso_descuento`) values (35,13,3,4,'Azul','2',12,'1414','132.000','132.000','20.077','111.923',3,'Plastico','2','2019-01-10 16:47:13',0,NULL,3,'',0,0);
+insert  into `tbl_recepcion_detalle`(`ID`,`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`,`usuario`,`sublote`,`uso_descuento`) values (36,14,1,1,'Torito','2',12,'1214','1231.100','1231.100','26.300','12284.700',2,'Metal','5','2019-01-17 15:59:46',0,'40',1,'usuario',0,0);
+insert  into `tbl_recepcion_detalle`(`ID`,`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`,`usuario`,`sublote`,`uso_descuento`) values (37,15,1,1,'Torito','2',12,'FC111','1234.000','1234.000','24.760','1209.240',1,'Madera','3','2019-01-23 11:05:05',0,NULL,1,'diegocade',0,0);
+insert  into `tbl_recepcion_detalle`(`ID`,`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`,`usuario`,`sublote`,`uso_descuento`) values (38,15,2,2,'Blanco/Amarillo','2',4,'fc222','113.000','113.000','12.300','100.700',2,'Metal','5','2019-01-23 11:06:12',0,NULL,2,'diegocade',0,0);
+insert  into `tbl_recepcion_detalle`(`ID`,`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`,`usuario`,`sublote`,`uso_descuento`) values (39,17,1,1,'Torito','2',5,'fc223','123.000','123.000','12.160','110.840',1,'Madera','3','2019-01-30 11:45:10',0,NULL,1,'usuario',0,0);
+insert  into `tbl_recepcion_detalle`(`ID`,`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`,`usuario`,`sublote`,`uso_descuento`) values (40,18,1,1,'Torito','2',12,'fc3243','123.000','123.000','24.760','98.240',1,'Madera','3','2019-01-30 13:23:53',0,NULL,1,'usuario',0,0);
+insert  into `tbl_recepcion_detalle`(`ID`,`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`,`usuario`,`sublote`,`uso_descuento`) values (41,18,2,2,'Blanco/Amarillo','2',9,'fc431','231.000','231.000','20.260','210.740',1,'Madera','3','2019-01-30 13:25:13',0,NULL,2,'usuario',0,0);
+insert  into `tbl_recepcion_detalle`(`ID`,`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`,`usuario`,`sublote`,`uso_descuento`) values (42,19,1,1,'Torito','2',12,'123','123.000','123.000','24.760','98.240',1,'Madera','3','2019-01-30 13:45:00',0,NULL,1,'usuario',0,0);
+insert  into `tbl_recepcion_detalle`(`ID`,`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`,`usuario`,`sublote`,`uso_descuento`) values (43,19,2,2,'Blanco/Amarillo','2',11,'890','123.000','123.000','24.060','98.940',1,'Madera','3','2019-01-30 13:46:18',0,NULL,2,'usuario',0,0);
+insert  into `tbl_recepcion_detalle`(`ID`,`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`,`usuario`,`sublote`,`uso_descuento`) values (44,19,3,2,'Blanco/Amarillo','2',7,'8901','111.000','111.000','15.377','95.623',3,'Plastico','2','2019-01-30 13:47:12',0,NULL,3,'usuario',0,0);
+insert  into `tbl_recepcion_detalle`(`ID`,`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`,`usuario`,`sublote`,`uso_descuento`) values (45,19,4,1,'Torito','2',4,'8902','123.000','123.000','10.360','112.640',1,'Madera','3','2019-01-30 13:49:44',0,NULL,4,'usuario',0,0);
+insert  into `tbl_recepcion_detalle`(`ID`,`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`,`usuario`,`sublote`,`uso_descuento`) values (46,20,1,1,'Torito','2',1,'12121212','123.000','123.000','4.960','118.040',1,'Madera','3','2019-01-30 13:52:39',0,NULL,1,'usuario',0,0);
+insert  into `tbl_recepcion_detalle`(`ID`,`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`,`usuario`,`sublote`,`uso_descuento`) values (47,20,2,1,'Torito','2',1,'1231444114','12.000','12.000','4.960','7.040',1,'Madera','3','2019-01-30 13:54:54',0,NULL,2,'usuario',0,0);
+insert  into `tbl_recepcion_detalle`(`ID`,`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`,`usuario`,`sublote`,`uso_descuento`) values (48,20,3,2,'Blanco/Amarillo','2',12,'a1234','123.000','123.000','27.500','95.500',2,'Metal','5','2019-01-30 13:55:05',0,NULL,3,'usuario',0,0);
+insert  into `tbl_recepcion_detalle`(`ID`,`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`,`usuario`,`sublote`,`uso_descuento`) values (49,19,5,3,'Verde','2',12,'12as','123.000','123.000','25.124','97.876',2,'Metal','5','2019-01-30 13:56:26',0,NULL,5,'usuario',0,0);
+insert  into `tbl_recepcion_detalle`(`ID`,`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`,`usuario`,`sublote`,`uso_descuento`) values (50,11,4,1,'Torito','2',12,'21122','123.000','123.000','24.760','98.240',1,'Madera','3','2019-01-30 16:04:37',0,NULL,4,'usuario',0,0);
+insert  into `tbl_recepcion_detalle`(`ID`,`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`,`usuario`,`sublote`,`uso_descuento`) values (51,11,5,2,'Blanco/Amarillo','2',13,'2332131','1222.000','1222.000','29.400','1192.600',2,'Metal','5','2019-01-30 16:04:48',0,NULL,5,'usuario',0,0);
+insert  into `tbl_recepcion_detalle`(`ID`,`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`,`usuario`,`sublote`,`uso_descuento`) values (52,5,2,1,'Torito','2',10,'FC097','199.000','199.000','21.160','177.840',1,'Madera','3','2019-02-04 00:33:08',0,'43',2,'usuario',0,0);
+insert  into `tbl_recepcion_detalle`(`ID`,`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`,`usuario`,`sublote`,`uso_descuento`) values (53,21,1,1,'Torito','2',10,'FC089','120.000','120.000','21.160','98.840',1,'Madera','3','2019-02-04 11:44:13',0,NULL,1,'usuario',2,0);
+insert  into `tbl_recepcion_detalle`(`ID`,`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`,`usuario`,`sublote`,`uso_descuento`) values (54,22,1,1,'Torito','2',50,'FCG54','120.000','120.000','93.160','26.840',1,'Madera','3','2019-02-04 11:54:07',0,NULL,1,'usuario',0,0);
+insert  into `tbl_recepcion_detalle`(`ID`,`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`,`usuario`,`sublote`,`uso_descuento`) values (55,22,2,1,'Torito','2',12,'fc544','1222.000','1222.000','24.760','1197.240',1,'Madera','3','2019-02-04 11:56:16',0,NULL,2,'usuario',0,0);
+insert  into `tbl_recepcion_detalle`(`ID`,`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`,`usuario`,`sublote`,`uso_descuento`) values (56,22,3,1,'Torito','2',10,'FCG60','100.000','100.000','21.160','78.840',1,'Madera','3','2019-02-04 12:01:44',0,NULL,3,'usuario',3,0);
+insert  into `tbl_recepcion_detalle`(`ID`,`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`,`usuario`,`sublote`,`uso_descuento`) values (57,22,4,1,'Torito','2',20,'FCG66','100.000','100.000','40.700','59.300',2,'Metal','5','2019-02-04 13:16:51',0,NULL,4,'usuario',4,0);
+insert  into `tbl_recepcion_detalle`(`ID`,`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`,`usuario`,`sublote`,`uso_descuento`) values (58,22,5,1,'Torito','2',10,'HG122','123.000','123.000','21.160','101.840',1,'Madera','3','2019-02-04 13:37:07',0,NULL,5,'usuario',5,0);
+insert  into `tbl_recepcion_detalle`(`ID`,`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`,`usuario`,`sublote`,`uso_descuento`) values (59,23,1,1,'Torito','2',10,'FT332','100.000','100.000','21.160','78.840',1,'Madera','3','2019-02-04 13:47:12',0,NULL,1,'usuario',0,0);
+insert  into `tbl_recepcion_detalle`(`ID`,`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`,`usuario`,`sublote`,`uso_descuento`) values (60,23,2,1,'Torito','2',30,'FA211','135.000','135.000','57.160','77.840',1,'Madera','3','2019-02-04 13:48:25',0,NULL,2,'usuario',0,0);
+insert  into `tbl_recepcion_detalle`(`ID`,`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`,`usuario`,`sublote`,`uso_descuento`) values (61,24,1,1,'Torito','2',12,'GF123','100.000','100.000','26.300','73.700',2,'Metal','5','2019-02-04 13:53:07',0,NULL,1,'usuario',0,0);
+insert  into `tbl_recepcion_detalle`(`ID`,`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`,`usuario`,`sublote`,`uso_descuento`) values (62,24,2,1,'Torito','2',122,'fc5544','234.000','234.000','222.760','11.240',1,'Madera','3','2019-02-04 13:55:06',0,NULL,2,'usuario',6,0);
+insert  into `tbl_recepcion_detalle`(`ID`,`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`,`usuario`,`sublote`,`uso_descuento`) values (63,24,3,2,'Blanco/Amarillo','2',11,'HGF44','121.000','121.000','24.060','96.940',1,'Madera','3','2019-02-04 13:59:05',0,NULL,3,'usuario',7,0);
+insert  into `tbl_recepcion_detalle`(`ID`,`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`,`usuario`,`sublote`,`uso_descuento`) values (64,23,3,1,'Torito','2',12,'11111','121.000','121.000','24.760','96.240',1,'Madera','3','2019-02-04 14:01:28',0,NULL,3,'usuario',8,0);
+insert  into `tbl_recepcion_detalle`(`ID`,`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`,`usuario`,`sublote`,`uso_descuento`) values (65,3,7,1,'Torito','2',20,'FCT988','500.000','500.000','39.160','460.840',1,'Madera','3','2019-02-11 13:47:20',0,NULL,7,'usuario',9,1);
+insert  into `tbl_recepcion_detalle`(`ID`,`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`,`usuario`,`sublote`,`uso_descuento`) values (66,25,1,1,'Torito','2',122,'FC10002','11221.000','11221.000','222.760','10998.240',1,'Madera','3','2019-02-11 23:26:43',0,NULL,1,'usuario',0,0);
+insert  into `tbl_recepcion_detalle`(`ID`,`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`,`usuario`,`sublote`,`uso_descuento`) values (67,25,2,1,'Torito','2',221,'FC922','1122.000','1122.000','402.500','719.500',2,'Metal','5','2019-02-11 23:27:00',0,NULL,2,'usuario',0,0);
+insert  into `tbl_recepcion_detalle`(`ID`,`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`,`usuario`,`sublote`,`uso_descuento`) values (68,25,3,2,'Blanco/Amarillo','2',433,'GF444','3255.000','3255.000','825.860','2429.140',1,'Madera','3','2019-02-11 23:27:52',0,NULL,3,'usuario',0,0);
+insert  into `tbl_recepcion_detalle`(`ID`,`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`,`usuario`,`sublote`,`uso_descuento`) values (69,5,3,1,'Torito','2',33,'333','334.000','334.000','62.560','271.440',1,'Madera','3','2019-02-11 23:29:26',0,NULL,3,'usuario',0,0);
+insert  into `tbl_recepcion_detalle`(`ID`,`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`,`usuario`,`sublote`,`uso_descuento`) values (70,26,1,1,'Torito','2',10,'FC012','100.000','100.000','21.160','78.840',1,'Madera','3','2019-02-13 15:22:39',0,NULL,1,'usuario',0,0);
+insert  into `tbl_recepcion_detalle`(`ID`,`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`,`usuario`,`sublote`,`uso_descuento`) values (71,5,4,1,'Torito','2',30,'PFS656','567.000','567.000','58.700','508.300',2,'Metal','5','2019-02-13 16:39:05',0,NULL,4,'usuario',0,0);
+insert  into `tbl_recepcion_detalle`(`ID`,`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`,`usuario`,`sublote`,`uso_descuento`) values (72,27,1,2,'Blanco/Amarillo','2',122,'PF112','1233.000','1233.000','236.500','996.500',2,'Metal','5','2019-02-13 16:45:07',0,NULL,1,'usuario',0,0);
+insert  into `tbl_recepcion_detalle`(`ID`,`ID_Recepcion`,`item`,`ID_Bandeja`,`bandeja`,`peso_bandeja`,`cantidad_bandejas`,`folio`,`kilos_brutos_original`,`kilos_brutos`,`tara`,`kilos_netos`,`ID_pallet`,`tipo_pallet`,`peso_pallet`,`fecha`,`estado`,`Maquila`,`posicion`,`usuario`,`sublote`,`uso_descuento`) values (73,27,2,1,'Torito','2',60,'PF998','2002.000','2002.000','111.160','1890.840',1,'Madera','3','2019-02-13 16:57:55',0,NULL,2,'usuario',0,0);
 
 /*Table structure for table `tbl_tipo_usuario` */
 
@@ -1704,7 +1876,7 @@ DROP TABLE IF EXISTS `tbl_tipo_usuario_permisos`;
 CREATE TABLE `tbl_tipo_usuario_permisos` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `id_tipo_usuario` bigint(20) NOT NULL,
-  `permisos` varchar(50) NOT NULL,
+  `permisos` text NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
@@ -1805,6 +1977,7 @@ CREATE TABLE `tbl_usuario` (
 
 /*Data for the table `tbl_usuario` */
 
+insert  into `tbl_usuario`(`usuario`,`contrasenia`,`nombre`,`apellido`,`id_tipo_usuario`) values ('diegocade','1234','Diego','Cadena',1);
 insert  into `tbl_usuario`(`usuario`,`contrasenia`,`nombre`,`apellido`,`id_tipo_usuario`) values ('lsalas','123','Luis','Salas',2);
 insert  into `tbl_usuario`(`usuario`,`contrasenia`,`nombre`,`apellido`,`id_tipo_usuario`) values ('usuario','1234','Fulano','Henriquez',1);
 
@@ -1815,15 +1988,16 @@ DROP TABLE IF EXISTS `tbl_variedad`;
 CREATE TABLE `tbl_variedad` (
   `ID` bigint(20) NOT NULL AUTO_INCREMENT,
   `Descripcion` varchar(50) DEFAULT NULL,
+  `ID_especie` bigint(20) NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 /*Data for the table `tbl_variedad` */
 
-insert  into `tbl_variedad`(`ID`,`Descripcion`) values (1,'Emeral *1');
-insert  into `tbl_variedad`(`ID`,`Descripcion`) values (2,'Emeral *2');
-insert  into `tbl_variedad`(`ID`,`Descripcion`) values (3,'Emeral *3');
-insert  into `tbl_variedad`(`ID`,`Descripcion`) values (4,'Emeral *4');
+insert  into `tbl_variedad`(`ID`,`Descripcion`,`ID_especie`) values (1,'Emeral *1',0);
+insert  into `tbl_variedad`(`ID`,`Descripcion`,`ID_especie`) values (2,'Emeral *2',0);
+insert  into `tbl_variedad`(`ID`,`Descripcion`,`ID_especie`) values (3,'Emeral *3',0);
+insert  into `tbl_variedad`(`ID`,`Descripcion`,`ID_especie`) values (5,'Emeral *4',0);
 
 /*Table structure for table `v_comercial_maquila` */
 
@@ -1862,6 +2036,86 @@ DROP TABLE IF EXISTS `v_exportacion_maquila`;
   `estado` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 */;
 
+/*Table structure for table `v_recepcion_lista` */
+
+DROP TABLE IF EXISTS `v_recepcion_lista`;
+
+/*!50001 DROP VIEW IF EXISTS `v_recepcion_lista` */;
+/*!50001 DROP TABLE IF EXISTS `v_recepcion_lista` */;
+
+/*!50001 CREATE TABLE `v_recepcion_lista` (
+  `ID_Recepcion` bigint(20) DEFAULT NULL,
+  `ID_Cliente` bigint(20) DEFAULT NULL,
+  `Cliente` varchar(50),
+  `ID_Productor` bigint(20) DEFAULT NULL,
+  `Productor` varchar(50),
+  `chofer` varchar(50) DEFAULT NULL,
+  `guia` varchar(50) DEFAULT NULL,
+  `ID_Especie` bigint(20) DEFAULT NULL,
+  `especie` varchar(50),
+  `ID_Descarga` bigint(20) DEFAULT NULL,
+  `Descarga` varchar(50),
+  `temperatura` decimal(10,3) DEFAULT NULL,
+  `ID_Destino` bigint(20) DEFAULT NULL,
+  `Destino` varchar(50),
+  `fecha` datetime DEFAULT NULL,
+  `lote` bigint(20) DEFAULT NULL,
+  `usuario` varchar(15) NOT NULL,
+  `Total_Pallet` bigint(20),
+  `item` bigint(20) DEFAULT NULL,
+  `ID_Bandeja` bigint(20) DEFAULT NULL,
+  `bandeja` varchar(50) DEFAULT NULL,
+  `peso_bandeja` decimal(5,0) DEFAULT NULL,
+  `folio` varchar(50) DEFAULT NULL,
+  `Kilos_brutos` decimal(10,3) DEFAULT NULL,
+  `tara` decimal(10,3) DEFAULT NULL,
+  `Kilos_netos` decimal(10,3) DEFAULT NULL,
+  `ID_Pallet` bigint(20) DEFAULT NULL,
+  `tipo_pallet` varchar(50) DEFAULT NULL,
+  `peso_pallet` decimal(5,0) DEFAULT NULL,
+  `sublote` bigint(20) DEFAULT NULL,
+  `uso_descuento` tinyint(1) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 */;
+
+/*Table structure for table `v_recepcion_lista_old` */
+
+DROP TABLE IF EXISTS `v_recepcion_lista_old`;
+
+/*!50001 DROP VIEW IF EXISTS `v_recepcion_lista_old` */;
+/*!50001 DROP TABLE IF EXISTS `v_recepcion_lista_old` */;
+
+/*!50001 CREATE TABLE `v_recepcion_lista_old` (
+  `ID_Recepcion` bigint(20) DEFAULT NULL,
+  `ID_Cliente` bigint(20) DEFAULT NULL,
+  `Cliente` varchar(50),
+  `ID_Productor` bigint(20) DEFAULT NULL,
+  `Productor` varchar(50),
+  `chofer` varchar(50) DEFAULT NULL,
+  `guia` varchar(50) DEFAULT NULL,
+  `ID_Especie` bigint(20) DEFAULT NULL,
+  `especie` varchar(50),
+  `ID_Descarga` bigint(20) DEFAULT NULL,
+  `Descarga` varchar(50),
+  `temperatura` decimal(10,3) DEFAULT NULL,
+  `ID_Destino` bigint(20) DEFAULT NULL,
+  `Destino` varchar(50),
+  `fecha` datetime DEFAULT NULL,
+  `lote` bigint(20) DEFAULT NULL,
+  `usuario` varchar(15) NOT NULL,
+  `Total_Pallet` bigint(20),
+  `item` bigint(20) DEFAULT NULL,
+  `ID_Bandeja` bigint(20) DEFAULT NULL,
+  `bandeja` varchar(50) DEFAULT NULL,
+  `peso_bandeja` decimal(5,0) DEFAULT NULL,
+  `folio` varchar(50) DEFAULT NULL,
+  `Kilos_brutos` decimal(10,3) DEFAULT NULL,
+  `tara` decimal(10,3) DEFAULT NULL,
+  `Kilos_netos` decimal(10,3) DEFAULT NULL,
+  `ID_Pallet` bigint(20) DEFAULT NULL,
+  `tipo_pallet` varchar(50) DEFAULT NULL,
+  `peso_pallet` decimal(5,0) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 */;
+
 /*Table structure for table `v_recepcion_maquila` */
 
 DROP TABLE IF EXISTS `v_recepcion_maquila`;
@@ -1876,7 +2130,62 @@ DROP TABLE IF EXISTS `v_recepcion_maquila`;
   `bandeja` varchar(50) DEFAULT NULL,
   `kilos_netos` decimal(10,3) DEFAULT NULL,
   `cantidad_bandejas` bigint(20) DEFAULT NULL,
-  `estado` int(11) NOT NULL DEFAULT '0'
+  `estado` int(11) NOT NULL DEFAULT '0',
+  `guia` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 */;
+
+/*Table structure for table `v_sublote_lista` */
+
+DROP TABLE IF EXISTS `v_sublote_lista`;
+
+/*!50001 DROP VIEW IF EXISTS `v_sublote_lista` */;
+/*!50001 DROP TABLE IF EXISTS `v_sublote_lista` */;
+
+/*!50001 CREATE TABLE `v_sublote_lista` (
+  `ID_Recepcion` bigint(20) NOT NULL DEFAULT '0',
+  `ID_Cliente` bigint(20) DEFAULT NULL,
+  `cliente` varchar(50),
+  `ID_Productor` bigint(20) DEFAULT NULL,
+  `productor` varchar(50),
+  `chofer` varchar(50) DEFAULT NULL,
+  `guia` varchar(50) DEFAULT NULL,
+  `ID_Especie` bigint(20) DEFAULT NULL,
+  `especie` varchar(50),
+  `ID_Descarga` bigint(20) DEFAULT NULL,
+  `descarga` varchar(50),
+  `temperatura` decimal(10,3) DEFAULT NULL,
+  `ID_Destino` bigint(20) DEFAULT NULL,
+  `destino` varchar(50),
+  `fecha` datetime DEFAULT NULL,
+  `lote` bigint(20) DEFAULT NULL,
+  `id_tipo` bigint(20) NOT NULL,
+  `tipo` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 */;
+
+/*Table structure for table `v_sublote_lista_old` */
+
+DROP TABLE IF EXISTS `v_sublote_lista_old`;
+
+/*!50001 DROP VIEW IF EXISTS `v_sublote_lista_old` */;
+/*!50001 DROP TABLE IF EXISTS `v_sublote_lista_old` */;
+
+/*!50001 CREATE TABLE `v_sublote_lista_old` (
+  `ID_Recepcion` bigint(20) NOT NULL DEFAULT '0',
+  `ID_Cliente` bigint(20) DEFAULT NULL,
+  `cliente` varchar(50),
+  `ID_Productor` bigint(20) DEFAULT NULL,
+  `productor` varchar(50),
+  `chofer` varchar(50) DEFAULT NULL,
+  `guia` varchar(50) DEFAULT NULL,
+  `ID_Especie` bigint(20) DEFAULT NULL,
+  `especie` varchar(50),
+  `ID_Descarga` bigint(20) DEFAULT NULL,
+  `descarga` varchar(50),
+  `temperatura` decimal(10,3) DEFAULT NULL,
+  `ID_Destino` bigint(20) DEFAULT NULL,
+  `destino` varchar(50),
+  `fecha` datetime DEFAULT NULL,
+  `lote` bigint(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 */;
 
 /*View structure for view v_comercial_maquila */
@@ -1891,14 +2200,42 @@ DROP TABLE IF EXISTS `v_recepcion_maquila`;
 /*!50001 DROP TABLE IF EXISTS `v_exportacion_maquila` */;
 /*!50001 DROP VIEW IF EXISTS `v_exportacion_maquila` */;
 
-/*!50001 CREATE ALGORITHM=UNDEFINED DEFINER=`atc`@`%` SQL SECURITY DEFINER VIEW `v_exportacion_maquila` AS (select `t1`.`ID_Cliente` AS `ID_cliente`,`t1`.`ID_Productor` AS `ID_productor`,`t1`.`Folio` AS `Folio`,`t1`.`ID_Embalaje` AS `ID_Embalaje`,`t2`.`descripcion` AS `Embalaje`,`t2`.`peso` AS `peso_teorico`,`t1`.`cantidad_cajas` AS `cantidad_cajas`,(`t1`.`cantidad_cajas` * `t2`.`peso`) AS `Total_Peso`,(`t1`.`cantidad_cajas` * `t2`.`potes`) AS `cantidad_potes`,`t1`.`estado` AS `estado` from (`tbl_exportacion` `t1` left join `tbl_embalaje` `t2` on((`t2`.`ID` = `t1`.`ID_Embalaje`)))) */;
+/*!50001 CREATE ALGORITHM=UNDEFINED DEFINER=`atc`@`%` SQL SECURITY DEFINER VIEW `v_exportacion_maquila` AS select `t1`.`ID_Cliente` AS `ID_cliente`,`t1`.`ID_Productor` AS `ID_productor`,`t1`.`Folio` AS `Folio`,`t1`.`ID_Embalaje` AS `ID_Embalaje`,`t2`.`descripcion` AS `Embalaje`,`t2`.`peso` AS `peso_teorico`,`t1`.`cantidad_cajas` AS `cantidad_cajas`,(`t1`.`cantidad_cajas` * `t2`.`peso`) AS `Total_Peso`,(`t1`.`cantidad_cajas` * `t2`.`potes`) AS `cantidad_potes`,`t1`.`estado` AS `estado` from (`tbl_exportacion` `t1` left join `tbl_embalaje` `t2` on((`t2`.`ID` = `t1`.`ID_Embalaje`))) */;
+
+/*View structure for view v_recepcion_lista */
+
+/*!50001 DROP TABLE IF EXISTS `v_recepcion_lista` */;
+/*!50001 DROP VIEW IF EXISTS `v_recepcion_lista` */;
+
+/*!50001 CREATE ALGORITHM=UNDEFINED DEFINER=`atc`@`%` SQL SECURITY DEFINER VIEW `v_recepcion_lista` AS (select `t1`.`ID_Recepcion` AS `ID_Recepcion`,`t2`.`ID_cliente` AS `ID_Cliente`,`t3`.`Cliente` AS `Cliente`,`t2`.`ID_productor` AS `ID_Productor`,`t4`.`descripcion` AS `Productor`,`t2`.`chofer` AS `chofer`,`t2`.`guia` AS `guia`,`t2`.`ID_especie` AS `ID_Especie`,`t5`.`Descripcion` AS `especie`,`t2`.`ID_descarga` AS `ID_Descarga`,`t6`.`Descripcion` AS `Descarga`,`t2`.`temperatura` AS `temperatura`,`t2`.`ID_destino` AS `ID_Destino`,`t7`.`Descripcion` AS `Destino`,`t2`.`fecha` AS `fecha`,`t2`.`lote` AS `lote`,`t1`.`usuario` AS `usuario`,`t2`.`cantidad_pallets` AS `Total_Pallet`,`t1`.`item` AS `item`,`t1`.`ID_Bandeja` AS `ID_Bandeja`,`t1`.`bandeja` AS `bandeja`,`t1`.`peso_bandeja` AS `peso_bandeja`,`t1`.`folio` AS `folio`,`t1`.`kilos_brutos` AS `Kilos_brutos`,`t1`.`tara` AS `tara`,`t1`.`kilos_netos` AS `Kilos_netos`,`t1`.`ID_pallet` AS `ID_Pallet`,`t1`.`tipo_pallet` AS `tipo_pallet`,`t1`.`peso_pallet` AS `peso_pallet`,`t1`.`sublote` AS `sublote`,`t1`.`uso_descuento` AS `uso_descuento` from ((((((`tbl_recepcion_detalle` `t1` left join `tbl_recepcion` `t2` on((`t2`.`ID` = `t1`.`ID_Recepcion`))) left join `tbl_cliente` `t3` on((`t3`.`ID` = `t2`.`ID_cliente`))) left join `tbl_productor` `t4` on((`t4`.`codigo` = `t2`.`ID_productor`))) left join `tbl_especie` `t5` on((`t5`.`ID_especie` = `t2`.`ID_especie`))) left join `tbl_tipodescarga` `t6` on((`t6`.`ID` = `t2`.`ID_descarga`))) left join `tbl_destinorecepcion` `t7` on((`t7`.`ID` = `t2`.`ID_destino`)))) */;
+
+/*View structure for view v_recepcion_lista_old */
+
+/*!50001 DROP TABLE IF EXISTS `v_recepcion_lista_old` */;
+/*!50001 DROP VIEW IF EXISTS `v_recepcion_lista_old` */;
+
+/*!50001 CREATE ALGORITHM=UNDEFINED DEFINER=`atc`@`%` SQL SECURITY DEFINER VIEW `v_recepcion_lista_old` AS select `t1`.`ID_Recepcion` AS `ID_Recepcion`,`t2`.`ID_cliente` AS `ID_Cliente`,`t3`.`Cliente` AS `Cliente`,`t2`.`ID_productor` AS `ID_Productor`,`t4`.`descripcion` AS `Productor`,`t2`.`chofer` AS `chofer`,`t2`.`guia` AS `guia`,`t2`.`ID_especie` AS `ID_Especie`,`t5`.`Descripcion` AS `especie`,`t2`.`ID_descarga` AS `ID_Descarga`,`t6`.`Descripcion` AS `Descarga`,`t2`.`temperatura` AS `temperatura`,`t2`.`ID_destino` AS `ID_Destino`,`t7`.`Descripcion` AS `Destino`,`t2`.`fecha` AS `fecha`,`t2`.`lote` AS `lote`,`t1`.`usuario` AS `usuario`,`t2`.`cantidad_pallets` AS `Total_Pallet`,`t1`.`item` AS `item`,`t1`.`ID_Bandeja` AS `ID_Bandeja`,`t1`.`bandeja` AS `bandeja`,`t1`.`peso_bandeja` AS `peso_bandeja`,`t1`.`folio` AS `folio`,`t1`.`kilos_brutos` AS `Kilos_brutos`,`t1`.`tara` AS `tara`,`t1`.`kilos_netos` AS `Kilos_netos`,`t1`.`ID_pallet` AS `ID_Pallet`,`t1`.`tipo_pallet` AS `tipo_pallet`,`t1`.`peso_pallet` AS `peso_pallet` from ((((((`tbl_recepcion_detalle` `t1` left join `tbl_recepcion` `t2` on((`t2`.`ID` = `t1`.`ID_Recepcion`))) left join `tbl_cliente` `t3` on((`t3`.`ID` = `t2`.`ID_cliente`))) left join `tbl_productor` `t4` on((`t4`.`codigo` = `t2`.`ID_productor`))) left join `tbl_especie` `t5` on((`t5`.`ID_especie` = `t2`.`ID_especie`))) left join `tbl_tipodescarga` `t6` on((`t6`.`ID` = `t2`.`ID_descarga`))) left join `tbl_destinorecepcion` `t7` on((`t7`.`ID` = `t2`.`ID_destino`))) */;
 
 /*View structure for view v_recepcion_maquila */
 
 /*!50001 DROP TABLE IF EXISTS `v_recepcion_maquila` */;
 /*!50001 DROP VIEW IF EXISTS `v_recepcion_maquila` */;
 
-/*!50001 CREATE ALGORITHM=UNDEFINED DEFINER=`atc`@`%` SQL SECURITY DEFINER VIEW `v_recepcion_maquila` AS (select `t2`.`ID_cliente` AS `ID_Cliente`,`t2`.`ID_productor` AS `ID_Productor`,`t1`.`folio` AS `folio`,`t1`.`bandeja` AS `bandeja`,`t1`.`kilos_netos` AS `kilos_netos`,`t1`.`cantidad_bandejas` AS `cantidad_bandejas`,`t1`.`estado` AS `estado` from (`tbl_recepcion_detalle` `t1` left join `tbl_recepcion` `t2` on((`t2`.`ID` = `t1`.`ID_Recepcion`)))) */;
+/*!50001 CREATE ALGORITHM=UNDEFINED DEFINER=`atc`@`%` SQL SECURITY DEFINER VIEW `v_recepcion_maquila` AS (select `t2`.`ID_cliente` AS `ID_Cliente`,`t2`.`ID_productor` AS `ID_Productor`,`t1`.`folio` AS `folio`,`t1`.`bandeja` AS `bandeja`,`t1`.`kilos_netos` AS `kilos_netos`,`t1`.`cantidad_bandejas` AS `cantidad_bandejas`,`t1`.`estado` AS `estado`,`t2`.`guia` AS `guia` from (`tbl_recepcion_detalle` `t1` left join `tbl_recepcion` `t2` on((`t2`.`ID` = `t1`.`ID_Recepcion`)))) */;
+
+/*View structure for view v_sublote_lista */
+
+/*!50001 DROP TABLE IF EXISTS `v_sublote_lista` */;
+/*!50001 DROP VIEW IF EXISTS `v_sublote_lista` */;
+
+/*!50001 CREATE ALGORITHM=UNDEFINED DEFINER=`atc`@`%` SQL SECURITY DEFINER VIEW `v_sublote_lista` AS (select `t1`.`ID` AS `ID_Recepcion`,`t1`.`ID_cliente` AS `ID_Cliente`,`t3`.`Cliente` AS `cliente`,`t1`.`ID_productor` AS `ID_Productor`,`t4`.`descripcion` AS `productor`,`t1`.`chofer` AS `chofer`,`t1`.`guia` AS `guia`,`t1`.`ID_especie` AS `ID_Especie`,`t5`.`Descripcion` AS `especie`,`t1`.`ID_descarga` AS `ID_Descarga`,`t6`.`Descripcion` AS `descarga`,`t1`.`temperatura` AS `temperatura`,`t1`.`ID_destino` AS `ID_Destino`,`t7`.`Descripcion` AS `destino`,`t1`.`fecha` AS `fecha`,`t1`.`lote` AS `lote`,`t1`.`ID_tipo` AS `id_tipo`,`t8`.`Descripcion` AS `tipo` from ((((((`tbl_recepcion` `t1` left join `tbl_cliente` `t3` on((`t3`.`ID` = `t1`.`ID_cliente`))) left join `tbl_productor` `t4` on((`t4`.`codigo` = `t1`.`ID_productor`))) left join `tbl_especie` `t5` on((`t5`.`ID_especie` = `t1`.`ID_especie`))) left join `tbl_tipodescarga` `t6` on((`t6`.`ID` = `t1`.`ID_descarga`))) left join `tbl_destinorecepcion` `t7` on((`t7`.`ID` = `t1`.`ID_destino`))) left join `tbl_tiporecepcion` `t8` on((`t8`.`ID` = `t1`.`ID_tipo`)))) */;
+
+/*View structure for view v_sublote_lista_old */
+
+/*!50001 DROP TABLE IF EXISTS `v_sublote_lista_old` */;
+/*!50001 DROP VIEW IF EXISTS `v_sublote_lista_old` */;
+
+/*!50001 CREATE ALGORITHM=UNDEFINED DEFINER=`atc`@`%` SQL SECURITY DEFINER VIEW `v_sublote_lista_old` AS (select `t1`.`ID` AS `ID_Recepcion`,`t1`.`ID_cliente` AS `ID_Cliente`,`t3`.`Cliente` AS `cliente`,`t1`.`ID_productor` AS `ID_Productor`,`t4`.`descripcion` AS `productor`,`t1`.`chofer` AS `chofer`,`t1`.`guia` AS `guia`,`t1`.`ID_especie` AS `ID_Especie`,`t5`.`Descripcion` AS `especie`,`t1`.`ID_descarga` AS `ID_Descarga`,`t6`.`Descripcion` AS `descarga`,`t1`.`temperatura` AS `temperatura`,`t1`.`ID_destino` AS `ID_Destino`,`t7`.`Descripcion` AS `destino`,`t1`.`fecha` AS `fecha`,`t1`.`lote` AS `lote` from (((((`tbl_recepcion` `t1` left join `tbl_cliente` `t3` on((`t3`.`ID` = `t1`.`ID_cliente`))) left join `tbl_productor` `t4` on((`t4`.`codigo` = `t1`.`ID_productor`))) left join `tbl_especie` `t5` on((`t5`.`ID_especie` = `t1`.`ID_especie`))) left join `tbl_tipodescarga` `t6` on((`t6`.`ID` = `t1`.`ID_descarga`))) left join `tbl_destinorecepcion` `t7` on((`t7`.`ID` = `t1`.`ID_destino`)))) */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
