@@ -138,6 +138,7 @@
             this.cmbEspecie.Name = "cmbEspecie";
             this.cmbEspecie.Size = new System.Drawing.Size(283, 28);
             this.cmbEspecie.TabIndex = 45;
+            this.cmbEspecie.SelectedIndexChanged += new System.EventHandler(this.cmbEspecie_SelectedIndexChanged);
             // 
             // label8
             // 
@@ -372,7 +373,7 @@
             this.cmbVariedad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbVariedad.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbVariedad.FormattingEnabled = true;
-            this.cmbVariedad.Location = new System.Drawing.Point(465, 239);
+            this.cmbVariedad.Location = new System.Drawing.Point(465, 242);
             this.cmbVariedad.Name = "cmbVariedad";
             this.cmbVariedad.Size = new System.Drawing.Size(270, 28);
             this.cmbVariedad.TabIndex = 83;
@@ -382,7 +383,7 @@
             this.label10.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(461, 216);
+            this.label10.Location = new System.Drawing.Point(471, 216);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(73, 20);
             this.label10.TabIndex = 84;

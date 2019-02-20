@@ -29,7 +29,7 @@ namespace Packing
             N_Especie especie1 = new N_Especie();
             cbEspecie.DataSource = especie1.Lista();
             cbEspecie.DisplayMember = "descripcion";
-            cbEspecie.ValueMember = "id_especie";
+            cbEspecie.ValueMember = "codigo";
             cbEspecie.SelectedIndex = -1;
         }
 

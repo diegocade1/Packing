@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             this.panelCampos = new System.Windows.Forms.Panel();
+            this.cbEspecie = new System.Windows.Forms.ComboBox();
+            this.lblEspecie = new System.Windows.Forms.Label();
             this.lblIDVariedad = new System.Windows.Forms.Label();
             this.lblTipoAccion = new System.Windows.Forms.Label();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.txtDescripcionVariedad = new System.Windows.Forms.TextBox();
             this.lblDescripcion = new System.Windows.Forms.Label();
-            this.lblEspecie = new System.Windows.Forms.Label();
-            this.cbEspecie = new System.Windows.Forms.ComboBox();
             this.panelCampos.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -70,11 +70,29 @@
             this.panelCampos.Controls.Add(this.btnAceptar);
             this.panelCampos.Controls.Add(this.txtDescripcionVariedad);
             this.panelCampos.Controls.Add(this.lblDescripcion);
-            this.panelCampos.Location = new System.Drawing.Point(12, 3);
+            this.panelCampos.Location = new System.Drawing.Point(513, 12);
             this.panelCampos.Name = "panelCampos";
             this.panelCampos.Size = new System.Drawing.Size(423, 74);
             this.panelCampos.TabIndex = 32;
             this.panelCampos.Visible = false;
+            // 
+            // cbEspecie
+            // 
+            this.cbEspecie.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbEspecie.FormattingEnabled = true;
+            this.cbEspecie.Location = new System.Drawing.Point(128, 42);
+            this.cbEspecie.Name = "cbEspecie";
+            this.cbEspecie.Size = new System.Drawing.Size(171, 21);
+            this.cbEspecie.TabIndex = 9;
+            // 
+            // lblEspecie
+            // 
+            this.lblEspecie.AutoSize = true;
+            this.lblEspecie.Location = new System.Drawing.Point(72, 45);
+            this.lblEspecie.Name = "lblEspecie";
+            this.lblEspecie.Size = new System.Drawing.Size(45, 13);
+            this.lblEspecie.TabIndex = 8;
+            this.lblEspecie.Text = "Especie";
             // 
             // lblIDVariedad
             // 
@@ -131,24 +149,6 @@
             this.lblDescripcion.Size = new System.Drawing.Size(108, 13);
             this.lblDescripcion.TabIndex = 1;
             this.lblDescripcion.Text = "Descripcion Variedad";
-            // 
-            // lblEspecie
-            // 
-            this.lblEspecie.AutoSize = true;
-            this.lblEspecie.Location = new System.Drawing.Point(72, 45);
-            this.lblEspecie.Name = "lblEspecie";
-            this.lblEspecie.Size = new System.Drawing.Size(45, 13);
-            this.lblEspecie.TabIndex = 8;
-            this.lblEspecie.Text = "Especie";
-            // 
-            // cbEspecie
-            // 
-            this.cbEspecie.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbEspecie.FormattingEnabled = true;
-            this.cbEspecie.Location = new System.Drawing.Point(128, 42);
-            this.cbEspecie.Name = "cbEspecie";
-            this.cbEspecie.Size = new System.Drawing.Size(171, 21);
-            this.cbEspecie.TabIndex = 9;
             // 
             // frmMantenedorVariedad
             // 

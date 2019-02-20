@@ -681,7 +681,7 @@
             this.dtpHoraInicio.Location = new System.Drawing.Point(481, 132);
             this.dtpHoraInicio.Name = "dtpHoraInicio";
             this.dtpHoraInicio.ShowUpDown = true;
-            this.dtpHoraInicio.Size = new System.Drawing.Size(104, 26);
+            this.dtpHoraInicio.Size = new System.Drawing.Size(114, 26);
             this.dtpHoraInicio.TabIndex = 8;
             this.dtpHoraInicio.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dtpHoraInicio_MouseDown);
             // 
@@ -693,7 +693,7 @@
             this.dtpHoraFin.Location = new System.Drawing.Point(481, 166);
             this.dtpHoraFin.Name = "dtpHoraFin";
             this.dtpHoraFin.ShowUpDown = true;
-            this.dtpHoraFin.Size = new System.Drawing.Size(104, 26);
+            this.dtpHoraFin.Size = new System.Drawing.Size(114, 26);
             this.dtpHoraFin.TabIndex = 9;
             this.dtpHoraFin.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dtpHoraFin_MouseDown);
             // 

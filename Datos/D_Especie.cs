@@ -34,7 +34,7 @@ namespace Datos
                         especie1 = new E_Especie
                         {
                             Codigo = Convert.ToString(reader["ID_especie"]),
-                            Descripcion = Convert.ToString(reader["descripcion"])
+                            Descripcion = Convert.ToString(reader["descripcion"]),
                         };
                         lista_especie1.Add(especie1);
                     }

@@ -90,10 +90,10 @@ namespace Packing
             //cmbEtiqueta.ValueMember = "codigo";
             //cmbEtiqueta.SelectedIndex = -1;
             
-            cmbVariedad.DataSource = variedad1.Lista();
-            cmbVariedad.DisplayMember = "descripcion";
-            cmbVariedad.ValueMember = "codigo";
-            cmbVariedad.SelectedIndex = -1;
+            //cmbVariedad.DataSource = variedad1.Lista();
+            //cmbVariedad.DisplayMember = "descripcion";
+            //cmbVariedad.ValueMember = "codigo";
+            //cmbVariedad.SelectedIndex = -1;
 
             // cmbEtiqueta.Items.Insert(0, "Berry Fresh 1");
             // cmbEtiqueta.Items.Insert(1, "Berry Fresh 2");
@@ -461,6 +461,16 @@ namespace Packing
                     dtpFecha.CustomFormat = " ";
                     break;
             }
+        }
+
+        private void cmbEspecie_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbCliente.SelectedIndex == -1)
+                return;
+            cmbVariedad.DataSource = variedad1.ListaEspecie(cmbEspecie.SelectedValue.ToString());
+            cmbVariedad.DisplayMember = "descripcion";
+            cmbVariedad.ValueMember = "codigo";
+            cmbVariedad.SelectedIndex = -1;
         }
     }
 }

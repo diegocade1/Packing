@@ -16,6 +16,12 @@ namespace Negocio
             return objeto1.Lista();
         }
 
+        public List<E_Variedad> ListaEspecie(string especie)
+        {
+            D_Variedad objeto1 = new D_Variedad();
+            return objeto1.ListaEspecie(especie);
+        }
+
         public bool Agregar(E_Variedad variedad1)
         {
             D_Variedad variedad = new D_Variedad();
