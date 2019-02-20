@@ -275,7 +275,16 @@ namespace Clases.Impresion
             linea += 3.5;
             xPos = (float)(12 + Convert.ToDouble(coordenadas_impresion.PosicionX)) * fuente.GetHeight(g);
             yPos = (float)linea * fuente.GetHeight(g);
-            g.DrawString(numero+"/"+limite, fuente, Brushes.Black, xPos, yPos, new StringFormat());    // Enumeracion
+            int resultado;
+            int.TryParse(limite, out resultado);
+            if(resultado!=0)
+            {
+                g.DrawString(numero + "/" + limite, fuente, Brushes.Black, xPos, yPos, new StringFormat());    // Enumeracion
+            }
+            else
+            {
+                g.DrawString(numero, fuente, Brushes.Black, xPos, yPos, new StringFormat());    // Enumeracion
+            }
             //Move to next line
             /*
             xPos = 20 * fuente.GetHeight(g);
