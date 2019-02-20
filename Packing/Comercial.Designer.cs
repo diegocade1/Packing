@@ -56,6 +56,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.groupBox1.Controls.Add(this.txtFolio);
             this.groupBox1.Controls.Add(this.label14);
             this.groupBox1.Controls.Add(this.label12);
@@ -66,14 +67,15 @@
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.cmbBandeja);
-            this.groupBox1.Location = new System.Drawing.Point(12, 215);
+            this.groupBox1.Location = new System.Drawing.Point(43, 215);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(776, 163);
+            this.groupBox1.Size = new System.Drawing.Size(776, 146);
             this.groupBox1.TabIndex = 78;
             this.groupBox1.TabStop = false;
             // 
             // txtFolio
             // 
+            this.txtFolio.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtFolio.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFolio.Location = new System.Drawing.Point(365, 94);
             this.txtFolio.Name = "txtFolio";
@@ -82,6 +84,7 @@
             // 
             // label14
             // 
+            this.label14.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.Location = new System.Drawing.Point(361, 71);
@@ -92,6 +95,7 @@
             // 
             // label12
             // 
+            this.label12.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.Location = new System.Drawing.Point(385, 27);
@@ -102,6 +106,7 @@
             // 
             // cmbTipoPallet
             // 
+            this.cmbTipoPallet.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cmbTipoPallet.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTipoPallet.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbTipoPallet.FormattingEnabled = true;
@@ -112,6 +117,7 @@
             // 
             // txtCantidadBandejas
             // 
+            this.txtCantidadBandejas.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtCantidadBandejas.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCantidadBandejas.Location = new System.Drawing.Point(174, 94);
             this.txtCantidadBandejas.MaxLength = 4;
@@ -122,6 +128,7 @@
             // 
             // label11
             // 
+            this.label11.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.Location = new System.Drawing.Point(170, 71);
@@ -132,6 +139,7 @@
             // 
             // txtKilos
             // 
+            this.txtKilos.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtKilos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtKilos.Location = new System.Drawing.Point(23, 94);
             this.txtKilos.MaxLength = 10;
@@ -142,6 +150,7 @@
             // 
             // label5
             // 
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(19, 71);
@@ -152,6 +161,7 @@
             // 
             // label8
             // 
+            this.label8.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(6, 27);
@@ -162,6 +172,7 @@
             // 
             // cmbBandeja
             // 
+            this.cmbBandeja.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cmbBandeja.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbBandeja.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbBandeja.FormattingEnabled = true;
@@ -172,6 +183,7 @@
             // 
             // label13
             // 
+            this.label13.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.Location = new System.Drawing.Point(324, 13);
@@ -183,9 +195,10 @@
             // btnAceptar
             // 
             this.btnAceptar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnAceptar.Location = new System.Drawing.Point(151, 432);
+            this.btnAceptar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAceptar.Location = new System.Drawing.Point(184, 383);
             this.btnAceptar.Name = "btnAceptar";
-            this.btnAceptar.Size = new System.Drawing.Size(140, 33);
+            this.btnAceptar.Size = new System.Drawing.Size(175, 53);
             this.btnAceptar.TabIndex = 82;
             this.btnAceptar.Text = "Guardar";
             this.btnAceptar.UseVisualStyleBackColor = true;
@@ -194,9 +207,10 @@
             // btnCancelar
             // 
             this.btnCancelar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnCancelar.Location = new System.Drawing.Point(452, 432);
+            this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelar.Location = new System.Drawing.Point(485, 383);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(130, 33);
+            this.btnCancelar.Size = new System.Drawing.Size(175, 53);
             this.btnCancelar.TabIndex = 83;
             this.btnCancelar.Text = "Salir";
             this.btnCancelar.UseVisualStyleBackColor = true;
@@ -204,6 +218,7 @@
             // 
             // label9
             // 
+            this.label9.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.Location = new System.Drawing.Point(448, 92);
@@ -214,6 +229,7 @@
             // 
             // cmbTipo
             // 
+            this.cmbTipo.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cmbTipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTipo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbTipo.FormattingEnabled = true;
@@ -224,6 +240,7 @@
             // 
             // label6
             // 
+            this.label6.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(48, 95);
@@ -234,6 +251,7 @@
             // 
             // cmbEspecie
             // 
+            this.cmbEspecie.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cmbEspecie.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbEspecie.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbEspecie.FormattingEnabled = true;
@@ -244,6 +262,7 @@
             // 
             // label2
             // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(418, 54);
@@ -254,6 +273,7 @@
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(27, 57);
@@ -264,16 +284,18 @@
             // 
             // cmbProductor
             // 
+            this.cmbProductor.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cmbProductor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbProductor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbProductor.FormattingEnabled = true;
             this.cmbProductor.Location = new System.Drawing.Point(502, 51);
             this.cmbProductor.Name = "cmbProductor";
-            this.cmbProductor.Size = new System.Drawing.Size(273, 28);
+            this.cmbProductor.Size = new System.Drawing.Size(283, 28);
             this.cmbProductor.TabIndex = 71;
             // 
             // cmbCliente
             // 
+            this.cmbCliente.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cmbCliente.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbCliente.FormattingEnabled = true;
@@ -286,8 +308,9 @@
             // 
             // lblUsuario
             // 
+            this.lblUsuario.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblUsuario.AutoSize = true;
-            this.lblUsuario.Location = new System.Drawing.Point(9, 590);
+            this.lblUsuario.Location = new System.Drawing.Point(11, 538);
             this.lblUsuario.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblUsuario.Name = "lblUsuario";
             this.lblUsuario.Size = new System.Drawing.Size(53, 13);
@@ -298,7 +321,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(804, 609);
+            this.ClientSize = new System.Drawing.Size(871, 560);
             this.Controls.Add(this.lblUsuario);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label13);

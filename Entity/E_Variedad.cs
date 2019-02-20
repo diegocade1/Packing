@@ -10,5 +10,6 @@ namespace Entity
     {
         public string Codigo { get; set; }
         public string Descripcion { get; set; }
+        public string ID_Especie { get; set; }
     }
 }

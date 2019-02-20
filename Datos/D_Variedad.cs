@@ -36,6 +36,7 @@ namespace Datos
 
                         objeto1.Codigo = Convert.ToString(reader["ID"]);
                         objeto1.Descripcion = Convert.ToString(reader["descripcion"]);
+                        objeto1.ID_Especie = Convert.ToString(reader["id_especie"]);
                         //try
                         //{
                         //    objeto1.Peso = Convert.ToInt32(reader["peso"]);
@@ -44,7 +45,7 @@ namespace Datos
                         //{
                         //    objeto1.Peso = 0;
                         //}
-                        
+
                         lista1.Add(objeto1);
                     }
                 }
@@ -64,14 +65,15 @@ namespace Datos
             string query;
             MySqlCommand cmd;
 
-            query = "insert into tbl_variedad(descripcion) values " +
-                    "(@descripcion)";
+            query = "insert into tbl_variedad(descripcion,id_especie) values " +
+                    "(@descripcion,@especie)";
             try
             {
                 if (Conectar() == true)
                 {
                     cmd = new MySqlCommand(query, MySQLConexion);
                     cmd.Parameters.AddWithValue("@descripcion", variedad1.Descripcion);
+                    cmd.Parameters.AddWithValue("@especie", variedad1.ID_Especie);
 
                     cmd.ExecuteNonQuery();
                     return true;
@@ -96,7 +98,7 @@ namespace Datos
             string query;
             MySqlCommand cmd;
 
-            query = "update tbl_variedad set descripcion=@descripcion WHERE ID_variedad=@ID";
+            query = "update tbl_variedad set descripcion=@descripcion, id_especie = @especie WHERE ID_variedad=@ID";
 
             try
             {
@@ -105,6 +107,7 @@ namespace Datos
                     cmd = new MySqlCommand(query, MySQLConexion);
                     cmd.Parameters.AddWithValue("@ID", variedad1.Codigo);
                     cmd.Parameters.AddWithValue("@descripcion", variedad1.Descripcion);
+                    cmd.Parameters.AddWithValue("@especie", variedad1.ID_Especie);
 
                     cmd.ExecuteNonQuery();
                 }

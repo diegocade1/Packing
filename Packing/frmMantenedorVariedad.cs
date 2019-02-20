@@ -25,6 +25,12 @@ namespace Packing
         {
             N_Variedad variedad1 = new N_Variedad();
             dgvLista.DataSource = variedad1.Lista();
+
+            N_Especie especie1 = new N_Especie();
+            cbEspecie.DataSource = especie1.Lista();
+            cbEspecie.DisplayMember = "descripcion";
+            cbEspecie.ValueMember = "id_especie";
+            cbEspecie.SelectedIndex = -1;
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -60,6 +66,12 @@ namespace Packing
                 return;
             }
 
+            if (string.IsNullOrEmpty(cbEspecie.Text) || string.IsNullOrWhiteSpace(cbEspecie.Text))
+            {
+                MessageBox.Show("Seleccionar Especie", "Agregar");
+                return;
+            }
+
             switch (lblTipoAccion.Text)
             {
                 case "Agregar":
@@ -73,12 +85,15 @@ namespace Packing
                     //    break;
             }
             panelCampos.Visible = false;
+            txtDescripcionVariedad.Text = string.Empty;
+            cbEspecie.SelectedIndex = -1;
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             panelCampos.Visible = false;
             txtDescripcionVariedad.Text = string.Empty;
+            cbEspecie.SelectedIndex = -1;
         }
 
         #region Metodos virtuales
@@ -100,6 +115,7 @@ namespace Packing
 
             variedad2.Codigo = "0";
             variedad2.Descripcion = txtDescripcionVariedad.Text;
+            variedad2.ID_Especie = cbEspecie.SelectedValue.ToString();
 
             if (variedad1.Agregar(variedad2) == true)
             {
@@ -126,6 +142,7 @@ namespace Packing
 
                 txtDescripcionVariedad.Text = dgvLista.Rows[pos].Cells["descripcion"].Value.ToString();
                 lblIDVariedad.Text = dgvLista.Rows[pos].Cells["codigo"].Value.ToString();
+                cbEspecie.SelectedValue = dgvLista.Rows[pos].Cells["id_especie"].Value.ToString();
 
             }
 
@@ -138,6 +155,8 @@ namespace Packing
 
             variedad2.Codigo = lblIDVariedad.Text;
             variedad2.Descripcion = txtDescripcionVariedad.Text;
+            variedad2.ID_Especie = cbEspecie.SelectedValue.ToString();
+
             if (variedad1.Modificar(variedad2) == true)
             {
                 dgvLista.DataSource = variedad1.Lista();
@@ -177,27 +196,27 @@ namespace Packing
 
         public override void Importar()
         {
-            Leer_ArchivoExcel excel1 = new Negocio.Leer_ArchivoExcel();
-            try
-            {
-                OpenFileDialog openFileDialog1 = new OpenFileDialog();
-                openFileDialog1.Filter = "Archivo Excel|*.xlsx";
-                openFileDialog1.Title = "Seleccione Archivo";
+            //Leer_ArchivoExcel excel1 = new Negocio.Leer_ArchivoExcel();
+            //try
+            //{
+            //    OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            //    openFileDialog1.Filter = "Archivo Excel|*.xlsx";
+            //    openFileDialog1.Title = "Seleccione Archivo";
 
-                if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                {
-                    //excel1.CargaPlanilla(openFileDialog1.FileName);
+            //    if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            //    {
+            //        //excel1.CargaPlanilla(openFileDialog1.FileName);
 
-                }
+            //    }
 
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Excel " + ex.Message);
-                return;
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("Excel " + ex.Message);
+            //    return;
+            //}
 
-            MessageBox.Show("Archivo Cargado");
+            //MessageBox.Show("Archivo Cargado");
 
         }
 

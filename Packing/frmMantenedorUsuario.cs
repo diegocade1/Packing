@@ -251,6 +251,10 @@ namespace Packing
                     {
                         dgvLista.DataSource = usuario1.Lista();
                     }
+                    else
+                    {
+                        MessageBox.Show("Error al borrar. "+ usuario1.Mensaje, "Borrar");
+                    }
                 }
             }
             else
