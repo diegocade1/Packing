@@ -54,7 +54,7 @@
             this.panelCampos.Controls.Add(this.btnAceptar);
             this.panelCampos.Controls.Add(this.txtTipoUsuario);
             this.panelCampos.Controls.Add(this.lblTipoUsuario);
-            this.panelCampos.Location = new System.Drawing.Point(12, 4);
+            this.panelCampos.Location = new System.Drawing.Point(551, 94);
             this.panelCampos.Name = "panelCampos";
             this.panelCampos.Size = new System.Drawing.Size(660, 84);
             this.panelCampos.TabIndex = 33;
@@ -142,6 +142,7 @@
             this.ClientSize = new System.Drawing.Size(776, 467);
             this.Controls.Add(this.panelCampos);
             this.Name = "frmMantenedorTipoUsuario";
+            this.Text = "Mantenedor Tipo de Usuario";
             this.Load += new System.EventHandler(this.frmMantenedorTipoUsuario_Load);
             this.Controls.SetChildIndex(this.btnModificar, 0);
             this.Controls.SetChildIndex(this.btnSalir, 0);

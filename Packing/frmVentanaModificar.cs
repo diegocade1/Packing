@@ -49,16 +49,23 @@ namespace Packing
 
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
-            recepcion1.Encabezado.Cantidad_Pallets = txtCantidad.Text;
-            if (recepcion1.ModificarCantidadPallets_Encabezado())
+            if(!string.IsNullOrEmpty(txtCantidad.Text) || !string.IsNullOrWhiteSpace(txtCantidad.Text))
             {
-                MessageBox.Show("Cantidad de pallets modificada.","Modificacion");
-                Close();
+                recepcion1.Encabezado.Cantidad_Pallets = txtCantidad.Text;
+                if (recepcion1.ModificarCantidadPallets_Encabezado())
+                {
+                    MessageBox.Show("Cantidad de pallets modificada.", "Modificacion");
+                    Close();
+                }
+                else
+                {
+                    MessageBox.Show(recepcion1.Mensaje, "Modificacion");
+                    Close();
+                }
             }
             else
             {
-                MessageBox.Show(recepcion1.Mensaje, "Modificacion");
-                Close();
+                MessageBox.Show("Ingrese una cantidad válida");
             }
         }
 
