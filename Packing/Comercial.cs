@@ -176,6 +176,13 @@ namespace Packing
                 txtKilos.Focus();
                 return;
             }
+            if (pallet1.ValidaPrefijoActivo(txtFolio.Text) == false)
+            {
+                MessageBox.Show("Folio Ingresado no contiene prefijo activo [" + pallet1.GetPrefijoActivo() + "]");
+                txtFolio.SelectAll();
+                txtFolio.Focus();
+                return;
+            }
             string fecha = DateTime.Now.ToString("s");
 
             //    T Format Specifier      de-DE Culture                                 17:04:32
@@ -189,10 +196,10 @@ namespace Packing
             double tara,pesoNeto,peso_promedio;
 
             N_Bandeja bandeja1 = new N_Bandeja();
-            N_Pallet pallet1 = new N_Pallet();
+            N_Pallet pallet2 = new N_Pallet();
 
             pesoBandeja = bandeja1.Peso(cmbBandeja.SelectedValue.ToString());
-            pesoPallet = pallet1.Peso(cmbTipoPallet.SelectedValue.ToString());
+            pesoPallet = pallet2.Peso(cmbTipoPallet.SelectedValue.ToString());
             tara = (pesoBandeja * Convert.ToInt32(txtCantidadBandejas.Text)) + pesoPallet;
             pesoNeto = Convert.ToDouble(txtKilos.Text) - tara;
             peso_promedio = pesoNeto / Convert.ToInt32(txtCantidadBandejas.Text);

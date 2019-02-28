@@ -32,6 +32,7 @@ namespace Packing
 
         N_Cliente cliente1 = new N_Cliente();
         N_Productor productor1 = new N_Productor();
+        N_Pallet pallet1 = new N_Pallet();
 
         private void Maquila_Load(object sender, EventArgs e)
         {
@@ -320,7 +321,13 @@ namespace Packing
                 return false;
             }
 
-
+            //if (pallet1.ValidaPrefijoActivo(txtGuia.Text) == false)
+            //{
+            //    MessageBox.Show("Folio Ingresado no contiene prefijo activo [" + pallet1.GetPrefijoActivo() + "]");
+            //    txtGuia.SelectAll();
+            //    txtGuia.Focus();
+            //    return false;
+            //}
 
             return true;
         }

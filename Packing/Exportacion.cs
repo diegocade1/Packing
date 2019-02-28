@@ -31,6 +31,7 @@ namespace Packing
         N_TipoMercado tipoMercado1 = new N_TipoMercado();
         N_Etiqueta etiqueta1 = new N_Etiqueta();
         N_Exportacion exportacion1 = new N_Exportacion();
+        N_Pallet pallet1 = new N_Pallet();
         //------
         N_Recepcion recepcion1 = new N_Recepcion();
         N_Comercial comercial1 = new N_Comercial();
@@ -199,6 +200,13 @@ namespace Packing
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
+            if (pallet1.ValidaPrefijoActivo(txtFolio.Text) == false)
+            {
+                MessageBox.Show("Folio Ingresado no contiene prefijo activo [" + pallet1.GetPrefijoActivo() + "]");
+                txtFolio.SelectAll();
+                txtFolio.Focus();
+                return;
+            }
             string fecha = DateTime.Now.ToString("s");
 
             //    T Format Specifier      de-DE Culture                                 17:04:32
@@ -471,6 +479,16 @@ namespace Packing
             cmbVariedad.DisplayMember = "descripcion";
             cmbVariedad.ValueMember = "codigo";
             cmbVariedad.SelectedIndex = -1;
+        }
+        private void Limpiar()
+        {
+            cmbCliente.SelectedIndex = -1;
+            cmbEspecie.SelectedIndex = -1;
+            cmbEtiqueta.SelectedIndex = -1;
+            cmbTipoMercado.SelectedIndex = -1;
+            cmbEmbalaje.SelectedIndex = -1;
+            cmbTipoArmado.SelectedIndex = -1;
+            txtFolio.Text = string.Empty;
         }
     }
 }
