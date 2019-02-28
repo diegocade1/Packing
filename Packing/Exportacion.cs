@@ -465,7 +465,7 @@ namespace Packing
 
         private void cmbEspecie_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbCliente.SelectedIndex == -1)
+            if (cmbEspecie.SelectedIndex == -1)
                 return;
             cmbVariedad.DataSource = variedad1.ListaEspecie(cmbEspecie.SelectedValue.ToString());
             cmbVariedad.DisplayMember = "descripcion";
