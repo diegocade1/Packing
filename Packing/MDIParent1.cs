@@ -573,5 +573,12 @@ namespace Packing
             frmObj.MdiParent = this;
             frmObj.Show();
         }
+
+        private void reimpresionItem_Click(object sender, EventArgs e)
+        {
+            ReImpresion frmObj = new ReImpresion(Usuario);
+            frmObj.MdiParent = this;
+            frmObj.Show();
+        }
     }
 }

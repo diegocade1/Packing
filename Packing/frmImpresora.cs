@@ -47,6 +47,12 @@ namespace Packing
 
         private void btnCambiarImpresora_Click(object sender, EventArgs e)
         {
+            if (cbImpresoras.Text.Trim() == "")
+            {
+                MessageBox.Show("Seleccione una impresora", "");
+                cbImpresoras.Focus();
+                return;
+            }
             //DialogResult result = pdSeleccionImpresora.ShowDialog();
             NameValueCollection settings = ConfigurationManager.GetSection("ImpresorasGroup/Impresora") as NameValueCollection;
 

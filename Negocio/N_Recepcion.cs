@@ -166,6 +166,30 @@ namespace Negocio
             }
         }
 
+        public E_Recepcion_Encabezado Obtener_Encabezado_ID(string id)
+        {
+            E_Recepcion_Encabezado recepcion2;
+            if (recepcion1.Conectar() == true)
+            {
+                recepcion2 = recepcion1.Obtener_Encabezado_ID(id);
+                if (recepcion2 != null)
+                {
+                    return recepcion2;
+                }
+                else
+                {
+                    Mensaje = recepcion1.Mensaje;
+                    return null;
+                }
+            }
+            else
+            {
+                // UltimoID = 0;
+                Mensaje = "Error en Conexion";
+                return null;
+            }
+        }
+
         public E_Recepcion_Detalle Obtener_Detalle()
         {
             E_Recepcion_Detalle recepcion2;
@@ -205,6 +229,23 @@ namespace Negocio
                 Mensaje = recepcion1.Mensaje;
 
                 return lista;
+            }
+            else
+            {
+                // UltimoID = 0;
+                Mensaje = "Error en Conexion";
+                return null;
+            }
+        }
+
+        public E_Recepcion_Detalle Obtener_Detalle_Recepcion_Folio()
+        {
+            if (recepcion1.Conectar() == true)
+            {
+                E_Recepcion_Detalle recepcion2 = recepcion1.Obtener_Detalles_Recepcion_Folio(Detalle.Folio);
+                Mensaje = recepcion1.Mensaje;
+
+                return recepcion2;
             }
             else
             {

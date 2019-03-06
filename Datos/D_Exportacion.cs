@@ -147,6 +147,57 @@ namespace Datos
             return estado;
         }
 
+        public List<E_Exportacion> Obtener_Exportaciones_Folio(string folio)
+        {
+            string query;
+
+            MySqlCommand cmd;
+
+            query = "SELECT * FROM tbl_exportacion where folio = @folio;";
+            try
+            {
+                if (Conectar() == true)
+                {
+                    cmd = new MySqlCommand(query, MySQLConexion);
+                    cmd.Parameters.AddWithValue("@folio", folio);
+
+                    MySqlDataReader rst = cmd.ExecuteReader();
+                    E_Exportacion encabezado1 = new E_Exportacion();
+                    List<E_Exportacion> lista = new List<E_Exportacion>();
+                    while (rst.Read())
+                    {
+                        encabezado1.ID_Cliente = rst["ID_cliente"].ToString();
+                        encabezado1.ID_Embalaje = rst["id_embalaje"].ToString();
+                        encabezado1.ID_Especie = rst["id_especie"].ToString();
+                        encabezado1.ID_Etiqueta = rst["id_etiqueta"].ToString();
+                        encabezado1.ID_TipoArmado = rst["id_tipoarmado"].ToString();
+                        encabezado1.ID_TipoMercado = rst["id_tipomercado"].ToString();
+                        encabezado1.Folio = rst["folio"].ToString();
+                        encabezado1.ID_Variedad = rst["id_variedad"].ToString();
+                        encabezado1.ID_Productor = rst["id_productor"].ToString();
+                        encabezado1.Fecha = rst["fecha"].ToString();
+                        encabezado1.Cantidad_Cajas = rst["cantidad_cajas"].ToString();
+                        encabezado1.Documento = rst["documento"].ToString();
+                        encabezado1.Usuario = rst["usuario"].ToString();
+                        lista.Add(encabezado1);
+                    }
+                    Desconectar();
+                    return lista;
+                }
+                else
+                {
+                    Mensaje = "Error en la conexion";
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                Mensaje = ex.Message;
+                Desconectar();
+                return null;
+            }
+        }
+
         #region Validacion Pallet
 
         public bool Existe_Pallet(E_Pallet_Exportacion pallet)

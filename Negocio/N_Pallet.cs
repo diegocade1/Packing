@@ -16,7 +16,11 @@ namespace Negocio
             D_Pallet objeto1 = new D_Pallet();
             return objeto1.Lista();
         }
-
+        public E_Pallet ObtenerPallet(string id)
+        {
+            D_Pallet objeto1 = new D_Pallet();
+            return objeto1.ObtenerPallet(id);
+        }
 
         public double Peso(string ID)
         {

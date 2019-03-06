@@ -76,6 +76,13 @@ namespace Negocio
             return estado;
         }
 
+        public List<E_Exportacion> Obtener_Exportaciones_Folio(string folio)
+        {            
+            List <E_Exportacion> exportacion2 = exportacion1.Obtener_Exportaciones_Folio(folio);
+            Mensaje = exportacion1.Mensaje;
+            return exportacion2;
+        }
+
         #region validacion Pallet
 
         public bool Existe_Pallet(E_Pallet_Exportacion pallet)

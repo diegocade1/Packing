@@ -17,6 +17,7 @@ namespace Negocio
             D_Productor productor1 = new D_Productor();
             return productor1.Lista(ID_cliente);
         }
+
         public List<E_Productor> ListaCompleta()
         {
             D_Productor productor1 = new D_Productor();

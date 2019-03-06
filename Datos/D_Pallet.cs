@@ -57,6 +57,61 @@ namespace Datos
             return lista1;
         }        //Fin funcion 
 
+        public E_Pallet ObtenerPallet(string id)
+        {
+            string query;
+            MySqlCommand cmd;
+
+            query = "select * from tbl_pallet where id = @id";
+            try
+            {
+                if (Conectar() == true)
+                {
+                    cmd = new MySqlCommand(query, MySQLConexion);
+                    cmd.Parameters.AddWithValue("@id", id);
+                    MySqlDataReader reader = cmd.ExecuteReader();
+                    E_Pallet objeto1;
+
+                    if(reader.Read())
+                    {
+                        objeto1 = new E_Pallet();
+
+                        objeto1.Codigo = Convert.ToString(reader["ID"]);
+                        objeto1.Descripcion = Convert.ToString(reader["descripcion"]);
+                        try
+                        {
+                            objeto1.Peso = Convert.ToDouble(reader["peso"]);
+                        }
+                        catch
+                        {
+                            objeto1.Peso = 0;
+                        }
+
+                        Desconectar();
+                        return objeto1;
+                    }
+                    else
+                    {
+                        Desconectar();
+                        Mensaje = "No se encontraron registros";
+                        return null;
+                    }
+                }
+                else
+                {
+                    Desconectar();
+                    Mensaje = "Error en la conexion";
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                Mensaje = ex.Message;
+                Desconectar();
+                return null;
+            }
+        }        //Fin funcion 
+
         public double Peso(string ID)
         {
 

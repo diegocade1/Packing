@@ -809,6 +809,58 @@ namespace Datos
             }
         }
 
+        public E_Recepcion_Encabezado Obtener_Encabezado_ID(string id)
+        {
+            string query;
+
+            MySqlCommand cmd;
+
+            query = "SELECT * FROM tbl_recepcion where id = @id;";
+            try
+            {
+                cmd = new MySqlCommand(query, MySQLConexion);
+                cmd.Parameters.AddWithValue("@id", id);
+
+                MySqlDataReader rst = cmd.ExecuteReader();
+                if (rst.Read())
+                {
+                    E_Recepcion_Encabezado encabezado1 = new E_Recepcion_Encabezado()
+                    {
+                        ID_Registro = rst["id"].ToString(),
+                        ID_Cliente = rst["id_cliente"].ToString(),
+                        Codigo_Productor = rst["id_productor"].ToString(),
+                        Chofer = rst["chofer"].ToString(),
+                        Guia = rst["guia"].ToString(),
+                        ID_Especie = rst["id_especie"].ToString(),
+                        ID_Descarga = rst["id_descarga"].ToString(),
+                        Temperatura = rst["temperatura"].ToString(),
+                        ID_Destino = rst["id_destino"].ToString(),
+                        Fecha = rst["fecha"].ToString(),
+                        Lote = rst["lote"].ToString(),
+                        Cantidad_Pallets = rst["cantidad_pallets"].ToString(),
+                        ID_Tipo = rst["id_tipo"].ToString(),
+
+
+                    };
+                    Desconectar();
+                    return encabezado1;
+                }
+                else
+                {
+                    Mensaje = "No se encontraron registros";
+                    Desconectar();
+                    return null;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Mensaje = ex.Message;
+                Desconectar();
+                return null;
+            }
+        }
+
         public List<E_Recepcion_Detalle> Obtener_Detalles_Recepcion(string id)
         {
             string query;
@@ -854,6 +906,60 @@ namespace Datos
                 }
                 Desconectar();
                 return listatemp;
+            }
+            catch (Exception ex)
+            {
+                Mensaje = ex.Message;
+                Desconectar();
+                return null;
+            }
+        }
+
+        public E_Recepcion_Detalle Obtener_Detalles_Recepcion_Folio(string folio)
+        {
+            string query;
+
+            MySqlCommand cmd;
+
+            query = "SELECT * FROM tbl_recepcion_detalle where folio = @folio;";
+            try
+            {
+                cmd = new MySqlCommand(query, MySQLConexion);
+                cmd.Parameters.AddWithValue("@folio", folio);
+
+                MySqlDataReader rst = cmd.ExecuteReader();
+                E_Recepcion_Detalle encabezado1 = new E_Recepcion_Detalle();
+
+                if(rst.Read())
+                {
+                    double kilos = Convert.ToDouble(rst["kilos_brutos"].ToString());
+
+                    encabezado1.ID = rst["ID"].ToString();
+                    encabezado1.ID_Recepcion = rst["id_recepcion"].ToString();
+                    encabezado1.ID_bandeja = rst["id_bandeja"].ToString();
+                    encabezado1.Bandeja = rst["bandeja"].ToString();
+                    encabezado1.Peso_Bandeja = rst["peso_bandeja"].ToString();
+                    encabezado1.Cantidad_Bandejas = rst["cantidad_bandejas"].ToString();
+                    encabezado1.Folio = rst["folio"].ToString();
+                    encabezado1.Kilos_Brutos = kilos.ToString().Replace(",", ".");
+                    encabezado1.Tara = rst["tara"].ToString();
+                    encabezado1.Kilos_Netos = rst["kilos_netos"].ToString();
+                    encabezado1.ID_Pallet = rst["id_pallet"].ToString();
+                    encabezado1.Tipo_Pallet = rst["tipo_pallet"].ToString();
+                    encabezado1.Peso_Pallet = rst["peso_pallet"].ToString();
+                    encabezado1.Fecha = rst["fecha"].ToString();
+                    encabezado1.Posicion = rst["posicion"].ToString();
+
+                    Desconectar();
+                    return encabezado1;
+                }
+                else
+                {
+                    Desconectar();
+                    Mensaje = "No se encontraron registros";
+                    return null;
+                }
+
             }
             catch (Exception ex)
             {

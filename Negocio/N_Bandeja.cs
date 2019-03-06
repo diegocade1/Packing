@@ -16,6 +16,11 @@ namespace Negocio
             D_Bandeja objeto1 = new D_Bandeja();
             return objeto1.Lista();
         }
+        public E_Bandeja ObtenerBandeja(string id)
+        {
+            D_Bandeja objeto1 = new D_Bandeja();
+            return objeto1.ObtenerBandeja(id);
+        }
 
         public double Peso(string ID)
         {

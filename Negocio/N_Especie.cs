@@ -18,6 +18,12 @@ namespace Negocio
             return especie1.Lista();
         }
 
+        public E_Especie ObtenerEspecie(string id)
+        {
+            D_Especie especie1 = new D_Especie();
+            return especie1.Obtener_Especie(id);
+        }
+
         #region  metodo de prueba solo para mostrar maqueta del sistema  06-11-2018
         public DataTable Lista2()
         {

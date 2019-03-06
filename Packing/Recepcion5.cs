@@ -18,6 +18,7 @@ namespace Packing
     public partial class Recepcion5 : Form
     {
         private E_Usuario sesion { get; set; }
+
         private int numero_actual;  //Corresponde a la cantidad de pallet que lleva el proceso valida que no supere a cantidad de pallet
 
 

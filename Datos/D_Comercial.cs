@@ -96,6 +96,63 @@ namespace Datos
             return estado;
         }
 
+        public E_Comercial Obtener_Comercial_Folio(string folio)
+        {
+            string query;
+
+            MySqlCommand cmd;
+
+            query = "SELECT * FROM tbl_comercial where folio = @folio;";
+            try
+            {
+                if (Conectar() == true)
+                {
+                    cmd = new MySqlCommand(query, MySQLConexion);
+                    cmd.Parameters.AddWithValue("@folio", folio);
+
+                    MySqlDataReader rst = cmd.ExecuteReader();
+                    E_Comercial encabezado1 = new E_Comercial();
+
+                   if(rst.Read())
+                    {
+                        encabezado1.ID_Cliente = rst["ID_cliente"].ToString();
+                        encabezado1.ID_Productor = rst["id_productor"].ToString();
+                        encabezado1.ID_Especie = rst["id_especie"].ToString();
+                        encabezado1.ID_Tipo = rst["id_tipo"].ToString();
+                        encabezado1.ID_Bandeja = rst["id_bandeja"].ToString();
+                        encabezado1.ID_Pallet = rst["id_pallet"].ToString();
+                        encabezado1.Folio = rst["folio"].ToString();
+                        encabezado1.Kilos_Brutos = Convert.ToDouble(rst["kilos_brutos"]);
+                        encabezado1.Tara = Convert.ToDouble(rst["tara"]);
+                        encabezado1.Kilos_Netos = Convert.ToDouble(rst["kilos_netos"]);
+                        encabezado1.Cantidad_Bandejas = Convert.ToInt32(rst["cantidad_bandejas"]);
+                        encabezado1.Fecha = rst["fecha"].ToString();
+                        encabezado1.Usuario = rst["usuario"].ToString();
+
+                        Desconectar();
+                        return encabezado1;
+                    }
+                   else
+                    {
+                        Desconectar();
+                        Mensaje = "No se encontraron registros";
+                        return null;
+                    }
+                }
+                else
+                {
+                    Mensaje = "Error en la conexion";
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                Mensaje = ex.Message;
+                Desconectar();
+                return null;
+            }
+        }
+
         #region Validacion Pallet
 
         public bool Existe_Pallet(E_Pallet_Comercial pallet)

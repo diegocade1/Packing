@@ -68,6 +68,13 @@ namespace Negocio
             return estado;
         }
 
+        public E_Comercial Obtener_Exportacion_Folio(string folio)
+        {
+            E_Comercial comercial2 = comercial1.Obtener_Comercial_Folio(folio);
+            Mensaje = comercial1.Mensaje;
+            return comercial2;
+        }
+
         #region validacion Pallet
 
         public bool Existe_Pallet(E_Pallet_Comercial pallet)

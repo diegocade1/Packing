@@ -54,6 +54,57 @@ namespace Datos
             return lista_productor1;
         }        //Fin funcion Lista  
 
+        public E_Productor ObtenerProductor(string id)
+        {
+
+            string query;
+            MySqlCommand cmd;
+
+            query = "select * from tbl_productor where codigo = @id";
+            try
+            {
+                if (Conectar() == true)
+                {
+                    cmd = new MySqlCommand(query, MySQLConexion);
+                    cmd.Parameters.AddWithValue("@id", id);
+                    MySqlDataReader reader = cmd.ExecuteReader();
+                    E_Productor productor1;
+
+                    if(reader.Read())
+                    {
+                        productor1 = new E_Productor
+                        {
+                            Codigo_Cliente = Convert.ToString(reader["codigo_cliente"]),
+                            Codigo = Convert.ToString(reader["codigo"]),
+                            Descripcion = Convert.ToString(reader["descripcion"]),
+                            Codigo_Productor = Convert.ToString(reader["codigo_productor"])
+                        };
+                        Desconectar();
+                        return productor1;
+                    }
+                    else
+                    {
+                        Mensaje = "No se encontraron registros";
+                        Desconectar();
+                        return null;
+                    }
+                }
+                else
+                {
+                    Mensaje = "Error en la conexion";
+                    Desconectar();
+                    return null;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Mensaje = ex.Message;
+                Desconectar();
+                return null;
+            }
+        }        //Fin funcion Lista  
+
         public List<E_Productor> ListaCompleta()
         {
 
