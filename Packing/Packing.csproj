@@ -128,6 +128,12 @@
     <Compile Include="frmMantenedorPallet.Designer.cs">
       <DependentUpon>frmMantenedorPallet.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmMantenedorPrefijo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMantenedorPrefijo.Designer.cs">
+      <DependentUpon>frmMantenedorPrefijo.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMantenedorProductor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -306,6 +312,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMantenedorPallet.resx">
       <DependentUpon>frmMantenedorPallet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMantenedorPrefijo.resx">
+      <DependentUpon>frmMantenedorPrefijo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMantenedorProductor.resx">
       <DependentUpon>frmMantenedorProductor.cs</DependentUpon>

@@ -47,7 +47,6 @@ namespace Negocio
             D_Pallet pallet = new D_Pallet();
             E_Pallet_General.Prefijo = pallet.GetPrefijoActivo();
         }
-
         public string GetPrefijoActivo()
         {
             return E_Pallet_General.Prefijo;

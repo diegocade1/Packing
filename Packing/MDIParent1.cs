@@ -315,7 +315,8 @@ namespace Packing
         private void embalajeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmMantenedorEmbalaje frmObj = new frmMantenedorEmbalaje(Usuario);
-
+            frmObj.MdiParent = this;
+            frmObj.Show();
         }
         
         private void windowsMenu_Click(object sender, EventArgs e)
@@ -493,19 +494,19 @@ namespace Packing
                         MenuStrip menu = (MenuStrip)c;
                         foreach (ToolStripMenuItem item in menu.Items)
                         {
-                            item.Visible = false;
+                            item.Visible = false;//or true.
 
                             foreach (ToolStripMenuItem dropDownItem in item.DropDownItems.OfType<ToolStripMenuItem>())
                             {
                                 if (dropDownItem!= null )
                                 {
-                                    dropDownItem.Visible = false;
+                                    dropDownItem.Visible = false;//or true.
 
                                     if (dropDownItem.HasDropDownItems)
                                     {
                                         foreach (ToolStripMenuItem subItem in dropDownItem.DropDownItems)
                                         {
-                                            subItem.Visible = false;
+                                            subItem.Visible = false;//or true.
                                         }
                                     }
                                 }
@@ -529,7 +530,7 @@ namespace Packing
                     Control control = GetControlPorNombre(permiso);
                     if (control.Name.ToLower().Trim() != "")
                     {
-                        control.Visible = true;
+                        control.Visible = true;//or true.
                     }
                 }
             }
@@ -543,7 +544,7 @@ namespace Packing
                         ToolStripMenuItem item = (ToolStripMenuItem)GetToolStripMenuItemPorNombre(permiso);
                         if (item != null)
                         {
-                            item.Visible = true;
+                            item.Visible = true;//or true.
                         }
                     }
                     else if(permiso.ToLower().Trim().Contains("tool"))
@@ -551,7 +552,7 @@ namespace Packing
                         ToolStripLabel item = (ToolStripLabel)GetToolStripMenuItemPorNombre(permiso);
                         if (item != null)
                         {
-                            item.Visible = true;
+                            item.Visible = true;//or true.
                         }
                     }
                     else
@@ -564,6 +565,13 @@ namespace Packing
                     }
                 }
             }
+        }
+
+        private void prefijoItem_Click(object sender, EventArgs e)
+        {
+            frmMantenedorPrefijo frmObj = new frmMantenedorPrefijo(Usuario);
+            frmObj.MdiParent = this;
+            frmObj.Show();
         }
     }
 }
