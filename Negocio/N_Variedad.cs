@@ -15,6 +15,11 @@ namespace Negocio
             D_Variedad objeto1 = new D_Variedad();
             return objeto1.Lista();
         }
+        public E_Variedad ObtenerVariedad(string id)
+        {
+            D_Variedad objeto1 = new D_Variedad();
+            return objeto1.ObtenerVariedad(id);
+        }
 
         public List<E_Variedad> ListaEspecie(string especie)
         {

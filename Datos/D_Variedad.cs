@@ -60,6 +60,56 @@ namespace Datos
             return lista1;
         }        //Fin funcion  
 
+        public E_Variedad ObtenerVariedad(string id)
+        {
+
+            string query;
+            MySqlCommand cmd;
+
+            query = "select * from tbl_variedad where id = @id";
+            try
+            {
+                if (Conectar() == true)
+                {
+                    cmd = new MySqlCommand(query, MySQLConexion);
+                    cmd.Parameters.AddWithValue("@id", id);
+                    MySqlDataReader reader = cmd.ExecuteReader();
+                    E_Variedad tipo1;
+
+                    if (reader.Read())
+                    {
+                        tipo1 = new E_Variedad
+                        {
+                            Codigo = Convert.ToString(reader["ID"]),
+                            Descripcion = Convert.ToString(reader["descripcion"]),
+                        ID_Especie = Convert.ToString(reader["id_especie"])
+                    };
+                        Desconectar();
+                        return tipo1;
+                    }
+                    else
+                    {
+                        Mensaje = "No se encontraron registros";
+                        Desconectar();
+                        return null;
+                    }
+                }
+                else
+                {
+                    Mensaje = "Error en la conexion";
+                    Desconectar();
+                    return null;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Mensaje = ex.Message;
+                Desconectar();
+                return null;
+            }
+        }
+
         public List<E_Variedad> ListaEspecie(string especie)
         {
 

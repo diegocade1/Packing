@@ -16,6 +16,12 @@ namespace Negocio
             return objeto1.Lista();
         }
 
+        public E_TipoComercial ObtenerTipoComercial(string id)
+        {
+            D_TipoComercial objeto1 = new D_TipoComercial();
+            return objeto1.ObtenerTipoConmercial(id);
+        }
+
         public bool Agregar(E_TipoComercial tipo1)
         {
             D_TipoComercial tipo = new D_TipoComercial();

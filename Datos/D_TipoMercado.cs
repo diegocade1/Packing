@@ -58,6 +58,55 @@ namespace Datos
             Desconectar();
             return lista1;
         }
+        public E_TipoMercado ObtenerTipoMercado(string id)
+        {
+
+            string query;
+            MySqlCommand cmd;
+
+            query = "select * from tbl_tipoMercado where id = @id";
+            try
+            {
+                if (Conectar() == true)
+                {
+                    cmd = new MySqlCommand(query, MySQLConexion);
+                    cmd.Parameters.AddWithValue("@id", id);
+                    MySqlDataReader reader = cmd.ExecuteReader();
+                    E_TipoMercado tipo1;
+
+                    if (reader.Read())
+                    {
+                        tipo1 = new E_TipoMercado
+                        {
+                            Codigo = Convert.ToString(reader["id"]),
+                            Descripcion = Convert.ToString(reader["descripcion"])
+                        };
+                        Desconectar();
+                        return tipo1;
+                    }
+                    else
+                    {
+                        Mensaje = "No se encontraron registros";
+                        Desconectar();
+                        return null;
+                    }
+                }
+                else
+                {
+                    Mensaje = "Error en la conexion";
+                    Desconectar();
+                    return null;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Mensaje = ex.Message;
+                Desconectar();
+                return null;
+            }
+        }
+
         public bool Agregar(E_TipoMercado tipo1)
         {
             string query;
