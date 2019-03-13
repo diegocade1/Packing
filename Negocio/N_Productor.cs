@@ -17,6 +17,11 @@ namespace Negocio
             D_Productor productor1 = new D_Productor();
             return productor1.Lista(ID_cliente);
         }
+        public E_Productor ObtenerProductor(string ID_cliente)
+        {
+            D_Productor productor1 = new D_Productor();
+            return productor1.ObtenerProductor(ID_cliente);
+        }
 
         public List<E_Productor> ListaCompleta()
         {

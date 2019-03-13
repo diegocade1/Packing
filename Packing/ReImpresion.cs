@@ -29,6 +29,12 @@ namespace Packing
 
         private void btnImprimir_Click(object sender, EventArgs e)
         {
+            if (txtFolio.Text.Trim() == "")
+            {
+                MessageBox.Show("Seleccione una impresora", "");
+                txtFolio.Focus();
+                return;
+            }
             string folio = txtFolio.Text;
             recepcion1.Detalle = new E_Recepcion_Detalle();
             recepcion1.Detalle.Folio = folio;
@@ -193,12 +199,28 @@ namespace Packing
             double tara, pesoNeto, pesopromedio;
 
             N_Bandeja bandeja1 = new N_Bandeja();
-            N_Pallet pallet2 = new N_Pallet();
+            N_Pallet pallet1 = new N_Pallet();
             N_Especie especie1 = new N_Especie();
             N_Productor productor1 = new N_Productor();
+            N_Cliente cliente1 = new N_Cliente();
+            N_TipoComercial tipo1 = new N_TipoComercial();
+
+            E_Bandeja bandeja2 = bandeja1.ObtenerBandeja(detalle_comercial.ID_Tipo.ToString());
+            E_Pallet pallet2 = pallet1.ObtenerPallet(detalle_comercial.ID_Pallet.ToString());
+            E_Especie especie2 = especie1.ObtenerEspecie(detalle_comercial.ID_Especie.ToString());
+            E_Productor productor2 = productor1.ObtenerProductor(detalle_comercial.ID_Productor);
+            E_Cliente cliente2 = cliente1.ObtenerCliente(detalle_comercial.ID_Cliente.ToString());
+            E_TipoComercial tipo2 = tipo1.ObtenerTipoComercial(detalle_comercial.ID_Tipo.ToString());
+
+            detalle_comercial.Bandeja = bandeja2.Descripcion;
+            detalle_comercial.Pallet = pallet2.Descripcion;
+            detalle_comercial.Especie = especie2.Descripcion;
+            detalle_comercial.Productor = productor2.Descripcion;
+            detalle_comercial.Cliente = cliente2.Cliente;
+            detalle_comercial.Tipo = tipo2.Descripcion;
 
             pesobandeja = bandeja1.Peso(detalle_comercial.ID_Bandeja);
-            pesopallet = pallet2.Peso(detalle_comercial.ID_Pallet);
+            pesopallet = pallet1.Peso(detalle_comercial.ID_Pallet);
             tara = (pesobandeja * Convert.ToInt32(detalle_comercial.Cantidad_Bandejas)) + pesopallet;
             pesoNeto = Convert.ToDouble(detalle_comercial.Kilos_Brutos) - tara;
             pesopromedio = pesoNeto / Convert.ToInt32(detalle_comercial.Cantidad_Bandejas);
@@ -215,7 +237,7 @@ namespace Packing
                 Exportador = detalle_comercial.Cliente,
                 Fecha = fecha.ToString("dd/MM/yyyy"),
                 Guia_despacho = "",
-                Hora = DateTime.Now.ToString("h:mm:ss tt"),
+                Hora = fecha.ToString("h:mm:ss tt"),
                 Productor = detalle_comercial.Productor,
                 Especie = detalle_comercial.Especie,
                 Responsable = sesion.Nombre + " " + sesion.Apellido

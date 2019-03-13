@@ -15,6 +15,11 @@ namespace Negocio
             D_TipoArmado objeto1 = new D_TipoArmado();
             return objeto1.Lista();
         }
+        public E_TipoArmado ObtenerTipoArmado(string id)
+        {
+            D_TipoArmado objeto1 = new D_TipoArmado();
+            return objeto1.ObtenerTipoArmado(id);
+        }
         public bool Agregar(E_TipoArmado tipo1)
         {
             D_TipoArmado tipo = new D_TipoArmado();

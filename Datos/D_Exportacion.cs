@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 using Entity;
+using System.Globalization;
 
 namespace Datos
 {
@@ -166,6 +167,16 @@ namespace Datos
                     List<E_Exportacion> lista = new List<E_Exportacion>();
                     while (rst.Read())
                     {
+                        D_Cliente cliente1 = new D_Cliente();
+                        D_Embalaje embalaje1 = new D_Embalaje();
+                        D_Especie especie1 = new D_Especie();
+                        D_Etiqueta etiqueta1 = new D_Etiqueta();
+                        D_TipoArmado armado1 = new D_TipoArmado();
+                        D_TipoMercado mercado1 = new D_TipoMercado();
+                        D_Variedad variedad1 = new D_Variedad();
+                        D_Usuario usuario1 = new D_Usuario();
+                        DateTime date = new DateTime();
+
                         encabezado1.ID_Cliente = rst["ID_cliente"].ToString();
                         encabezado1.ID_Embalaje = rst["id_embalaje"].ToString();
                         encabezado1.ID_Especie = rst["id_especie"].ToString();
@@ -179,6 +190,19 @@ namespace Datos
                         encabezado1.Cantidad_Cajas = rst["cantidad_cajas"].ToString();
                         encabezado1.Documento = rst["documento"].ToString();
                         encabezado1.Usuario = rst["usuario"].ToString();
+                        
+                        date = DateTime.ParseExact(encabezado1.Fecha, "dd-MM-yyyy", CultureInfo.InvariantCulture);
+
+                        encabezado1.Cliente = cliente1.Obtener_Cliente(encabezado1.ID_Cliente.ToString()).Cliente;
+                        encabezado1.Embalaje = embalaje1.ObtenerEmbalaje(encabezado1.ID_Embalaje.ToString()).Descripcion;
+                        encabezado1.Especie = especie1.Obtener_Especie(encabezado1.ID_Especie.ToString()).Descripcion;
+                        encabezado1.Etiqueta = etiqueta1.LeerEtiqueta(encabezado1.ID_Etiqueta).Descripcion;
+                        encabezado1.TipoArmado = armado1.ObtenerTipoArmado(encabezado1.ID_TipoArmado).Descripcion;
+                        encabezado1.TipoMercado = mercado1.ObtenerTipoMercado(encabezado1.ID_TipoMercado).Descripcion;
+                        encabezado1.Variedad = variedad1.ObtenerVariedad(encabezado1.ID_Variedad).Descripcion;
+                        encabezado1.Responsable = usuario1.LeerUsuario(encabezado1.Usuario).Nombre + " " + usuario1.LeerUsuario(encabezado1.Usuario).Apellido;
+                        encabezado1.Hora = date.ToString("h:mm:ss tt");
+
                         lista.Add(encabezado1);
                     }
                     Desconectar();

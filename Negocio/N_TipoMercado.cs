@@ -15,6 +15,11 @@ namespace Negocio
             D_TipoMercado objeto1 = new D_TipoMercado();
             return objeto1.Lista();
         }
+        public E_TipoMercado ObtenerTipoMercado(string id)
+        {
+            D_TipoMercado objeto1 = new D_TipoMercado();
+            return objeto1.ObtenerTipoMercado(id);
+        }
         public bool Agregar(E_TipoMercado tipo1)
         {
             D_TipoMercado tipo = new D_TipoMercado();

@@ -18,6 +18,12 @@ namespace Negocio
             return  cliente1.Lista();
         }
 
+        public E_Cliente ObtenerCliente(string id)
+        {
+            D_Cliente cliente1 = new D_Cliente();
+            return cliente1.Obtener_Cliente(id);
+        }
+
         public bool Agregar(E_Cliente cliente)
         {
             D_Cliente cliente1 = new D_Cliente();

@@ -16,7 +16,11 @@ namespace Negocio
             D_Embalaje objeto1 = new D_Embalaje();
             return objeto1.Lista();
         }
-
+        public E_Embalaje ObtenerEmbalaje(string id)
+        {
+            D_Embalaje objeto1 = new D_Embalaje();
+            return objeto1.ObtenerEmbalaje(id);
+        }
         public List<E_Embalaje> ListaCliente(string cliente)
         {
             D_Embalaje objeto1 = new D_Embalaje();
