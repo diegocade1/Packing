@@ -55,6 +55,52 @@ namespace Datos
             Desconectar();
             return lista1;
         }
+        public E_Tipo_Recepcion Obtener_TipoRecepcion(string id)
+        {
+            string query;
+
+            MySqlCommand cmd;
+
+            query = "SELECT * FROM tbl_tiporecepcion where id = @id;";
+            try
+            {
+                if(Conectar()==true)
+                {
+                    cmd = new MySqlCommand(query, MySQLConexion);
+                    cmd.Parameters.AddWithValue("@id", id);
+
+                    MySqlDataReader rst = cmd.ExecuteReader();
+                    if (rst.Read())
+                    {
+                        E_Tipo_Recepcion encabezado1 = new E_Tipo_Recepcion()
+                        {
+                            ID = rst["id"].ToString(),
+                            Descripcion = rst["descripcion"].ToString()
+                        };
+                        Desconectar();
+                        return encabezado1;
+                    }
+                    else
+                    {
+                        Mensaje = "No se encontraron registros";
+                        Desconectar();
+                        return null;
+                    }
+                }
+                else
+                {
+                    Mensaje = "Error en la conexion";
+                    Desconectar();
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                Mensaje = ex.Message;
+                Desconectar();
+                return null;
+            }
+        }
 
         public bool Agregar(E_Tipo_Recepcion tipo1)
         {

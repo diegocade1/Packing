@@ -51,6 +51,52 @@ namespace Datos
             Desconectar();
             return lista1;
         }        //Fin funcion Lista   
+        public E_Destino Obtener_Destino(string id)
+        {
+            string query;
+
+            MySqlCommand cmd;
+
+            query = "SELECT * FROM tbl_destinorecepcion where id = @id;";
+            try
+            {
+                if(Conectar()==true)
+                {
+                    cmd = new MySqlCommand(query, MySQLConexion);
+                    cmd.Parameters.AddWithValue("@id", id);
+
+                    MySqlDataReader rst = cmd.ExecuteReader();
+                    if (rst.Read())
+                    {
+                        E_Destino encabezado1 = new E_Destino()
+                        {
+                            Codigo = rst["id"].ToString(),
+                            Descripcion = rst["descripcion"].ToString()
+                        };
+                        Desconectar();
+                        return encabezado1;
+                    }
+                    else
+                    {
+                        Mensaje = "No se encontraron registros";
+                        Desconectar();
+                        return null;
+                    }
+                }
+                else
+                {
+                    Mensaje = "Error de conexion";
+                    Desconectar();
+                    return null;
+                }            
+            }
+            catch (Exception ex)
+            {
+                Mensaje = ex.Message;
+                Desconectar();
+                return null;
+            }
+        }
 
         public bool Agregar_Destino(E_Destino destino1)
         {
@@ -174,6 +220,55 @@ namespace Datos
             Desconectar();
             return lista1;
         }        //Fin funcion   
+
+        public E_Descarga Obtener_Descarga(string id)
+        {
+            string query;
+
+            MySqlCommand cmd;
+
+            query = "SELECT * FROM tbl_tipodescarga where id = @id;";
+            try
+            {
+                if (Conectar() == true)
+                {
+                    cmd = new MySqlCommand(query, MySQLConexion);
+                    cmd.Parameters.AddWithValue("@id", id);
+
+                    MySqlDataReader rst = cmd.ExecuteReader();
+
+                    if (rst.Read())
+                    {
+                        E_Descarga encabezado1 = new E_Descarga()
+                        {
+                            Codigo = rst["id"].ToString(),
+                            Descripcion = rst["descripcion"].ToString()
+                        };
+                        Desconectar();
+                        return encabezado1;
+                    }
+                    else
+                    {
+                        Mensaje = "No se encontraron registros";
+                        Desconectar();
+                        return null;
+                    }
+                }
+                else
+                {
+                    Mensaje = "Error en la conexion";
+                    Desconectar();
+                    return null;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Mensaje = ex.Message;
+                Desconectar();
+                return null;
+            }
+        }
 
         public bool Agregar_Descarga(E_Descarga descarga1)
         {
@@ -786,9 +881,7 @@ namespace Datos
                         Fecha = rst["fecha"].ToString(),
                         Lote = rst["lote"].ToString(),
                         Cantidad_Pallets = rst["cantidad_pallets"].ToString(),
-                        ID_Tipo = rst["id_tipo"].ToString(), 
-                      
-                        
+                        ID_Tipo = rst["id_tipo"].ToString(),                                             
                     };
                     Desconectar();
                     return encabezado1;
@@ -824,24 +917,48 @@ namespace Datos
                 MySqlDataReader rst = cmd.ExecuteReader();
                 if (rst.Read())
                 {
-                    E_Recepcion_Encabezado encabezado1 = new E_Recepcion_Encabezado()
-                    {
-                        ID_Registro = rst["id"].ToString(),
-                        ID_Cliente = rst["id_cliente"].ToString(),
-                        Codigo_Productor = rst["id_productor"].ToString(),
-                        Chofer = rst["chofer"].ToString(),
-                        Guia = rst["guia"].ToString(),
-                        ID_Especie = rst["id_especie"].ToString(),
-                        ID_Descarga = rst["id_descarga"].ToString(),
-                        Temperatura = rst["temperatura"].ToString(),
-                        ID_Destino = rst["id_destino"].ToString(),
-                        Fecha = rst["fecha"].ToString(),
-                        Lote = rst["lote"].ToString(),
-                        Cantidad_Pallets = rst["cantidad_pallets"].ToString(),
-                        ID_Tipo = rst["id_tipo"].ToString(),
+                    double temperatura = Convert.ToDouble(rst["temperatura"].ToString());
+                    E_Recepcion_Encabezado encabezado1 = new E_Recepcion_Encabezado();
 
+                    encabezado1.ID_Registro = rst["id"].ToString();
+                    encabezado1.ID_Cliente = rst["id_cliente"].ToString();
+                    encabezado1.Codigo_Productor = rst["id_productor"].ToString();
+                    encabezado1.Chofer = rst["chofer"].ToString();
+                    encabezado1.Guia = rst["guia"].ToString();
+                    encabezado1.ID_Especie = rst["id_especie"].ToString();
+                    encabezado1.ID_Descarga = rst["id_descarga"].ToString();
+                    encabezado1.Temperatura = temperatura.ToString().Replace(".", ",");
+                    encabezado1.ID_Destino = rst["id_destino"].ToString();
+                    encabezado1.Fecha = rst["fecha"].ToString();
+                    encabezado1.Lote = rst["lote"].ToString();
+                    encabezado1.Cantidad_Pallets = rst["cantidad_pallets"].ToString();
+                    encabezado1.ID_Tipo = rst["id_tipo"].ToString();
 
-                    };
+                    D_Cliente cliente1 = new D_Cliente();
+                    E_Cliente cliente2 = new E_Cliente();
+                    E_Descarga descarga1 = new E_Descarga();
+                    E_Destino destino1 = new E_Destino();
+                    D_Especie especie1 = new D_Especie();
+                    E_Especie especie2 = new E_Especie();
+                    D_Productor productor1 = new D_Productor();
+                    E_Productor productor2 = new E_Productor();
+                    D_Tipo_Recepcion tipo_Recepcion1 = new D_Tipo_Recepcion();
+                    E_Tipo_Recepcion tipo_Recepcion2 = new E_Tipo_Recepcion();
+
+                    cliente2 = cliente1.Obtener_Cliente(encabezado1.ID_Cliente);
+                    descarga1 = Obtener_Descarga(encabezado1.ID_Descarga);
+                    destino1 = Obtener_Destino(encabezado1.ID_Destino);
+                    especie2 = especie1.Obtener_Especie(encabezado1.ID_Especie);
+                    productor2 = productor1.ObtenerProductor(encabezado1.Codigo_Productor);
+                    tipo_Recepcion2 = tipo_Recepcion1.Obtener_TipoRecepcion(encabezado1.ID_Tipo);
+
+                    encabezado1.Cliente = cliente2.Cliente;
+                    encabezado1.Descarga = descarga1.Descripcion;
+                    encabezado1.Destino = destino1.Descripcion;
+                    encabezado1.Especie = especie2.Descripcion;
+                    encabezado1.Productor = productor2.Descripcion;
+                    encabezado1.Tipo = tipo_Recepcion2.Descripcion;
+
                     Desconectar();
                     return encabezado1;
                 }
@@ -933,22 +1050,27 @@ namespace Datos
                 if(rst.Read())
                 {
                     double kilos = Convert.ToDouble(rst["kilos_brutos"].ToString());
+                    double tara = Convert.ToDouble(rst["tara"].ToString());
+                    double kilo_neto = Convert.ToDouble(rst["kilos_netos"].ToString());
+                    double peso_bandeja = Convert.ToDouble(rst["peso_bandeja"].ToString());
+                    double peso_pallet = Convert.ToDouble(rst["peso_pallet"].ToString());
 
                     encabezado1.ID = rst["ID"].ToString();
                     encabezado1.ID_Recepcion = rst["id_recepcion"].ToString();
                     encabezado1.ID_bandeja = rst["id_bandeja"].ToString();
                     encabezado1.Bandeja = rst["bandeja"].ToString();
-                    encabezado1.Peso_Bandeja = rst["peso_bandeja"].ToString();
+                    encabezado1.Peso_Bandeja = peso_bandeja.ToString().Replace(".", ",");
                     encabezado1.Cantidad_Bandejas = rst["cantidad_bandejas"].ToString();
                     encabezado1.Folio = rst["folio"].ToString();
-                    encabezado1.Kilos_Brutos = kilos.ToString().Replace(",", ".");
-                    encabezado1.Tara = rst["tara"].ToString();
-                    encabezado1.Kilos_Netos = rst["kilos_netos"].ToString();
+                    encabezado1.Kilos_Brutos = kilos.ToString().Replace(".", ",");
+                    encabezado1.Tara = tara.ToString().Replace(".", ",");
+                    encabezado1.Kilos_Netos = kilo_neto.ToString().Replace(".", ",");
                     encabezado1.ID_Pallet = rst["id_pallet"].ToString();
                     encabezado1.Tipo_Pallet = rst["tipo_pallet"].ToString();
-                    encabezado1.Peso_Pallet = rst["peso_pallet"].ToString();
+                    encabezado1.Peso_Pallet = peso_pallet.ToString().Replace(".", ",");
                     encabezado1.Fecha = rst["fecha"].ToString();
                     encabezado1.Posicion = rst["posicion"].ToString();
+                    encabezado1.Usuario = rst["usuario"].ToString();
 
                     Desconectar();
                     return encabezado1;

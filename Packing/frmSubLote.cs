@@ -489,8 +489,6 @@ namespace Packing
 
                 // N_Recepcion recepcion1 = new N_Recepcion();
 
-
-
                 recepcionDetalleSublote.Guia = txtGuia.Text;
                 if (recepcionSublote.Existe_Guia_recepcion(recepcionDetalleSublote) == true) //pallet se utiliza para asignarle datos
                 {

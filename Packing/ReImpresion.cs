@@ -41,18 +41,29 @@ namespace Packing
             if (recepcion1.Obtener_Detalle_Recepcion_Folio() != null)
             {
                 E_Recepcion_Detalle recepcion2 = recepcion1.Obtener_Detalle_Recepcion_Folio();
+                N_Usuario usuario1 = new N_Usuario();
+                E_Usuario usuario2 = usuario1.ObtenerUsuario(recepcion2.Usuario);
                 E_Recepcion_Encabezado recepcion3 = recepcion1.Obtener_Encabezado_ID(recepcion2.ID_Recepcion);
+                recepcion3.Responsable = usuario2.Nombre + " " + usuario2.Apellido;
+                double peso_promedio;
+                double neto = Convert.ToDouble(recepcion2.Kilos_Netos);
+                double cantidad_bandejas = Convert.ToDouble(recepcion2.Cantidad_Bandejas);
+                peso_promedio = neto / cantidad_bandejas;
+                recepcion2.Peso_Promedio = peso_promedio.ToString("#0.##");
                 Imprimir_Recepcion(recepcion3,recepcion2);
+                txtFolio.Text = string.Empty;
             }
             else if(exportacion1.Obtener_Exportaciones_Folio(folio).Count!=0)
             {
                 List<E_Exportacion> exportacion2 = exportacion1.Obtener_Exportaciones_Folio(folio);
                 Imprimir_Exportacion(exportacion2);
+                txtFolio.Text = string.Empty;
             }
             else if(comercial1.Obtener_Exportacion_Folio(folio)!= null)
             {
                 E_Comercial comercial2 = comercial1.Obtener_Exportacion_Folio(folio);
                 Imprimir_Comercial(comercial2);
+                txtFolio.Text = string.Empty;
             }
             else
             {
@@ -65,8 +76,10 @@ namespace Packing
         {
 
 
-            DateTime fecha = DateTime.ParseExact(encabezado_recepcion.Fecha, "yyyy-MM-ddTHH:mm:ss",
-                                       System.Globalization.CultureInfo.InvariantCulture);
+            DateTime fecha = DateTime.Parse(encabezado_recepcion.Fecha);
+
+            //DateTime fecha = DateTime.ParseExact(encabezado_recepcion.Fecha, "yyyy-MM-ddTHH:mm:ss",
+            //               System.Globalization.CultureInfo.InvariantCulture);
 
             N_Imprimir imprimir = new N_Imprimir();
             N_Recepcion_Encabezado encabezado = new N_Recepcion_Encabezado()
@@ -79,7 +92,7 @@ namespace Packing
 
                 Fecha = fecha.ToShortDateString(),
                 Guia_despacho = encabezado_recepcion.Guia,
-                Hora = encabezado_recepcion.Hora,
+                Hora = fecha.ToString("HH:mm:ss"),
                 Productor = encabezado_recepcion.Productor,
                 Especie = encabezado_recepcion.Especie,
                 Responsable = encabezado_recepcion.Responsable,

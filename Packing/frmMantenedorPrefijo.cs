@@ -40,6 +40,7 @@ namespace Packing
                 string ID;
                 ID = dgvLista.Rows[pos].Cells["id"].Value.ToString();
                 N_Prefijo prefijo1 = new N_Prefijo();
+                prefijo1.ActualizarPrefijoActivoTodoFalso();
                 E_Prefijo prefijo2 = prefijo1.ObtenerPrefijoActivo(ID);
                 prefijo2.Estado = true;
                 prefijo1.ActualizarPrefijoActivo(prefijo2);

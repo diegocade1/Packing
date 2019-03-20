@@ -25,6 +25,11 @@ namespace Negocio
             D_Prefijo prefijo1 = new D_Prefijo();
             return prefijo1.ActualizarPrefijoActivo(prefijo);
         }
+        public bool ActualizarPrefijoActivoTodoFalso()
+        {
+            D_Prefijo prefijo1 = new D_Prefijo();
+            return prefijo1.ActualizarPrefijoActivoTodoFalso();
+        }
         public bool BorrarPrefijoActivo(string ID)
         {
             D_Prefijo prefijo1 = new D_Prefijo();

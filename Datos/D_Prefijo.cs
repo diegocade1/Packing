@@ -114,7 +114,37 @@ namespace Datos
                 return false;
             }
         }
+        public bool ActualizarPrefijoActivoTodoFalso()
+        {
 
+            string query;
+            MySqlCommand cmd;
+
+            query = "update tbl_prefijo set estado=@estado";
+            try
+            {
+                if (Conectar() == true)
+                {
+                    cmd = new MySqlCommand(query, MySQLConexion);
+                    cmd.Parameters.AddWithValue("@estado", false);
+
+                    cmd.ExecuteNonQuery();
+                    Desconectar();
+                    return true;
+                }
+                else
+                {
+                    Mensaje = "Problemas con la conexion";
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                Mensaje = ex.Message;
+                Desconectar();
+                return false;
+            }
+        }
         public bool BorrarPrefijoActivo(string ID)
         {
             string query;

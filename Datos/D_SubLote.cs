@@ -99,6 +99,7 @@ namespace Datos
                 {
                     MySqlCommand cmd = new MySqlCommand(query, MySQLConexion);
                     rst = cmd.ExecuteReader();
+
                     if (rst.Read())
                     {
                         recepcion.ID_Registro = rst["ID_recepcion"].ToString();

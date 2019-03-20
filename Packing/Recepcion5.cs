@@ -163,7 +163,7 @@ namespace Packing
             //    T Format Specifier      en-US Culture                               5:04:32 PM
             //    T Format Specifier      es-ES Culture                                 17:04:32
             //    T Format Specifier      fr-FR Culture                                 17:04:32
-            string hora = DateTime.Now.ToString("HH: mm:ss");
+            string hora = DateTime.Now.ToString("HH:mm:ss");
 
             //Random rnd = new Random();
             //int lote = rnd.Next(1, 99999);
@@ -574,7 +574,7 @@ namespace Packing
                 Peso_rejillas = detalle_recepcion.Peso_Bandeja,
                 Responsable = encabezado_recepcion.Responsable,
                 Sub_lote = "",                
-                Temperatura = encabezado_recepcion.Temperatura,
+                Temperatura = encabezado_recepcion.Temperatura.Replace(".",","),
                 Tipo_rejilla_bandeja = detalle_recepcion.Bandeja,
                 Posicion_Pallet = detalle_recepcion.Item 
             };

@@ -572,6 +572,7 @@ namespace Packing
             frmMantenedorPrefijo frmObj = new frmMantenedorPrefijo(Usuario);
             frmObj.MdiParent = this;
             frmObj.Show();
+            frmObj.FormClosed += new System.Windows.Forms.FormClosedEventHandler(MDIContenedorPrincipal_Load);
         }
 
         private void reimpresionItem_Click(object sender, EventArgs e)
@@ -579,6 +580,12 @@ namespace Packing
             ReImpresion frmObj = new ReImpresion(Usuario);
             frmObj.MdiParent = this;
             frmObj.Show();
+        }
+
+        private void SubloteTool_Click(object sender, EventArgs e)
+        {
+            frmSubLote frmobj = new frmSubLote(Usuario);
+            frmobj.ShowDialog();
         }
     }
 }
