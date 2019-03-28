@@ -31,7 +31,7 @@ namespace Packing
         {
             if (txtFolio.Text.Trim() == "")
             {
-                MessageBox.Show("Seleccione una impresora", "");
+                MessageBox.Show("Ingrese el folio", "");
                 txtFolio.Focus();
                 return;
             }
@@ -114,7 +114,7 @@ namespace Packing
                 Peso_promedio = detalle_recepcion.Peso_Promedio,
                 Peso_rejillas = detalle_recepcion.Peso_Bandeja,
                 Responsable = encabezado_recepcion.Responsable,
-                Sub_lote = "",
+                Sub_lote = detalle_recepcion.Sublote,
                 Temperatura = encabezado_recepcion.Temperatura,
                 Tipo_rejilla_bandeja = detalle_recepcion.Bandeja,
                 Posicion_Pallet = detalle_recepcion.Item

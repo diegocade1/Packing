@@ -1047,7 +1047,7 @@ namespace Datos
                 MySqlDataReader rst = cmd.ExecuteReader();
                 E_Recepcion_Detalle encabezado1 = new E_Recepcion_Detalle();
 
-                if(rst.Read())
+                if (rst.Read())
                 {
                     double kilos = Convert.ToDouble(rst["kilos_brutos"].ToString());
                     double tara = Convert.ToDouble(rst["tara"].ToString());
@@ -1071,6 +1071,7 @@ namespace Datos
                     encabezado1.Fecha = rst["fecha"].ToString();
                     encabezado1.Posicion = rst["posicion"].ToString();
                     encabezado1.Usuario = rst["usuario"].ToString();
+                    encabezado1.Sublote = rst["sublote"].ToString();
 
                     Desconectar();
                     return encabezado1;

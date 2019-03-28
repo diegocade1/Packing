@@ -277,14 +277,25 @@ namespace Clases.Impresion
             yPos = (float)linea * fuente.GetHeight(g);
             int resultado;
             int.TryParse(limite, out resultado);
-            if(resultado!=0)
+            if (!string.IsNullOrEmpty(detalle_recepcion.Sub_lote))
             {
-                g.DrawString(numero + "/" + limite, fuente, Brushes.Black, xPos, yPos, new StringFormat());    // Enumeracion
+                if (detalle_recepcion.Sub_lote != "0")
+                {
+                    g.DrawString(" ", fuente, Brushes.Black, xPos, yPos, new StringFormat());    // Enumeracion
+                }
+                else
+                {
+                    if (resultado != 0)
+                    {
+                        g.DrawString(numero + "/" + limite, fuente, Brushes.Black, xPos, yPos, new StringFormat());    // Enumeracion
+                    }
+                    else
+                    {
+                        g.DrawString(numero, fuente, Brushes.Black, xPos, yPos, new StringFormat());    // Enumeracion
+                    }
+                }
             }
-            else
-            {
-                g.DrawString(numero, fuente, Brushes.Black, xPos, yPos, new StringFormat());    // Enumeracion
-            }
+
             //Move to next line
             /*
             xPos = 20 * fuente.GetHeight(g);
